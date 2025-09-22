@@ -114,7 +114,7 @@ export default function Header() {
     <header className="sticky top-0 z-30 border-b border-white/10 bg-gradient-to-b from-gray-900 to-black text-gray-100">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className="font-bold text-lg tracking-tight hover:opacity-90 transition">
-          FreeTools
+          convertixy
         </Link>
         <nav className="flex items-center gap-3 text-sm">
           <button
