@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const sections = [
   {
@@ -112,9 +113,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-gradient-to-b from-gray-900 to-black text-gray-100">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="/" className="font-bold text-lg tracking-tight hover:opacity-90 transition">
+        <Link href="/" className="font-bold text-lg tracking-tight hover:opacity-90 transition">
           FreeTools
-        </a>
+        </Link>
         <nav className="flex items-center gap-3 text-sm">
           <button
             type="button"
@@ -139,9 +140,9 @@ export default function Header() {
             </svg>
           </button>
           <div className="hidden md:flex items-center gap-1 text-sm">
-            <a href="/" className="hover:underline" onClick={handleNavClick}>
+            <Link href="/" className="hover:underline" onClick={handleNavClick}>
               Home
-            </a>
+            </Link>
             {sections.map((section) => (
               <div key={section.key} className="relative">
                 <button
@@ -167,36 +168,36 @@ export default function Header() {
                       }`}
                     >
                       {section.links.map((link) => (
-                        <a
+                        <Link
                           key={link.href}
                           href={link.href}
                           className="px-3 py-2 rounded-md hover:bg-gray-50"
                           onClick={handleNavClick}
                         >
                           {link.label}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 )}
               </div>
             ))}
-            <a href="/contact" className="hover:underline" onClick={handleNavClick}>
+            <Link href="/contact" className="hover:underline" onClick={handleNavClick}>
               Contact
-            </a>
+            </Link>
           </div>
         </nav>
       </div>
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-white/10 bg-black/70 backdrop-blur">
           <nav className="px-4 py-4 space-y-3 text-sm">
-            <a
+            <Link
               href="/"
               className="block rounded px-3 py-2 hover:bg-white/10"
               onClick={handleNavClick}
             >
               Home
-            </a>
+            </Link>
             {sections.map((section) => (
               <div
                 key={`${section.key}-mobile`}
@@ -219,27 +220,27 @@ export default function Header() {
                   >
                     <div className="grid grid-cols-1 gap-2">
                       {section.links.map((link) => (
-                        <a
+                        <Link
                           key={`${link.href}-mobile`}
                           href={link.href}
                           className="block rounded border border-white/10 px-3 py-2 hover:bg-white/10"
                           onClick={handleNavClick}
                         >
                           {link.label}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 )}
               </div>
             ))}
-            <a
+            <Link
               href="/contact"
               className="block rounded px-3 py-2 hover:bg-white/10"
               onClick={handleNavClick}
             >
               Contact
-            </a>
+            </Link>
           </nav>
         </div>
       )}
