@@ -1,103 +1,208 @@
-import Image from "next/image";
+import {
+  buildMetadata,
+  buildWebsiteJsonLd,
+  buildOrganizationJsonLd,
+  buildFaqJsonLd,
+} from "../lib/seo";
+import JsonLd from "./components/JsonLd";
+import { sections as toolSections } from "./data/tools";
+
+export const metadata = buildMetadata({
+  title: "Free Online Tools for PDF, Images, Text & SEO",
+  description:
+    "Use free online tools for PDF merge/split, image compression & conversion, word counter, JSON formatter, URL encoder, and more. Fast, private, no signup.",
+  slug: "/",
+  keywords: [
+    "free online tools",
+    "pdf merge",
+    "image compressor",
+    "png to jpg",
+    "word counter",
+    "json formatter",
+    "seo tools",
+  ],
+});
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900">
+      <JsonLd
+        data={[
+          buildWebsiteJsonLd(),
+          buildOrganizationJsonLd(),
+          buildFaqJsonLd([
+            {
+              question: "Are these tools free to use?",
+              answer:
+                "Yes, all tools are completely free and run in your browser.",
+            },
+            {
+              question: "Do I need to install software?",
+              answer:
+                "No installation is needed. Everything runs directly in your browser.",
+            },
+            {
+              question: "Is my data safe?",
+              answer:
+                "Yes. Processing happens locally in your browser. Files and text are not uploaded to any server.",
+            },
+            {
+              question: "Can I use these tools on mobile?",
+              answer: "Yes, all tools are responsive and mobile friendly.",
+            },
+          ]),
+        ]}
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Hero Section */}
+      <section className="text-center py-20 px-6">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900">
+          Free Online Tools for PDF, Images, Text & SEO
+        </h1>
+        <p className="mt-5 text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
+          Fast, secure & works directly in your browser. No signup required.
+        </p>
+        <a
+          href="#all-tools"
+          className="inline-block mt-8 px-8 py-3 rounded-xl text-white bg-slate-900 shadow-md hover:shadow-xl hover:bg-black transition transform hover:-translate-y-1"
+        >
+          Browse All Tools
+        </a>
+      </section>
+
+      {/* Featured Tools */}
+      <section id="tools" className="max-w-6xl mx-auto py-14 px-6">
+        <h2 className="text-3xl font-semibold mb-10 text-center">
+          Popular Tools
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {[
+            {
+              name: "PDF Merge",
+              link: "/pdf-merge",
+              desc: "Combine multiple PDFs into one file.",
+            },
+            {
+              name: "PDF Split",
+              link: "/pdf-split",
+              desc: "Split PDF pages into separate files.",
+            },
+            {
+              name: "Image Compressor",
+              link: "/image-compressor",
+              desc: "Reduce image size without losing quality.",
+            },
+            {
+              name: "PNG to JPG",
+              link: "/png-to-jpg",
+              desc: "Convert PNG images to JPG format.",
+            },
+            {
+              name: "Word Counter",
+              link: "/word-counter",
+              desc: "Count words & characters in text.",
+            },
+            {
+              name: "Meta Tag Generator",
+              link: "/meta-tag-generator",
+              desc: "Generate SEO-friendly meta tags.",
+            },
+          ].map((tool) => (
+            <a
+              key={tool.name}
+              href={tool.link}
+              className="block p-6 bg-white border rounded-2xl shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
+            >
+              <h3 className="text-lg font-bold">{tool.name}</h3>
+              <p className="text-gray-600 text-sm mt-2">{tool.desc}</p>
+            </a>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* All Tools */}
+      <AllTools />
+
+      {/* Why Use Us */}
+      <section className="bg-white py-16 px-6 text-center">
+        <h2 className="text-3xl font-semibold mb-10">Why Use Our Tools?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {[
+            "100% Free & Secure",
+            "Works directly in your browser",
+            "Fast & Mobile-Friendly",
+            "No Signup Needed",
+          ].map((point, i) => (
+            <div
+              key={i}
+              className="p-5 bg-gray-50 rounded-xl shadow hover:shadow-md transition"
+            >
+              <p className="font-medium">{point}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="max-w-4xl mx-auto py-16 px-6">
+        <h2 className="text-3xl font-semibold mb-8 text-center">FAQ</h2>
+        <div className="space-y-4">
+          {[
+            {
+              q: "Are these tools free to use?",
+              a: "Yes, all tools are completely free.",
+            },
+            {
+              q: "Do I need to install software?",
+              a: "No, everything runs directly in your browser.",
+            },
+            {
+              q: "Is my data safe?",
+              a: "Yes, all processing happens locally in your browser. Nothing is uploaded.",
+            },
+            {
+              q: "Can I use these tools on mobile?",
+              a: "Absolutely! All tools are mobile-friendly.",
+            },
+          ].map((item, i) => (
+            <details
+              key={i}
+              className="group border rounded-lg p-4 bg-white shadow-sm"
+            >
+              <summary className="font-bold cursor-pointer flex justify-between items-center">
+                {item.q}
+                <span className="transition group-open:rotate-180">⌄</span>
+              </summary>
+              <p className="text-gray-600 mt-2">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {/* Global footer is in layout */}
+    </main>
+  );
+}
+
+function AllTools() {
+  const tools = toolSections.flatMap((s) => s.links);
+  return (
+    <section id="all-tools" className="max-w-6xl mx-auto py-14 px-6">
+      <h2 className="text-3xl font-semibold mb-10 text-center">All Tools</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {tools.map((tool) => (
+          <a
+            key={tool.href}
+            href={tool.href}
+            className="block p-6 bg-white border rounded-2xl shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
+          >
+            <h3 className="text-lg font-bold">{tool.label}</h3>
+            {tool.desc && (
+              <p className="text-gray-600 text-sm mt-2">{tool.desc}</p>
+            )}
+          </a>
+        ))}
+      </div>
+    </section>
   );
 }

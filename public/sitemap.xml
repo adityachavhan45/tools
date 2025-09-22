@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://convertixy.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url><loc>https://convertixy.com/base64</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/case-converter</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/color-picker</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/image-compressor</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/image-resizer</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/images-to-pdf</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/jpg-to-webp</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/json-formatter</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/meta-tag-generator</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/password-generator</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/pdf-merge</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/pdf-split</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/pdf-to-image</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/png-to-ico</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/png-to-jpg</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/qr-code</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/slug-generator</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/svg-to-png</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/unix-time</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/url-encoder</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/uuid-generator</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/webp-to-png</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://convertixy.com/word-counter</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>
