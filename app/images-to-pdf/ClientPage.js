@@ -42,6 +42,7 @@ export default function ImagesToPdfPage() {
 
       setMessage("✅ PDF created successfully!");
     } catch (err) {
+      console.error(err);
       setMessage("❌ Failed to create PDF");
     } finally {
       setProcessing(false);
@@ -51,6 +52,10 @@ export default function ImagesToPdfPage() {
   function resetAll() {
     setFiles([]);
     setMessage("🧹 Cleared!");
+  }
+
+  function removeFile(index) {
+    setFiles((prev) => prev.filter((_, i) => i !== index));
   }
 
   return (
@@ -113,11 +118,12 @@ export default function ImagesToPdfPage() {
               {processing ? "Creating…" : "Create PDF"}
             </button>
             <button
-              className="px-5 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200 transition"
+              className="px-5 py-2 rounded-lg bg-black text-white shadow-md 
+             hover:bg-gray-800 transition disabled:opacity-60"
               onClick={resetAll}
               disabled={!files.length}
             >
-              Reset
+              Reset All
             </button>
           </div>
 
@@ -127,13 +133,20 @@ export default function ImagesToPdfPage() {
               {files.map((f, i) => (
                 <div
                   key={i}
-                  className="border rounded-xl overflow-hidden bg-white shadow hover:shadow-lg transition"
+                  className="relative border rounded-xl overflow-hidden bg-white shadow hover:shadow-lg transition"
                 >
                   <img
                     src={URL.createObjectURL(f)}
                     alt={f.name}
                     className="w-full h-32 object-cover"
                   />
+                  {/* Remove button */}
+                  <button
+                    onClick={() => removeFile(i)}
+                    className="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded-full hover:bg-red-600"
+                  >
+                    ✕
+                  </button>
                   <p className="p-2 text-xs truncate">{f.name}</p>
                 </div>
               ))}
@@ -166,9 +179,10 @@ export default function ImagesToPdfPage() {
           <ol className="list-decimal list-inside text-gray-700 space-y-1">
             <li>Select multiple images using the file input.</li>
             <li>Preview the uploaded images below.</li>
+            <li>Remove unwanted images (click ✕ on top-right).</li>
             <li>Click <strong>Create PDF</strong> to generate the file.</li>
             <li>Download the generated PDF instantly.</li>
-            <li>Use Reset to clear and start over.</li>
+            <li>Use <strong>Reset All</strong> to clear and start over.</li>
           </ol>
 
           <h4 className="font-semibold mt-4 mb-2 text-slate-800">📦 Practical Use Cases</h4>
