@@ -26,6 +26,7 @@
 html,
 body {
   font-family: var(--font-sans);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -33,6 +34,7 @@ body {
   background: radial-gradient(1200px 600px at 100% -100px, #f3f4f6 0%, transparent 60%),
     radial-gradient(1000px 500px at -10% 0%, #e5e7eb 0%, transparent 60%),
     var(--color-bg);
+  line-height: 1.6;
 }
 
 /* Smooth transitions for interactive elements */
@@ -42,8 +44,19 @@ body {
 
 a,
 button {
-  transition: color 150ms, background-color 150ms, border-color 150ms,
-    transform 150ms, box-shadow 150ms;
+  transition: color 200ms ease, background-color 200ms ease, border-color 200ms ease,
+    transform 200ms ease, box-shadow 200ms ease;
+}
+
+/* Enhanced button styles */
+button {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Focus styles */
@@ -75,16 +88,31 @@ button {
 .card-surface {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 14px;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 6px 20px rgba(2, 6, 23, 0.04);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 8px 25px rgba(2, 6, 23, 0.06);
 }
 
 .hover-float {
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  transition: transform 300ms ease, box-shadow 300ms ease;
 }
 .hover-float:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(2, 6, 23, 0.12);
+}
+
+/* Enhanced input styles */
+input, textarea, select {
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
 }
 
 /* Dark mode (automatic if user prefers) */
@@ -160,14 +188,93 @@ main input[type="range"]::-moz-range-thumb {
 .tool-content button,
 main button {
   border-radius: 12px;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.1);
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  transition: all 200ms ease;
 }
 .tool-content button:hover:not(:disabled),
 main button:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(2, 6, 23, 0.15);
+}
+
+/* Primary button styles */
+.tool-content button[type="submit"],
+.tool-content .btn-primary,
+main button[type="submit"],
+main .btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+}
+
+.tool-content button[type="submit"]:hover,
+.tool-content .btn-primary:hover,
+main button[type="submit"]:hover,
+main .btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
 }
 
 /* Ensure headings and paragraph colors are legible across tools */
 main h1, main h2, main h3 { color: #0f172a; /* slate-900 */ }
 main p { color: #334155; /* slate-700 */ }
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  .tool-content button,
+  main button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  input, textarea, select {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Success/Error message styles */
+.message {
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.message.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}

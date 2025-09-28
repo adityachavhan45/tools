@@ -3,23 +3,79 @@ import {
   buildWebsiteJsonLd,
   buildOrganizationJsonLd,
   buildFaqJsonLd,
+  buildSoftwareApplicationJsonLd,
+  buildItemListJsonLd,
 } from "../lib/seo";
 import JsonLd from "./components/JsonLd";
 import { sections as toolSections } from "./data/tools";
 
 export const metadata = buildMetadata({
-  title: "Free Online Tools for PDF, Images, Text & SEO",
+  title: "Convertixy - 50+ Free Online Tools for PDF, Images, Text, SEO & More | No Registration Required",
   description:
-    "Use free online tools for PDF merge/split, image compression & conversion, word counter, JSON formatter, URL encoder, and more. Fast, private, no signup.",
+    "Convertixy provides 50+ free online tools: PDF merge/split/compress, image compression/conversion, text processing, SEO tools, calculators, converters, generators, and more. Fast, secure, works in browser.",
   slug: "/",
   keywords: [
     "free online tools",
     "pdf merge",
+    "pdf split", 
+    "pdf compressor",
     "image compressor",
     "png to jpg",
+    "jpg to webp",
     "word counter",
     "json formatter",
     "seo tools",
+    "url encoder",
+    "qr code generator",
+    "password generator",
+    "uuid generator",
+    "base64 encoder",
+    "case converter",
+    "slug generator",
+    "meta tag generator",
+    "color picker",
+    "unix timestamp",
+    "convertixy",
+    "online converter",
+    "free tools",
+    "browser tools",
+    "no registration",
+    "secure tools",
+    "fast tools",
+    "mobile friendly tools",
+    "image resizer",
+    "svg to png",
+    "webp to png",
+    "png to ico",
+    "images to pdf",
+    "pdf to image",
+    "bmi calculator",
+    "age calculator",
+    "temperature converter",
+    "unit converter",
+    "time zone converter",
+    "random number generator",
+    "lorem ipsum generator",
+    "color palette generator",
+    "hash generator",
+    "text to speech",
+    "html formatter",
+    "markdown to html",
+    "binary to text",
+    "text diff checker",
+    "keyword density checker",
+    "password strength checker",
+    "percentage calculator",
+    "loan calculator",
+    "tip calculator",
+    "compound interest calculator",
+    "csv to json",
+    "morse code translator",
+    "pdf password remover",
+    "pdf rotate",
+    "pdf to word",
+    "image cropper",
+    "jpg to png"
   ],
 });
 
@@ -30,52 +86,68 @@ export default function Home() {
         data={[
           buildWebsiteJsonLd(),
           buildOrganizationJsonLd(),
+          buildSoftwareApplicationJsonLd(),
+          buildItemListJsonLd(toolSections.flatMap(section => 
+            section.links.map(tool => ({
+              name: tool.label,
+              slug: tool.href,
+              description: tool.desc || `${tool.label} - Free online tool`
+            }))
+          )),
           buildFaqJsonLd([
             {
               question: "Are these tools free to use?",
               answer:
-                "Yes, all tools are completely free and run in your browser.",
+                "Yes, all tools are completely free and run in your browser. No registration or payment required.",
             },
             {
               question: "Do I need to install software?",
               answer:
-                "No installation is needed. Everything runs directly in your browser.",
+                "No installation is needed. Everything runs directly in your browser using modern web technologies.",
             },
             {
-              question: "Is my data safe?",
+              question: "Is my data safe and private?",
               answer:
-                "Yes. Processing happens locally in your browser. Files and text are not uploaded to any server.",
+                "Yes. All processing happens locally in your browser. Files and text are not uploaded to any server, ensuring complete privacy.",
             },
             {
-              question: "Can I use these tools on mobile?",
-              answer: "Yes, all tools are responsive and mobile friendly.",
+              question: "Can I use these tools on mobile devices?",
+              answer: "Yes, all tools are fully responsive and mobile-friendly. They work on smartphones, tablets, and desktop computers.",
+            },
+            {
+              question: "What types of tools are available?",
+              answer: "We offer 50+ tools including PDF merge/split/compress, image compression/conversion/cropping, text processing, SEO tools, calculators, converters, generators, QR code generation, and more.",
+            },
+            {
+              question: "Do I need to create an account?",
+              answer: "No account creation is required. All tools work immediately without any registration or login process.",
             },
           ]),
         ]}
       />
 
       {/* Hero Section */}
-      <section className="text-center py-20 px-6">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900">
-          Free Online Tools for PDF, Images, Text & SEO
+      <section className="text-center py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          Convertixy - 65+ Free Online Tools for PDF, Images, Text, SEO & More
         </h1>
-        <p className="mt-5 text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
-          Fast, secure & works directly in your browser. No signup required.
+        <p className="mt-4 sm:mt-5 md:mt-6 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed">
+          Fast, secure & works directly in your browser. No signup required. 65+ tools for PDF, image conversion, text processing, SEO, calculators, and more.
         </p>
         <a
           href="#all-tools"
-          className="inline-block mt-8 px-8 py-3 rounded-xl text-white bg-slate-900 shadow-md hover:shadow-xl hover:bg-black transition transform hover:-translate-y-1"
+          className="inline-block mt-6 sm:mt-8 md:mt-10 px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg rounded-xl text-white bg-slate-900 shadow-md hover:shadow-xl hover:bg-black transition transform hover:-translate-y-1 font-medium"
         >
           Browse All Tools
         </a>
       </section>
 
       {/* Featured Tools */}
-      <section id="tools" className="max-w-6xl mx-auto py-14 px-6">
-        <h2 className="text-3xl font-semibold mb-10 text-center">
-          Popular Tools
+      <section id="tools" className="max-w-7xl mx-auto py-8 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-6 lg:px-8">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center">
+          Most Popular Free Online Tools
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {[
             {
               name: "PDF Merge",
@@ -111,10 +183,10 @@ export default function Home() {
             <a
               key={tool.name}
               href={tool.link}
-              className="block p-6 bg-white border rounded-2xl shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
+              className="block p-4 sm:p-5 md:p-6 bg-white border rounded-xl sm:rounded-2xl shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
             >
-              <h3 className="text-lg font-bold">{tool.name}</h3>
-              <p className="text-gray-600 text-sm mt-2">{tool.desc}</p>
+              <h3 className="text-base sm:text-lg md:text-xl font-bold leading-tight">{tool.name}</h3>
+              <p className="text-gray-600 text-xs sm:text-sm md:text-base mt-2 leading-relaxed">{tool.desc}</p>
             </a>
           ))}
         </div>
@@ -124,9 +196,9 @@ export default function Home() {
       <AllTools />
 
       {/* Why Use Us */}
-      <section className="bg-white py-16 px-6 text-center">
-        <h2 className="text-3xl font-semibold mb-10">Why Use Our Tools?</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      <section className="bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 sm:mb-10 md:mb-12">Why Choose Convertixy Free Online Tools?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {[
             "100% Free & Secure",
             "Works directly in your browser",
@@ -135,18 +207,50 @@ export default function Home() {
           ].map((point, i) => (
             <div
               key={i}
-              className="p-5 bg-gray-50 rounded-xl shadow hover:shadow-md transition"
+              className="p-4 sm:p-5 md:p-6 bg-gray-50 rounded-lg sm:rounded-xl shadow hover:shadow-md transition"
             >
-              <p className="font-medium">{point}</p>
+              <p className="font-medium text-sm sm:text-base md:text-lg">{point}</p>
             </div>
           ))}
+        </div>
+        
+        {/* Additional SEO Content */}
+        <div className="mt-12 sm:mt-16 md:mt-20 max-w-5xl mx-auto text-left px-4 sm:px-6">
+          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4 sm:mb-6 md:mb-8 text-center">About Convertixy - Your Ultimate Free Online Tools Platform</h3>
+          <div className="prose prose-sm sm:prose-base md:prose-lg max-w-none">
+            <p className="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed">
+              Convertixy is the leading platform for free online tools, offering over 65 powerful utilities for PDF manipulation, image processing, text editing, SEO optimization, calculators, converters, and generators. Our tools are designed to work seamlessly in your browser without requiring any software installation or registration.
+            </p>
+            <p className="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed">
+              Whether you need to merge PDF files, compress images, convert file formats, count words, generate QR codes, calculate BMI, convert temperatures, or optimize your website's SEO, Convertixy provides professional-grade tools that are completely free to use. All processing happens locally in your browser, ensuring your data remains private and secure.
+            </p>
+            <p className="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed">
+              Our comprehensive suite includes PDF tools (merge, split, compress, rotate, password removal), image tools (compression, resizing, cropping, format conversion), text processing tools (word counter, case converter, slug generator, text to speech), SEO utilities (meta tag generator, URL encoder, password generator, keyword density checker), calculators (BMI, age, percentage, loan, tip), and converters (temperature, unit, time zone, CSV to JSON). Each tool is optimized for speed and accuracy.
+            </p>
+            
+            <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3">Popular Tool Categories:</h4>
+            <ul className="list-disc list-inside text-gray-700 mb-3 sm:mb-4 space-y-1 text-xs sm:text-sm md:text-base">
+              <li><strong>PDF Tools:</strong> Merge multiple PDFs, split PDF pages, compress PDFs, rotate pages, remove passwords, convert to Word</li>
+              <li><strong>Image Tools:</strong> Compress images, resize photos, crop images, convert PNG to JPG, JPG to WebP, SVG to PNG</li>
+              <li><strong>Text Tools:</strong> Word counter, case converter, slug generator, JSON formatter, text to speech, HTML formatter</li>
+              <li><strong>SEO Tools:</strong> Meta tag generator, URL encoder, password generator, UUID generator, keyword density checker</li>
+              <li><strong>Calculators:</strong> BMI calculator, age calculator, percentage calculator, loan calculator, tip calculator</li>
+              <li><strong>Converters:</strong> Temperature converter, unit converter, time zone converter, CSV to JSON, Morse code translator</li>
+              <li><strong>Generators:</strong> Random number generator, Lorem Ipsum generator, color palette generator, hash generator</li>
+              <li><strong>Utility Tools:</strong> QR code generator, color picker, Unix timestamp converter, binary to text</li>
+            </ul>
+            
+            <p className="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed">
+              All tools are completely free, require no registration, and work directly in your browser. Perfect for developers, designers, content creators, and anyone who needs quick file processing or text manipulation tools.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="max-w-4xl mx-auto py-16 px-6">
-        <h2 className="text-3xl font-semibold mb-8 text-center">FAQ</h2>
-        <div className="space-y-4">
+      <section className="max-w-5xl mx-auto py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 sm:mb-8 md:mb-10 text-center">Frequently Asked Questions About Our Free Online Tools</h2>
+        <div className="space-y-3 sm:space-y-4">
           {[
             {
               q: "Are these tools free to use?",
@@ -167,13 +271,13 @@ export default function Home() {
           ].map((item, i) => (
             <details
               key={i}
-              className="group border rounded-lg p-4 bg-white shadow-sm"
+              className="group border rounded-lg p-3 sm:p-4 md:p-5 bg-white shadow-sm"
             >
-              <summary className="font-bold cursor-pointer flex justify-between items-center">
+              <summary className="font-bold cursor-pointer flex justify-between items-center text-sm sm:text-base md:text-lg">
                 {item.q}
-                <span className="transition group-open:rotate-180">⌄</span>
+                <span className="transition group-open:rotate-180 text-lg sm:text-xl">⌄</span>
               </summary>
-              <p className="text-gray-600 mt-2">{item.a}</p>
+              <p className="text-gray-600 mt-2 text-xs sm:text-sm md:text-base">{item.a}</p>
             </details>
           ))}
         </div>
@@ -187,18 +291,18 @@ export default function Home() {
 function AllTools() {
   const tools = toolSections.flatMap((s) => s.links);
   return (
-    <section id="all-tools" className="max-w-6xl mx-auto py-14 px-6">
-      <h2 className="text-3xl font-semibold mb-10 text-center">All Tools</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <section id="all-tools" className="max-w-7xl mx-auto py-8 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-6 lg:px-8">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center">Complete List of Free Online Tools</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
         {tools.map((tool) => (
           <a
             key={tool.href}
             href={tool.href}
-            className="block p-6 bg-white border rounded-2xl shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
+            className="block p-4 sm:p-5 md:p-6 bg-white border rounded-xl sm:rounded-2xl shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
           >
-            <h3 className="text-lg font-bold">{tool.label}</h3>
+            <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold leading-tight">{tool.label}</h3>
             {tool.desc && (
-              <p className="text-gray-600 text-sm mt-2">{tool.desc}</p>
+              <p className="text-gray-600 text-xs sm:text-sm md:text-base mt-2 leading-relaxed">{tool.desc}</p>
             )}
           </a>
         ))}

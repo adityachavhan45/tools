@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage Images -->
+  <url>
+    <loc>https://convertixy.com/</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/og-default.jpg</image:loc>
+      <image:title>Convertixy - Free Online Tools</image:title>
+      <image:caption>65+ free online tools for PDF, images, text processing, SEO, calculators, and more</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Tool Screenshots -->
+  <url>
+    <loc>https://convertixy.com/pdf-merge</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/pdf-merge.jpg</image:loc>
+      <image:title>PDF Merge Tool</image:title>
+      <image:caption>Combine multiple PDF files into one document</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://convertixy.com/image-compressor</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/image-compressor.jpg</image:loc>
+      <image:title>Image Compressor Tool</image:title>
+      <image:caption>Reduce image file size without losing quality</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://convertixy.com/word-counter</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/word-counter.jpg</image:loc>
+      <image:title>Word Counter Tool</image:title>
+      <image:caption>Count words, characters, and sentences in text</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://convertixy.com/qr-code</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/qr-code.jpg</image:loc>
+      <image:title>QR Code Generator</image:title>
+      <image:caption>Generate QR codes for text, URLs, and more</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://convertixy.com/meta-tag-generator</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/meta-tag-generator.jpg</image:loc>
+      <image:title>Meta Tag Generator</image:title>
+      <image:caption>Generate SEO meta tags for websites</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://convertixy.com/bmi-calculator</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/bmi-calculator.jpg</image:loc>
+      <image:title>BMI Calculator</image:title>
+      <image:caption>Calculate Body Mass Index online</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://convertixy.com/temperature-converter</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/temperature-converter.jpg</image:loc>
+      <image:title>Temperature Converter</image:title>
+      <image:caption>Convert between Celsius, Fahrenheit, and Kelvin</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://convertixy.com/password-generator</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/password-generator.jpg</image:loc>
+      <image:title>Password Generator</image:title>
+      <image:caption>Generate secure random passwords</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://convertixy.com/json-formatter</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/json-formatter.jpg</image:loc>
+      <image:title>JSON Formatter</image:title>
+      <image:caption>Format and validate JSON data</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://convertixy.com/color-picker</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/color-picker.jpg</image:loc>
+      <image:title>Color Picker Tool</image:title>
+      <image:caption>Pick colors and get HEX, RGB, HSL values</image:caption>
+    </image:image>
+  </url>
+</urlset>

@@ -82,90 +82,105 @@ export default function PdfMergePage() {
         ])}
       />
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         {/* Status Messages */}
         {message && (
-          <div className="px-3 py-2 bg-green-100 border rounded text-green-800 text-sm">
+          <div className="message success">
             {message}
           </div>
         )}
         {error && (
-          <div className="px-3 py-2 bg-red-100 border rounded text-red-700 text-sm">
+          <div className="message error">
             {error}
           </div>
         )}
 
         {/* File Input */}
-        <div>
+        <div className="space-y-3">
+          <label className="block text-sm font-medium text-gray-700">
+            Select PDF Files
+          </label>
           <input
             type="file"
             accept="application/pdf"
             multiple
             onChange={(e) => setFiles(Array.from(e.target.files || []))}
             className="block w-full text-sm text-gray-700 
-                       file:mr-4 file:py-2 file:px-3 file:rounded-lg 
-                       file:border-0 file:bg-indigo-600 file:text-white 
-                       hover:file:bg-indigo-700 cursor-pointer"
+                       file:mr-4 file:py-2 file:px-4 file:rounded-lg 
+                       file:border-0 file:bg-gradient-to-r file:from-blue-600 file:to-indigo-600 file:text-white 
+                       hover:file:from-blue-700 hover:file:to-indigo-700 cursor-pointer
+                       border-2 border-dashed border-gray-300 hover:border-blue-400 transition-colors duration-200"
           />
-          <p className="text-sm text-gray-500 mt-2">
-            Selected: {files.length} file(s)
+          <p className="text-sm text-gray-500">
+            Selected: <span className="font-medium text-blue-600">{files.length}</span> file(s)
           </p>
         </div>
 
         {/* Preview selected PDFs */}
         {files.length > 0 && (
-          <ul className="divide-y divide-gray-200 border rounded-lg overflow-hidden bg-white shadow">
-            {files.map((f, i) => (
-              <li
-                key={i}
-                className="flex items-center justify-between px-4 py-2 hover:bg-gray-50"
-              >
-                <div className="flex items-center gap-3 truncate">
-                  <span className="text-indigo-600">📄</span>
-                  <div>
-                    <p className="text-sm font-medium truncate">{f.name}</p>
-                    <p className="text-xs text-gray-500">
-                      {(f.size / 1024).toFixed(1)} KB
-                    </p>
-                  </div>
-                </div>
-                <button
-                  className="text-gray-400 hover:text-red-600 text-lg"
-                  onClick={() => removeFile(i)}
+          <div className="space-y-3">
+            <h3 className="text-sm font-medium text-gray-700">Selected Files</h3>
+            <ul className="space-y-2">
+              {files.map((f, i) => (
+                <li
+                  key={i}
+                  className="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
                 >
-                  ❌
-                </button>
-              </li>
-            ))}
-          </ul>
+                  <div className="flex items-center gap-3 truncate">
+                    <span className="text-blue-600 text-lg">📄</span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-medium truncate text-gray-900">{f.name}</p>
+                      <p className="text-xs text-gray-500">
+                        {(f.size / 1024).toFixed(1)} KB
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    className="text-gray-400 hover:text-red-600 text-lg p-1 rounded-full hover:bg-red-50 transition-colors duration-200"
+                    onClick={() => removeFile(i)}
+                    title="Remove file"
+                  >
+                    ❌
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
 
         {/* Action Buttons */}
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <button
             onClick={handleMerge}
             disabled={merging || files.length < 2}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                       bg-indigo-600 text-white shadow 
-                       hover:bg-indigo-700 disabled:opacity-60"
+            className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white font-medium shadow-lg hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200"
           >
-            {merging ? "⏳ Merging…" : "🔗 Merge & Download"}
+            {merging ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                Merging...
+              </>
+            ) : (
+              <>
+                🔗 Merge & Download
+              </>
+            )}
           </button>
 
           <button
             onClick={resetAll}
             disabled={!files.length}
-            className="px-5 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200"
+            className="px-6 py-3 border border-gray-300 rounded-xl bg-white text-gray-700 font-medium hover:bg-gray-50 hover:border-gray-400 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200"
           >
-            Reset
+            🧹 Reset
           </button>
         </div>
       </div>
 
       {/* Info Section */}
-      <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
-        <h3 className="text-lg font-semibold mb-2">About PDF Merge Tool</h3>
-        <p className="text-gray-700 mb-4">
+      <section className="mt-12 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl shadow-sm">
+        <h3 className="text-lg sm:text-xl font-semibold mb-3 text-blue-900">About PDF Merge Tool</h3>
+        <p className="text-gray-700 mb-4 leading-relaxed">
           This free PDF Merge tool allows you to combine multiple PDF files into
           one single document. Everything runs directly in your browser, so your
           files remain private and secure without uploading them to any server.

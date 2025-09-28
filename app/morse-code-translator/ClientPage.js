@@ -1,0 +1,268 @@
+"use client";
+
+import { useState } from "react";
+import ToolSection from "../components/ToolSection";
+import { buildToolJsonLd, buildBreadcrumbJsonLd } from "../../lib/seo";
+import JsonLd from "../components/JsonLd";
+
+export default function MorseCodeTranslatorPage() {
+  const [text, setText] = useState("");
+  const [mode, setMode] = useState("encode");
+  const [result, setResult] = useState("");
+  const [message, setMessage] = useState("");
+
+  const morseCode = {
+    'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+    'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+    'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+    'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+    'Y': '-.--', 'Z': '--..', '0': '-----', '1': '.----', '2': '..---',
+    '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...',
+    '8': '---..', '9': '----.', ' ': '/'
+  };
+
+  const reverseMorseCode = Object.fromEntries(
+    Object.entries(morseCode).map(([key, value]) => [value, key])
+  );
+
+  function translateMorse() {
+    if (!text.trim()) {
+      setMessage("⚠️ Please enter text first.");
+      return;
+    }
+
+    try {
+      let translated = "";
+      
+      if (mode === "encode") {
+        // Text to Morse
+        translated = text.toUpperCase().split('').map(char => {
+          if (morseCode[char]) {
+            return morseCode[char];
+          } else if (char === ' ') {
+            return '/';
+          } else {
+            return '?';
+          }
+        }).join(' ');
+      } else {
+        // Morse to Text
+        translated = text.split(' ').map(code => {
+          if (reverseMorseCode[code]) {
+            return reverseMorseCode[code];
+          } else if (code === '/') {
+            return ' ';
+          } else {
+            return '?';
+          }
+        }).join('');
+      }
+
+      const resultText = `# Morse Code Translation
+# Generated on: ${new Date().toISOString()}
+
+# Translation Settings
+# Mode: ${mode === "encode" ? "Text to Morse" : "Morse to Text"}
+# Input: ${text.length} characters
+# Quality: High
+# Format: Standard
+
+# Translation Information
+# - Mode: ${mode === "encode" ? "Text to Morse" : "Morse to Text"}
+# - Input Length: ${text.length} characters
+# - Output Length: ${translated.length} characters
+# - Quality: High
+
+# Translated Output
+${translated}
+
+# Translation Analysis
+# - Mode: ${mode === "encode" ? "Text to Morse" : "Morse to Text"}
+# - Input: ${text.length} characters
+# - Output: ${translated.length} characters
+# - Quality: High
+
+# Usage Instructions
+# 1. Enter or paste text
+# 2. Select translation mode
+# 3. Click "Translate Morse" to process
+# 4. Copy the translated output
+
+# Quality Notes
+# - Accurate Morse code translation
+# - Standard Morse code format
+# - High-quality translation
+# - Optimized for communication`;
+
+      setResult(resultText);
+      setMessage("✅ Morse code translated successfully!");
+    } catch (error) {
+      setMessage("❌ Error translating Morse code.");
+    }
+  }
+
+  function copyResult() {
+    navigator.clipboard.writeText(result);
+    setMessage("📋 Translation copied to clipboard!");
+  }
+
+  function reset() {
+    setText("");
+    setMode("encode");
+    setResult("");
+    setMessage("🧹 Cleared!");
+  }
+
+  return (
+    <ToolSection
+      title="Morse Code Translator"
+      subtitle="Translate Morse code online. Free Morse code translator with encoding and decoding options for communication and cryptography."
+      plain
+      plainSidebar
+      whiteBackground
+    >
+      <JsonLd
+        data={buildToolJsonLd({
+          name: "Morse Code Translator",
+          description: "Translate Morse code online.",
+          slug: "/morse-code-translator",
+          category: "Utilities/Communication",
+        })}
+      />
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: "Home", slug: "/" },
+          { name: "Morse Code Translator", slug: "/morse-code-translator" },
+        ])}
+      />
+
+      <div className="space-y-4">
+        {/* Status Messages */}
+        {message && (
+          <div className="px-3 py-2 bg-blue-100 border rounded text-blue-800 text-sm">
+            {message}
+          </div>
+        )}
+
+        {/* Text Input */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Enter Text
+          </label>
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Enter or paste text here..."
+            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          />
+        </div>
+
+        {/* Mode Selection */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Translation Mode
+          </label>
+          <select
+            value={mode}
+            onChange={(e) => setMode(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option value="encode">Text to Morse</option>
+            <option value="decode">Morse to Text</option>
+          </select>
+        </div>
+
+        {/* Result Output */}
+        {result && (
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Translation Result
+            </label>
+            <textarea
+              value={result}
+              readOnly
+              className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
+            />
+          </div>
+        )}
+
+        {/* Action Buttons */}
+        <div className="flex gap-3 flex-wrap">
+          <button
+            onClick={translateMorse}
+            disabled={!text.trim()}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
+                       bg-indigo-600 text-white shadow 
+                       hover:bg-indigo-700 disabled:opacity-60"
+          >
+            📡 Translate Morse
+          </button>
+
+          {result && (
+            <button
+              onClick={copyResult}
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
+                         bg-blue-600 text-white shadow 
+                         hover:bg-blue-700"
+            >
+              📋 Copy Result
+            </button>
+          )}
+
+          <button
+            onClick={reset}
+            disabled={!text.trim() && !result.trim()}
+            className="px-5 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200"
+          >
+            Reset
+          </button>
+        </div>
+
+        {/* Translation Info */}
+        <div className="border rounded-lg p-4 bg-blue-50">
+          <h4 className="text-sm font-medium text-blue-700 mb-2">Translation Modes</h4>
+          <div className="text-sm space-y-1">
+            <div>• Text to Morse: Convert text to Morse code</div>
+            <div>• Morse to Text: Convert Morse code to text</div>
+            <div>• Standard Morse code format</div>
+            <div>• High-quality translation</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Info Section */}
+      <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
+        <h3 className="text-lg font-semibold mb-2">About Morse Code Translation</h3>
+        <p className="text-gray-700 mb-4">
+          Translate text to Morse code and vice versa for communication and cryptography. This tool helps you 
+          encode and decode Morse code, useful for communication, cryptography, and educational purposes.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-1">
+          <li>Translate text to Morse code</li>
+          <li>Decode Morse code to text</li>
+          <li>Standard Morse code format</li>
+          <li>High-quality translation</li>
+          <li>Easy copy to clipboard</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
+        <ol className="list-decimal list-inside text-gray-700 space-y-1">
+          <li>Enter or paste text.</li>
+          <li>Select translation mode.</li>
+          <li>Click <strong>Translate Morse</strong> to process.</li>
+          <li>Copy the translated output.</li>
+        </ol>
+
+        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-1">
+          <li>Communication and messaging</li>
+          <li>Cryptography and encoding</li>
+          <li>Educational and learning</li>
+          <li>Historical and cultural purposes</li>
+        </ul>
+      </section>
+    </ToolSection>
+  );
+}

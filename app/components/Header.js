@@ -111,22 +111,22 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-gradient-to-b from-gray-900 to-black text-gray-100">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="font-bold text-lg tracking-tight hover:opacity-90 transition">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-gradient-to-b from-gray-900 to-black text-gray-100 shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
+        <Link href="/" className="font-bold text-lg sm:text-xl md:text-2xl tracking-tight hover:opacity-90 transition-all duration-200 hover:scale-105">
           convertixy
         </Link>
-        <nav className="flex items-center gap-3 text-sm">
+        <nav className="flex items-center gap-2 sm:gap-3 text-sm">
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center rounded border border-white/20 p-2 text-gray-100 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="md:hidden inline-flex items-center justify-center rounded-lg border border-white/20 p-2 sm:p-2.5 text-gray-100 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
             aria-label="Toggle navigation"
             aria-expanded={mobileMenuOpen}
             onClick={toggleMobileMenu}
           >
             <span className="sr-only">Toggle navigation</span>
             <svg
-              className="h-5 w-5"
+              className="h-5 w-5 sm:h-6 sm:w-6"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -139,8 +139,8 @@ export default function Header() {
               <line x1="4" y1="18" x2="20" y2="18" />
             </svg>
           </button>
-          <div className="hidden md:flex items-center gap-1 text-sm">
-            <Link href="/" className="hover:underline" onClick={handleNavClick}>
+          <div className="hidden md:flex items-center gap-1 lg:gap-2 text-sm lg:text-base">
+            <Link href="/" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Home
             </Link>
             {sections.map((section) => (
@@ -148,7 +148,7 @@ export default function Header() {
                 <button
                   type="button"
                   onClick={() => toggleDropdown(section.key)}
-                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-blue-500/40"
+                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-blue-500/40 transition-all duration-200 font-medium"
                   aria-expanded={openDropdown === section.key}
                   aria-controls={`${section.key}-menu`}
                 >
@@ -160,10 +160,10 @@ export default function Header() {
                     id={`${section.key}-menu`}
                     className={`absolute left-0 mt-2 ${
                       section.dropdownWidth ?? "w-64"
-                    } card-surface shadow-xl p-3`}
+                    } bg-white rounded-xl shadow-xl border border-gray-200 p-3 animate-in fade-in-0 zoom-in-95 duration-200`}
                   >
                     <div
-                      className={`grid grid-cols-1 gap-2 text-sm ${
+                      className={`grid grid-cols-1 gap-1 text-sm ${
                         section.gridClass ?? ""
                       }`}
                     >
@@ -171,7 +171,7 @@ export default function Header() {
                         <Link
                           key={link.href}
                           href={link.href}
-                          className="px-3 py-2 rounded-md hover:bg-gray-50"
+                          className="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700 hover:text-gray-900 transition-all duration-200 font-medium"
                           onClick={handleNavClick}
                         >
                           {link.label}
@@ -182,18 +182,18 @@ export default function Header() {
                 )}
               </div>
             ))}
-            <Link href="/contact" className="hover:underline" onClick={handleNavClick}>
+            <Link href="/contact" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Contact
             </Link>
           </div>
         </nav>
       </div>
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-white/10 bg-black/70 backdrop-blur">
-          <nav className="px-4 py-4 space-y-3 text-sm">
+        <div className="md:hidden border-t border-white/10 bg-black/80 backdrop-blur-sm animate-in slide-in-from-top-2 duration-200">
+          <nav className="px-4 sm:px-6 py-4 space-y-3 text-sm">
             <Link
               href="/"
-              className="block rounded px-3 py-2 hover:bg-white/10"
+              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
               onClick={handleNavClick}
             >
               Home
@@ -201,12 +201,12 @@ export default function Header() {
             {sections.map((section) => (
               <div
                 key={`${section.key}-mobile`}
-                className="rounded border border-white/10 bg-black/30"
+                className="rounded-lg border border-white/10 bg-black/30"
               >
                 <button
                   type="button"
                   onClick={() => toggleDropdown(section.key)}
-                  className="flex w-full items-center justify-between px-3 py-2 text-left hover:bg-white/10"
+                  className="flex w-full items-center justify-between px-3 py-2.5 text-left hover:bg-white/10 transition-all duration-200 font-medium"
                   aria-expanded={openDropdown === section.key}
                   aria-controls={`${section.key}-mobile-menu`}
                 >
@@ -216,14 +216,14 @@ export default function Header() {
                 {openDropdown === section.key && (
                   <div
                     id={`${section.key}-mobile-menu`}
-                    className="border-t border-white/10 px-3 py-2"
+                    className="border-t border-white/10 px-3 py-2 animate-in slide-in-from-top-1 duration-200"
                   >
-                    <div className="grid grid-cols-1 gap-2">
+                    <div className="grid grid-cols-1 gap-1">
                       {section.links.map((link) => (
                         <Link
                           key={`${link.href}-mobile`}
                           href={link.href}
-                          className="block rounded border border-white/10 px-3 py-2 hover:bg-white/10"
+                          className="block rounded-lg border border-white/10 px-3 py-2 hover:bg-white/10 transition-all duration-200 font-medium"
                           onClick={handleNavClick}
                         >
                           {link.label}
@@ -236,7 +236,7 @@ export default function Header() {
             ))}
             <Link
               href="/contact"
-              className="block rounded px-3 py-2 hover:bg-white/10"
+              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
               onClick={handleNavClick}
             >
               Contact

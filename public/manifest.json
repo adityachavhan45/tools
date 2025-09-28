@@ -1,0 +1,21 @@
+{
+  "name": "Convertixy - Free Online Tools",
+  "short_name": "Convertixy",
+  "description": "Free online tools for PDF, images, text processing, and SEO. No registration required.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e293b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["utilities", "productivity", "developer"],
+  "lang": "en-US",
+  "scope": "/",
+  "id": "convertixy-tools"
+}
