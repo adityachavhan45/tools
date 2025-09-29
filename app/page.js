@@ -8,6 +8,7 @@ import {
 } from "../lib/seo";
 import JsonLd from "./components/JsonLd";
 import { sections as toolSections } from "./data/tools";
+import AllToolsGrid from "./components/AllToolsGrid";
 
 export const metadata = buildMetadata({
   title: "Convertixy - 50+ Free Online Tools for PDF, Images, Text, SEO & More | No Registration Required",
@@ -127,7 +128,7 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="text-center py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <section className="text-center py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
           Convertixy - 65+ Free Online Tools for PDF, Images, Text, SEO & More
         </h1>
@@ -136,7 +137,7 @@ export default function Home() {
         </p>
         <a
           href="#all-tools"
-          className="inline-block mt-6 sm:mt-8 md:mt-10 px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg rounded-xl text-white bg-slate-900 shadow-md hover:shadow-xl hover:bg-black transition transform hover:-translate-y-1 font-medium"
+          className="inline-flex justify-center w-full sm:w-auto mt-6 sm:mt-8 md:mt-10 px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg rounded-xl text-white bg-slate-900 shadow-md hover:shadow-xl hover:bg-black transition transform hover:-translate-y-1 font-medium"
         >
           Browse All Tools
         </a>
@@ -193,7 +194,7 @@ export default function Home() {
       </section>
 
       {/* All Tools */}
-      <AllTools />
+      <AllToolsGrid tools={toolSections.flatMap((s) => s.links)} />
 
       {/* Why Use Us */}
       <section className="bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center">
@@ -288,25 +289,4 @@ export default function Home() {
   );
 }
 
-function AllTools() {
-  const tools = toolSections.flatMap((s) => s.links);
-  return (
-    <section id="all-tools" className="max-w-7xl mx-auto py-8 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-6 lg:px-8">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center">Complete List of Free Online Tools</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-        {tools.map((tool) => (
-          <a
-            key={tool.href}
-            href={tool.href}
-            className="block p-4 sm:p-5 md:p-6 bg-white border rounded-xl sm:rounded-2xl shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
-          >
-            <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold leading-tight">{tool.label}</h3>
-            {tool.desc && (
-              <p className="text-gray-600 text-xs sm:text-sm md:text-base mt-2 leading-relaxed">{tool.desc}</p>
-            )}
-          </a>
-        ))}
-      </div>
-    </section>
-  );
-}
+// All tools grid moved to client component: app/components/AllToolsGrid.js
