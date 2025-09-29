@@ -278,3 +278,39 @@ main p { color: #334155; /* slate-700 */ }
   color: #991b1b;
   border: 1px solid #fca5a5;
 }
+
+/* Plain output: remove box styling for read-only outputs across tools */
+.tool-content textarea[readonly],
+main textarea[readonly] {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  outline: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  resize: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  white-space: pre-wrap !important;
+}
+
+/* Polished, modern output appearance */
+.tool-output,
+.tool-content textarea[readonly],
+main textarea[readonly] {
+  font-size: 1.05rem; /* slightly larger */
+  line-height: 1.7;
+  color: #0f172a; /* slate-900 */
+  letter-spacing: 0.005em;
+}
+
+@media (min-width: 768px) {
+  .tool-output,
+  .tool-content textarea[readonly],
+  main textarea[readonly] {
+    font-size: 1.125rem; /* md+ larger */
+  }
+}
+
+.tool-output code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }

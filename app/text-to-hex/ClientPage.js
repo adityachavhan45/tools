@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import ToolSection from "../components/ToolSection";
 import { buildToolJsonLd, buildBreadcrumbJsonLd } from "../../lib/seo";
@@ -8,7 +7,9 @@ import JsonLd from "../components/JsonLd";
 export default function TextToHexPage() {
   const [text, setText] = useState("");
   const [hex, setHex] = useState("");
+  const [output, setOutput] = useState("");
   const [message, setMessage] = useState("");
+
 
   function convertTextToHex() {
     if (!text.trim()) {
@@ -17,36 +18,20 @@ export default function TextToHexPage() {
     }
 
     try {
-      // Create a simple Hex structure from the text
+      // Minimal Hex encoding: one hex line per input line (no headers)
       const lines = text.split('\n');
-      const hexContent = lines.map((line, index) => 
-        `    "${line.split('').map(char => char.charCodeAt(0).toString(16).padStart(2, '0')).join('')}"`
-      ).join(',\n');
+      const hexLines = lines
+        .map(line => line.split('').map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join(''))
+        .join('\n');
 
-      const hexString = `# Text to Hex Conversion
-# Generated on: ${new Date().toISOString()}
-
-# Hex Encoded Text Lines
-${hexContent}
-
-# Statistics
-# Total Lines: ${lines.length}
-# Total Characters: ${text.length}
-# Total Words: ${text.split(/\s+/).filter(word => word.length > 0).length}
-# Average Line Length: ${Math.round(text.length / lines.length)}
-# Longest Line: ${Math.max(...lines.map(line => line.length))}
-# Shortest Line: ${Math.min(...lines.map(line => line.length))}
-
-# Usage Examples
-# Single line: ${lines[0]?.split('').map(char => char.charCodeAt(0).toString(16).padStart(2, '0')).join('') || ''}
-# All lines: ${text.split('').map(char => char.charCodeAt(0).toString(16).padStart(2, '0')).join('')}`;
-
-      setHex(hexString);
+      setHex(hexLines);     // keep input editable with clean hex
+      setOutput(hexLines);  // show pretty, plain output
       setMessage("✅ Text converted to Hex code successfully!");
     } catch (error) {
       setMessage("❌ Error converting text to Hex code.");
     }
   }
+
 
   function convertHexToText() {
     if (!hex.trim()) {
@@ -61,11 +46,12 @@ ${hexContent}
       // Extract text from Hex encoded strings
       const hexMatches = extractedText.match(/[0-9A-Fa-f]{2,}/g);
       if (hexMatches) {
-        // Decode Hex encoded characters
-        extractedText = hexMatches.map(match => {
-          const chars = match.match(/.{2}/g) || [];
-          return chars.map(hex => String.fromCharCode(parseInt(hex, 16))).join('');
-        }).join('\n');
+        // Decode Hex encoded characters (two hex digits per byte)
+        extractedText = hexMatches
+          .map(m => (m.match(/.{2}/g) || [])
+            .map(h => String.fromCharCode(parseInt(h, 16)))
+            .join(''))
+          .join('\n');
       } else {
         // If no Hex encoding, try to extract from comments and docstrings
         extractedText = extractedText.replace(/#.*$/gm, '');
@@ -75,6 +61,7 @@ ${hexContent}
       }
 
       setText(extractedText);
+      setOutput(extractedText);
       setMessage("✅ Hex code converted to text successfully!");
     } catch (error) {
       setMessage("❌ Error converting Hex code to text. Please check your Hex format.");
@@ -85,7 +72,6 @@ ${hexContent}
     navigator.clipboard.writeText(text);
     setMessage("📋 Text copied to clipboard!");
   }
-
   function copyHex() {
     navigator.clipboard.writeText(hex);
     setMessage("📋 Hex code copied to clipboard!");
@@ -94,8 +80,10 @@ ${hexContent}
   function reset() {
     setText("");
     setHex("");
+    setOutput("");
     setMessage("🧹 Cleared!");
   }
+
 
   return (
     <ToolSection
@@ -209,6 +197,14 @@ ${hexContent}
             Reset
           </button>
         </div>
+
+        {/* Output - plain preview (no box) */}
+        {output && (
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Output</label>
+            <pre className="tool-output whitespace-pre-wrap break-words font-mono text-gray-800">{output}</pre>
+          </div>
+        )}
 
         {/* Character Analysis */}
         {text && (

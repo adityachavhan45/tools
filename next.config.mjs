@@ -9,9 +9,9 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 year
   },
   
-  // Enable experimental features for better SEO
+  // Disable experimental CSS optimization to avoid 'critters' dependency during build
   experimental: {
-    optimizeCss: true,
+    optimizeCss: false,
   },
   
   // Headers for better SEO and security

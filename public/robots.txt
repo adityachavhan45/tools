@@ -6,7 +6,7 @@ User-agent: *
 Allow: /
 Crawl-delay: 1
 
-# Block access to admin and private areas
+# Block access to sensitive or unnecessary areas
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
@@ -15,31 +15,24 @@ Disallow: /test/
 Disallow: /dev/
 Disallow: /staging/
 
-# Allow all major search engines
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
-
-User-agent: DuckDuckBot
-Allow: /
-Crawl-delay: 1
-
+# Specific rules for some bots
 User-agent: Baiduspider
-Allow: /
 Crawl-delay: 2
 
 User-agent: YandexBot
-Allow: /
 Crawl-delay: 2
 
+# Block aggressive crawlers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Social media bots (for previews)
 User-agent: facebookexternalhit
 Allow: /
 
@@ -55,20 +48,10 @@ Allow: /
 User-agent: TelegramBot
 Allow: /
 
-# Block aggressive crawlers
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
 # Sitemap locations
 Sitemap: https://convertixy.com/sitemap.xml
-Sitemap: https://convertixy.com/sitemap-tools.xml
-Sitemap: https://convertixy.com/sitemap-images.xml
+Sitemap: https://convertixy.com/sitemaptools.xml
+Sitemap: https://convertixy.com/sitemapimages.xml
 
-# Host declaration
-Host: https://convertixy.com
+# Host (mainly for Yandex)
+Host: convertixy.com

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="mt-16 sm:mt-20 bg-gradient-to-b from-gray-900 to-black text-gray-300 border-t border-gray-800">
@@ -21,10 +23,10 @@ export default function Footer() {
           <div>
             <h4 className="text-base sm:text-lg font-semibold text-white mb-4">Popular Tools</h4>
             <ul className="space-y-2 text-sm sm:text-base">
-              <li><a href="/pdf-merge" className="text-gray-400 hover:text-white transition-colors duration-200">PDF Merge</a></li>
-              <li><a href="/image-compressor" className="text-gray-400 hover:text-white transition-colors duration-200">Image Compressor</a></li>
-              <li><a href="/word-counter" className="text-gray-400 hover:text-white transition-colors duration-200">Word Counter</a></li>
-              <li><a href="/qr-code" className="text-gray-400 hover:text-white transition-colors duration-200">QR Code Generator</a></li>
+              <li><Link href="/pdf-merge" className="text-gray-400 hover:text-white transition-colors duration-200">PDF Merge</Link></li>
+              <li><Link href="/image-compressor" className="text-gray-400 hover:text-white transition-colors duration-200">Image Compressor</Link></li>
+              <li><Link href="/word-counter" className="text-gray-400 hover:text-white transition-colors duration-200">Word Counter</Link></li>
+              <li><Link href="/qr-code" className="text-gray-400 hover:text-white transition-colors duration-200">QR Code Generator</Link></li>
             </ul>
           </div>
           
@@ -32,10 +34,10 @@ export default function Footer() {
           <div>
             <h4 className="text-base sm:text-lg font-semibold text-white mb-4">Categories</h4>
             <ul className="space-y-2 text-sm sm:text-base">
-              <li><a href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">PDF Tools</a></li>
-              <li><a href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">Image Tools</a></li>
-              <li><a href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">Text Tools</a></li>
-              <li><a href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">SEO Tools</a></li>
+              <li><Link href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">PDF Tools</Link></li>
+              <li><Link href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">Image Tools</Link></li>
+              <li><Link href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">Text Tools</Link></li>
+              <li><Link href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">SEO Tools</Link></li>
             </ul>
           </div>
         </div>
@@ -47,9 +49,9 @@ export default function Footer() {
               &copy; {new Date().getFullYear()} Convertixy. All rights reserved.
             </p>
             <div className="flex gap-6 text-xs sm:text-sm">
-              <a href="/privacy" className="text-gray-500 hover:text-white transition-colors duration-200">Privacy Policy</a>
-              <a href="/terms" className="text-gray-500 hover:text-white transition-colors duration-200">Terms of Service</a>
-              <a href="/contact" className="text-gray-500 hover:text-white transition-colors duration-200">Contact</a>
+              <Link href="/privacy" className="text-gray-500 hover:text-white transition-colors duration-200">Privacy Policy</Link>
+              <Link href="/terms" className="text-gray-500 hover:text-white transition-colors duration-200">Terms of Service</Link>
+              <Link href="/contact" className="text-gray-500 hover:text-white transition-colors duration-200">Contact</Link>
             </div>
           </div>
         </div>

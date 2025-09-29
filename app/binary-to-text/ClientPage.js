@@ -42,43 +42,8 @@ export default function BinaryToTextPage() {
         }
       }
 
-      const resultText = `# Binary to Text Conversion
-# Generated on: ${new Date().toISOString()}
-
-# Conversion Settings
-# Encoding: ${encoding.toUpperCase()}
-# Format: Binary to Text
-# Quality: High
-# Validation: Basic
-
-# Binary Information
-# - Length: ${cleanBinary.length} bits
-# - Bytes: ${cleanBinary.length / 8} bytes
-# - Encoding: ${encoding.toUpperCase()}
-# - Quality: High
-
-# Text Output
-${text}
-
-# Binary Analysis
-# - Input: ${cleanBinary.length} bits
-# - Output: ${text.length} characters
-# - Encoding: ${encoding.toUpperCase()}
-# - Quality: High
-
-# Usage Instructions
-# 1. Enter or paste binary data
-# 2. Select encoding format
-# 3. Click "Convert to Text" to process
-# 4. Copy the text output
-
-# Quality Notes
-# - Accurate binary conversion
-# - Proper text encoding
-# - High-quality output
-# - Optimized for data processing`;
-
-      setResult(resultText);
+      // Minimal output: only decoded text
+      setResult(text);
       setMessage("✅ Binary converted to text successfully!");
     } catch (error) {
       setMessage("❌ Error converting binary to text.");
@@ -152,23 +117,20 @@ ${text}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           >
             <option value="utf8">UTF-8</option>
-            <option value="ascii">ASCII</option>
             <option value="latin1">Latin-1</option>
             <option value="utf16">UTF-16</option>
           </select>
         </div>
 
-        {/* Result Output */}
+        {/* Result Output - plain text (no container) */}
         {result && (
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Text Output
             </label>
-            <textarea
-              value={result}
-              readOnly
-              className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
-            />
+            <pre className="tool-output whitespace-pre-wrap break-words font-mono text-gray-800">
+              {result}
+            </pre>
           </div>
         )}
 
@@ -176,7 +138,6 @@ ${text}
         <div className="flex gap-3 flex-wrap">
           <button
             onClick={convertToText}
-            disabled={!binary.trim()}
             className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
                        bg-indigo-600 text-white shadow 
                        hover:bg-indigo-700 disabled:opacity-60"

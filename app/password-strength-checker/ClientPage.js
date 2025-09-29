@@ -24,25 +24,25 @@ export default function PasswordStrengthCheckerPage() {
       const hasNumbers = /\d/.test(password);
       const hasSpecialChars = /[!@#$%^&*(),.?":{}|<>]/.test(password);
       const hasSpaces = /\s/.test(password);
-      
+
       let score = 0;
       let strengthLevel = "Very Weak";
       let color = "red";
-      
+
       // Length scoring
       if (length >= 8) score += 1;
       if (length >= 12) score += 1;
       if (length >= 16) score += 1;
-      
+
       // Character type scoring
       if (hasUpperCase) score += 1;
       if (hasLowerCase) score += 1;
       if (hasNumbers) score += 1;
       if (hasSpecialChars) score += 1;
-      
+
       // Penalty for spaces
       if (hasSpaces) score -= 1;
-      
+
       // Determine strength level
       if (score >= 6) {
         strengthLevel = "Very Strong";
@@ -220,8 +220,8 @@ ${hasSpaces ? '# - Remove spaces' : ''}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Password Strength Checker</h3>
         <p className="text-gray-700 mb-4">
-          Check password strength and security. This tool helps you analyze 
-          your password's security level and provides recommendations for 
+          Check password strength and security. This tool helps you analyze
+          your password&#39;s security level and provides recommendations for
           improvement, useful for account protection and security.
         </p>
 
@@ -229,7 +229,6 @@ ${hasSpaces ? '# - Remove spaces' : ''}
         <ul className="list-disc list-inside text-gray-700 space-y-1">
           <li>Analyze password strength and security</li>
           <li>Check character types and length</li>
-          <li>Provide security recommendations</li>
           <li>Score-based strength assessment</li>
           <li>Easy copy to clipboard</li>
         </ul>
@@ -238,7 +237,6 @@ ${hasSpaces ? '# - Remove spaces' : ''}
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
           <li>Enter your password in the password field.</li>
           <li>Click <strong>Check Strength</strong> to analyze security.</li>
-          <li>Review the strength analysis and recommendations.</li>
           <li>Use the copy button to save the analysis.</li>
         </ol>
 

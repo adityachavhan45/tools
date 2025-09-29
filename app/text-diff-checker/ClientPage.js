@@ -55,7 +55,9 @@ export default function TextDiffCheckerPage() {
         }
       }
 
-      setDiff(diffResult);
+      // Clean leading '# ' markers for display
+      const cleaned = diffResult.replace(/^\s*#\s?/gm, "");
+      setDiff(cleaned);
       setMessage("✅ Text comparison completed successfully!");
     } catch (error) {
       setMessage("❌ Error comparing texts.");
@@ -125,31 +127,22 @@ export default function TextDiffCheckerPage() {
           </label>
           <textarea
             value={text2}
-            onChange={(e) => setText2(e.target.value)}
             placeholder="Enter second text to compare..."
             className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           />
         </div>
 
-        {/* Diff Output */}
+        {/* Diff Output - plain text (no container) */}
         {diff && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Comparison Result
-            </label>
-            <textarea
-              value={diff}
-              readOnly
-              className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
-            />
-          </div>
+          <pre className="tool-output whitespace-pre-wrap break-words font-mono text-gray-800">
+            {diff}
+          </pre>
         )}
 
         {/* Action Buttons */}
         <div className="flex gap-3 flex-wrap">
           <button
             onClick={compareTexts}
-            disabled={!text1.trim() || !text2.trim()}
             className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
                        bg-indigo-600 text-white shadow 
                        hover:bg-indigo-700 disabled:opacity-60"

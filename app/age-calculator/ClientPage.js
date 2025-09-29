@@ -155,7 +155,7 @@ export default function AgeCalculatorPage() {
             onChange={(e) => setCurrentDate(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
           />
-          <p className="text-xs text-gray-500 mt-1">Leave empty to use today's date</p>
+          <p className="text-xs text-gray-500 mt-1">Leave empty to use today&#39;s date</p>
         </div>
 
         {/* Result Output */}

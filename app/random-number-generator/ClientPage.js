@@ -33,37 +33,11 @@ export default function RandomNumberGeneratorPage() {
         numbers.push(Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
       }
 
-      const resultText = `# Random Number Generator
-# Generated on: ${new Date().toISOString()}
-
-# Generation Settings
-# Range: ${minNum} to ${maxNum}
-# Count: ${countNum} numbers
-# Type: Integer
-# Quality: High
-
-# Generated Numbers
-${numbers.map((num, index) => `${index + 1}. ${num}`).join('\n')}
-
-# Statistics
-# - Minimum: ${Math.min(...numbers)}
-# - Maximum: ${Math.max(...numbers)}
-# - Average: ${(numbers.reduce((a, b) => a + b, 0) / numbers.length).toFixed(2)}
-# - Sum: ${numbers.reduce((a, b) => a + b, 0)}
-
-# Usage Instructions
-# 1. Set minimum and maximum values
-# 2. Enter number count
-# 3. Click "Generate Numbers" to process
-# 4. Copy the generated numbers
-
-# Quality Notes
-# - Cryptographically secure random numbers
-# - Uniform distribution
-# - High-quality generation
-# - Optimized for statistics`;
-
-      setResult(resultText);
+      // Minimal output: only numbers
+      const minimal = countNum === 1
+        ? String(numbers[0])
+        : numbers.map((n, i) => `${i + 1}. ${n}`).join('\n');
+      setResult(minimal);
       setMessage("✅ Random numbers generated successfully!");
     } catch (error) {
       setMessage("❌ Error generating random numbers.");
@@ -155,17 +129,15 @@ ${numbers.map((num, index) => `${index + 1}. ${num}`).join('\n')}
           />
         </div>
 
-        {/* Result Output */}
+        {/* Result Output - plain text (no container) */}
         {result && (
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Generated Numbers
             </label>
-            <textarea
-              value={result}
-              readOnly
-              className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
-            />
+            <pre className="whitespace-pre-wrap break-words font-mono text-sm text-gray-800">
+              {result}
+            </pre>
           </div>
         )}
 
@@ -173,9 +145,7 @@ ${numbers.map((num, index) => `${index + 1}. ${num}`).join('\n')}
         <div className="flex gap-3 flex-wrap">
           <button
             onClick={generateNumbers}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                       bg-indigo-600 text-white shadow 
-                       hover:bg-indigo-700"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-indigo-600 text-white shadow hover:bg-indigo-700"
           >
             🎲 Generate Numbers
           </button>

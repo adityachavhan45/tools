@@ -245,27 +245,25 @@ export default function BmiCalculatorPage() {
         <div className="border rounded-lg p-4 bg-blue-50">
           <h4 className="text-sm font-medium text-blue-700 mb-2">BMI Categories</h4>
           <div className="text-sm space-y-1">
-            <div>• Underweight: BMI < 18.5</div>
-            <div>• Normal weight: BMI 18.5-24.9</div>
-            <div>• Overweight: BMI 25-29.9</div>
-            <div>• Obese: BMI ≥ 30</div>
+            <div>&bull; Underweight: BMI &lt; 18.5</div>
+            <div>&bull; Normal weight: BMI 18.5-24.9</div>
+            <div>&bull; Overweight: BMI 25-29.9</div>
+            <div>&bull; Obese: BMI &ge; 30</div>
           </div>
         </div>
       </div>
 
       {/* Info Section */}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
-        <h3 className="text-lg font-semibold mb-2">About BMI Calculator</h3>
-        <p className="text-gray-700 mb-4">
-          Calculate Body Mass Index (BMI) for health assessment and fitness tracking. This tool helps you 
-          determine your BMI, useful for health monitoring, fitness goals, and medical assessment.
-        </p>
+      <p className="text-gray-700 mb-4">
+        Calculate Body Mass Index (BMI) for health assessment and fitness tracking. This tool helps you 
+        determine your BMI, useful for health monitoring, fitness goals, and medical assessment.
+      </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
           <li>Calculate BMI with height and weight</li>
           <li>Multiple unit systems (metric/imperial)</li>
-          <li>Health category assessment</li>
           <li>Health recommendations</li>
           <li>Easy copy to clipboard</li>
         </ul>
