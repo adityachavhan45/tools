@@ -70,19 +70,17 @@ export default function TermsPage() {
               our site’s design or code without permission.
             </p>
           </section>
-
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-3">
               Disclaimer
             </h2>
             <p>
-              Convertixy tools are provided on an <em>"as is"</em> basis without 
+              Convertixy tools are provided on an &quot;as is&quot; basis without 
               warranties of any kind. While we strive to provide accurate results, 
               we do not guarantee error-free operation, completeness, or suitability 
               for a particular purpose.
             </p>
           </section>
-
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-3">
               Limitation of Liability
