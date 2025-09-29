@@ -48,10 +48,13 @@ export default function Footer() {
             <p className="text-xs sm:text-sm text-gray-500">
               &copy; {new Date().getFullYear()} Convertixy. All rights reserved.
             </p>
-            <div className="flex gap-6 text-xs sm:text-sm">
+            <div className="flex flex-wrap gap-6 text-xs sm:text-sm">
               <Link href="/privacy" className="text-gray-500 hover:text-white transition-colors duration-200">Privacy Policy</Link>
               <Link href="/terms" className="text-gray-500 hover:text-white transition-colors duration-200">Terms of Service</Link>
               <Link href="/contact" className="text-gray-500 hover:text-white transition-colors duration-200">Contact</Link>
+              <Link href="/about" className="text-gray-500 hover:text-white transition-colors duration-200">About</Link>
+              <Link href="/documentation" className="text-gray-500 hover:text-white transition-colors duration-200">Documentation</Link>
+              <Link href="/disclaimer" className="text-gray-500 hover:text-white transition-colors duration-200">Disclaimer</Link>
             </div>
           </div>
         </div>
