@@ -179,7 +179,7 @@ export default function WebpToPngPage() {
             <li>When your CMS doesn’t support WebP</li>
             <li>Preserve transparency in lossless PNG</li>
             <li>Prepare assets for Photoshop & other editors</li>
-            <li>Export files for apps that don’t support WebP</li>
+            <li>Export files for apps that dont support WebP</li>
           </ul>
         </section>
       </div>
