@@ -167,32 +167,79 @@ export default function QrCodePage() {
 
         {/* Info Section */}
         <section className="mt-10 bg-white border rounded-2xl shadow p-6">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">
-            About QR Code Tool
+          <h3 className="text-lg font-semibold mb-3 text-gray-800">
+            About QR Code Generator Tool
           </h3>
           <p className="text-gray-700 mb-4">
-            QR codes (Quick Response codes) are scannable barcodes that store
-            data like links, text, or contact details. This free tool lets you
-            generate QR codes instantly in your browser with custom size and
-            colors, and download them as PNG.
+            A QR code (short for “Quick Response code”) is a two-dimensional barcode
+            that can store large amounts of data in a compact square image. Unlike
+            traditional barcodes, which can only hold numbers, QR codes can contain
+            text, URLs, contact details, payment info, Wi-Fi credentials, and much
+            more. Scanning them with a smartphone camera or QR scanner instantly
+            reveals the information. Our free online QR Code Generator lets you create
+            customized QR codes directly in your browser without uploading files or
+            relying on third-party services.
           </p>
 
-          <h4 className="font-semibold mt-4 mb-2">✨ Features</h4>
+          <p className="text-gray-700 mb-4">
+            This tool is designed for anyone who wants to share information quickly and
+            securely. Whether you’re a business owner creating QR codes for product
+            packaging, a teacher sharing links with students, or just someone who wants
+            to generate a Wi-Fi QR code for guests, this generator makes the process
+            simple and efficient. You can adjust the size, choose foreground and
+            background colors, preview the QR code instantly, and download it as a PNG
+            file with just one click.
+          </p>
+
+          <h4 className="font-semibold mt-5 mb-2">✨ Key Features</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Instant QR code generation</li>
-            <li>Custom size (128px – 512px)</li>
-            <li>Foreground & background color options</li>
-            <li>Download as PNG</li>
-            <li>Works offline in your browser</li>
+            <li>Generate QR codes instantly in your browser</li>
+            <li>Customizable size from 128px up to 512px</li>
+            <li>Foreground and background color customization</li>
+            <li>Supports text, links, and contact information</li>
+            <li>Download high-quality PNG for free</li>
+            <li>Works offline once loaded — fully private</li>
           </ul>
 
-          <h4 className="font-semibold mt-5 mb-2">📦 Use Cases</h4>
+          <h4 className="font-semibold mt-5 mb-2">📦 Common Use Cases</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Share website links quickly</li>
-            <li>Create event tickets or passes</li>
-            <li>Generate Wi-Fi access codes</li>
-            <li>Store vCard or contact info</li>
+            <li><strong>Website Links:</strong> Share your website URL quickly without typing.</li>
+            <li><strong>Event Tickets:</strong> Add QR codes to tickets or passes for easy scanning.</li>
+            <li><strong>Business Cards:</strong> Store vCard information so clients can save your contact instantly.</li>
+            <li><strong>Wi-Fi Access:</strong> Create a QR code containing Wi-Fi SSID and password for guests.</li>
+            <li><strong>Payments:</strong> Many digital wallets and UPI services use QR codes for quick transactions.</li>
+            <li><strong>Education:</strong> Teachers can create QR codes for assignments, forms, or extra resources.</li>
+            <li><strong>Marketing:</strong> Brands add QR codes on posters, brochures, and packaging for promotions.</li>
           </ul>
+
+          <h4 className="font-semibold mt-5 mb-2">🔧 How to Use</h4>
+          <ol className="list-decimal list-inside text-gray-700 space-y-1">
+            <li>Type or paste the text/URL you want to encode.</li>
+            <li>Adjust the size slider to select QR resolution.</li>
+            <li>Pick foreground and background colors to match your design.</li>
+            <li>Click <strong>Generate</strong> to preview your QR code instantly.</li>
+            <li>Download the PNG file and use it anywhere — online or print.</li>
+          </ol>
+
+          <h4 className="font-semibold mt-5 mb-2">🙋 Frequently Asked Questions</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li><strong>Is this tool free?</strong> Yes, it’s 100% free with no limits.</li>
+            <li><strong>Do QR codes expire?</strong> Static QR codes (like from this tool) never expire.</li>
+            <li><strong>Can I generate colored QR codes?</strong> Yes, you can customize colors, but ensure enough contrast for readability.</li>
+            <li><strong>Does it work offline?</strong> Yes, once loaded, the generator works without internet.</li>
+            <li><strong>Are my QR codes private?</strong> Absolutely — all processing happens locally in your browser.</li>
+          </ul>
+
+          <h4 className="font-semibold mt-5 mb-2">🚀 Final Thoughts</h4>
+          <p className="text-gray-700">
+            QR codes have become a universal standard for quick information sharing.
+            From mobile payments to event check-ins, from education to marketing,
+            their usage is only expanding. With this free QR Code Generator, you can
+            create unlimited, high-quality, and customized QR codes instantly without
+            worrying about privacy or hidden costs. Whether you’re an individual user,
+            a small business owner, or a professional designer, this tool gives you
+            flexibility, simplicity, and security — all inside your web browser.
+          </p>
         </section>
       </div>
     </main>

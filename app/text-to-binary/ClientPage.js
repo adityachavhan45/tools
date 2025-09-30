@@ -19,7 +19,7 @@ export default function TextToBinaryPage() {
     try {
       // Create a simple Binary structure from the text
       const lines = text.split('\n');
-      const binaryContent = lines.map((line, index) => 
+      const binaryContent = lines.map((line, index) =>
         `    "${line.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join('')}"`
       ).join(',\n');
 
@@ -57,7 +57,7 @@ ${binaryContent}
     try {
       // Simple Binary to text conversion
       let extractedText = binary;
-      
+
       // Extract text from Binary encoded strings
       const binaryMatches = extractedText.match(/[01]{8,}/g);
       if (binaryMatches) {
@@ -247,35 +247,91 @@ ${binaryContent}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to Binary Converter</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to Binary code and Binary to text. This tool helps you create 
-          Binary-encoded strings from plain text and decode Binary-encoded strings back 
-          to text, useful for programming and data analysis.
+          A Text to Binary Converter is a handy tool that allows you to transform
+          human-readable text into binary code and decode binary back into plain
+          text. Binary is the language of computers, based on only two digits: 0
+          and 1. Every letter, number, symbol, and even images or sounds in
+          computing are ultimately represented in binary form. With this converter,
+          you can quickly explore how your text looks in binary format and
+          understand how machines process information.
         </p>
 
+        <p className="text-gray-700 mb-4">
+          Binary encoding is fundamental to programming, electronics, and
+          data science. For example, the character &quot;A&quot; has an ASCII code of 65,
+          which in binary becomes 01000001. This tool handles those conversions
+          instantly in your browser. Similarly, if you paste a sequence of binary
+          digits, it decodes it back to text so you can verify or reuse it.
+          Everything happens locally in your browser, ensuring privacy and
+          security.
+        </p>
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to Binary code</li>
-          <li>Decode Binary-encoded strings</li>
-          <li>Character analysis and statistics</li>
-          <li>Binary formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Instant conversion between text and binary code</li>
+          <li>Copy results with a single click</li>
+          <li>Character analysis and word statistics</li>
+          <li>Supports multiline text and bulk conversion</li>
+          <li>Offline, browser-based, secure and free</li>
+          <li>Simple interface for both beginners and developers</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to Binary</strong>.</li>
-          <li>Or enter Binary code in the Binary field and click <strong>Binary to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Type or paste text in the input field.</li>
+          <li>Click <strong>Text to Binary</strong> to generate binary output.</li>
+          <li>Copy the result using the copy button.</li>
+          <li>To decode, paste binary digits into the binary field.</li>
+          <li>Click <strong>Binary to Text</strong> to get the plain text back.</li>
+          <li>Use reset to clear fields anytime.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Programming and debugging</li>
-          <li>Data analysis and representation</li>
-          <li>Binary data handling</li>
-          <li>Text to code conversion</li>
+          <li><strong>Programming:</strong> Understand how characters are stored in binary at low level.</li>
+          <li><strong>Learning:</strong> Students learning computer fundamentals can visualize text encoding.</li>
+          <li><strong>Data Analysis:</strong> Useful for debugging encoded strings in software projects.</li>
+          <li><strong>Networking:</strong> Binary often appears in packet inspection and protocol analysis.</li>
+          <li><strong>Cryptography & Security:</strong> Explore binary representation for encoding/decoding tasks.</li>
+          <li><strong>Fun & Education:</strong> Convert names, quotes, or secret messages into binary code.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📊 Why Binary Matters</h4>
+        <p className="text-gray-700 mb-4">
+          Binary is the foundation of all modern computing. Every operation,
+          from storing a file to streaming a video, relies on binary logic.
+          Transistors inside processors understand only on (1) and off (0) states,
+          and these form the building blocks of machine language. Even higher-level
+          programming languages like Python, Java, or C++ are eventually compiled
+          into binary instructions that the processor executes.
+        </p>
+
+        <p className="text-gray-700 mb-4">
+          Learning binary is not just academic—it helps programmers, engineers,
+          and students appreciate how data is represented internally. A simple
+          &quot;hello&quot; in text becomes a string of 0s and 1s in binary. This conversion
+          is also essential in areas like embedded systems, hardware design, and
+          cryptographic algorithms.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Is binary only used by computers?</strong> Yes, but binary logic also appears in electronics, digital signals, and logical circuits.</li>
+          <li><strong>Why 8 bits for each character?</strong> Because one byte (8 bits) can represent 256 unique values, enough for the ASCII character set.</li>
+          <li><strong>Is binary same as machine code?</strong> Machine code is made of binary instructions, but binary can represent any type of data, not just instructions.</li>
+          <li><strong>Does binary increase data size?</strong> Representing text in binary often makes it longer visually, but internally it is efficient for computation.</li>
+          <li><strong>Can I use binary for secret messages?</strong> Yes, many people use binary to hide or encode text for fun, though it’s not encryption.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to Binary Converter is a fast and reliable tool for students,
+          programmers, and anyone curious about how digital systems work. Whether
+          you are studying computer basics, debugging encoded text, or just
+          exploring binary for fun, this converter makes the process easy and
+          interactive. Try converting your name, favorite quote, or even a
+          paragraph, and see how it transforms into a stream of 0s and 1s—the
+          true language of machines.
+        </p>
       </section>
     </ToolSection>
   );

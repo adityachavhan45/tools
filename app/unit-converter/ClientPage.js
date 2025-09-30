@@ -65,6 +65,11 @@ export default function UnitConverterPage() {
       return;
     }
 
+    if (numValue < 0 && category !== "temperature") {
+      setMessage("⚠️ Value must be positive for this category.");
+      return;
+    }
+
     try {
       const categoryUnits = units[category];
       if (!categoryUnits[fromUnit] || !categoryUnits[toUnit]) {
@@ -93,25 +98,7 @@ export default function UnitConverterPage() {
 # - Quality: High
 
 # Conversion Result
-${convertedValue.toFixed(6)} ${toUnit.replace('_', ' ')}
-
-# Unit Categories
-# - Length: Distance and measurement
-# - Weight: Mass and weight
-# - Volume: Capacity and volume
-# - Area: Surface area and space
-
-# Usage Instructions
-# 1. Enter the value to convert
-# 2. Select category and units
-# 3. Click "Convert Units" to process
-# 4. Copy the converted result
-
-# Quality Notes
-# - Accurate unit conversion
-# - Multiple unit categories
-# - High-precision calculations
-# - Optimized for scientific use`;
+${convertedValue.toFixed(6)} ${toUnit.replace('_', ' ')}`;
 
       setResult(resultText);
       setMessage("✅ Units converted successfully!");
@@ -283,51 +270,69 @@ ${convertedValue.toFixed(6)} ${toUnit.replace('_', ' ')}
             Reset
           </button>
         </div>
-
-        {/* Conversion Info */}
-        <div className="border rounded-lg p-4 bg-blue-50">
-          <h4 className="text-sm font-medium text-blue-700 mb-2">Unit Categories</h4>
-          <div className="text-sm space-y-1">
-            <div>• Length: Distance and measurement</div>
-            <div>• Weight: Mass and weight</div>
-            <div>• Volume: Capacity and volume</div>
-            <div>• Area: Surface area and space</div>
-          </div>
-        </div>
       </div>
 
-      {/* Info Section */}
-      <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
+      {/* Expanded Info Section */}
+      <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm prose max-w-none">
         <h3 className="text-lg font-semibold mb-2">About Unit Conversion</h3>
-        <p className="text-gray-700 mb-4">
-          Convert between different units of measurement for scientific calculations and everyday use. This tool helps you 
-          convert units, useful for science, engineering, cooking, and everyday measurements.
+        <p>
+          Unit conversion is the process of changing a measurement from one unit into another. 
+          It is used in science, engineering, education, cooking, and daily life. With so many 
+          systems in use around the world, a unit converter ensures accuracy and saves time. 
+          This online unit converter helps you handle conversions across length, weight, volume, 
+          and area with high precision.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert between different units</li>
-          <li>Multiple unit categories</li>
-          <li>High-precision calculations</li>
-          <li>Scientific accuracy</li>
-          <li>Easy copy to clipboard</li>
+        <ul>
+          <li>Convert instantly between units of length, weight, volume, and area.</li>
+          <li>Supports both metric and imperial systems.</li>
+          <li>Accurate calculations with scientific precision.</li>
+          <li>Easy copy-to-clipboard functionality for results.</li>
+          <li>Beginner-friendly interface for students and professionals.</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter the value to convert.</li>
-          <li>Select the category and units.</li>
-          <li>Click <strong>Convert Units</strong> to process.</li>
-          <li>Copy the converted result.</li>
+        <ol>
+          <li>Enter the numeric value you want to convert.</li>
+          <li>Select the category (length, weight, volume, area).</li>
+          <li>Choose the input unit and the target unit.</li>
+          <li>Click <strong>Convert Units</strong> to view the result.</li>
+          <li>Copy the result for your reports or tasks.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Scientific calculations and research</li>
-          <li>Engineering and technical work</li>
-          <li>Cooking and food preparation</li>
-          <li>Everyday measurements and conversions</li>
+        <ul>
+          <li><strong>Science & Research:</strong> Lab experiments often need conversion between metric and imperial units.</li>
+          <li><strong>Engineering:</strong> Structural and mechanical projects require precise measurements.</li>
+          <li><strong>Cooking:</strong> Recipes from around the world often use different systems.</li>
+          <li><strong>Travel:</strong> Converting kilometers to miles or liters to gallons while abroad.</li>
+          <li><strong>Education:</strong> Students use converters to check their homework or understand real-world problems.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Metric vs. Imperial Systems</h4>
+        <p>
+          The metric system (meter, kilogram, liter) is based on powers of 10, making it easier 
+          for calculations. The imperial system (mile, pound, gallon) is still commonly used in 
+          the United States. A converter bridges the gap so users worldwide can understand 
+          measurements quickly.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Example Conversions</h4>
+        <ul>
+          <li>1 kilometer = 1000 meters</li>
+          <li>1 mile = 1609.34 meters</li>
+          <li>1 pound = 0.453592 kilograms</li>
+          <li>1 gallon = 3.785 liters</li>
+          <li>1 acre = 4046.86 square meters</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📘 Why Unit Conversion Matters</h4>
+        <p>
+          From international trade to personal fitness goals, unit conversion simplifies life. 
+          Whether you are comparing car mileage, converting cooking measurements, or preparing 
+          a scientific report, this tool ensures you always have reliable numbers.
+        </p>
       </section>
     </ToolSection>
   );

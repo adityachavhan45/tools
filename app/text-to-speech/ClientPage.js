@@ -228,35 +228,74 @@ export default function TextToSpeechPage() {
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to Speech</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to natural-sounding speech for accessibility and content creation. This tool helps you 
-          generate audio from text, useful for accessibility, content creation, and language learning.
+          The Text to Speech Converter is a free online tool that allows you to transform written
+          text into natural-sounding audio in multiple languages. Text-to-speech (TTS) technology
+          is now used widely across industries — from accessibility and education to content
+          creation and entertainment. With this tool, you can choose different voices, adjust
+          speech speed, and generate audio in real time. Whether you are a student, teacher,
+          content creator, or developer, this tool provides a fast and reliable way to turn your
+          words into sound.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to natural speech</li>
-          <li>Multiple voice and language options</li>
-          <li>Adjustable speech speed and quality</li>
-          <li>High-quality audio generation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Convert plain text into natural-sounding speech instantly</li>
+          <li>Supports multiple languages like English, Spanish, French, German, Italian, Portuguese, and Russian</li>
+          <li>Choose between regional voices such as English (US) or English (UK)</li>
+          <li>Adjust speech speed from 0.5x (slow) to 2.0x (fast)</li>
+          <li>Clear and high-quality audio generation</li>
+          <li>Completely free and works directly in your browser</li>
+          <li>Simple interface with copy and reset functions</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter or paste text to convert.</li>
-          <li>Select voice and language.</li>
-          <li>Adjust speech speed if needed.</li>
-          <li>Click <strong>Convert to Speech</strong> to process.</li>
-          <li>Play the generated audio.</li>
+          <li>Paste or type your text into the input field.</li>
+          <li>Select the voice and language you prefer.</li>
+          <li>Adjust the speech speed slider (optional).</li>
+          <li>Click <strong>Convert to Speech</strong> to process the text.</li>
+          <li>Listen to the generated audio and copy settings if needed.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Accessibility and screen readers</li>
-          <li>Content creation and podcasts</li>
-          <li>Language learning and pronunciation</li>
-          <li>Audio content and presentations</li>
+          <li><strong>Accessibility:</strong> Helping visually impaired users with screen readers</li>
+          <li><strong>Education:</strong> Assisting students in pronunciation and language learning</li>
+          <li><strong>Content Creation:</strong> Converting articles or blog posts into podcasts or audio</li>
+          <li><strong>Entertainment:</strong> Generating character voices for games or videos</li>
+          <li><strong>Corporate:</strong> Creating voice-overs for presentations and training modules</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Why Text to Speech Matters</h4>
+        <p className="text-gray-700 mb-4">
+          Text to Speech is not just about converting words into sound — it’s about improving
+          accessibility, breaking language barriers, and making digital content more inclusive.
+          For people with reading difficulties or vision impairments, TTS is a life-changing
+          technology. For content creators, it adds an audio dimension to written work, expanding
+          reach to audiences who prefer listening over reading. Businesses use it to make
+          e-learning modules engaging, while educators use it for pronunciation and listening
+          practice. With voice assistants like Siri, Alexa, and Google Assistant, TTS has become
+          part of everyday life.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Is this tool free?</strong> Yes, it is 100% free and works in any browser.</li>
+          <li><strong>Can I download the audio?</strong> The current version generates speech for playback, but you can copy settings and use with audio recorders.</li>
+          <li><strong>Does it work offline?</strong> No, it requires your browser environment to generate speech.</li>
+          <li><strong>Which languages are supported?</strong> English (US/UK), Spanish, French, German, Italian, Portuguese, and Russian.</li>
+          <li><strong>Is the voice robotic?</strong> No, it uses natural-sounding voice synthesis for a realistic audio experience.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to Speech Converter is a simple yet powerful tool that bridges the gap between
+          text and audio. It improves accessibility, helps in learning, and makes content
+          consumption more flexible. Instead of only reading, users can now listen to the same
+          content on the go. Whether you’re building educational resources, producing a podcast,
+          or making content more inclusive, this tool offers a free and convenient way to achieve
+          it. Try it today and bring your text to life with natural voices.
+        </p>
       </section>
     </ToolSection>
   );

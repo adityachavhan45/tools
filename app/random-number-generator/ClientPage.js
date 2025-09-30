@@ -186,34 +186,84 @@ export default function RandomNumberGeneratorPage() {
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Random Number Generator</h3>
         <p className="text-gray-700 mb-4">
-          Generate random numbers for statistics, testing, and analysis. This tool helps you 
-          create random numbers within specified ranges, useful for research, games, and simulations.
+          A random number generator is a simple yet powerful tool that produces numbers
+          without any predictable pattern. In everyday life, randomness is essential
+          in areas like research, gaming, cryptography, simulations, and statistical
+          analysis. This free online random number generator lets you instantly generate
+          numbers within a custom range, whether you need a single value or a batch of
+          up to 1000 numbers. All calculations run locally in your browser, which makes
+          the process private, secure, and lightning fast.
+        </p>
+
+        <p className="text-gray-700 mb-4">
+          The tool is particularly helpful when you want to avoid bias. Human beings
+          are terrible at choosing random numbers manually—our brains naturally lean
+          towards patterns. That’s why computers, using reliable mathematical formulas
+          and algorithms, are far more efficient in generating randomness. Whether you
+          are a teacher creating quiz questions, a gamer developing dice mechanics, a
+          researcher sampling survey data, or even a developer stress testing your app,
+          this generator ensures you always have access to fair, unpredictable numbers.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Generate random numbers in custom ranges</li>
-          <li>Batch generation for multiple numbers</li>
-          <li>Statistics and analysis tools</li>
-          <li>High-quality random number generation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Generate numbers in any range — from small integers to large datasets</li>
+          <li>Batch generation: create up to 1000 random numbers at once</li>
+          <li>Lightweight and fast — runs directly in your browser</li>
+          <li>Completely private — no server uploads or storage</li>
+          <li>Copy results with a single click</li>
+          <li>Ideal for statistics, simulations, and fun activities</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Set minimum and maximum values.</li>
-          <li>Enter the number count.</li>
-          <li>Click <strong>Generate Numbers</strong> to process.</li>
-          <li>Copy the generated numbers.</li>
+          <li>Enter the minimum and maximum values you want.</li>
+          <li>Choose how many random numbers to generate (between 1 and 1000).</li>
+          <li>Click <strong>Generate Numbers</strong> to instantly see the results.</li>
+          <li>Copy your generated numbers using the <strong>Copy Result</strong> button.</li>
+          <li>Reset anytime to start fresh with new values.</li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+        <h4 className="font-semibold mt-4 mb-1">📦 Practical Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Statistics and research</li>
-          <li>Game development and testing</li>
-          <li>Simulation and modeling</li>
-          <li>Data analysis and sampling</li>
+          <li><strong>Statistics & Research:</strong> Generate unbiased random samples for surveys, experiments, or academic studies.</li>
+          <li><strong>Education:</strong> Teachers can use it to pick students randomly, assign topics, or create math exercises.</li>
+          <li><strong>Gaming:</strong> Developers can simulate dice rolls, card shuffles, or lottery draws.</li>
+          <li><strong>Simulations:</strong> Model real-world scenarios like population studies, queue simulations, or probability experiments.</li>
+          <li><strong>Everyday Life:</strong> Decide who pays the bill, assign chores, or simply have fun with friends.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Why Randomness Matters</h4>
+        <p className="text-gray-700 mb-4">
+          Randomness is the foundation of fairness. Without randomness, outcomes can
+          become predictable, biased, or even manipulated. In digital security, for
+          example, strong cryptographic systems rely on truly random values to protect
+          sensitive data. In gaming, randomness ensures fairness between players.
+          In scientific research, it helps remove bias and produce reliable, unbiased
+          results. Having an accessible random number generator means anyone can tap
+          into this fundamental principle, whether for serious projects or casual fun.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Is this generator truly random?</strong> It uses JavaScript’s <code>Math.random()</code>, which is pseudo-random but reliable for most practical uses. For critical cryptographic tasks, specialized secure libraries are recommended.</li>
+          <li><strong>Can I generate decimals?</strong> Currently, this tool focuses on whole numbers. You can, however, adjust the code to include decimals.</li>
+          <li><strong>How many numbers can I generate at once?</strong> Up to 1000 numbers in a single batch.</li>
+          <li><strong>Is it free?</strong> Yes, 100% free and always available without signup.</li>
+          <li><strong>Are my results saved?</strong> No, everything happens locally. Your data stays on your device.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          Random numbers may look simple, but they play a massive role in our
+          technology-driven world. From cryptography to classroom activities, they
+          enable fairness, unpredictability, and unbiased outcomes. With this Random
+          Number Generator tool, you get the convenience of generating numbers anytime,
+          anywhere — without installing apps or sharing your data. It’s lightweight,
+          secure, and built for everyone, whether you’re a professional researcher,
+          a student, or just someone looking for a fair way to make decisions. Try it
+          now and experience the power of randomness in your browser.
+        </p>
       </section>
     </ToolSection>
   );

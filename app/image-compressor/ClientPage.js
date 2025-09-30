@@ -167,43 +167,127 @@ export default function ImageCompressorPage() {
         )}
       </div>
 
-      {/* Info Section */}
+            {/* Info Section */}
       <section className="mt-10 p-5 bg-white shadow-md rounded-xl">
         <h3 className="text-lg font-semibold mb-2">About Online Image Compressor</h3>
         <p className="text-gray-700 mb-4">
-          This free online tool lets you compress images (JPG, PNG, WebP) directly
-          in your browser without uploading them to any server. It helps reduce
-          file size while maintaining quality, making your images web-friendly and
-          faster to load.
+          An image compressor is a digital tool that reduces the file size of
+          images without making them look blurry or pixelated. Large image files
+          often slow down websites, increase storage usage, and make sharing
+          difficult on low-bandwidth networks. This tool allows you to compress
+          images directly in your browser—no software installation, no server
+          uploads, and no privacy risks. Everything happens locally on your
+          device, which means your pictures never leave your computer. By using
+          this compressor, you can create lighter, web-optimized images that load
+          faster and perform better on all devices.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Compress images without losing much quality</li>
-          <li>Adjust quality percentage with a slider</li>
-          <li>Preview compressed results instantly</li>
-          <li>Compare original vs compressed size</li>
-          <li>Works fully offline in your browser</li>
-          <li>Supports JPG, PNG, and WebP formats</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>High-quality compression:</strong> Reduce file sizes
+            significantly while maintaining visual clarity.
+          </li>
+          <li>
+            <strong>Multiple format support:</strong> Works with JPG, PNG, and
+            WebP images, which are the most widely used formats online.
+          </li>
+          <li>
+            <strong>Real-time preview:</strong> Instantly compare original vs.
+            compressed size and quality before downloading.
+          </li>
+          <li>
+            <strong>Customizable compression:</strong> Adjust quality using a
+            slider to balance between file size and image sharpness.
+          </li>
+          <li>
+            <strong>Privacy friendly:</strong> All compression runs in your
+            browser without uploading files to external servers.
+          </li>
+          <li>
+            <strong>Batch processing:</strong> Compress multiple images at once
+            and download them individually.
+          </li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Select one or multiple images using the upload button.</li>
-          <li>Adjust the quality slider to control compression level.</li>
-          <li>Click <strong>Compress</strong> to process the images.</li>
-          <li>Preview results and compare file sizes.</li>
-          <li>Download compressed images directly to your device.</li>
+        <ol className="list-decimal list-inside text-gray-700 space-y-2">
+          <li>Upload one or more images using the file picker or drag & drop option.</li>
+          <li>Adjust the quality slider (default is 70%) to set your compression level.</li>
+          <li>Click <strong>Compress</strong> and wait for the tool to process your files.</li>
+          <li>Preview the output images and compare original vs. compressed size.</li>
+          <li>Download compressed images with a single click.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Practical Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Optimize website performance with smaller images</li>
-          <li>Save storage space on devices</li>
-          <li>Reduce image size before sharing on social media</li>
-          <li>Email attachments that need smaller size</li>
-          <li>Faster uploads to cloud storage</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Website optimization:</strong> Smaller images improve page
+            speed, which boosts SEO rankings and user experience.
+          </li>
+          <li>
+            <strong>Social media sharing:</strong> Platforms like Instagram,
+            Facebook, and Twitter compress uploads automatically—using your own
+            compressor ensures better quality at smaller sizes.
+          </li>
+          <li>
+            <strong>Email attachments:</strong> Many email providers have file
+            size limits; compressing ensures images stay under the limit.
+          </li>
+          <li>
+            <strong>Cloud storage:</strong> Reduce storage costs and upload
+            times by keeping images lighter.
+          </li>
+          <li>
+            <strong>Mobile usage:</strong> Save storage space and bandwidth on
+            smartphones by compressing images before sharing.
+          </li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📖 Why Image Compression Matters</h4>
+        <p className="text-gray-700 mb-4">
+          Images make up a large portion of modern websites, sometimes more than
+          60% of total page weight. Without compression, they can slow down
+          websites dramatically, especially on slower networks. Google and other
+          search engines use page load speed as a ranking factor, which means
+          compressing images not only improves performance but also SEO. Beyond
+          web performance, compression helps individuals save disk space,
+          reduces data usage, and ensures faster sharing over chat apps and
+          emails.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Everyday Benefits</h4>
+        <p className="text-gray-700 mb-4">
+          Think of all the times you have tried to send photos over WhatsApp or
+          Gmail only to see &ldquo;file size too large.&rdquo; An image compressor solves
+          this instantly. Travelers can save precious storage space on phones,
+          photographers can quickly share previews with clients, and students
+          can upload projects faster to online portals. Even businesses benefit,
+          as lighter images reduce hosting costs and bandwidth consumption.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">⚠️ Limitations and Best Practices</h4>
+        <p className="text-gray-700 mb-4">
+          While compression reduces file size, over-compression can make images
+          blurry or pixelated. The trick is to balance quality with size. For
+          photos, 60–80% quality works best; for graphics or UI elements, a
+          slightly higher setting may be necessary. Another best practice is to
+          choose modern formats like WebP, which offer better compression ratios
+          than traditional JPG or PNG. Also, always keep a backup of original
+          images before compressing, especially for professional or archival use.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Final Thoughts</h4>
+        <p className="text-gray-700">
+          Image compression may seem like a small step, but it creates a massive
+          impact on performance, storage, and usability. From faster-loading
+          websites to smoother sharing on social media, compressed images are
+          essential in today’s digital world. This online image compressor
+          provides a safe, quick, and reliable solution directly in your browser.
+          Whether you are a developer, designer, student, or casual user, this
+          tool ensures your images are always optimized, lightweight, and ready
+          for any platform.
+        </p>
       </section>
     </ToolSection>
   );

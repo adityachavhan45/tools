@@ -19,7 +19,7 @@ export default function TextToJavascriptPage() {
     try {
       // Create a simple JavaScript structure from the text
       const lines = text.split('\n');
-      const jsContent = lines.map((line, index) => 
+      const jsContent = lines.map((line, index) =>
         `    "${line.replace(/"/g, '\\"')}"`
       ).join(',\n');
 
@@ -74,7 +74,7 @@ main();`;
     try {
       // Simple JavaScript to text conversion
       let extractedText = javascript;
-      
+
       // Extract text from string literals
       const stringMatches = extractedText.match(/"([^"\\]*(\\.[^"\\]*)*)"/g);
       if (stringMatches) {
@@ -265,35 +265,80 @@ main();`;
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to JavaScript Converter</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to JavaScript code and JavaScript to text. This tool helps you create 
-          structured JavaScript code from plain text and extract text content from JavaScript 
-          scripts, useful for web development and client-side programming.
+          The Text to JavaScript Converter is a free online utility that makes it easy
+          to turn plain text into structured JavaScript code, and vice versa. Whether
+          you are a developer, student, or tech enthusiast, this tool helps you
+          understand how strings are represented in JavaScript and how they can be
+          extracted back into normal text. JavaScript is one of the most widely used
+          programming languages in the world, powering everything from websites to
+          mobile apps, so having a quick way to convert text and code can save you
+          time and reduce errors.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to JavaScript code</li>
-          <li>Extract text from JavaScript scripts</li>
-          <li>Character analysis and statistics</li>
-          <li>JavaScript formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Convert plain text into ready-to-use JavaScript string arrays</li>
+          <li>Decode JavaScript code back into clean, readable text</li>
+          <li>Automatic handling of special characters and quotes</li>
+          <li>Line, word, and character statistics for input text</li>
+          <li>One-click copy functionality for both text and code</li>
+          <li>Runs entirely in your browser, no server or downloads needed</li>
+          <li>Helps in debugging, testing, and learning JavaScript string handling</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to JS</strong>.</li>
-          <li>Or enter JavaScript code in the JS field and click <strong>JS to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Type or paste text into the <strong>Text</strong> field.</li>
+          <li>Click <strong>Text to JS</strong> to generate structured JavaScript code.</li>
+          <li>If you already have JavaScript code, paste it into the JS field and click
+            <strong>JS to Text</strong> to decode it.</li>
+          <li>Use the <em>Copy</em> buttons to quickly copy results for use in projects.</li>
+          <li>Check the Character Analysis section to see total characters, words, and lines.</li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+        <h4 className="font-semibold mt-4 mb-1">📦 Common Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Web development and programming</li>
-          <li>Client-side scripting</li>
-          <li>Data processing and analysis</li>
-          <li>Text to code conversion</li>
+          <li><strong>Web Development:</strong> Convert static text into JavaScript strings for websites.</li>
+          <li><strong>Data Processing:</strong> Store or manipulate text in JS arrays for analysis.</li>
+          <li><strong>Education:</strong> Learn how strings and escape characters work in JavaScript.</li>
+          <li><strong>Debugging:</strong> Test how text values are parsed inside scripts.</li>
+          <li><strong>Content Conversion:</strong> Easily reformat large blocks of text into valid JS syntax.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📊 Why Convert Text to JavaScript?</h4>
+        <p className="text-gray-700 mb-4">
+          In many programming tasks, text content like paragraphs, JSON data, or
+          configuration values need to be stored and processed in JavaScript. Manually
+          adding quotes, escaping special characters, and splitting lines can be
+          repetitive and error-prone. This tool automates the process, ensuring your
+          text is safely converted into valid JavaScript code. Similarly, if you
+          receive a block of JavaScript and want to recover the plain text, the
+          converter quickly extracts it for easy reading.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>What is this tool used for?</strong> To convert plain text into
+            JavaScript code (string arrays) and decode JavaScript back into text.</li>
+          <li><strong>Can it handle special characters?</strong> Yes, quotes and escape
+            sequences are automatically managed for you.</li>
+          <li><strong>Does this run online or offline?</strong> It works completely in
+            your browser, so no data is sent to servers.</li>
+          <li><strong>Can I use it for big files?</strong> Yes, but performance depends
+            on your browser and device memory.</li>
+          <li><strong>Is this useful for students?</strong> Absolutely, it’s a great way
+            to learn how JavaScript treats strings and text encoding.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to JavaScript Converter is more than just a coding utility — it’s a
+          learning aid, a debugging assistant, and a productivity booster. From web
+          developers embedding strings into applications, to learners exploring
+          JavaScript fundamentals, this tool provides a quick, reliable, and
+          user-friendly solution. Try it today with any paragraph, code snippet, or
+          dataset, and instantly transform it into valid JavaScript or plain text.
+        </p>
       </section>
     </ToolSection>
   );

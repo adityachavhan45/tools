@@ -154,45 +154,74 @@ export default function ImagesToPdfPage() {
           )}
         </div>
 
-        {/* Info Section */}
+                {/* Info Section */}
         <section className="mt-10 bg-white shadow-md rounded-xl p-6">
           <h3 className="text-lg font-semibold mb-2 text-slate-800">
             About Images to PDF Tool
           </h3>
           <p className="text-gray-700 mb-4">
-            This free tool allows you to merge multiple images (JPG, PNG, WebP)
-            into a single PDF file. Everything runs in your browser – no uploads,
-            no privacy risks. Perfect for creating photo albums, reports, or
-            sharing multiple images as one file.
+            The Images to PDF converter is a free and simple tool that lets you combine multiple images 
+            (JPG, PNG, WebP) into a single, shareable PDF file. It works entirely inside your browser, 
+            meaning your files are never uploaded to any external server. This ensures privacy, speed, 
+            and convenience. Whether you are a student, professional, or casual user, this tool saves 
+            you the hassle of installing heavy apps or using online services that may compromise your data.
           </p>
 
           <h4 className="font-semibold mt-4 mb-2 text-slate-800">✨ Key Features</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Merge multiple images into one PDF</li>
-            <li>Supports JPG, PNG, and WebP</li>
-            <li>Preview images before creating PDF</li>
-            <li>Works fully offline in your browser</li>
-            <li>Fast and secure (no server upload)</li>
+            <li>Merge unlimited images into a single PDF file</li>
+            <li>Supports common formats like JPG, PNG, and WebP</li>
+            <li>Preview and reorder images before creating PDF</li>
+            <li>One-click download of the generated PDF</li>
+            <li>Fully offline processing for maximum privacy</li>
+            <li>Lightweight and fast – no installation required</li>
           </ul>
 
           <h4 className="font-semibold mt-4 mb-2 text-slate-800">🔧 How to Use</h4>
           <ol className="list-decimal list-inside text-gray-700 space-y-1">
-            <li>Select multiple images using the file input.</li>
-            <li>Preview the uploaded images below.</li>
-            <li>Remove unwanted images (click ✕ on top-right).</li>
-            <li>Click <strong>Create PDF</strong> to generate the file.</li>
-            <li>Download the generated PDF instantly.</li>
-            <li>Use <strong>Reset All</strong> to clear and start over.</li>
+            <li>Upload or drag &amp; drop multiple images into the tool.</li>
+            <li>Preview the images and remove unwanted ones.</li>
+            <li>Click <strong>Create PDF</strong> to process them instantly.</li>
+            <li>Download the generated PDF with a single click.</li>
+            <li>Use <strong>Reset All</strong> to clear and start again.</li>
           </ol>
+
+          <h4 className="font-semibold mt-4 mb-2 text-slate-800">📐 Why Convert Images to PDF?</h4>
+          <p className="text-gray-700 mb-4">
+            Converting images into a PDF offers several advantages. A single PDF file is easier to share, 
+            upload, and archive compared to multiple image files. PDF format preserves layout and quality, 
+            ensuring the document looks consistent on all devices. It also saves storage space when sending 
+            images via email or messaging apps. Businesses often use this method to combine scanned invoices, 
+            bills, and documents, while students can merge notes and screenshots into one compact file.
+          </p>
 
           <h4 className="font-semibold mt-4 mb-2 text-slate-800">📦 Practical Use Cases</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Create quick photo albums</li>
-            <li>Combine receipts or bills into one file</li>
-            <li>Send multiple images as one PDF in emails</li>
-            <li>Make study notes or reports from screenshots</li>
-            <li>Keep images organized in one document</li>
+            <li>Create quick photo albums for sharing with friends or family</li>
+            <li>Combine receipts, bills, or warranty documents into one file</li>
+            <li>Send multiple screenshots in one professional PDF</li>
+            <li>Organize lecture notes or study material for easy reference</li>
+            <li>Prepare work reports and presentations with image sets</li>
+            <li>Archive old scanned photos or documents safely</li>
           </ul>
+
+          <h4 className="font-semibold mt-4 mb-2 text-slate-800">⚡ Best Practices</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-1">
+            <li>Use JPG for photos, PNG for graphics, and WebP for compression</li>
+            <li>Keep image resolution consistent for a clean PDF output</li>
+            <li>Remove unnecessary or duplicate images before generating</li>
+            <li>Reorder images logically (e.g., chronological order) for better readability</li>
+            <li>For large files, compress images first to reduce final PDF size</li>
+          </ul>
+
+          <h4 className="font-semibold mt-4 mb-2 text-slate-800">🚀 Final Thoughts</h4>
+          <p className="text-gray-700">
+            Traditional desktop software like Photoshop or Acrobat can be bulky and slow for simple tasks. 
+            This online Images to PDF tool provides a lightweight, instant, and secure alternative. Whether 
+            you are merging personal photos, business documents, or academic notes, it ensures your workflow 
+            is smooth and efficient. With offline processing, zero privacy risk, and a user-friendly interface, 
+            this tool is the fastest way to turn scattered images into a polished PDF in seconds.
+          </p>
         </section>
       </div>
     </main>

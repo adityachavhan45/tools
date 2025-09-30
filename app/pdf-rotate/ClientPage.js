@@ -221,34 +221,104 @@ export default function PdfRotatePage() {
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About PDF Rotation</h3>
         <p className="text-gray-700 mb-4">
-          Rotate PDF pages for better viewing and document orientation. This tool helps you 
-          adjust PDF page orientation, useful for document viewing, printing, and accessibility.
+          PDF is one of the most reliable formats for sharing documents, ensuring that layout,
+          fonts, and structure look the same across all devices. However, sometimes pages inside
+          a PDF are not oriented correctly. Scanned pages may appear sideways, some documents
+          might be upside down, or multiple pages could need adjustment for easier viewing.
+          That is when a PDF rotation tool becomes extremely useful. By rotating pages quickly
+          and accurately, you can correct the orientation and make documents more readable and
+          professional.
+        </p>
+
+        <p className="text-gray-700 mb-4">
+          This free PDF Rotate tool works directly in your browser. That means you do not need
+          to upload files to any server, making the process secure and private. All rotation
+          happens locally on your device. With options for 90°, 180°, and 270°, you can choose
+          clockwise, upside down, or counter clockwise adjustments. The result preserves text
+          quality, images, and formatting, ensuring that your document remains clear and
+          consistent after rotation.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
           <li>Rotate PDF pages by 90°, 180°, or 270°</li>
-          <li>High-quality rotation with text preservation</li>
-          <li>Batch processing for multiple pages</li>
-          <li>Quality preservation and formatting</li>
-          <li>Easy copy to clipboard</li>
+          <li>Preserve text, images, and formatting</li>
+          <li>Works entirely offline in your browser</li>
+          <li>Fast and private with no server uploads</li>
+          <li>Simple and user friendly interface</li>
+          <li>Supports all standard PDF files</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Upload a PDF file.</li>
-          <li>Select the rotation angle (90°, 180°, or 270°).</li>
-          <li>Click <strong>Rotate PDF</strong> to process.</li>
-          <li>Download the rotated PDF file.</li>
+          <li>Upload a PDF file from your computer or device.</li>
+          <li>Select the rotation angle: 90°, 180°, or 270°.</li>
+          <li>Click <strong>Rotate PDF</strong> to process the file.</li>
+          <li>Download the rotated PDF instantly to your device.</li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+        <h4 className="font-semibold mt-4 mb-1">📦 Practical Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Document orientation and viewing</li>
-          <li>PDF page rotation and adjustment</li>
-          <li>Document printing and presentation</li>
-          <li>Accessibility and usability</li>
+          <li><strong>Scanning Documents:</strong> Correct sideways or upside down scanned pages.</li>
+          <li><strong>Presentations:</strong> Align slides or diagrams for consistent viewing.</li>
+          <li><strong>Education:</strong> Rotate lecture notes or research papers for easier reading.</li>
+          <li><strong>Printing:</strong> Adjust orientation so that pages print correctly on paper.</li>
+          <li><strong>Accessibility:</strong> Make files easier to read for students, employees, or individuals using screen readers.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🔒 Why Rotate PDFs Instead of Re Scanning</h4>
+        <p className="text-gray-700 mb-4">
+          Without a rotation tool, users often re scan documents just to fix orientation.
+          This wastes time, increases file size, and reduces image clarity. Rotating PDFs
+          digitally is faster, more efficient, and preserves quality. You can correct
+          hundreds of pages in seconds without needing any external software or hardware.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">⚡ Benefits of Correct Orientation</h4>
+        <p className="text-gray-700 mb-4">
+          Correctly oriented PDFs are easier to read, more professional, and better suited
+          for collaboration. A sideways document looks unprofessional in meetings or
+          classrooms, and upside down pages can frustrate readers. Fixing orientation
+          ensures smooth reading experiences for everyone, whether they are on laptops,
+          tablets, or printed copies.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🚫 Common Mistakes to Avoid</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-1">
+          <li>Rotating the wrong angle and ending up with pages still sideways</li>
+          <li>Forgetting to save or download the rotated file</li>
+          <li>Using untrusted online services that upload confidential PDFs</li>
+          <li>Not keeping a backup of the original unrotated document</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📖 Best Practices</h4>
+        <p className="text-gray-700 mb-4">
+          When rotating PDFs, always review the pages afterward to ensure the angle is correct.
+          For multi page documents, it may be useful to rotate specific pages rather than the
+          entire file if only certain sections are misaligned. Keep a copy of the original file
+          safe before applying changes, especially for legal, academic, or financial documents.
+          Once rotated, the file is easier to share, present, and archive.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Why a Browser Based PDF Rotate Tool is Safer</h4>
+        <p className="text-gray-700 mb-4">
+          Many online services require uploading your document to a server for rotation.
+          While convenient, this raises privacy and security risks, especially with
+          sensitive documents. A browser based PDF Rotate tool works locally, meaning
+          your file never leaves your computer. This guarantees confidentiality for
+          business reports, contracts, personal records, or educational materials.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">⚡ Conclusion</h4>
+        <p className="text-gray-700 leading-relaxed">
+          A PDF rotation tool may seem simple, but it solves a common and frustrating problem.
+          Whether you are fixing scanned documents, preparing materials for a presentation,
+          or ensuring smooth printing, correct orientation is essential. This free tool
+          provides quick, secure, and high quality rotation with full privacy since it
+          runs entirely in your browser. By using it, you save time, maintain quality,
+          and improve the readability and professionalism of your PDFs. For students,
+          professionals, and everyday users alike, rotating PDFs has never been easier.
+        </p>
       </section>
     </ToolSection>
   );

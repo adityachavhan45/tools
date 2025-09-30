@@ -219,39 +219,107 @@ ${Array.from({length: Math.min(12, months)}, (_, i) => {
         </div>
       </div>
 
-      {/* Info Section */}
+            {/* Info Section */}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Loan Calculator</h3>
         <p className="text-gray-700 mb-4">
-          Calculate loan payments and interest. This tool helps you understand 
-          the financial impact of loans, including monthly payments, total interest, 
-          and amortization schedules, useful for financial planning and decision-making.
+          A loan calculator is an essential financial tool that helps individuals 
+          and businesses understand the real cost of borrowing. Whether you are 
+          taking a personal loan, home loan, car loan, or business loan, it is 
+          crucial to calculate monthly payments, total interest payable, and the 
+          long-term impact on your budget. This tool uses the standard amortization 
+          formula (PMT) to break down monthly payments into principal and interest 
+          components, giving you complete transparency before you commit to a loan.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Calculate monthly loan payments</li>
-          <li>Show total interest and principal breakdown</li>
-          <li>Generate amortization schedules</li>
-          <li>Financial insights and recommendations</li>
-          <li>Easy copy to clipboard</li>
+          <li>Instant calculation of monthly loan payments</li>
+          <li>Clear breakdown of principal and interest</li>
+          <li>Automatic generation of amortization schedule</li>
+          <li>Shows total payment and total interest</li>
+          <li>Financial insights for smarter decision-making</li>
+          <li>Runs 100% in your browser — private & secure</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter the loan amount you want to borrow.</li>
-          <li>Set the annual interest rate for the loan.</li>
-          <li>Choose the loan term in years.</li>
-          <li>Click <strong>Calculate Loan</strong> to see the results.</li>
+          <li>Enter the loan amount (principal) you want to borrow.</li>
+          <li>Input the annual interest rate offered by your lender.</li>
+          <li>Enter the loan term in years.</li>
+          <li>Click <strong>Calculate Loan</strong> to generate results.</li>
+          <li>Review monthly payment, total interest, and amortization schedule.</li>
+          <li>Copy the results for planning or financial discussions.</li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+        <h4 className="font-semibold mt-4 mb-1">📦 Common Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Mortgage and home loan planning</li>
-          <li>Personal and auto loan analysis</li>
-          <li>Financial planning and budgeting</li>
-          <li>Loan comparison and decision-making</li>
+          <li><strong>Home Loans:</strong> Estimate monthly mortgage payments and total cost of home ownership.</li>
+          <li><strong>Car Loans:</strong> Compare financing options for new or used vehicles.</li>
+          <li><strong>Personal Loans:</strong> Understand repayment burden before consolidating debt or funding expenses.</li>
+          <li><strong>Business Loans:</strong> Calculate borrowing costs for expansion, equipment, or working capital.</li>
+          <li><strong>Loan Comparisons:</strong> Quickly analyze multiple offers from banks or lenders.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">⚡ Why Loan Calculations Matter</h4>
+        <p className="text-gray-700 mb-4 text-sm">
+          Many borrowers focus only on the loan amount and interest rate, 
+          but the real impact comes from the monthly installment (EMI) and 
+          the total interest over the loan’s lifetime. For example, a small 
+          difference of 0.5% in interest rate can save you thousands of dollars 
+          over 20 years. Similarly, choosing a longer loan term reduces monthly 
+          payments but significantly increases the total interest you pay. A loan 
+          calculator helps you strike the right balance between affordability and 
+          minimizing interest costs.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">📖 Example Calculation</h4>
+        <pre className="bg-gray-100 p-3 rounded text-sm text-gray-800 overflow-x-auto">
+{`Loan Amount: $50,000
+Interest Rate: 6% annually
+Loan Term: 5 years (60 months)
+
+Monthly Payment: $966.64
+Total Payment: $57,998.40
+Total Interest: $7,998.40
+
+Amortization (First 2 months):
+Month 1 → Principal: $716.64, Interest: $250.00
+Month 2 → Principal: $720.22, Interest: $246.42`}
+        </pre>
+
+        <h4 className="font-semibold mt-4 mb-1">🔒 Security & Privacy</h4>
+        <p className="text-gray-700 mb-4 text-sm">
+          Unlike online loan portals that may save or share your financial 
+          inputs, this calculator works entirely in your browser. No loan 
+          amounts, interest rates, or terms are uploaded to any server. 
+          You can experiment freely with different scenarios without any 
+          risk to your privacy.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">❓ FAQs</h4>
+        <ul className="list-disc list-inside text-sm text-gray-700 space-y-2">
+          <li><strong>Q: Can I use this for mortgages?</strong><br/> 
+          A: Yes, it works for all types of loans including mortgages, auto loans, and personal loans.</li>
+          <li><strong>Q: Does it include taxes or insurance?</strong><br/> 
+          A: No, it only calculates principal and interest. Taxes and insurance vary by region.</li>
+          <li><strong>Q: Can I adjust payment frequency?</strong><br/> 
+          A: This version calculates monthly payments, but advanced versions may include bi-weekly or annual options.</li>
+          <li><strong>Q: How accurate are the results?</strong><br/> 
+          A: The results use the standard PMT amortization formula, which is the same method used by banks.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700 text-sm">
+          Loans are powerful financial tools, but they come with long-term 
+          responsibilities. Understanding how much you will pay every month, 
+          and how much of it goes toward interest, is key to making smart 
+          borrowing decisions. With this loan calculator, you can compare 
+          different loan options, negotiate better terms with lenders, and 
+          avoid financial surprises. Whether you are buying a home, funding 
+          education, or growing a business, this tool ensures you stay in 
+          control of your financial journey.
+        </p>
       </section>
     </ToolSection>
   );

@@ -19,7 +19,7 @@ export default function TextToBase64Page() {
     try {
       // Create a simple Base64 structure from the text
       const lines = text.split('\n');
-      const base64Content = lines.map((line, index) => 
+      const base64Content = lines.map((line, index) =>
         `    "${btoa(line)}"`
       ).join(',\n');
 
@@ -57,7 +57,7 @@ ${base64Content}
     try {
       // Simple Base64 to text conversion
       let extractedText = base64;
-      
+
       // Extract text from Base64 encoded strings
       const base64Matches = extractedText.match(/[A-Za-z0-9+/]{4,}={0,2}/g);
       if (base64Matches) {
@@ -244,35 +244,86 @@ ${base64Content}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to Base64 Converter</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to Base64 code and Base64 to text. This tool helps you create 
-          Base64-encoded strings from plain text and decode Base64-encoded strings back 
-          to text, useful for data transmission and storage.
+          A Text to Base64 Converter is a simple yet powerful tool that helps you
+          convert plain text into Base64-encoded strings and decode Base64 back
+          into human-readable text. Base64 is a binary-to-text encoding scheme
+          that represents binary data in an ASCII string format using only 64
+          printable characters. It is widely used in web development, email
+          transmission, data storage, and APIs to safely transfer binary data
+          such as images, files, or special characters through systems that
+          are only designed to handle text.
+        </p>
+
+        <p className="text-gray-700 mb-4">
+          When you paste text and click <strong>Text to Base64</strong>, this tool
+          instantly generates the Base64 equivalent. Similarly, if you have
+          Base64-encoded content, you can paste it into the Base64 field and
+          convert it back to plain text. Everything happens in your browser,
+          meaning your data stays private and secure without being uploaded
+          to any server.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to Base64 code</li>
-          <li>Decode Base64-encoded strings</li>
-          <li>Character analysis and statistics</li>
-          <li>Base64 formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Instant conversion from text to Base64 and back</li>
+          <li>Safe, browser-based, and fully offline-capable</li>
+          <li>Character analysis and statistics for better insights</li>
+          <li>Base64 validation to avoid incorrect formats</li>
+          <li>One-click copy option for both text and Base64 code</li>
+          <li>Works on any modern device — desktop or mobile</li>
+          <li>Completely free, no signup required</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to Base64</strong>.</li>
-          <li>Or enter Base64 code in the Base64 field and click <strong>Base64 to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Enter text in the <strong>Text</strong> field.</li>
+          <li>Click <strong>Text to Base64</strong> to generate the encoded string.</li>
+          <li>Copy the Base64 result using the one-click copy button.</li>
+          <li>If you already have Base64 code, paste it into the <strong>Base64</strong> field.</li>
+          <li>Click <strong>Base64 to Text</strong> to decode it back to plain text.</li>
+          <li>Review the character analysis to see statistics like word count, line count, and total characters.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Data transmission and storage</li>
-          <li>Email attachments and MIME</li>
-          <li>Web development and APIs</li>
-          <li>Text to code conversion</li>
+          <li><strong>Email Attachments (MIME):</strong> Base64 is often used to encode binary attachments such as images and documents in emails.</li>
+          <li><strong>Web Development:</strong> Developers embed Base64-encoded images directly into HTML or CSS files for optimization.</li>
+          <li><strong>APIs and Data Transfer:</strong> JSON and XML APIs use Base64 to safely transmit binary data over text-only protocols.</li>
+          <li><strong>File Storage:</strong> Base64 helps store small binary files or credentials in configuration files.</li>
+          <li><strong>Security:</strong> Although not encryption, Base64 provides a layer of obfuscation for sensitive strings.</li>
+          <li><strong>Testing & Debugging:</strong> Developers frequently convert text to Base64 for debugging authentication tokens or encoded data.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📊 Why Base64 is Important</h4>
+        <p className="text-gray-700 mb-4">
+          Base64 plays a crucial role in ensuring that binary data can travel
+          across systems that were originally designed only for text. For example,
+          early email protocols could not handle binary attachments directly,
+          which is why Base64 became the standard for encoding images and files.
+          In modern times, Base64 is widely used in APIs, authentication systems,
+          and data URLs in web browsers. Understanding Base64 helps developers
+          work with APIs, secure tokens, and cross-platform data sharing.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Is Base64 encryption?</strong> No. Base64 is encoding, not encryption. It is not meant to secure data, only to represent it safely in text format.</li>
+          <li><strong>Why is Base64 longer than the original text?</strong> Base64 encoding increases data size by ~33% because binary is represented using only ASCII characters.</li>
+          <li><strong>What characters are used in Base64?</strong> It uses A–Z, a–z, 0–9, +, and / for encoding, plus = as padding.</li>
+          <li><strong>Can Base64 handle Unicode text?</strong> Yes, but you need to make sure the text is properly encoded (e.g., UTF-8) before converting.</li>
+          <li><strong>Is Base64 still used today?</strong> Yes, especially in JSON APIs, OAuth tokens, JWTs, email attachments, and embedded images.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to Base64 Converter is a fast, reliable, and secure way to
+          handle encoding and decoding tasks online. Whether you are a developer
+          embedding data in your web project, a student learning about encoding
+          schemes, or a professional working with APIs and secure tokens, this
+          tool provides instant results with complete privacy. Next time you
+          encounter Base64 code or need to transmit data safely, this converter
+          will be your go-to solution.
+        </p>
       </section>
     </ToolSection>
   );

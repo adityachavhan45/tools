@@ -222,28 +222,115 @@ export default function PngToJpgPage() {
             About PNG to JPG Tool
           </h3>
           <p className="text-gray-700 mb-4">
-            This free online tool converts PNG images into JPG format directly
-            in your browser. JPG images are smaller in size and widely supported
-            across devices and platforms. Your images are processed locally,
-            keeping them private and secure.
+            The PNG to JPG converter is a free, browser-based tool that helps you
+            quickly transform images from PNG format into JPG format. This conversion
+            is often required because JPG files are lighter, faster to share, and
+            widely supported across almost every device, browser, and platform. With
+            this tool, you don’t need to install heavy software like Photoshop or GIMP.
+            Everything runs locally on your browser, which means your files stay
+            private and secure.
+          </p>
+
+          <p className="text-gray-700 mb-4">
+            PNG (Portable Network Graphics) images are known for their ability to
+            support transparency and high-quality visuals, but they often result in
+            larger file sizes. JPG (or JPEG) images, on the other hand, use compression
+            to reduce file size while keeping the visual quality acceptable for most
+            uses. By converting PNG to JPG, you make your images easier to upload to
+            websites, faster to send via email, and more suitable for social media or
+            mobile storage.
           </p>
 
           <h4 className="font-semibold mt-4 mb-2">✨ Key Features</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Convert PNG to JPG in seconds</li>
-            <li>Adjust output quality with slider</li>
-            <li>Preserve transparency with white background</li>
-            <li>Preview before conversion</li>
-            <li>Instant download option</li>
+            <li>Convert PNG to JPG instantly without software installation</li>
+            <li>Adjustable quality slider to balance size and clarity</li>
+            <li>White background applied where transparency existed</li>
+            <li>Supports multiple file uploads and batch conversion</li>
+            <li>Preview your images before downloading</li>
+            <li>Secure and private — no files are uploaded to servers</li>
           </ul>
 
           <h4 className="font-semibold mt-5 mb-2">🔧 How to Use</h4>
           <ol className="list-decimal list-inside text-gray-700 space-y-1">
-            <li>Select one or more PNG files from your device</li>
-            <li>Adjust quality using the slider</li>
-            <li>Click <strong>Convert</strong> to generate JPG images</li>
-            <li>Preview and download your converted JPG files</li>
+            <li>Drag & drop PNG files into the converter or use the browse option.</li>
+            <li>Preview the selected images in the gallery grid.</li>
+            <li>Adjust the quality slider (from 30% to 100%) to control output size.</li>
+            <li>Click <strong>Convert</strong> and wait a few seconds.</li>
+            <li>Download the generated JPG files individually or save them directly.</li>
           </ol>
+
+          <h4 className="font-semibold mt-5 mb-2">📦 Practical Use Cases</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-1">
+            <li>
+              <strong>Web Optimization:</strong> Use JPG images on websites to make
+              them load faster and improve SEO performance.
+            </li>
+            <li>
+              <strong>Email Attachments:</strong> Convert PNGs to smaller JPGs before
+              sending via email to reduce attachment size.
+            </li>
+            <li>
+              <strong>Social Media Uploads:</strong> Platforms like Facebook,
+              Instagram, and Twitter prefer compressed JPGs for faster sharing.
+            </li>
+            <li>
+              <strong>Mobile Storage:</strong> Save space on smartphones by converting
+              heavy PNGs into compact JPG files.
+            </li>
+            <li>
+              <strong>Photography:</strong> Share high-quality but lightweight JPGs
+              instead of bulky PNGs for quick transfers.
+            </li>
+          </ul>
+
+          <h4 className="font-semibold mt-5 mb-2">💡 Why Convert PNG to JPG?</h4>
+          <p className="text-gray-700 mb-4">
+            Many users wonder why they should convert PNG files to JPG. The main reason
+            is efficiency. PNG files preserve every pixel and are excellent for logos,
+            transparent images, and editing workflows. But once editing is complete,
+            converting to JPG makes sharing and hosting more practical. JPG files can
+            be compressed up to 90% smaller than PNGs, while still looking visually
+            good on most screens. This reduces bandwidth usage and improves page
+            loading speed.
+          </p>
+
+          <h4 className="font-semibold mt-5 mb-2">🙋 Frequently Asked Questions</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>
+              <strong>Will transparency be preserved?</strong> No. JPG format doesn’t
+              support transparency. Transparent areas will be filled with a white
+              background.
+            </li>
+            <li>
+              <strong>Is this tool free?</strong> Yes, it’s completely free to use with
+              no hidden charges.
+            </li>
+            <li>
+              <strong>Can I convert multiple PNG files at once?</strong> Yes, batch
+              conversion is supported. Just select multiple files.
+            </li>
+            <li>
+              <strong>Does it work offline?</strong> Once loaded, yes. Since the tool
+              runs in your browser, it works without internet for the session.
+            </li>
+            <li>
+              <strong>Is my data safe?</strong> 100%. All processing is local, so your
+              files never leave your device.
+            </li>
+          </ul>
+
+          <h4 className="font-semibold mt-5 mb-2">🚀 Final Thoughts</h4>
+          <p className="text-gray-700">
+            This PNG to JPG converter is a handy utility for anyone working with
+            images. Whether you’re a designer, a blogger, a student, or a business
+            professional, there will always be times when you need to reduce image size
+            without compromising too much on quality. Instead of downloading heavy
+            software or paying for online services, you can use this free, secure, and
+            instant tool directly in your browser. Converting images has never been
+            simpler. Try it today and experience the convenience of lightweight, fast,
+            and user-friendly image conversion.
+          </p>
         </section>
       </div>
     </main>

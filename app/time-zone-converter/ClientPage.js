@@ -51,13 +51,13 @@ export default function TimeZoneConverterPage() {
 
       const fromOffset = timeZones[fromZone] || 0;
       const toOffset = timeZones[toZone] || 0;
-      
+
       // Convert to UTC first
       const utcTime = new Date(timeValue.getTime() - (fromOffset * 60 * 60 * 1000));
-      
+
       // Convert to target timezone
       const targetTime = new Date(utcTime.getTime() + (toOffset * 60 * 60 * 1000));
-      
+
       const resultTime = targetTime.toTimeString().slice(0, 5);
 
       const resultText = `# Time Zone Conversion
@@ -264,34 +264,83 @@ ${resultTime} ${toZone}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Time Zone Conversion</h3>
         <p className="text-gray-700 mb-4">
-          Convert time between different time zones for international communication and scheduling. This tool helps you 
-          convert time zones, useful for business, travel, and global communication.
+          A time zone converter is a practical tool that allows users to
+          quickly translate time from one region to another. In today’s
+          interconnected world, people work, travel, and communicate across
+          borders more than ever before. Whether you are scheduling a business
+          meeting, attending a virtual event, or planning a flight, accurate
+          time zone conversion ensures that you never miss an important
+          commitment. This tool helps you handle global time differences
+          without the hassle of manual calculations or errors.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert between time zones</li>
-          <li>Multiple time zone support</li>
-          <li>High-precision calculations</li>
-          <li>International time zones</li>
-          <li>Easy copy to clipboard</li>
+          <li>Convert time instantly between multiple time zones</li>
+          <li>Support for standard and daylight saving variations (e.g., EST vs EDT)</li>
+          <li>Precise offset calculations to ensure accuracy</li>
+          <li>Human-friendly interface with easy-to-use dropdowns</li>
+          <li>Copy conversion results with a single click</li>
+          <li>Works on any device – desktop, tablet, or mobile</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter the time in HH:MM format.</li>
-          <li>Select from and to time zones.</li>
-          <li>Click <strong>Convert Time Zone</strong> to process.</li>
-          <li>Copy the converted time.</li>
+          <li>Enter the time you want to convert in HH:MM format.</li>
+          <li>Select the source time zone (the region you are starting from).</li>
+          <li>Choose the target time zone (the region you want to convert to).</li>
+          <li>Click <strong>Convert Time Zone</strong> to see the converted time instantly.</li>
+          <li>Use the copy button to save the results for emails, calendars, or notes.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>International business and communication</li>
-          <li>Travel and scheduling</li>
-          <li>Global meetings and events</li>
-          <li>Time zone coordination</li>
+          <li><strong>International Business:</strong> Schedule virtual meetings with teams in the US, Europe, or Asia without confusion.</li>
+          <li><strong>Travel Planning:</strong> Check arrival and departure times across airports located in different zones.</li>
+          <li><strong>Global Events:</strong> Join webinars, online classes, or live sports events broadcast worldwide at the right time.</li>
+          <li><strong>Remote Work:</strong> Manage distributed teams by aligning calendars across different time zones.</li>
+          <li><strong>Personal Communication:</strong> Call friends and family abroad at convenient times.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Why Time Zones Matter</h4>
+        <p className="text-gray-700 mb-4">
+          Time zones exist to standardize time across regions of the Earth.
+          Since the planet rotates, the position of the sun varies throughout
+          the day depending on where you are. Without time zones, coordinating
+          activities across cities and countries would be chaotic. Currently,
+          there are more than 24 major time zones, many of which also adjust
+          twice a year for Daylight Saving Time (DST). This makes manual
+          conversion tricky, especially when dealing with regions that
+          transition at different dates or do not observe DST at all.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Examples</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-1">
+          <li>10:00 AM in New York (EST) → 3:00 PM in London (GMT)</li>
+          <li>6:00 PM in Tokyo (JST) → 2:00 AM in Los Angeles (PST)</li>
+          <li>9:30 AM in New Delhi (IST) → 12:00 PM in Singapore (SGT)</li>
+          <li>11:00 PM in Sydney (AEST) → 1:00 PM in Berlin (CET)</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Does the tool account for Daylight Saving Time?</strong> Yes, it includes both standard and daylight variations like EST/EDT or PST/PDT.</li>
+          <li><strong>Is the conversion accurate?</strong> The tool uses UTC offsets for precise and reliable results.</li>
+          <li><strong>Can I use this for flights?</strong> Absolutely, but always double-check with the airline since schedules may include local DST rules.</li>
+          <li><strong>How many zones are supported?</strong> The converter supports all major world zones including IST, GMT, JST, EST, and more.</li>
+          <li><strong>Do I need to install anything?</strong> No, the converter works directly in your browser.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Time Zone Converter is an essential utility for anyone working or
+          living in a global environment. It simplifies scheduling, reduces
+          mistakes, and ensures smoother communication across borders. Whether
+          you are a business professional, traveler, student, or remote worker,
+          this tool saves time and removes the complexity of calculating time
+          differences manually. Try it now to convert time zones with ease
+          and accuracy.
+        </p>
       </section>
     </ToolSection>
   );

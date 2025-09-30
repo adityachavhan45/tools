@@ -199,38 +199,142 @@ ${hashValue}
         </div>
       </div>
 
-      {/* Info Section */}
+            {/* Info Section */}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Hash Generation</h3>
         <p className="text-gray-700 mb-4">
-          Generate cryptographic hash values for data security and integrity. This tool helps you 
-          create hash values, useful for password hashing, data integrity, and cryptographic applications.
+          A hash function is a mathematical algorithm that converts any input
+          (text, file, or data) into a fixed-length string of characters, which
+          usually appears random. This output is called a hash value or digest.
+          Hashing plays a crucial role in data security, cryptography, password
+          protection, blockchain, and file verification. Unlike encryption,
+          hashing is a one-way process, meaning that once data is hashed, it
+          cannot be reversed to its original form. This property makes hash
+          functions highly useful for ensuring data integrity and building
+          secure systems.
         </p>
 
-        <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Generate cryptographic hash values</li>
-          <li>Multiple hash algorithms</li>
-          <li>High-security hash generation</li>
-          <li>Data integrity and validation</li>
-          <li>Easy copy to clipboard</li>
+        <h4 className="font-semibold mt-4 mb-1">✨ Key Features of This Tool</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Multiple algorithms:</strong> Supports MD5, SHA-1, SHA-256,
+            SHA-512, and modern secure algorithms like BLAKE2b and BLAKE2s.
+          </li>
+          <li>
+            <strong>Quick generation:</strong> Instantly generate hash values
+            from any input text without the need for external libraries.
+          </li>
+          <li>
+            <strong>Data security:</strong> Provides cryptographic-level
+            security for validating and protecting sensitive information.
+          </li>
+          <li>
+            <strong>Cross-platform use:</strong> Generated hashes can be used in
+            web apps, databases, APIs, or local scripts.
+          </li>
+          <li>
+            <strong>Simple interface:</strong> Easy to use for beginners yet
+            powerful enough for developers and cybersecurity professionals.
+          </li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter or paste text to hash.</li>
-          <li>Select the hash algorithm.</li>
-          <li>Click <strong>Generate Hash</strong> to process.</li>
-          <li>Copy the generated hash value.</li>
+        <ol className="list-decimal list-inside text-gray-700 space-y-2">
+          <li>Enter or paste the text you want to hash.</li>
+          <li>Select the algorithm you want to use (e.g., SHA-256).</li>
+          <li>Click the <strong>Generate Hash</strong> button.</li>
+          <li>Copy the generated hash value and use it as needed.</li>
+          <li>Optionally, compare with another hash to check integrity.</li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Password hashing and security</li>
-          <li>Data integrity and validation</li>
-          <li>Cryptographic applications</li>
-          <li>Security and authentication</li>
+        <h4 className="font-semibold mt-4 mb-1">📦 Practical Use Cases</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Password storage:</strong> Websites and applications store
+            passwords as hashes instead of plain text for enhanced security.
+          </li>
+          <li>
+            <strong>Data integrity checks:</strong> Hash values can verify
+            whether files have been modified or corrupted during transfer.
+          </li>
+          <li>
+            <strong>Blockchain technology:</strong> Cryptocurrencies like
+            Bitcoin use hashing to secure transactions and link blocks.
+          </li>
+          <li>
+            <strong>Digital signatures:</strong> Hashing is part of signing
+            mechanisms that authenticate documents and software.
+          </li>
+          <li>
+            <strong>API authentication:</strong> Developers use hash-based
+            tokens to securely communicate between systems.
+          </li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📖 Understanding Hash Algorithms</h4>
+        <p className="text-gray-700 mb-4">
+          Different algorithms provide different levels of security and
+          performance:
+        </p>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>MD5:</strong> Generates 128-bit hashes, fast but no longer
+            considered secure due to vulnerabilities.
+          </li>
+          <li>
+            <strong>SHA-1:</strong> Produces 160-bit hashes, but deprecated for
+            secure applications.
+          </li>
+          <li>
+            <strong>SHA-256:</strong> A popular 256-bit hash function used in
+            SSL certificates, cryptocurrency, and data verification.
+          </li>
+          <li>
+            <strong>SHA-512:</strong> A 512-bit variant of the SHA-2 family,
+            offering very strong security but larger output size.
+          </li>
+          <li>
+            <strong>BLAKE2b / BLAKE2s:</strong> Modern algorithms designed to be
+            faster and more secure than SHA, widely used in blockchain and
+            password hashing.
+          </li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Everyday Benefits</h4>
+        <p className="text-gray-700 mb-4">
+          Hashing is not just for developers or cybersecurity experts—it
+          benefits everyone. When you download software, the publisher often
+          provides a hash value to confirm the file’s integrity. Students can
+          use hashing to understand data security concepts. Businesses rely on
+          hashing to secure customer data and financial records. Even casual
+          users may unknowingly benefit from hashing when they use secure
+          messaging apps or online banking systems that protect data using hash
+          functions.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">⚠️ Limitations and Best Practices</h4>
+        <p className="text-gray-700 mb-4">
+          Hashing alone does not guarantee complete security. For example,
+          storing passwords with just MD5 or SHA-1 is unsafe because attackers
+          can use precomputed hash tables (rainbow tables). Best practices
+          include using strong algorithms like SHA-256 or BLAKE2, applying
+          salting techniques, and combining hashing with encryption where
+          necessary. Always keep in mind that hashing is one component of a
+          larger security strategy.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Final Thoughts</h4>
+        <p className="text-gray-700">
+          A Hash Generator is a powerful utility for anyone working with
+          security, data integrity, or cryptography. It transforms simple text
+          into secure, fixed-length values that cannot be reversed, making it
+          essential for authentication and verification. Whether you are a
+          developer securing user data, an analyst validating file integrity, or
+          just a learner exploring cybersecurity, this tool offers a fast and
+          reliable way to generate hashes. By understanding and applying hashing
+          correctly, you strengthen your digital security and protect sensitive
+          information in today’s data-driven world.
+        </p>
       </section>
     </ToolSection>
   );

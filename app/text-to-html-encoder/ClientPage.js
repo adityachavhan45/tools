@@ -19,7 +19,7 @@ export default function TextToHtmlEncoderPage() {
     try {
       // Create a simple HTML structure from the text
       const lines = text.split('\n');
-      const htmlContent = lines.map((line, index) => 
+      const htmlContent = lines.map((line, index) =>
         `    <p>${line.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`
       ).join('\n');
 
@@ -68,7 +68,7 @@ ${htmlContent}
     try {
       // Simple HTML to text conversion
       let extractedText = html;
-      
+
       // Extract text from HTML elements
       const htmlMatches = extractedText.match(/<[^>]*>([^<]*)<\/[^>]*>/g);
       if (htmlMatches) {
@@ -257,35 +257,80 @@ ${htmlContent}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to HTML Encoder</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to HTML code and HTML to text. This tool helps you create 
-          structured HTML code from plain text and extract text content from HTML 
-          files, useful for web development and content management.
+          A Text to HTML Encoder is a lightweight yet powerful tool that allows you to
+          convert plain text into structured HTML code, and also decode HTML code back
+          into clean, readable text. HTML (HyperText Markup Language) is the standard
+          markup language used for creating web pages, email templates, and digital
+          documents. By using this encoder, you can quickly transform content into
+          browser-ready HTML with proper formatting, semantic tags, and entity encoding.
+          For example, symbols like <code>&lt;</code> or <code>&amp;</code> are automatically
+          converted into safe HTML entities to ensure they display correctly on websites.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to HTML code</li>
-          <li>Extract text from HTML files</li>
-          <li>Character analysis and statistics</li>
-          <li>HTML formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Convert plain text into structured HTML paragraphs and tags</li>
+          <li>Decode HTML code back into clean, readable text instantly</li>
+          <li>Automatic escaping of special characters (&, &lt;, &gt;)</li>
+          <li>Character statistics: line count, word count, and character count</li>
+          <li>Copy results with a single click for use in projects</li>
+          <li>Works directly in your browser, no server needed</li>
+          <li>Supports multi-line text, comments, and entity decoding</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to HTML</strong>.</li>
-          <li>Or enter HTML code in the HTML field and click <strong>HTML to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Type or paste your text into the <strong>Text</strong> field.</li>
+          <li>Click the <strong>Text to HTML</strong> button to generate HTML code.</li>
+          <li>To reverse, paste HTML markup into the <strong>HTML</strong> field and
+            click <strong>HTML to Text</strong>.</li>
+          <li>Use the copy buttons to quickly copy your results.</li>
+          <li>Review the character analysis section for insights about your input.</li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+        <h4 className="font-semibold mt-4 mb-1">📦 Common Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Web development and design</li>
-          <li>Content management systems</li>
-          <li>Email templates and newsletters</li>
-          <li>Text to code conversion</li>
+          <li><strong>Web Development:</strong> Generate clean HTML structure for web pages and apps.</li>
+          <li><strong>Email Marketing:</strong> Encode newsletters and templates for consistent rendering.</li>
+          <li><strong>Content Management:</strong> Safely paste raw text into CMS platforms without breaking formatting.</li>
+          <li><strong>Programming & Debugging:</strong> Test how text and entities render in HTML.</li>
+          <li><strong>Education:</strong> Learn how browsers interpret HTML entities and tags.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📊 Why HTML Encoding Matters</h4>
+        <p className="text-gray-700 mb-4">
+          Raw text often contains characters that conflict with HTML syntax, such as
+          <code>&lt;</code>, <code>&gt;</code>, and <code>&amp;</code>. Without proper encoding,
+          these symbols may break layouts or create security risks (like XSS vulnerabilities).
+          HTML encoding ensures that special characters are safely represented, allowing your
+          content to display exactly as intended. This is especially important for blogs,
+          forums, and dynamic content systems where user input must be sanitized.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>What is HTML encoding?</strong> It is the process of replacing special
+            characters with HTML entities so that they display correctly in browsers.</li>
+          <li><strong>Can this tool decode HTML?</strong> Yes, it extracts readable text from
+            encoded or structured HTML code.</li>
+          <li><strong>Is this tool secure?</strong> Absolutely. All conversions happen in your
+            browser locally, so no data is uploaded to any server.</li>
+          <li><strong>Does it support large text files?</strong> Yes, but performance may depend
+            on your browser and device memory.</li>
+          <li><strong>Why do I need this tool?</strong> It saves time for developers, designers,
+            students, and marketers who work with raw text and HTML regularly.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to HTML Encoder is an essential utility for anyone working with web
+          content. Whether you are a developer building websites, a marketer designing
+          emails, or a student learning HTML basics, this tool makes encoding and decoding
+          effortless. With instant conversions, character statistics, and copy features,
+          you can streamline your workflow and ensure clean, valid HTML output every time.
+          Try it with any string—like a paragraph, email template, or code snippet—and
+          watch it transform into well-structured HTML instantly.
+        </p>
       </section>
     </ToolSection>
   );

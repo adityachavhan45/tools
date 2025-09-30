@@ -219,35 +219,81 @@ export default function TipCalculatorPage() {
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Tip Calculator</h3>
         <p className="text-gray-700 mb-4">
-          Calculate tips and gratuity for restaurant bills. This tool helps you 
-          determine appropriate tip amounts and split bills among multiple people, 
-          useful for dining out and service payments.
+          A tip calculator is a simple yet essential tool for anyone who dines
+          at restaurants, takes cabs, or uses services where tipping is
+          customary. It helps you quickly determine the right gratuity amount
+          without pulling out your phone’s calculator or doing mental math.
+          Beyond just convenience, it ensures fairness when splitting bills
+          with friends or colleagues. By using this tool, you can avoid
+          under-tipping, over-tipping, or those awkward moments when everyone
+          struggles to calculate their share at the table.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Calculate tip amounts and percentages</li>
-          <li>Split bills among multiple people</li>
-          <li>Multiple tip percentage options</li>
-          <li>Bill splitting and sharing calculations</li>
-          <li>Easy copy to clipboard</li>
+          <li>Automatic tip calculation based on percentage</li>
+          <li>Bill splitting for multiple people</li>
+          <li>Preset percentages like 10%, 15%, 18%, 20%, and 25%</li>
+          <li>Instant breakdown of tip, total, and per-person cost</li>
+          <li>Copy results easily for notes or expense tracking</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter the total bill amount.</li>
-          <li>Select the tip percentage you want to give.</li>
-          <li>Choose the number of people to split the bill.</li>
-          <li>Click <strong>Calculate Tip</strong> to see the results.</li>
+          <li>Enter the total bill amount (before tip).</li>
+          <li>Select your preferred tip percentage from the dropdown.</li>
+          <li>Enter the number of people sharing the bill.</li>
+          <li>Click <strong>Calculate Tip</strong> to see instant results.</li>
+          <li>Copy results if needed for group chats or personal records.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Restaurant dining and service</li>
-          <li>Bill splitting and sharing</li>
-          <li>Service industry payments</li>
-          <li>Financial planning and budgeting</li>
+          <li><strong>Restaurant Dining:</strong> Quickly calculate fair tips when eating out.</li>
+          <li><strong>Group Meals:</strong> Split bills among friends without confusion.</li>
+          <li><strong>Travel:</strong> Use it in hotels, taxis, or tours where tipping is expected.</li>
+          <li><strong>Work Lunches:</strong> Avoid awkward calculations when dining with colleagues.</li>
+          <li><strong>Budgeting:</strong> Plan your expenses by factoring in standard tipping practices.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Tipping Practices Around the World</h4>
+        <p className="text-gray-700 mb-4">
+          Tipping customs vary widely across countries. In the United States,
+          a 15–20% tip is considered standard for good service, while some
+          restaurants automatically include gratuity for large parties. In
+          European countries like France or Italy, service charges are often
+          included in the bill, but rounding up or leaving small change is a
+          polite gesture. In Japan, tipping is generally not expected and may
+          even be considered rude. Understanding local customs is important to
+          avoid awkward situations when traveling.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Example Calculations</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-1">
+          <li>$100 bill + 15% tip = $115 total → $57.50 each for 2 people</li>
+          <li>$75 bill + 20% tip = $90 total → $30 each for 3 people</li>
+          <li>$200 bill + 18% tip = $236 total → $59 each for 4 people</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>What’s the standard tip percentage?</strong> In the US, 15–20% is typical for restaurants.</li>
+          <li><strong>Should I tip before or after tax?</strong> Most people calculate tips before tax, but practices vary.</li>
+          <li><strong>Do delivery drivers expect tips?</strong> Yes, tipping 10–15% is common for food delivery services.</li>
+          <li><strong>Can this calculator handle large groups?</strong> Yes, just enter the total number of people and it will split the bill evenly.</li>
+          <li><strong>What if service was poor?</strong> Tipping is optional, but you can lower the percentage or provide feedback instead.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Tip Calculator is a quick, reliable, and user-friendly tool for
+          anyone who dines out or uses services where gratuity is expected. It
+          saves time, prevents errors, and ensures fairness when splitting
+          bills. Whether you’re traveling abroad, budgeting at home, or
+          planning a group dinner, this calculator makes tipping stress-free.
+          Try it now and make your dining experiences smoother and more
+          enjoyable.
+        </p>
       </section>
     </ToolSection>
   );

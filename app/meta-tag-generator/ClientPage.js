@@ -198,47 +198,99 @@ export default function MetaTagGeneratorPage() {
           </div>
         )}
 
-        {/* Info Section */}
+                {/* Info Section */}
         <section className="mt-12 bg-white border rounded-lg p-6 shadow-sm">
           <h3 className="text-lg font-semibold mb-2">About Meta Tag Generator</h3>
           <p className="text-gray-700 mb-4">
-            Meta tags are snippets of text that describe a page’s content. They
-            don’t appear on the page itself but in the page’s code. This tool
-            helps you generate SEO-friendly meta tags along with Open Graph and
-            Twitter cards, improving how your website appears in search engines
-            and social media previews.
+            Meta tags are small pieces of HTML code placed inside the &lt;head&gt; section of a webpage. 
+            They provide metadata about the page, such as title, description, author, and preview images. 
+            While meta tags are not visible directly to website visitors, they are extremely important for 
+            search engines, social media platforms, and overall website SEO performance. A well-optimized 
+            meta tag can significantly improve click-through rates, visibility in search results, and user 
+            engagement on platforms like Facebook, Twitter, and LinkedIn.
           </p>
 
-          <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
+          <h4 className="font-semibold mt-4 mb-1">✨ Key Features of This Tool</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Generate SEO title, description, and keywords tags</li>
-            <li>Open Graph tags for Facebook and LinkedIn</li>
-            <li>Twitter Card tags for rich previews</li>
-            <li>Copy or download meta tags instantly</li>
-            <li>Preview how your content will look on social media</li>
+            <li>Generate SEO-friendly title, description, and keyword tags instantly</li>
+            <li>Automatic Open Graph (OG) tags for Facebook, LinkedIn, and other platforms</li>
+            <li>Twitter Card tags for rich previews when sharing on X (Twitter)</li>
+            <li>Clean and copy-paste ready HTML output</li>
+            <li>Download option for quick integration into projects</li>
+            <li>Real-time social card preview to visualize how your link will appear</li>
           </ul>
 
           <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
           <ol className="list-decimal list-inside text-gray-700 space-y-1">
-            <li>Enter your page title, description, and keywords.</li>
-            <li>Add your website URL and an image URL for rich previews.</li>
-            <li>
-              Click <strong>Copy</strong> to copy the code or{" "}
-              <strong>Download</strong> to save it.
-            </li>
-            <li>
-              Paste the generated tags inside the <code>&lt;head&gt;</code> of
-              your webpage.
-            </li>
+            <li>Enter your page <strong>title</strong> (ideally 50–60 characters).</li>
+            <li>Write a compelling <strong>meta description</strong> (150–160 characters).</li>
+            <li>Add a list of <strong>keywords</strong> relevant to your content.</li>
+            <li>Provide the canonical <strong>URL</strong> of your webpage.</li>
+            <li>Include an <strong>image URL</strong> for social previews (recommended 1200×630px).</li>
+            <li>Click <strong>Copy</strong> to copy the code or <strong>Download</strong> for offline use.</li>
+            <li>Paste the generated code into your site’s &lt;head&gt; section.</li>
           </ol>
 
           <h4 className="font-semibold mt-4 mb-1">📦 Practical Use Cases</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Improve SEO for blogs and websites</li>
-            <li>Create rich previews for social media sharing</li>
-            <li>Optimize click-through rate from search engines</li>
-            <li>Generate meta tags for client websites quickly</li>
+            <li><strong>Bloggers & Content Writers:</strong> Improve SEO ranking with optimized titles and descriptions.</li>
+            <li><strong>Digital Marketers:</strong> Generate shareable content previews that attract clicks on social platforms.</li>
+            <li><strong>Web Developers:</strong> Quickly generate standard meta tags for new websites.</li>
+            <li><strong>E-commerce Sites:</strong> Ensure product pages show correct images and descriptions on Google & Facebook.</li>
+            <li><strong>Agencies & Freelancers:</strong> Save time creating meta tags for multiple client websites.</li>
           </ul>
+
+          <h4 className="font-semibold mt-4 mb-1">📖 Why Meta Tags Matter for SEO</h4>
+          <p className="text-gray-700 mb-4 text-sm">
+            Search engines like Google use meta tags to understand your webpage content. A strong 
+            meta title and description can increase the chances of appearing in relevant searches. 
+            For example, if your blog post is about &quot;Best Smartphones 2025&quot;, an optimized meta title 
+            containing that phrase will help you rank higher. Meta descriptions act like ad copy in 
+            search results—they don’t directly affect ranking, but they strongly influence whether 
+            a user clicks your link.
+          </p>
+
+          <h4 className="font-semibold mt-4 mb-1">⚡ Benefits of Using a Meta Tag Generator</h4>
+          <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
+            <li>Saves time compared to writing meta tags manually</li>
+            <li>Reduces human error with pre-formatted HTML</li>
+            <li>Ensures compatibility with major social networks</li>
+            <li>Improves click-through rate (CTR) from search results</li>
+            <li>Makes your content more shareable and engaging</li>
+          </ul>
+
+          <h4 className="font-semibold mt-4 mb-1">📊 Example Generated Meta Tags</h4>
+          <pre className="bg-gray-100 p-3 rounded text-sm text-gray-800 overflow-x-auto">
+{`<title>Best Smartphones 2025 - Tech Review</title>
+<meta name="description" content="Discover the top smartphones of 2025 with features, pricing, and expert reviews."/>
+<meta name="keywords" content="smartphones 2025, mobile phones, best phones, tech reviews"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://example.com/smartphones-2025"/>
+<meta property="og:title" content="Best Smartphones 2025 - Tech Review"/>
+<meta property="og:description" content="Discover the top smartphones of 2025 with features, pricing, and expert reviews."/>
+<meta property="og:image" content="https://example.com/phone.jpg"/>`}
+          </pre>
+
+          <h4 className="font-semibold mt-4 mb-1">❓ FAQs</h4>
+          <ul className="list-disc list-inside text-sm text-gray-700 space-y-2">
+            <li><strong>Q: Are keywords meta tags still useful?</strong><br/> 
+            A: Google no longer uses them for ranking, but some smaller search engines may still consider them. It’s safe to include them.</li>
+            <li><strong>Q: What is the ideal title length?</strong><br/> 
+            A: Keep titles between 50–60 characters for best display in Google SERPs.</li>
+            <li><strong>Q: What image size is best for Open Graph?</strong><br/> 
+            A: 1200×630 pixels is recommended for rich previews across most social platforms.</li>
+            <li><strong>Q: Can I use this tool for multiple pages?</strong><br/> 
+            A: Yes, simply enter new details and generate fresh tags for each page.</li>
+          </ul>
+
+          <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+          <p className="text-gray-700 text-sm">
+            Meta tags may seem like small details, but they play a huge role in SEO and online marketing. 
+            With this Meta Tag Generator, you can create optimized tags in seconds and ensure your content 
+            looks perfect on Google, Facebook, LinkedIn, and Twitter. Whether you’re a blogger, a developer, 
+            or a business owner, this tool simplifies the process and helps you maximize your online reach.
+          </p>
         </section>
       </div>
     </main>

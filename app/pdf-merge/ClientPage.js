@@ -181,35 +181,106 @@ export default function PdfMergePage() {
       <section className="mt-12 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl shadow-sm">
         <h3 className="text-lg sm:text-xl font-semibold mb-3 text-blue-900">About PDF Merge Tool</h3>
         <p className="text-gray-700 mb-4 leading-relaxed">
-          This free PDF Merge tool allows you to combine multiple PDF files into
-          one single document. Everything runs directly in your browser, so your
-          files remain private and secure without uploading them to any server.
+          PDFs have become the standard format for sharing digital documents because they
+          preserve formatting, fonts, and design across all devices. Whether you are sending
+          reports, contracts, scanned pages, or study materials, PDF ensures consistency and
+          reliability. However, managing multiple PDFs can often become messy. Imagine having
+          a report split into separate files, or lecture notes scattered across multiple PDFs.
+          In such cases, combining them into one file makes everything more organized and
+          easier to share. That is exactly what this PDF Merge tool is built for.
+        </p>
+
+        <p className="text-gray-700 mb-4 leading-relaxed">
+          Unlike many online services that require you to upload files to a server,
+          this tool runs entirely inside your browser. That means no document ever leaves
+          your device. Your PDFs remain private and secure, which is especially important
+          for sensitive information like business contracts, financial statements, or
+          personal documents. The merging process happens quickly and efficiently using
+          client side technology, so you can combine your files instantly without waiting
+          for long uploads or downloads.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Merge multiple PDFs into one instantly</li>
-          <li>Runs locally in your browser – no uploads</li>
-          <li>Fast and secure with client-side processing</li>
-          <li>Simple file input and one-click download</li>
-          <li>Works offline once loaded</li>
+          <li>Merge multiple PDF files into one single document instantly</li>
+          <li>Runs locally in your browser with no uploads to any server</li>
+          <li>Fast and secure client side processing</li>
+          <li>Simple drag and drop file input with one click download</li>
+          <li>Works even when offline once the page is loaded</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
           <li>Select two or more PDF files from your device.</li>
-          <li>Click <strong>Merge & Download</strong> to combine them.</li>
-          <li>Wait for processing and download the merged PDF.</li>
-          <li>Use <strong>Reset</strong> to clear selection and start fresh.</li>
+          <li>Review the file list to confirm the order.</li>
+          <li>Click <strong>Merge and Download</strong> to process the files.</li>
+          <li>Wait for the merge to finish and download your new single PDF.</li>
+          <li>Use <strong>Reset</strong> if you want to clear and start again.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Practical Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Combine reports, invoices, or bills into one file</li>
-          <li>Merge lecture notes and study materials</li>
-          <li>Keep scanned pages together in a single PDF</li>
-          <li>Quickly join contracts or agreements</li>
+          <li><strong>Business Documents:</strong> Combine invoices, receipts, or contracts into one file for easy sharing.</li>
+          <li><strong>Education:</strong> Merge lecture notes, e books, or scanned assignments into a single PDF.</li>
+          <li><strong>Legal and Government:</strong> Keep official forms and agreements together for proper record keeping.</li>
+          <li><strong>Personal Use:</strong> Combine scanned family documents, certificates, or travel records into one organized file.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🔒 Why Merge PDFs Locally</h4>
+        <p className="text-gray-700 mb-4 leading-relaxed">
+          Many free PDF merge websites exist, but they usually require uploading your
+          documents to a server. This is not ideal when dealing with private or
+          sensitive information. By merging PDFs directly in your browser, your files
+          never leave your computer. This ensures that confidential data such as
+          business contracts, identification documents, or financial reports stay safe.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">⚡ Benefits of a Single PDF</h4>
+        <p className="text-gray-700 mb-4 leading-relaxed">
+          Merging PDFs brings multiple benefits. A single file is easier to share by
+          email or upload to websites that limit the number of attachments. It also
+          reduces confusion for readers, since they only need to open one file instead
+          of multiple. For students, merging notes makes revision faster. For businesses,
+          it ensures professionalism when sending proposals or reports to clients.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🚫 Common Problems Without Merging</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-1">
+          <li>Sending multiple files separately increases the chance of missed pages.</li>
+          <li>Large projects get disorganized if spread across too many PDFs.</li>
+          <li>Clients or teachers may find it inconvenient to download and open several files.</li>
+          <li>Long term storage becomes harder when related documents are split.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📖 Best Practices</h4>
+        <p className="text-gray-700 mb-4 leading-relaxed">
+          When merging PDFs, always check the order of your files. Rename them
+          appropriately before selecting so they appear in the right sequence.
+          Keep an unmerged backup of your original files, in case you need them
+          later. After merging, consider compressing the resulting PDF if the file
+          size becomes too large. This makes sharing and storage even easier.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Who Can Benefit</h4>
+        <p className="text-gray-700 mb-4 leading-relaxed">
+          Students, teachers, business professionals, lawyers, freelancers,
+          researchers, and even casual users can benefit from a PDF merge tool.
+          Anyone who works with documents regularly will find it useful to
+          consolidate multiple files into one. It saves time, reduces clutter,
+          and makes communication more efficient.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">⚡ Conclusion</h4>
+        <p className="text-gray-700 leading-relaxed">
+          A reliable PDF Merge tool is a must have for anyone handling digital
+          documents. It simplifies sharing, improves organization, and enhances
+          professionalism. Since this tool runs locally in your browser, it
+          ensures privacy and security while being incredibly fast and easy to use.
+          Whether you are a student preparing notes, a professional sending reports,
+          or an individual organizing personal records, merging PDFs will make your
+          workflow smoother and more efficient. Try it once, and you will see how
+          much simpler document management becomes.
+        </p>
       </section>
     </ToolSection>
   );

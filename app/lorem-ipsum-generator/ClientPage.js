@@ -216,38 +216,54 @@ ${generatedParagraphs.map((para, index) => `${index + 1}. ${para}`).join('\n\n')
         </div>
       </div>
 
-      {/* Info Section */}
+            {/* Info Section */}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Lorem Ipsum Generator</h3>
         <p className="text-gray-700 mb-4">
-          Generate Lorem Ipsum placeholder text for web design and content development. This tool helps you 
-          create dummy text, useful for design mockups, content placeholders, and development testing.
+          A Lorem Ipsum generator is a handy tool used by designers, developers, 
+          content creators, and students to produce placeholder text quickly. 
+          The term &quot;Lorem Ipsum&quot; refers to a scrambled version of a passage from 
+          Cicero’s writings, commonly used since the 1500s in printing and typesetting. 
+          It provides a realistic distribution of letters and words, giving design layouts 
+          a natural appearance without relying on meaningful content.  
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Generate Lorem Ipsum placeholder text</li>
-          <li>Customizable paragraph and word counts</li>
-          <li>Professional text formatting</li>
-          <li>High-quality placeholder content</li>
-          <li>Easy copy to clipboard</li>
+          <li>Generate Lorem Ipsum text instantly in your browser</li>
+          <li>Choose paragraph count (1–20) and words per paragraph (10–500)</li>
+          <li>Consistent structure for design and content testing</li>
+          <li>Copy generated text with one click</li>
+          <li>No server upload – fully private and secure</li>
         </ul>
 
-        <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Set the number of paragraphs.</li>
-          <li>Set words per paragraph.</li>
-          <li>Click <strong>Generate Lorem Ipsum</strong> to process.</li>
-          <li>Copy the generated text.</li>
-        </ol>
+        <h4 className="font-semibold mt-4 mb-1">📖 History of Lorem Ipsum</h4>
+        <p className="text-gray-700 mb-4 text-sm">
+          The phrase &quot;Lorem Ipsum&quot; originates from a scrambled passage of Cicero’s 
+          <em> De Finibus Bonorum et Malorum </em> (The Extremes of Good and Evil), 
+          written in 45 BC. Typesetters in the 1500s began using sections of this Latin 
+          text as filler because it had a natural letter distribution, unlike repeated 
+          phrases such as &quot;Content here, content here.&quot; In the digital era, Lorem Ipsum 
+          remains the most popular placeholder text in design software, websites, and 
+          templates worldwide.
+        </p>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Web design and mockups</li>
-          <li>Content placeholder and testing</li>
-          <li>Design development and prototyping</li>
-          <li>Content management and editing</li>
+        <h4 className="font-semibold mt-4 mb-1">⚡ Benefits of Using Lorem Ipsum</h4>
+        <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
+          <li>Avoids distraction – reviewers focus on design, not content.</li>
+          <li>Provides natural-looking text flow for better typography testing.</li>
+          <li>Speeds up prototyping when final content is not ready.</li>
+          <li>Works universally in all languages and design systems.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700 text-sm">
+          Lorem Ipsum is more than just random Latin—it’s a centuries-old standard 
+          that helps designers and developers present clean, professional layouts 
+          without waiting for final copy. With this generator, you can create 
+          customizable paragraphs of placeholder text instantly, ensuring your 
+          projects look polished and client-ready from the start.
+        </p>
       </section>
     </ToolSection>
   );

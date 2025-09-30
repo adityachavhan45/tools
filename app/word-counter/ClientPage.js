@@ -120,27 +120,80 @@ export default function WordCounterPage() {
           </div>
         </div>
 
-        {/* Info Section */}
+                {/* Info Section */}
         <section className="mt-10 bg-white border rounded-2xl shadow p-6">
           <h3 className="text-lg font-semibold mb-2 text-gray-800">
-            About Word Counter
+            About Word Counter Tool
           </h3>
           <p className="text-gray-700 mb-4 text-sm">
-            A word and character counter helps writers, students, bloggers,
-            and SEO professionals quickly check their content length. Whether
-            you are preparing an article, tweet, or academic essay, knowing
-            your word count ensures you meet requirements and maintain clarity.
+            The Word Counter tool is a simple yet powerful online utility designed for 
+            writers, students, bloggers, marketers, and anyone who works with text on 
+            a daily basis. It helps you instantly calculate the number of words, 
+            characters, lines, and even estimate the reading time of your content. 
+            Whether you are preparing an academic assignment, drafting a blog post, 
+            optimizing content for SEO, or writing social media updates, knowing your 
+            word count ensures that your writing is accurate, concise, and meets 
+            specific guidelines.
           </p>
 
-          <h4 className="flex items-center text-lg font-semibold text-gray-800 mb-2">
-            <span className="text-yellow-500 mr-2">✨</span> Why use this tool?
-          </h4>
+          <h4 className="text-lg font-semibold text-gray-800 mb-2">✨ Key Features</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1 pl-2 text-sm">
-            <li>Writers can track word limits for assignments or blogs.</li>
-            <li>SEO experts can balance keyword density effectively.</li>
-            <li>Social media managers can optimize character count.</li>
-            <li>Students can ensure essays match guidelines.</li>
+            <li>Counts words, characters (with & without spaces), and lines.</li>
+            <li>Provides an estimated reading time based on average speed.</li>
+            <li>Real-time updates as you type or paste text.</li>
+            <li>Copy text instantly with one click.</li>
+            <li>Reset button to clear the editor quickly.</li>
+            <li>Completely free, lightweight, and works in your browser.</li>
           </ul>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-4 mb-2">🔧 How to Use</h4>
+          <ol className="list-decimal list-inside text-gray-700 space-y-1 text-sm">
+            <li>Paste or type your text into the editor.</li>
+            <li>See instant stats: word count, character count, and line count.</li>
+            <li>Check estimated reading time to gauge content length.</li>
+            <li>Use <strong>Copy</strong> to duplicate text or <strong>Reset</strong> to start fresh.</li>
+            <li>Perfect for blog posts, tweets, essays, or SEO content drafts.</li>
+          </ol>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-4 mb-2">📐 Why Word Count Matters</h4>
+          <p className="text-gray-700 mb-4 text-sm">
+            Word count plays a crucial role across industries. Academic institutions 
+            often require essays or reports within a fixed limit. Journalists and 
+            content creators need to stick to specific lengths for clarity and engagement. 
+            Social media platforms like Twitter (X) and LinkedIn have strict character 
+            limits. In SEO, balancing content length and keyword density impacts ranking. 
+            Knowing your exact word and character count prevents underwriting or overwriting 
+            and ensures your message is both impactful and compliant with requirements.
+          </p>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-4 mb-2">📦 Practical Use Cases</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-1 pl-2 text-sm">
+            <li><strong>Students:</strong> Meet assignment word limits without guesswork.</li>
+            <li><strong>Writers:</strong> Ensure blog posts, articles, or novels stay within scope.</li>
+            <li><strong>SEO Experts:</strong> Balance keyword density and optimize for search engines.</li>
+            <li><strong>Social Media Managers:</strong> Craft posts within platform character restrictions.</li>
+            <li><strong>Professionals:</strong> Create concise reports, emails, and presentations.</li>
+          </ul>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-4 mb-2">⚡ Best Practices</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-1 pl-2 text-sm">
+            <li>Aim for 500–800 words in blogs for SEO, unless long-form is needed.</li>
+            <li>Keep tweets/X posts under 280 characters with concise wording.</li>
+            <li>For essays, stick to guidelines and don’t exceed limits.</li>
+            <li>Check reading time to ensure user engagement and accessibility.</li>
+            <li>Use character count for metadata, titles, and ad copy optimization.</li>
+          </ul>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-4 mb-2">🚀 Final Thoughts</h4>
+          <p className="text-gray-700 text-sm">
+            The Word Counter tool is more than just a counter – it’s a productivity 
+            companion for anyone who writes. By giving you instant insights into your 
+            text length, it helps you stay efficient, professional, and on target. 
+            Whether you are a student, a professional writer, a digital marketer, or 
+            a casual blogger, this tool ensures your content is polished, concise, 
+            and ready for publishing. Save time, improve accuracy, and make every 
+            word count with this free online word and character counter.
+          </p>
         </section>
       </div>
     </main>

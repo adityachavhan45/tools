@@ -19,7 +19,7 @@ export default function TextToSqlPage() {
     try {
       // Create a simple SQL structure from the text
       const lines = text.split('\n');
-      const sqlContent = lines.map((line, index) => 
+      const sqlContent = lines.map((line, index) =>
         `    '${line.replace(/'/g, "''")}'`
       ).join(',\n');
 
@@ -70,7 +70,7 @@ FROM text_data;`;
     try {
       // Simple SQL to text conversion
       let extractedText = sql;
-      
+
       // Extract text from string literals
       const stringMatches = extractedText.match(/'([^'\\]*(\\.[^'\\]*)*)'/g);
       if (stringMatches) {
@@ -261,35 +261,74 @@ FROM text_data;`;
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to SQL Converter</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to SQL code and SQL to text. This tool helps you create 
-          structured SQL code from plain text and extract text content from SQL 
-          scripts, useful for database management and data analysis.
+          The Text to SQL Converter is a free online tool designed to help you transform plain
+          sentences, structured notes, or raw data into executable SQL queries. SQL (Structured
+          Query Language) is the backbone of database management systems like MySQL, PostgreSQL,
+          SQLite, Oracle, and SQL Server. Whether you are a beginner learning how to write
+          queries or a professional developer looking to speed up workflow, this tool makes
+          database interaction much easier. Instead of manually coding, you can convert text
+          into formatted SQL statements, and also reverse SQL queries back into plain text for
+          analysis or documentation.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to SQL code</li>
-          <li>Extract text from SQL scripts</li>
-          <li>Character analysis and statistics</li>
-          <li>SQL formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Convert plain text into SQL <code>INSERT</code>, <code>SELECT</code>, and <code>CREATE</code> statements</li>
+          <li>Reverse SQL queries back into simple human-readable text</li>
+          <li>Automatic character, word, and line analysis for quick stats</li>
+          <li>Validation to avoid common SQL syntax errors</li>
+          <li>Easy one-click copy for both SQL and text</li>
+          <li>Lightweight, fast, and works in the browser without installation</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to SQL</strong>.</li>
-          <li>Or enter SQL code in the SQL field and click <strong>SQL to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Type or paste your plain text into the input field.</li>
+          <li>Click on <strong>Text to SQL</strong> to generate structured SQL queries.</li>
+          <li>Alternatively, paste SQL code into the SQL field and use <strong>SQL to Text</strong> to extract plain content.</li>
+          <li>Use the copy buttons to export results instantly.</li>
+          <li>Check the character analysis section for quick statistics about your data.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Database management and administration</li>
-          <li>Data analysis and reporting</li>
-          <li>SQL query development</li>
-          <li>Text to code conversion</li>
+          <li><strong>Database management:</strong> Quickly generate SQL insert statements from notes or CSV data.</li>
+          <li><strong>Learning & training:</strong> Beginners can practice SQL by observing how plain text maps to SQL queries.</li>
+          <li><strong>Data migration:</strong> Convert raw text into structured SQL for importing into MySQL or PostgreSQL.</li>
+          <li><strong>Analytics & reporting:</strong> Extract insights from SQL queries by converting them into readable text for non-technical teams.</li>
+          <li><strong>Automation:</strong> Developers can save time by turning text logs into ready-to-run SQL code.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Why SQL is Important</h4>
+        <p className="text-gray-700 mb-4">
+          SQL is one of the most important skills in technology today. Nearly every application
+          — whether web, mobile, or enterprise software — relies on databases to store and
+          retrieve information. From e-commerce platforms tracking orders to social media
+          storing user profiles, SQL is the universal language that connects applications with
+          data. By converting text to SQL, you can bridge the gap between plain-language
+          instructions and structured queries that databases understand. This is especially
+          useful for data analysts, software engineers, and IT professionals who need to manage
+          large volumes of data daily.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Is this tool free?</strong> Yes, it is 100% free and works in any modern browser.</li>
+          <li><strong>Can it generate complex queries?</strong> The tool is mainly for simple SQL conversion and learning, but you can extend queries after generation.</li>
+          <li><strong>Which SQL dialects are supported?</strong> It generates standard SQL that works with MySQL, PostgreSQL, SQLite, and similar databases.</li>
+          <li><strong>Can I reverse SQL to plain text?</strong> Yes, paste any SQL script and convert it back into human-readable sentences.</li>
+          <li><strong>Is coding knowledge required?</strong> No, even beginners with zero SQL experience can use this tool effectively.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to SQL Converter is more than just a code generator — it’s a productivity
+          booster for anyone dealing with data. Students can learn faster, developers can save
+          time, and businesses can improve reporting efficiency. With a simple interface,
+          instant conversion, and built-in analysis, this tool is perfect for anyone who wants
+          to bridge the gap between natural text and structured queries. Try it today and make
+          working with databases simpler and faster.
+        </p>
       </section>
     </ToolSection>
   );

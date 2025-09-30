@@ -19,7 +19,7 @@ export default function TextToYamlPage() {
     try {
       // Create a simple YAML structure from the text
       const lines = text.split('\n');
-      const yamlContent = lines.map((line, index) => 
+      const yamlContent = lines.map((line, index) =>
         `  - "${line.replace(/"/g, '\\"')}"`
       ).join('\n');
 
@@ -57,7 +57,7 @@ ${yamlContent}
     try {
       // Simple YAML to text conversion
       let extractedText = yaml;
-      
+
       // Extract text from string literals
       const stringMatches = extractedText.match(/"([^"\\]*(\\.[^"\\]*)*)"/g);
       if (stringMatches) {
@@ -243,39 +243,82 @@ ${yamlContent}
         </div>
       </div>
 
-      {/* Info Section */}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to YAML Converter</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to YAML code and YAML to text. This tool helps you create 
-          structured YAML code from plain text and extract text content from YAML 
-          files, useful for configuration management and data serialization.
+          The Text to YAML Converter is a free online tool designed to transform plain
+          text into YAML code and decode YAML back into readable text. YAML
+          (short for “YAML Ain’t Markup Language”) is one of the most popular
+          data serialization languages, known for its simplicity and human-friendly
+          syntax. With this tool, developers, DevOps engineers, students, and
+          content creators can quickly generate YAML structures, validate formatting,
+          and seamlessly switch between raw text and YAML code.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to YAML code</li>
-          <li>Extract text from YAML files</li>
-          <li>Character analysis and statistics</li>
-          <li>YAML formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Instant conversion of text into structured YAML format</li>
+          <li>Reverse conversion from YAML back to plain text</li>
+          <li>Character, word, and line count statistics</li>
+          <li>Proper handling of quotes and special characters</li>
+          <li>Well-indented and clean YAML output</li>
+          <li>Copy-to-clipboard functionality for easy usage</li>
+          <li>Works directly in the browser without uploads</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to YAML</strong>.</li>
-          <li>Or enter YAML code in the YAML field and click <strong>YAML to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Enter or paste your text into the input field.</li>
+          <li>Click on <strong>Text to YAML</strong> to generate YAML code.</li>
+          <li>To decode, paste YAML in the YAML box and click <strong>YAML to Text</strong>.</li>
+          <li>Copy results instantly to use in projects or configuration files.</li>
+          <li>Review character analysis for quick stats on your text.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Configuration management</li>
-          <li>Data serialization and exchange</li>
-          <li>DevOps and infrastructure as code</li>
-          <li>Text to code conversion</li>
+          <li><strong>Configuration Files:</strong> YAML is widely used in Docker Compose, Kubernetes manifests, and CI/CD pipelines.</li>
+          <li><strong>Data Serialization:</strong> Share structured data between applications and services.</li>
+          <li><strong>Infrastructure as Code:</strong> Tools like Ansible and Helm charts rely on YAML for automation scripts.</li>
+          <li><strong>Education:</strong> Learn YAML basics by converting simple text into valid YAML documents.</li>
+          <li><strong>Web Development:</strong> Create environment variables or structured config for frameworks.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Why YAML Matters</h4>
+        <p className="text-gray-700 mb-4">
+          YAML has become the go-to format in DevOps and cloud-native ecosystems.
+          Its indentation-based structure makes it easy for humans to read and write,
+          while still being machine-parsable. Unlike JSON or XML, YAML is concise
+          and removes unnecessary brackets or tags, making it more approachable for
+          beginners. From Docker Compose to GitHub Actions and Kubernetes, YAML
+          powers much of today’s modern infrastructure.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Examples</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-1">
+          <li>Text: <code>Hello World</code> → YAML: <code>- &quot;Hello World&quot;</code></li>
+          <li>Text with multiple lines becomes a YAML array of strings.</li>
+          <li>Statistics such as total lines and longest line are automatically included in the YAML output.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Is YAML the same as JSON?</strong> No. YAML is more human-readable but can be converted to JSON easily.</li>
+          <li><strong>Where is YAML used?</strong> In DevOps (Kubernetes, Docker), APIs, software configs, and CI/CD pipelines.</li>
+          <li><strong>Does this tool validate YAML?</strong> It generates properly indented YAML, but full validation may require a linter.</li>
+          <li><strong>Can YAML handle nested data?</strong> Yes, YAML supports lists, maps, and nested structures.</li>
+          <li><strong>Does it support Unicode?</strong> Yes, it works with all languages including Hindi, Arabic, Chinese, and emojis.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to YAML Converter is a powerful yet lightweight tool that simplifies
+          the process of creating clean YAML from plain text and vice versa. Whether
+          you are writing Docker Compose files, setting up Kubernetes clusters,
+          managing CI/CD pipelines, or just learning YAML basics, this tool saves time,
+          reduces formatting errors, and improves productivity. Try it today to
+          experience hassle-free text-to-YAML conversion!
+        </p>
       </section>
     </ToolSection>
   );

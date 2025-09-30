@@ -252,39 +252,120 @@ export default function ImageCropperPage() {
         </div>
       </div>
 
-      {/* Info Section */}
+            {/* Info Section */}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
-        <h3 className="text-lg font-semibold mb-2">About Image Cropping</h3>
+        <h3 className="text-lg font-semibold mb-2">About Online Image Cropping</h3>
         <p className="text-gray-700 mb-4">
-          Crop images for better composition and aspect ratios. This tool helps you 
-          crop images to specific dimensions, useful for social media, web design, and image editing.
+          Image cropping is one of the most essential editing techniques in
+          photography and design. By trimming away unnecessary portions of a
+          photo, cropping allows you to improve composition, highlight the
+          subject, and optimize the aspect ratio for different platforms. This
+          online cropper makes the process simple—you can upload an image, set a
+          fixed ratio (like 1:1 for Instagram or 16:9 for YouTube), or crop it
+          freely to your desired size. Everything runs directly in your browser,
+          ensuring speed, privacy, and convenience without installing heavy
+          software.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Crop images to specific dimensions</li>
-          <li>Aspect ratio options and presets</li>
-          <li>Batch processing for multiple images</li>
-          <li>High-quality cropping with precision</li>
-          <li>Easy copy to clipboard</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Flexible aspect ratios:</strong> Choose from presets such as
+            1:1, 16:9, 4:3, 3:2, or crop freely without restrictions.
+          </li>
+          <li>
+            <strong>Precision cropping:</strong> Manually adjust width, height,
+            and position for pixel-perfect edits.
+          </li>
+          <li>
+            <strong>Privacy friendly:</strong> All cropping is done locally on
+            your device, with no uploads to external servers.
+          </li>
+          <li>
+            <strong>Cross-platform ready:</strong> Cropped images are optimized
+            for social media, presentations, or professional design work.
+          </li>
+          <li>
+            <strong>Quick workflow:</strong> Upload, crop, and download in just
+            a few clicks.
+          </li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Upload an image file.</li>
-          <li>Select the aspect ratio.</li>
-          <li>Adjust the crop area dimensions.</li>
-          <li>Click <strong>Crop Image</strong> to process.</li>
-          <li>Download the cropped image file.</li>
+        <ol className="list-decimal list-inside text-gray-700 space-y-2">
+          <li>Upload an image (JPG, PNG, or WebP) using the file selector.</li>
+          <li>
+            Choose your preferred aspect ratio—either a preset or “Free” for
+            custom cropping.
+          </li>
+          <li>
+            Adjust the crop area dimensions (width, height, and position) to
+            frame the subject perfectly.
+          </li>
+          <li>
+            Click <strong>Crop Image</strong> to process the file.
+          </li>
+          <li>
+            Preview the crop settings and download your newly cropped image.
+          </li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Social media and web design</li>
-          <li>Image composition and framing</li>
-          <li>Document and presentation editing</li>
-          <li>Photography and image editing</li>
+        <h4 className="font-semibold mt-4 mb-1">📦 Popular Use Cases</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Social media posts:</strong> Platforms like Instagram,
+            Facebook, and Twitter require specific aspect ratios. Use the cropper
+            to fit images perfectly without awkward cut-offs.
+          </li>
+          <li>
+            <strong>Professional presentations:</strong> Crop photos to maintain
+            consistent sizes across slides, making reports and decks look clean.
+          </li>
+          <li>
+            <strong>Photography:</strong> Adjust framing to improve balance,
+            remove distractions, and highlight the subject.
+          </li>
+          <li>
+            <strong>Web design:</strong> Create uniform image grids, banners, or
+            thumbnails for websites.
+          </li>
+          <li>
+            <strong>Document editing:</strong> Crop scans, ID cards, or
+            screenshots for resumes, portfolios, and academic projects.
+          </li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📖 Why Cropping Matters</h4>
+        <p className="text-gray-700 mb-4">
+          Cropping is more than just cutting edges—it changes the story of an
+          image. A tightly cropped portrait highlights emotions, while a wide
+          crop captures the environment. For businesses, proper cropping ensures
+          product photos look sharp on e-commerce stores. For casual users, it
+          means profile pictures and social media uploads always look their best.
+          Even small tweaks can improve balance, remove distractions, and create
+          a professional feel.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">⚠️ Best Practices</h4>
+        <p className="text-gray-700 mb-4">
+          While cropping is powerful, it should be used wisely. Over-cropping can
+          reduce resolution and make images blurry. Always maintain enough
+          pixels for the intended platform—for example, at least 1080x1080 for
+          Instagram or 1920x1080 for YouTube thumbnails. Stick to standard ratios
+          when possible to avoid black bars or stretching. And keep a backup of
+          the original image before editing, so you can revert if needed.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Final Thoughts</h4>
+        <p className="text-gray-700">
+          Image cropping is one of the quickest ways to upgrade your visuals.
+          Whether you are preparing a thumbnail for YouTube, a profile picture
+          for LinkedIn, or a product photo for an online shop, this online tool
+          makes the process fast, secure, and accurate. With free aspect ratio
+          control, pixel precision, and one-click download, it is an essential
+          utility for anyone who works with images. Use it to create
+          professional-looking content every time.
+        </p>
       </section>
     </ToolSection>
   );

@@ -180,20 +180,112 @@ export default function PngToIcoPage() {
         <section className="mt-12 bg-white border rounded-lg p-6 shadow-sm">
           <h3 className="text-lg font-semibold mb-2">About PNG to ICO Tool</h3>
           <p className="text-gray-700 mb-4">
-            This free PNG to ICO converter helps you create favicon files for
-            your website or apps. Favicons are small icons that appear in browser
-            tabs, bookmarks, and shortcuts. The tool processes your image
-            directly in the browser, so your files stay private and secure.
+            The PNG to ICO converter is a simple yet highly practical tool designed
+            for developers, designers, and everyday users who want to create favicon
+            files quickly. In today’s digital world, a favicon is like a brand’s
+            signature. Whenever you open a website, the tiny icon you see in the browser
+            tab or bookmark bar is an ICO file. Without a favicon, even a beautiful
+            website looks incomplete. That’s why this converter makes it easy to turn
+            any PNG image into a professional ICO file without installing complicated
+            design software.
           </p>
 
-          <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
+          <p className="text-gray-700 mb-4">
+            The tool works completely in your browser. You upload an image (PNG, JPG,
+            or other formats), and it generates a favicon.ico file of size 256×256 pixels.
+            The processing happens locally, meaning your file never leaves your device.
+            This is not only convenient but also ensures privacy and security.
+            No uploads, no waiting, just instant results.
+          </p>
+
+          <h4 className="font-semibold mt-4 mb-1">✨ Why Favicons and ICO Files Matter</h4>
+          <p className="text-gray-700 mb-4">
+            Favicons are small, but their role in branding is huge. They improve user
+            experience by helping visitors identify your site quickly when multiple tabs
+            are open. A clean favicon also adds professionalism and trust. For example,
+            imagine opening two websites — one has a crisp branded icon, and the other
+            shows a generic browser symbol. Instinctively, you trust the one with the
+            proper favicon. That’s the subtle power of a well-made ICO file.
+          </p>
+
+          <p className="text-gray-700 mb-4">
+            ICO (icon) files are unique because they can contain multiple image sizes in
+            a single file. Browsers and operating systems automatically pick the
+            appropriate size depending on where the icon is displayed. In our tool, we
+            focus on generating a 256×256 version which works as a universal size for
+            favicons and app shortcuts.
+          </p>
+
+          <h4 className="font-semibold mt-4 mb-1">🔧 How This PNG to ICO Converter Works</h4>
+          <p className="text-gray-700 mb-4">
+            The converter uses modern browser technologies like HTML canvas and
+            JavaScript to resize your PNG into a square 256×256 canvas. It then
+            packages this canvas into an ICO file format with proper headers.
+            Everything is automatic — you just upload your image, click convert, and
+            download the favicon.ico file. No design experience required.
+          </p>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Convert PNG or any image to ICO format</li>
-            <li>Outputs 256×256 favicon.ico</li>
-            <li>Works locally in your browser (no uploads)</li>
-            <li>Preview before download</li>
-            <li>Secure and private</li>
+            <li>Step 1: Upload your PNG or any image file.</li>
+            <li>Step 2: The tool resizes and centers the image inside a 256×256 canvas.</li>
+            <li>Step 3: It converts the canvas into ICO binary format.</li>
+            <li>Step 4: Preview the icon instantly and download it as favicon.ico.</li>
           </ul>
+
+          <h4 className="font-semibold mt-4 mb-1">📦 Practical Use Cases</h4>
+          <p className="text-gray-700 mb-4">
+            The PNG to ICO tool can be used in countless scenarios. Here are some
+            practical examples:
+          </p>
+          <ul className="list-disc list-inside text-gray-700 space-y-1">
+            <li><strong>Website Development:</strong> Add a professional favicon.ico to
+              your site so it looks polished in browser tabs and search results.</li>
+            <li><strong>Desktop Applications:</strong> Convert your app logo into ICO
+              format for Windows shortcuts and installers.</li>
+            <li><strong>Personal Projects:</strong> Create fun favicons for blogs,
+              portfolios, or student projects.</li>
+            <li><strong>Brand Identity:</strong> Ensure your logo is consistent across
+              platforms, from websites to apps to desktop icons.</li>
+            <li><strong>Testing and Prototyping:</strong> Quickly generate temporary
+              favicons while experimenting with design ideas.</li>
+          </ul>
+
+          <h4 className="font-semibold mt-4 mb-1">💡 Benefits of Using This Tool</h4>
+          <p className="text-gray-700 mb-4">
+            Unlike heavy graphic software such as Photoshop or Illustrator, this tool is
+            lightweight and instant. It runs on any modern browser, works offline once
+            loaded, and doesn’t require any installation. Designers can save time by
+            generating favicons on the fly, while beginners can create icons without
+            learning complex design workflows.
+          </p>
+          <p className="text-gray-700 mb-4">
+            Another benefit is privacy. Since everything runs locally, you don’t have to
+            worry about your files being uploaded to a server. This makes it suitable
+            for sensitive logos, brand designs, or private projects.
+          </p>
+
+          <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li><strong>Does it only work with PNG?</strong> No, you can upload JPG,
+              GIF, or other formats. They will be converted into ICO.</li>
+            <li><strong>Why 256×256 size?</strong> It is a standard size supported by
+              browsers and operating systems, ensuring maximum compatibility.</li>
+            <li><strong>Is it secure?</strong> Yes, all processing is done in your
+              browser, so no data is sent to any server.</li>
+            <li><strong>Can I use it for commercial projects?</strong> Absolutely. You
+              can generate favicons for personal or business websites without limitations.</li>
+            <li><strong>Will quality be preserved?</strong> The tool uses
+              high-quality image smoothing so your icon looks sharp.</li>
+          </ul>
+
+          <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+          <p className="text-gray-700">
+            A favicon may look small, but it makes a big difference in user experience
+            and branding. With this PNG to ICO converter, you can create professional
+            icons in seconds without design skills or technical knowledge. Whether you
+            are launching a new website, updating your blog, or building a desktop app,
+            having a proper favicon sets you apart from the crowd. Try it now, and give
+            your projects the polished, professional touch they deserve.
+          </p>
         </section>
       </div>
     </main>

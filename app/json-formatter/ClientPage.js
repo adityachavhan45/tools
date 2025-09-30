@@ -149,44 +149,111 @@ export default function JsonFormatterPage() {
           </button>
         </div>
 
-        {/* Info Section */}
-        <section className="mt-10 bg-white border rounded-lg p-5">
-          <h3 className="text-lg font-semibold mb-2">
+                {/* Info Section */}
+        <section className="mt-10 bg-white border rounded-lg p-5 shadow">
+          <h3 className="text-lg font-semibold mb-2 text-gray-800">
             About JSON Formatter / Beautifier
           </h3>
           <p className="text-gray-700 mb-4">
-            JSON (JavaScript Object Notation) is a lightweight data format used
-            widely in APIs and web applications. This free tool helps you format
-            (beautify) or compress (minify) JSON instantly in your browser, with
-            no data uploaded to servers.
+            JSON (JavaScript Object Notation) is one of the most widely used 
+            formats for exchanging and storing data across the web. It is 
+            lightweight, human-readable, and easy to parse by machines, which 
+            makes it the backbone of modern APIs, web services, configuration 
+            files, and countless applications. However, raw JSON data can often 
+            look cluttered, especially if it is minified into a single line. 
+            That’s where a JSON formatter and beautifier tool becomes essential. 
+            This free online tool helps you instantly beautify (format with 
+            indentation) or minify (compress into one line) JSON directly in 
+            your browser. No installations, no server uploads, and no privacy 
+            risks – everything happens locally on your device.
           </p>
 
-          <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
+          <h4 className="font-semibold mt-4 mb-2">✨ Key Features</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Beautify JSON with proper indentation</li>
-            <li>Minify JSON for compact storage</li>
-            <li>Live auto-preview of JSON input</li>
-            <li>Copy output to clipboard instantly</li>
-            <li>Works offline in your browser</li>
-            <li>Secure – no server uploads</li>
+            <li>Beautify JSON with indentation for better readability</li>
+            <li>Minify JSON into a single line for compact storage</li>
+            <li>Live auto-preview of JSON as you type</li>
+            <li>Error detection with instant feedback</li>
+            <li>Copy formatted or minified output to clipboard in one click</li>
+            <li>Runs fully offline in your browser (no server processing)</li>
+            <li>Free, fast, and secure – works on all devices</li>
           </ul>
 
-          <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
+          <h4 className="font-semibold mt-4 mb-2">🔧 How to Use</h4>
           <ol className="list-decimal list-inside text-gray-700 space-y-1">
-            <li>Paste your JSON into the left text area.</li>
-            <li>See live preview in the right panel.</li>
-            <li>Click <strong>Beautify</strong> for indented format.</li>
-            <li>Click <strong>Minify</strong> for compact one-line JSON.</li>
-            <li>Copy result or clear input easily.</li>
+            <li>Paste or type your raw JSON code into the left input area.</li>
+            <li>The live preview panel will automatically show formatted output.</li>
+            <li>Click <strong>Beautify</strong> to format JSON with indentation.</li>
+            <li>Click <strong>Minify</strong> to compress JSON into one line.</li>
+            <li>Copy the output or clear input with a single button.</li>
           </ol>
 
-          <h4 className="font-semibold mt-4 mb-1">📦 Practical Use Cases</h4>
+          <h4 className="font-semibold mt-4 mb-2">📦 Practical Use Cases</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Developers debugging API responses</li>
-            <li>Students learning JSON structure</li>
-            <li>Minify JSON config files for performance</li>
-            <li>Beautify JSON before sharing or saving</li>
+            <li><strong>Developers:</strong> Debugging API responses, ensuring JSON is valid before use.</li>
+            <li><strong>Students:</strong> Learning and understanding JSON structure more easily.</li>
+            <li><strong>Writers/Bloggers:</strong> Formatting JSON snippets for articles or tutorials.</li>
+            <li><strong>Config Management:</strong> Minifying config files (e.g., package.json) for performance.</li>
+            <li><strong>Data Analysis:</strong> Beautifying JSON exports from tools or databases for review.</li>
           </ul>
+
+          <h4 className="font-semibold mt-4 mb-2">⚡ Benefits of Using JSON Formatter</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-1">
+            <li><strong>Readability:</strong> Proper indentation makes it easier to spot nested objects and arrays.</li>
+            <li><strong>Error Detection:</strong> Quickly identify misplaced commas, missing braces, or invalid syntax.</li>
+            <li><strong>Performance:</strong> Minified JSON reduces size, improving storage and transfer speed.</li>
+            <li><strong>Productivity:</strong> Saves time for developers by eliminating manual formatting.</li>
+          </ul>
+
+          <h4 className="font-semibold mt-4 mb-2">📖 Example</h4>
+          <pre className="bg-gray-100 p-3 rounded text-sm text-gray-800 overflow-x-auto">
+{`Unformatted:
+{"name":"John","age":30,"skills":["JavaScript","React","Node.js"]}
+
+Beautified:
+{
+  "name": "John",
+  "age": 30,
+  "skills": [
+    "JavaScript",
+    "React",
+    "Node.js"
+  ]
+}`}
+          </pre>
+
+          <h4 className="font-semibold mt-4 mb-2">🔒 Security & Privacy</h4>
+          <p className="text-gray-700 mb-4 text-sm">
+            Unlike online services that upload your data to a server, this 
+            JSON formatter works 100% offline in your browser. That means your 
+            sensitive JSON data, such as API responses, configuration files, 
+            or user data, never leaves your device. You maintain complete 
+            control and privacy.
+          </p>
+
+          <h4 className="font-semibold mt-4 mb-2">❓ FAQs</h4>
+          <ul className="list-disc list-inside text-sm text-gray-700 space-y-2">
+            <li><strong>Q: What happens if my JSON is invalid?</strong><br/> 
+              A: The tool will display an error instantly, helping you debug quickly.</li>
+            <li><strong>Q: Can I minify large JSON files?</strong><br/> 
+              A: Yes, this tool can handle large JSON strings and compress them efficiently.</li>
+            <li><strong>Q: Does it support comments in JSON?</strong><br/> 
+              A: Standard JSON does not support comments, so they will cause errors.</li>
+            <li><strong>Q: Do I need internet connection?</strong><br/> 
+              A: No, it works offline once loaded in your browser.</li>
+          </ul>
+
+          <h4 className="font-semibold mt-4 mb-2">🚀 Final Thoughts</h4>
+          <p className="text-gray-700 text-sm">
+            JSON is the universal language of modern applications, APIs, and 
+            web services. Keeping it clean and structured saves developers 
+            countless hours. With this free JSON Formatter & Validator, you 
+            can quickly beautify, minify, and validate JSON without worrying 
+            about errors or privacy risks. Whether you are a beginner learning 
+            JSON or an experienced developer debugging production APIs, this 
+            tool will save you time, reduce frustration, and improve efficiency 
+            in your daily workflow.
+          </p>
         </section>
       </div>
     </main>

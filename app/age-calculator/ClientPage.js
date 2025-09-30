@@ -220,34 +220,119 @@ export default function AgeCalculatorPage() {
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Age Calculator</h3>
         <p className="text-gray-700 mb-4">
-          Calculate age from birth date for personal tracking and date management. This tool helps you 
-          determine your age, useful for personal records, milestone tracking, and date calculations.
+          An age calculator is a practical online tool that makes it easy to
+          determine someone’s exact age using their date of birth. While it may
+          sound simple at first glance, this type of tool has immense value in
+          everyday life. From filling out government forms to applying for
+          competitive exams or even just tracking milestones, knowing one’s
+          exact age in years, months, weeks, and days is more important than we
+          often realize. This tool eliminates the need for manual calculations
+          and delivers quick, reliable results.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Calculate age from birth date</li>
-          <li>Multiple time units (years, months, weeks, days)</li>
-          <li>High-precision calculations</li>
-          <li>Date validation and error handling</li>
-          <li>Easy copy to clipboard</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Accurate multi-unit output:</strong> Instantly see your age
+            expressed in years, months, weeks, and days, rather than just a
+            single number.
+          </li>
+          <li>
+            <strong>Custom date range:</strong> You can calculate age not only
+            for today but also for any given date, which is useful for planning
+            events or understanding timelines.
+          </li>
+          <li>
+            <strong>Error validation:</strong> If you accidentally input an
+            invalid date or select a future date, the tool prevents mistakes by
+            giving you clear alerts.
+          </li>
+          <li>
+            <strong>One-click copy:</strong> The result can be copied instantly
+            and used in documents, forms, or records without retyping.
+          </li>
+          <li>
+            <strong>User-friendly design:</strong> The clean interface ensures
+            smooth usage, even for people who are not tech-savvy.
+          </li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter your birth date.</li>
-          <li>Enter current date (optional).</li>
-          <li>Click <strong>Calculate Age</strong> to process.</li>
-          <li>Review the age result.</li>
+        <ol className="list-decimal list-inside text-gray-700 space-y-2">
+          <li>Enter your date of birth into the input field.</li>
+          <li>
+            Optionally, set a custom current date to calculate your age at a
+            specific moment in time.
+          </li>
+          <li>Click on the “Calculate Age” button.</li>
+          <li>
+            Review the output that shows years, months, weeks, and days lived.
+          </li>
+          <li>
+            Copy the results to your clipboard if you need to paste them
+            elsewhere.
+          </li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Personal age tracking</li>
-          <li>Milestone and birthday calculations</li>
-          <li>Date and time management</li>
-          <li>Personal records and documentation</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Personal milestones:</strong> Track birthdays,
+            anniversaries, and achievements with precision.
+          </li>
+          <li>
+            <strong>Education and exams:</strong> Many competitive exams require
+            candidates to be within a certain age bracket, making precise
+            calculations essential.
+          </li>
+          <li>
+            <strong>Official documentation:</strong> Government forms, job
+            applications, and visa paperwork often demand accurate age details.
+          </li>
+          <li>
+            <strong>Healthcare and fitness:</strong> Doctors and trainers often
+            recommend routines based on age, and accurate numbers ensure
+            tailored advice.
+          </li>
+          <li>
+            <strong>Parenting and childcare:</strong> Parents can keep track of
+            developmental stages in weeks or months for their young children.
+          </li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📖 Why Accuracy Matters</h4>
+        <p className="text-gray-700 mb-4">
+          Age may look like a rough estimate most of the time, but in reality,
+          accuracy is critical. For example, a persons eligibility for
+          retirement, pension, or certain benefits often depends on reaching an
+          exact age threshold. Even a few days can make a difference in some
+          official processes. By providing precise results down to days and
+          weeks, this tool ensures that users always have reliable information.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Everyday Benefits</h4>
+        <p className="text-gray-700 mb-4">
+          Beyond official use, age calculators are fun for curiosity too. Many
+          people enjoy checking how many total days they ve lived or how many
+          weeks theyve been on Earth. It can also be motivating for personal
+          growth, reminding individuals how far theyve come and how they might
+          want to plan their future years. For children, it can serve as a
+          learning tool to understand time, calendars, and life stages.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Final Thoughts</h4>
+        <p className="text-gray-700">
+          An age calculator blends simplicity with utility. It may appear like a
+          small tool, but it has applications across education, healthcare,
+          personal life, and professional requirements. By making calculations
+          effortless, error-free, and quick, it saves users valuable time while
+          ensuring precision. Whether youre a student filling out an exam form,
+          a parent monitoring your childs growth, or simply someone curious
+          about your exact age in days and weeks, this tool is designed to help
+          with clarity and ease. The next time you wonder “How old am I today?”
+          or “How many days have I lived?”, you wont need pen and paper—this
+          calculator will give you the answer instantly.
+        </p>
       </section>
     </ToolSection>
   );

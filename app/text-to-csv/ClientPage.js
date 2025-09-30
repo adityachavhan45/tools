@@ -19,7 +19,7 @@ export default function TextToCsvPage() {
     try {
       // Create a simple CSV structure from the text
       const lines = text.split('\n');
-      const csvContent = lines.map((line, index) => 
+      const csvContent = lines.map((line, index) =>
         `"${line.replace(/"/g, '""')}"`
       ).join('\n');
 
@@ -27,9 +27,9 @@ export default function TextToCsvPage() {
 # Generated on: ${new Date().toISOString()}
 
 "Line Number","Content","Character Count","Word Count"
-${lines.map((line, index) => 
-  `"${index + 1}","${line.replace(/"/g, '""')}","${line.length}","${line.split(/\s+/).filter(word => word.length > 0).length}"`
-).join('\n')}
+${lines.map((line, index) =>
+        `"${index + 1}","${line.replace(/"/g, '""')}","${line.length}","${line.split(/\s+/).filter(word => word.length > 0).length}"`
+      ).join('\n')}
 
 # Statistics
 "Total Lines","${lines.length}"
@@ -55,7 +55,7 @@ ${lines.map((line, index) =>
     try {
       // Simple CSV to text conversion
       let extractedText = csv;
-      
+
       // Extract text from CSV fields
       const csvMatches = extractedText.match(/"([^"\\]*(\\.[^"\\]*)*)"/g);
       if (csvMatches) {
@@ -245,35 +245,91 @@ ${lines.map((line, index) =>
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to CSV Converter</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to CSV code and CSV to text. This tool helps you create 
-          structured CSV code from plain text and extract text content from CSV 
-          files, useful for data analysis and spreadsheet management.
+          A Text to CSV Converter is a practical tool that helps you transform plain
+          text into structured CSV format and decode CSV files back into readable text.
+          CSV (Comma-Separated Values) is one of the most widely used formats for
+          storing and exchanging tabular data. From business reporting to database
+          exports, CSV is everywhere. With this converter, you can quickly generate
+          CSV code from notes, lists, or raw text, and also extract plain text from
+          any CSV snippet—all inside your browser without installing extra software.
+        </p>
+
+        <p className="text-gray-700 mb-4">
+          The beauty of CSV lies in its simplicity. Each row represents a record,
+          and columns are separated by commas (or sometimes semicolons/tabs).
+          Applications like Microsoft Excel, Google Sheets, LibreOffice Calc, and
+          most programming languages natively support CSV. This makes CSV an
+          industry standard for data exchange. For example, when you download
+          contacts from Gmail or export analytics from a tool, chances are it comes
+          as a CSV file. This converter makes it easy to go back and forth between
+          text and CSV without worrying about formatting errors.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to CSV code</li>
-          <li>Extract text from CSV files</li>
-          <li>Character analysis and statistics</li>
-          <li>CSV formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Instant conversion of text into CSV format</li>
+          <li>CSV to text decoding with error handling</li>
+          <li>Character and word count analysis</li>
+          <li>Supports multiline and bulk conversion</li>
+          <li>Validation for quotes and special characters</li>
+          <li>Offline, secure, and free to use</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to CSV</strong>.</li>
-          <li>Or enter CSV code in the CSV field and click <strong>CSV to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Enter or paste plain text in the input box.</li>
+          <li>Click <strong>Text to CSV</strong> to generate structured CSV code.</li>
+          <li>Copy the result with the copy button and paste it into Excel, Sheets, or any database.</li>
+          <li>To decode, paste a CSV snippet in the CSV field and click <strong>CSV to Text</strong>.</li>
+          <li>Review the character analysis panel for quick stats like line count and word count.</li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+        <h4 className="font-semibold mt-4 mb-1">📦 Common Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Data analysis and reporting</li>
-          <li>Spreadsheet import/export</li>
-          <li>Database management</li>
-          <li>Text to code conversion</li>
+          <li><strong>Data Analysis:</strong> Quickly convert notes or logs into CSV for Excel analysis.</li>
+          <li><strong>Business Reporting:</strong> Generate CSV files that can be imported into dashboards.</li>
+          <li><strong>Database Export/Import:</strong> Prepare CSVs for MySQL, PostgreSQL, or SQLite databases.</li>
+          <li><strong>Spreadsheet Management:</strong> Convert text-based lists into ready-to-use tables.</li>
+          <li><strong>APIs & Web Development:</strong> Sometimes APIs return raw text—convert it into CSV format for structured processing.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📊 Why CSV Matters</h4>
+        <p className="text-gray-700 mb-4">
+          CSV is lightweight, human-readable, and universally compatible. Unlike
+          binary formats such as XLSX, CSV can be opened in any text editor,
+          shared via email, or processed by scripts with minimal resources.
+          Developers love CSV because it is easy to parse in almost every
+          programming language—whether you are working with Python’s pandas,
+          JavaScript’s PapaParse, or Excel macros. This simplicity is why CSV has
+          survived for decades as the default data exchange format.
+        </p>
+
+        <p className="text-gray-700 mb-4">
+          However, CSV also comes with challenges: handling special characters,
+          managing quotes, and ensuring correct delimiters. That’s where a reliable
+          Text to CSV Converter becomes essential. This tool ensures that your data
+          is clean, properly escaped, and ready for use in any application.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>What is CSV used for?</strong> CSV is mainly used for storing and sharing structured data like spreadsheets, reports, and database exports.</li>
+          <li><strong>Is CSV the same as Excel?</strong> No. CSV is a plain text format, while Excel files (.xlsx) are binary with more features like formulas and charts.</li>
+          <li><strong>Can I open CSV without Excel?</strong> Yes. You can open CSV files in any text editor, Google Sheets, or even directly in a web browser.</li>
+          <li><strong>What happens if my text contains commas?</strong> The converter automatically adds quotes around such values to keep the format valid.</li>
+          <li><strong>Is CSV secure?</strong> Since it’s plain text, CSV doesn’t contain macros or scripts, making it safer than some other file formats.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to CSV Converter is an essential tool for students,
+          professionals, and developers alike. Whether you are preparing data
+          for analysis, creating reports, or simply organizing text into tables,
+          this converter saves time and ensures accuracy. By combining ease of
+          use with reliability, it empowers you to handle CSV files like a pro.
+          Try converting a sample text today and see how instantly it transforms
+          into structured data ready for Excel, Sheets, or databases.
+        </p>
       </section>
     </ToolSection>
   );

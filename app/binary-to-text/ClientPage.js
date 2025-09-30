@@ -177,38 +177,112 @@ export default function BinaryToTextPage() {
         </div>
       </div>
 
-      {/* Info Section */}
+            {/* Info Section */}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Binary to Text Conversion</h3>
         <p className="text-gray-700 mb-4">
-          Convert binary data to readable text for data processing and analysis. This tool helps you 
-          transform binary data into text, useful for data analysis, debugging, and text processing.
+          Binary to Text conversion is one of the most common operations in the field of
+          computer science, digital communication, and data processing. Computers store and
+          transmit information using binary numbers (0s and 1s). While machines can
+          understand and process binary data easily, humans often find it difficult to read or
+          interpret raw binary code. This is where a Binary to Text converter comes into play.
+          It translates long strings of binary digits into readable text that can be understood,
+          shared, and used in real-world applications. Without such conversion tools, tasks
+          like debugging binary data, decoding network messages, or analyzing stored
+          information would be unnecessarily complex.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert binary data to text</li>
-          <li>Multiple encoding options</li>
-          <li>Data validation and error handling</li>
-          <li>High-quality text conversion</li>
-          <li>Easy copy to clipboard</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Accurate decoding:</strong> Converts binary input into clean, human-readable text
+            with precision, ensuring that every 8-bit segment translates properly.
+          </li>
+          <li>
+            <strong>Multiple encodings:</strong> Supports UTF-8, Latin-1, and UTF-16 to provide
+            flexibility for international text and different systems.
+          </li>
+          <li>
+            <strong>Error handling:</strong> Alerts users when the input is invalid, incomplete, or not
+            grouped into proper 8-bit segments.
+          </li>
+          <li>
+            <strong>Clipboard support:</strong> Allows quick copying of the converted text for use in
+            coding projects, documentation, or data recovery tasks.
+          </li>
+          <li>
+            <strong>Simple interface:</strong> Clean and easy-to-use layout designed for beginners and
+            professionals alike.
+          </li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter or paste binary data.</li>
-          <li>Select the text encoding.</li>
-          <li>Click <strong>Convert to Text</strong> to process.</li>
-          <li>Copy the text output.</li>
+        <ol className="list-decimal list-inside text-gray-700 space-y-2">
+          <li>Enter or paste your binary data in the input box.</li>
+          <li>Choose the text encoding format (UTF-8, Latin-1, or UTF-16).</li>
+          <li>Click the <strong>Convert to Text</strong> button.</li>
+          <li>Review the decoded text in the output area.</li>
+          <li>Use the copy button to quickly copy the result.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Data analysis and processing</li>
-          <li>Debugging and troubleshooting</li>
-          <li>Text processing and conversion</li>
-          <li>Data recovery and analysis</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Data analysis:</strong> Convert stored binary logs into readable text for system
+            monitoring and auditing.
+          </li>
+          <li>
+            <strong>Debugging:</strong> Developers often encounter binary data in network packets,
+            files, or memory dumps. Converting it into text helps them understand and resolve
+            issues.
+          </li>
+          <li>
+            <strong>Education:</strong> Students learning about binary, ASCII, and Unicode can use
+            this tool to practice and understand conversions more clearly.
+          </li>
+          <li>
+            <strong>Data recovery:</strong> When working with corrupted files or unusual data formats,
+            binary-to-text conversion helps uncover hidden messages or information.
+          </li>
+          <li>
+            <strong>Communication:</strong> Some encoded messages are shared in binary form.
+            Converting them back into readable text allows easy interpretation.
+          </li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📖 Why Binary Matters</h4>
+        <p className="text-gray-700 mb-4">
+          Every piece of digital data—be it an image, a video, or a line of text—is ultimately
+          represented in binary. A simple sentence such as “Hello” is stored in memory as a
+          sequence of binary digits. Each character corresponds to a binary number according
+          to encoding standards like ASCII or UTF-8. For example, the letter H in ASCII is
+          represented by 01001000. When a long string of binary is converted using the
+          correct encoding, it reveals the original text exactly. This process is the backbone of
+          modern computing and communication systems.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Everyday Benefits</h4>
+        <p className="text-gray-700 mb-4">
+          Although it may seem technical, binary-to-text conversion has many everyday
+          benefits. Programmers can quickly decode binary snippets when troubleshooting.
+          Students can explore the relationship between binary and characters. Cybersecurity
+          analysts often need to examine binary payloads in suspicious files. Even hobbyists
+          can use this converter to decode fun binary puzzles or encrypted text shared online.
+          With a simple interface, the tool makes this process approachable for everyone, no
+          matter their technical background.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Final Thoughts</h4>
+        <p className="text-gray-700">
+          Binary to Text conversion is not just about turning 0s and 1s into letters. It is about
+          bridging the gap between machine language and human understanding. Whether you
+          are a student, developer, researcher, or just a curious learner, this tool provides a
+          reliable way to decode binary data into meaningful text. By supporting multiple
+          encodings, validating inputs, and ensuring accuracy, it removes the complexity of
+          manual calculation. In a world where data is everywhere, being able to interpret it
+          quickly and accurately is a powerful skill. This converter ensures that binary
+          information is never out of reach for those who need to read and use it.
+        </p>
       </section>
     </ToolSection>
   );

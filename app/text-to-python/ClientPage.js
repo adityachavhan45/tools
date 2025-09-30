@@ -19,7 +19,7 @@ export default function TextToPythonPage() {
     try {
       // Create a simple Python structure from the text
       const lines = text.split('\n');
-      const pythonContent = lines.map((line, index) => 
+      const pythonContent = lines.map((line, index) =>
         `    "${line.replace(/"/g, '\\"')}"`
       ).join(',\n');
 
@@ -69,7 +69,7 @@ if __name__ == "__main__":
     try {
       // Simple Python to text conversion
       let extractedText = python;
-      
+
       // Extract text from string literals
       const stringMatches = extractedText.match(/"([^"\\]*(\\.[^"\\]*)*)"/g);
       if (stringMatches) {
@@ -261,35 +261,84 @@ if __name__ == "__main__":
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to Python Converter</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to Python code and Python to text. This tool helps you create 
-          structured Python code from plain text and extract text content from Python 
-          scripts, useful for programming and data analysis.
+          The Text to Python Converter is a free online utility designed to help you
+          transform plain text into Python code and decode Python scripts back into
+          human-readable text. Python is one of the most popular programming languages
+          in the world, widely used for web development, data science, automation,
+          machine learning, and scripting. With this converter, you can quickly generate
+          Python arrays or code snippets from raw text, or extract simple text from
+          existing Python files for review, learning, or debugging. Whether you are a
+          beginner experimenting with code or a professional developer, this tool saves
+          you time and ensures cleaner, more structured outputs.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to Python code</li>
-          <li>Extract text from Python scripts</li>
-          <li>Character analysis and statistics</li>
-          <li>Python formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Convert plain text into Python arrays or functions instantly</li>
+          <li>Decode Python code back into text for readability</li>
+          <li>Automatically escape special characters and line breaks</li>
+          <li>Show character, word, and line statistics for analysis</li>
+          <li>One-click copy buttons for both text and Python outputs</li>
+          <li>Lightweight and fast — works directly in your browser</li>
+          <li>Ideal for developers, students, data analysts, and coders</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to Python</strong>.</li>
-          <li>Or enter Python code in the Python field and click <strong>Python to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Enter your text in the <strong>Text</strong> field.</li>
+          <li>Click <strong>Text to Python</strong> to generate Python code instantly.</li>
+          <li>Paste Python code into the <strong>Python</strong> field and click
+            <strong> Python to Text</strong> to decode it.</li>
+          <li>Use the copy buttons to copy results directly to your clipboard.</li>
+          <li>Check the character analysis section for word and line statistics.</li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+        <h4 className="font-semibold mt-4 mb-1">📦 Common Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Programming and development</li>
-          <li>Data science and analysis</li>
-          <li>Automation and scripting</li>
-          <li>Text to code conversion</li>
+          <li><strong>Learning Python:</strong> Beginners can understand how text is represented in code.</li>
+          <li><strong>Debugging:</strong> Developers can extract raw strings from Python scripts.</li>
+          <li><strong>Data Processing:</strong> Convert logs or notes into structured Python lists.</li>
+          <li><strong>Automation:</strong> Generate Python snippets quickly for repeated tasks.</li>
+          <li><strong>Content Management:</strong> Extract text content from Python scripts for documentation.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📊 Why Python?</h4>
+        <p className="text-gray-700 mb-4">
+          Python has become the go-to language for developers because of its simplicity
+          and versatility. It is beginner-friendly yet powerful enough for advanced
+          machine learning and artificial intelligence projects. Companies like Google,
+          Netflix, and NASA rely on Python for automation, data processing, and
+          high-performance applications. By converting text into Python, you can
+          generate code snippets for educational projects, backend systems, or data
+          pipelines. Similarly, decoding Python into plain text is helpful for reviewing
+          large scripts, extracting useful information, or preparing documentation.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>What is this tool used for?</strong> It converts plain text into
+            Python code snippets and also decodes Python code back into text.</li>
+          <li><strong>Is it safe?</strong> Yes, 100% safe — all conversions are processed
+            locally in your browser.</li>
+          <li><strong>Can I use this output in real projects?</strong> Yes, but you should
+            customize the generated code for production use.</li>
+          <li><strong>Does it support complex Python functions?</strong> The converter focuses
+            on arrays and text processing. More complex logic should be added manually.</li>
+          <li><strong>Is Python better than PHP or JavaScript?</strong> Each language has
+            its strengths — Python is best for data science and automation, PHP for
+            server-side web apps, and JavaScript for interactive frontends.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to Python Converter is a simple yet powerful assistant for anyone
+          working with code. From classroom practice to professional projects, this
+          tool helps transform raw text into Python structures in seconds. Instead of
+          manually typing arrays or extracting strings, you can save time and improve
+          accuracy by using this free converter. Whether you’re learning Python for the
+          first time or handling complex data-driven workflows, this tool ensures a
+          smooth experience. Try it today and make your text instantly Python-ready!
+        </p>
       </section>
     </ToolSection>
   );

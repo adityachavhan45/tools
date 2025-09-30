@@ -253,37 +253,136 @@ export default function BmiCalculatorPage() {
         </div>
       </div>
 
-      {/* Info Section */}
+            {/* Info Section */}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
-      <p className="text-gray-700 mb-4">
-        Calculate Body Mass Index (BMI) for health assessment and fitness tracking. This tool helps you 
-        determine your BMI, useful for health monitoring, fitness goals, and medical assessment.
-      </p>
+        <h3 className="text-lg font-semibold mb-2">About BMI Calculator</h3>
+        <p className="text-gray-700 mb-4">
+          Body Mass Index (BMI) is a simple yet powerful health indicator that
+          helps individuals understand whether their body weight falls within a
+          healthy range. Calculated using a person’s height and weight, BMI
+          provides a quick snapshot of potential health risks associated with
+          being underweight, overweight, or obese. While it is not a
+          comprehensive measure of health, it serves as a widely accepted
+          screening tool used by doctors, fitness experts, and health
+          professionals across the world. Our BMI Calculator is designed to make
+          this process simple, accurate, and accessible for everyone.
+        </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Calculate BMI with height and weight</li>
-          <li>Multiple unit systems (metric/imperial)</li>
-          <li>Health recommendations</li>
-          <li>Easy copy to clipboard</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Dual unit system:</strong> Supports both metric (cm, kg) and
+            imperial (inches, lbs) units, making it useful for users worldwide.
+          </li>
+          <li>
+            <strong>Instant results:</strong> Enter height and weight, and get
+            BMI results within seconds.
+          </li>
+          <li>
+            <strong>Health categories:</strong> Automatically classifies results
+            into underweight, normal weight, overweight, and obese categories.
+          </li>
+          <li>
+            <strong>Recommendations:</strong> Provides basic suggestions based
+            on BMI category to encourage healthier lifestyle choices.
+          </li>
+          <li>
+            <strong>Clipboard copy:</strong> One-click copy of BMI results for
+            quick sharing and record-keeping.
+          </li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter your height and weight.</li>
-          <li>Select the unit system.</li>
-          <li>Click <strong>Calculate BMI</strong> to process.</li>
-          <li>Review the BMI result and category.</li>
+        <ol className="list-decimal list-inside text-gray-700 space-y-2">
+          <li>Choose your preferred unit system (metric or imperial).</li>
+          <li>Enter your height and weight into the fields provided.</li>
+          <li>
+            Click on the <strong>Calculate BMI</strong> button to generate
+            results.
+          </li>
+          <li>
+            Review your BMI value, category, and suggested health
+            recommendations.
+          </li>
+          <li>
+            Use the copy button if you want to save or share your results.
+          </li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Health assessment and monitoring</li>
-          <li>Fitness tracking and goals</li>
-          <li>Medical and clinical assessment</li>
-          <li>Personal health management</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Health assessment:</strong> Quickly determine whether your
+            weight is within a healthy range.
+          </li>
+          <li>
+            <strong>Fitness tracking:</strong> Monitor changes in BMI as you
+            pursue workout or diet goals.
+          </li>
+          <li>
+            <strong>Medical screening:</strong> Doctors and healthcare providers
+            often use BMI as an initial indicator of health risks.
+          </li>
+          <li>
+            <strong>Weight management:</strong> Keep track of your progress if
+            you’re aiming to gain, lose, or maintain weight.
+          </li>
+          <li>
+            <strong>Educational purposes:</strong> Useful for students and
+            professionals studying nutrition and health sciences.
+          </li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📖 Understanding BMI Categories</h4>
+        <p className="text-gray-700 mb-4">
+          BMI is divided into categories that reflect general health status:
+          underweight, normal, overweight, and obese. For example, a BMI below
+          18.5 is considered underweight and may indicate malnutrition or other
+          health issues. A BMI between 18.5 and 24.9 is regarded as normal and
+          generally indicates balanced weight. A BMI between 25 and 29.9 falls
+          under overweight, which may increase the risk of lifestyle-related
+          diseases. A BMI of 30 or higher is considered obese and is associated
+          with a significantly higher risk of conditions like diabetes, heart
+          disease, and joint problems.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Everyday Benefits</h4>
+        <p className="text-gray-700 mb-4">
+          Tracking BMI can serve as a motivational tool for personal health and
+          fitness. People working on weight-loss or muscle-gain journeys often
+          rely on BMI to measure progress. Employers and organizations may also
+          use BMI assessments in wellness programs. Even though BMI has its
+          limitations, such as not distinguishing between fat and muscle mass,
+          it still remains a quick, reliable indicator for large-scale health
+          monitoring. For everyday users, it’s a simple way to check whether
+          lifestyle changes are moving them in the right direction.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">⚠️ Limitations of BMI</h4>
+        <p className="text-gray-700 mb-4">
+          While BMI is a useful tool, it does not tell the whole story. It does
+          not measure body fat directly, nor does it account for muscle mass,
+          bone density, or fat distribution. For example, athletes and bodybuilders
+          may have a high BMI due to muscle, but they are not necessarily overweight.
+          Similarly, two people with the same BMI may have very different health
+          profiles. That is why BMI should be used alongside other measures like
+          waist-to-hip ratio, body fat percentage, and lifestyle habits.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The BMI Calculator is a straightforward, easy-to-use tool that helps
+          you keep track of your health by calculating your Body Mass Index
+          quickly and accurately. While it should not replace professional
+          medical advice, it provides a reliable first step in assessing weight
+          categories and associated risks. Whether you are on a personal fitness
+          journey, monitoring your family’s health, or simply curious about your
+          numbers, this calculator empowers you with knowledge. Understanding
+          your BMI can motivate positive lifestyle changes and encourage better
+          health management for the future.
+        </p>
       </section>
+
     </ToolSection>
   );
 }

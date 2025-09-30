@@ -120,8 +120,8 @@ export default function SvgToPngPage() {
               <button
                 className={`flex-1 px-5 py-2.5 rounded-lg font-medium shadow transition
                 ${!file
-                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                  : "bg-slate-900 text-white hover:bg-slate-800"}`}
+                    ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                    : "bg-slate-900 text-white hover:bg-slate-800"}`}
                 disabled={!file}
                 onClick={convert}
               >
@@ -132,8 +132,8 @@ export default function SvgToPngPage() {
                 disabled={!file && !out}
                 className={`flex-1 px-5 py-2.5 rounded-lg font-medium shadow transition
                 ${!file && !out
-                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                  : "bg-red-500 text-white hover:bg-red-600"}`}
+                    ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                    : "bg-red-500 text-white hover:bg-red-600"}`}
               >
                 Reset
               </button>
@@ -162,55 +162,95 @@ export default function SvgToPngPage() {
         {/* Info Section */}
         <section className="mt-10 bg-white border rounded-2xl shadow p-6">
           <h3 className="text-lg font-semibold mb-2 text-gray-800">
-            About SVG to PNG Tool
+            About SVG to PNG Converter
           </h3>
           <p className="text-gray-700 mb-4">
-            SVG (Scalable Vector Graphics) files are resolution-independent,
-            meaning they can be scaled without losing quality. This tool helps
-            you convert SVGs into PNG images for use on websites, apps, and
-            documents where raster formats are required.
+            The SVG to PNG converter is a simple but powerful tool that lets you
+            transform scalable vector graphics into raster PNG images directly in
+            your browser. SVG files are resolution-independent, meaning they can
+            scale to any size without losing sharpness. PNG files, on the other hand,
+            are raster-based and widely supported across websites, social media,
+            apps, and design tools. This converter bridges the gap between these
+            two formats, allowing you to prepare web-ready images in seconds without
+            the need for heavy desktop software.
           </p>
 
-          {/* Features */}
-          <div className="mt-6">
-            <h4 className="flex items-center text-lg font-semibold text-gray-800 mb-2">
-              <span className="text-yellow-500 mr-2">✨</span> Features
-            </h4>
-            <ul className="list-disc list-inside text-gray-700 space-y-1 pl-2">
-              <li>Instantly convert SVG to PNG</li>
-              <li>Adjust scaling from 1x to 8x</li>
-              <li>Preview and download PNG results</li>
-              <li>Works directly in your browser</li>
-            </ul>
-          </div>
+          <p className="text-gray-700 mb-4">
+            Why does this matter? Many platforms and applications do not support SVG
+            natively, even though designers love the format for its scalability.
+            When you upload a logo, icon, or illustration to social media or content
+            management systems, they often require PNG or JPG files. With this tool,
+            you can take any vector artwork and export it into a clean, sharp PNG
+            with adjustable scaling factors. That means whether you need a small
+            favicon or a large presentation image, the quality remains top-notch.
+          </p>
 
-          {/* How to Use */}
-          <div className="mt-6">
-            <h4 className="flex items-center text-lg font-semibold text-gray-800 mb-2">
-              <span className="text-green-600 mr-2">🔧</span> How to Use
-            </h4>
-            <ol className="list-decimal list-inside text-gray-700 space-y-1 pl-2">
-              <li>Select an SVG file from your device.</li>
-              <li>Adjust the scaling factor with the slider.</li>
-              <li>
-                Click <strong>Convert</strong> to generate a PNG.
-              </li>
-              <li>Preview and download your PNG image.</li>
-            </ol>
-          </div>
+          <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-1">
+            <li>Convert SVG vector graphics into PNG instantly</li>
+            <li>Adjust scaling from 1× to 8× to control resolution</li>
+            <li>Preview output directly in your browser</li>
+            <li>Download PNG images in one click</li>
+            <li>Runs locally – no server uploads, 100% private</li>
+            <li>Lightweight, fast, and mobile-friendly</li>
+          </ul>
 
-          {/* Use Cases */}
-          <div className="mt-6">
-            <h4 className="flex items-center text-lg font-semibold text-gray-800 mb-2">
-              <span className="text-orange-500 mr-2">📦</span> Use Cases
-            </h4>
-            <ul className="list-disc list-inside text-gray-700 space-y-1 pl-2">
-              <li>Convert SVG logos into PNG for websites</li>
-              <li>Prepare graphics for social media</li>
-              <li>Export scalable designs into raster images</li>
-              <li>Use PNG format in apps that don’t support SVG</li>
-            </ul>
-          </div>
+          <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
+          <ol className="list-decimal list-inside text-gray-700 space-y-1">
+            <li>Select an SVG file from your device using the file picker.</li>
+            <li>Adjust the scale slider to choose output size (from 1× to 8×).</li>
+            <li>Click the <strong>Convert</strong> button to render the PNG image.</li>
+            <li>Preview the result and download it instantly to your device.</li>
+            <li>Use the <strong>Reset</strong> button anytime to start fresh.</li>
+          </ol>
+
+          <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-1">
+            <li><strong>Logos & Branding:</strong> Convert scalable logos into PNG format for websites, apps, and business cards.</li>
+            <li><strong>Social Media:</strong> Prepare graphics for Instagram, Twitter, Facebook, and LinkedIn posts.</li>
+            <li><strong>UI/UX Design:</strong> Export icons from SVG to PNG for use in design systems or prototypes.</li>
+            <li><strong>Presentations:</strong> Insert PNG versions of illustrations into PowerPoint or Google Slides.</li>
+            <li><strong>Web Development:</strong> Generate raster fallbacks for browsers or apps that do not support SVG.</li>
+          </ul>
+
+          <h4 className="font-semibold mt-4 mb-1">💡 Advantages of Using This Tool</h4>
+          <p className="text-gray-700 mb-4">
+            The biggest advantage is privacy and speed. Unlike online converters
+            that upload your images to external servers, this SVG to PNG tool runs
+            completely inside your browser using HTML5 canvas. That means your files
+            never leave your computer, ensuring full data security. The conversion
+            is also instant – no waiting for servers or downloads. It works even
+            offline once the page is loaded, making it perfect for quick design
+            tasks.
+          </p>
+          <p className="text-gray-700 mb-4">
+            Another advantage is control over scaling. By adjusting the output
+            multiplier, you can generate high-resolution PNGs for print or
+            low-resolution versions optimized for web. This flexibility is extremely
+            useful for designers who want to create multiple versions of the same
+            graphic without opening heavyweight apps like Illustrator or Photoshop.
+          </p>
+
+          <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li><strong>Does it support transparency?</strong> Yes, PNG files preserve transparency by default.</li>
+            <li><strong>Will the quality be reduced?</strong> No, scaling ensures sharp output, but keep in mind PNG is raster-based.</li>
+            <li><strong>Can I batch convert multiple SVG files?</strong> Currently, one file at a time, but you can repeat as needed.</li>
+            <li><strong>Is it free to use?</strong> Absolutely – no limits, no hidden costs.</li>
+            <li><strong>Do I need to install software?</strong> No installation required; it runs directly in your browser.</li>
+          </ul>
+
+          <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+          <p className="text-gray-700">
+            SVG files are amazing for design and development, but not every platform
+            supports them. PNG is a universal format that works everywhere. With this
+            free SVG to PNG converter, you can instantly generate high-quality raster
+            images, scale them to your needs, and keep full control of your files.
+            Whether you are a designer preparing social media assets, a developer
+            building websites, or a business owner creating marketing material, this
+            tool saves time and makes your workflow smoother. Try it today and enjoy
+            fast, private, and reliable conversions.
+          </p>
         </section>
       </div>
     </main>

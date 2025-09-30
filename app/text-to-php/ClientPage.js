@@ -19,7 +19,7 @@ export default function TextToPhpPage() {
     try {
       // Create a simple PHP structure from the text
       const lines = text.split('\n');
-      const phpContent = lines.map((line, index) => 
+      const phpContent = lines.map((line, index) =>
         `    "${line.replace(/"/g, '\\"')}"`
       ).join(',\n');
 
@@ -76,7 +76,7 @@ main();
     try {
       // Simple PHP to text conversion
       let extractedText = php;
-      
+
       // Extract text from string literals
       const stringMatches = extractedText.match(/"([^"\\]*(\\.[^"\\]*)*)"/g);
       if (stringMatches) {
@@ -267,35 +267,81 @@ main();
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to PHP Converter</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to PHP code and PHP to text. This tool helps you create 
-          structured PHP code from plain text and extract text content from PHP 
-          scripts, useful for web development and server-side programming.
+          The Text to PHP Converter is a free online tool that allows you to transform
+          plain text into structured PHP code and decode PHP scripts back into human-readable
+          text. PHP (Hypertext Preprocessor) is one of the most widely used server-side scripting
+          languages, powering millions of websites and applications across the globe.
+          With this converter, you can quickly prepare PHP code snippets from raw text,
+          or extract text from PHP for debugging, learning, or analysis. Whether you are a
+          beginner experimenting with code or an experienced developer handling production
+          scripts, this tool saves valuable time by reducing manual effort.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to PHP code</li>
-          <li>Extract text from PHP scripts</li>
-          <li>Character analysis and statistics</li>
-          <li>PHP formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Instantly convert plain text into valid PHP arrays and scripts</li>
+          <li>Decode PHP code back into simple text for easy readability</li>
+          <li>Automatic handling of escape characters and line breaks</li>
+          <li>Character, word, and line statistics for better text analysis</li>
+          <li>One-click copy buttons for both text and PHP outputs</li>
+          <li>Lightweight and fast — works entirely in your browser</li>
+          <li>Useful for developers, students, content managers, and analysts</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to PHP</strong>.</li>
-          <li>Or enter PHP code in the PHP field and click <strong>PHP to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Enter your text into the <strong>Text</strong> input field.</li>
+          <li>Click <strong>Text to PHP</strong> to generate a PHP script.</li>
+          <li>Paste PHP code into the <strong>PHP</strong> field and click
+            <strong> PHP to Text</strong> to decode it.</li>
+          <li>Use the copy buttons to copy results to your clipboard instantly.</li>
+          <li>Review the character analysis section for detailed metrics.</li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+        <h4 className="font-semibold mt-4 mb-1">📦 Common Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Web development and programming</li>
-          <li>Server-side scripting</li>
-          <li>Data processing and analysis</li>
-          <li>Text to code conversion</li>
+          <li><strong>Learning PHP:</strong> Beginners can see how text converts into arrays and functions.</li>
+          <li><strong>Debugging:</strong> Extract text strings from PHP scripts for quick testing.</li>
+          <li><strong>Data Processing:</strong> Prepare structured arrays from plain notes or logs.</li>
+          <li><strong>Web Development:</strong> Quickly generate PHP snippets for dynamic content.</li>
+          <li><strong>Server-Side Applications:</strong> Handle user input or stored text in PHP format.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📊 Why Use PHP?</h4>
+        <p className="text-gray-700 mb-4">
+          PHP has been the backbone of server-side web development for over two decades.
+          It is open-source, easy to learn, and integrates seamlessly with HTML, CSS,
+          and databases like MySQL. Popular content management systems such as WordPress,
+          Drupal, and Joomla are built with PHP. By converting text into PHP code, you
+          can create dynamic pages, store data in arrays, or prepare scripts for backend
+          processing. Similarly, decoding PHP into text helps with understanding scripts,
+          documentation, and debugging complex codebases.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>What is this tool used for?</strong> To convert plain text into PHP
+            code snippets and decode PHP back into text.</li>
+          <li><strong>Is it safe?</strong> Yes, 100% safe — all processing happens in your browser,
+            no data is uploaded to servers.</li>
+          <li><strong>Can I use the output in real projects?</strong> Yes, but you should
+            review and customize the code for production environments.</li>
+          <li><strong>Does it support PHP functions?</strong> The converter generates arrays and
+            echo statements; complex logic must be added manually.</li>
+          <li><strong>What’s the difference between PHP and JavaScript?</strong> PHP runs
+            on the server, while JavaScript usually runs in the browser.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to PHP Converter is more than just a code generator — it is a
+          time-saving assistant for web developers, students, and analysts. Instead of
+          manually writing boilerplate PHP code or extracting strings, you can achieve
+          the same results instantly with this tool. From classroom practice to
+          production projects, it enhances productivity and accuracy. Try converting
+          your own text today and see how easily it becomes structured PHP code ready
+          for real-world applications.
+        </p>
       </section>
     </ToolSection>
   );

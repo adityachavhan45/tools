@@ -231,40 +231,134 @@ ${Array.from({length: Math.min(t, 10)}, (_, i) => {
         </div>
       </div>
 
-      {/* Info Section */}
+            {/* Info Section */}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Compound Interest Calculator</h3>
         <p className="text-gray-700 mb-4">
-          Calculate compound interest and investment growth. This tool helps you 
-          understand how your money can grow over time with compound interest, 
-          useful for financial planning and investment decisions.
+          Compound interest is one of the most powerful financial concepts that
+          shows how money can grow over time. Unlike simple interest, which is
+          calculated only on the principal amount, compound interest works by
+          applying interest not just on the original principal but also on the
+          accumulated interest from previous periods. This means your money can
+          grow at an accelerating pace. Our Compound Interest Calculator makes
+          it simple to estimate future investment value, track financial growth,
+          and plan long-term financial goals effectively.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Calculate compound interest and growth</li>
-          <li>Year-by-year breakdown and analysis</li>
-          <li>Multiple compounding frequency options</li>
-          <li>Financial insights and recommendations</li>
-          <li>Easy copy to clipboard</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Accurate calculations:</strong> Uses the standard formula
+            A = P(1 + r/n)<sup>nt</sup> to ensure precise results.
+          </li>
+          <li>
+            <strong>Multiple frequencies:</strong> Choose from annual,
+            semi-annual, quarterly, monthly, or daily compounding to reflect
+            real-world financial products.
+          </li>
+          <li>
+            <strong>Year-by-year breakdown:</strong> See how your investment
+            grows each year and how much interest is earned cumulatively.
+          </li>
+          <li>
+            <strong>Financial insights:</strong> Provides effective annual rate
+            (EAR), growth percentage, and contribution insights.
+          </li>
+          <li>
+            <strong>Easy export:</strong> One-click copy of the full results for
+            your reports, study, or planning documents.
+          </li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter the principal amount you want to invest.</li>
-          <li>Set the annual interest rate you expect to earn.</li>
-          <li>Choose the time period for your investment.</li>
-          <li>Select how often interest is compounded.</li>
-          <li>Click <strong>Calculate Interest</strong> to see the results.</li>
+        <ol className="list-decimal list-inside text-gray-700 space-y-2">
+          <li>Enter your starting principal amount (the money you invest).</li>
+          <li>Provide the annual interest rate as a percentage.</li>
+          <li>Specify the total time period (in years) for the investment.</li>
+          <li>
+            Select how often interest should be compounded (annually, quarterly,
+            monthly, etc.).
+          </li>
+          <li>
+            Click the <strong>Calculate Interest</strong> button to see your
+            results.
+          </li>
+          <li>
+            Review the breakdown and copy results for your personal use or
+            financial planning.
+          </li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Investment planning and analysis</li>
-          <li>Retirement savings calculations</li>
-          <li>Financial goal setting</li>
-          <li>Educational and awareness purposes</li>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>
+            <strong>Retirement planning:</strong> Estimate how your savings
+            might grow over decades and understand the power of starting early.
+          </li>
+          <li>
+            <strong>Investment analysis:</strong> Compare how different
+            compounding frequencies affect growth in stocks, bonds, or deposits.
+          </li>
+          <li>
+            <strong>Loan insights:</strong> Understand how compound interest
+            affects long-term loans and mortgages.
+          </li>
+          <li>
+            <strong>Educational tool:</strong> Great for teaching students the
+            difference between simple and compound interest.
+          </li>
+          <li>
+            <strong>Goal tracking:</strong> Calculate how much you need to
+            invest today to reach a specific financial milestone.
+          </li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📖 Why Compound Interest Matters</h4>
+        <p className="text-gray-700 mb-4">
+          Compound interest is often called the &quot;eighth wonder of the world&quot;
+          because of how dramatically it can grow wealth over time. The longer
+          you let your money compound, the larger the effect becomes. For
+          example, an investment of $10,000 at 7% annual interest compounded
+          monthly will nearly double in just 10 years, while the same investment
+          at simple interest would grow much more slowly. This demonstrates why
+          time and frequency are the two most important factors in financial
+          growth.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Everyday Benefits</h4>
+        <p className="text-gray-700 mb-4">
+          Anyone can benefit from understanding compound interest. Students
+          saving for college, employees contributing to retirement accounts, or
+          families building an emergency fund all rely on compounding. It
+          encourages disciplined saving habits and highlights the importance of
+          starting early. Even small amounts, when compounded over time, can
+          grow into significant sums. For instance, saving just $100 per month
+          in an account with compound interest can lead to impressive results
+          after 20–30 years.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">⚠️ Limitations to Consider</h4>
+        <p className="text-gray-700 mb-4">
+          While compound interest calculators provide valuable projections, they
+          are based on fixed assumptions. Real-life investments may vary due to
+          inflation, market fluctuations, taxes, and fees. Additionally, the
+          calculator does not account for irregular contributions or withdrawals
+          unless customized. Therefore, results should be viewed as guidance,
+          not guarantees. Consulting with a financial advisor is recommended for
+          making major financial decisions.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Compound Interest Calculator is more than just a math tool—it is a
+          financial planning companion. It helps visualize how money grows and
+          empowers users to make informed investment choices. Whether you are a
+          student learning finance basics, a young professional starting to
+          invest, or a retiree evaluating savings, this tool offers clarity and
+          confidence. By understanding how interest compounds, you unlock the
+          secret to building wealth over time and create a stronger foundation
+          for your financial future.
+        </p>
       </section>
     </ToolSection>
   );

@@ -21,31 +21,31 @@ export default function TextDiffCheckerPage() {
       // Simple text comparison
       const lines1 = text1.split('\n');
       const lines2 = text2.split('\n');
-      
+
       let diffResult = "# Text Diff Comparison\n";
       diffResult += `# Generated on: ${new Date().toISOString()}\n\n`;
-      
+
       diffResult += `# Text 1 Statistics\n`;
       diffResult += `# Total Lines: ${lines1.length}\n`;
       diffResult += `# Total Characters: ${text1.length}\n`;
       diffResult += `# Total Words: ${text1.split(/\s+/).filter(word => word.length > 0).length}\n\n`;
-      
+
       diffResult += `# Text 2 Statistics\n`;
       diffResult += `# Total Lines: ${lines2.length}\n`;
       diffResult += `# Total Characters: ${text2.length}\n`;
       diffResult += `# Total Words: ${text2.split(/\s+/).filter(word => word.length > 0).length}\n\n`;
-      
+
       diffResult += `# Comparison Results\n`;
       diffResult += `# Lines are identical: ${text1 === text2}\n`;
       diffResult += `# Character count difference: ${Math.abs(text1.length - text2.length)}\n`;
       diffResult += `# Word count difference: ${Math.abs(text1.split(/\s+/).filter(word => word.length > 0).length - text2.split(/\s+/).filter(word => word.length > 0).length)}\n\n`;
-      
+
       // Line-by-line comparison
       const maxLines = Math.max(lines1.length, lines2.length);
       for (let i = 0; i < maxLines; i++) {
         const line1 = lines1[i] || '';
         const line2 = lines2[i] || '';
-        
+
         if (line1 === line2) {
           diffResult += `# Line ${i + 1}: IDENTICAL\n`;
         } else {
@@ -207,35 +207,83 @@ export default function TextDiffCheckerPage() {
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text Diff Checker</h3>
         <p className="text-gray-700 mb-4">
-          Compare two texts and find differences. This tool helps you identify 
-          changes between two versions of text, useful for version control, 
-          document comparison, and content management.
+          A Text Diff Checker is a simple yet powerful tool designed to compare two
+          pieces of text and highlight their differences. Whether you are a writer
+          editing multiple drafts, a programmer reviewing code changes, a student
+          checking assignment revisions, or a content manager verifying updates,
+          this tool saves time and reduces manual effort. By analyzing line-by-line
+          and character-level differences, it provides instant clarity on what has
+          been added, removed, or modified between two text versions.
+        </p>
+
+        <p className="text-gray-700 mb-4">
+          Traditionally, people had to manually read both documents side by side,
+          which was slow and error-prone. Today, with online diff checkers, the
+          process is automated. Simply paste your texts, click compare, and see
+          the differences highlighted instantly. This makes it ideal not just for
+          coders, but also for students, teachers, lawyers, researchers, and anyone
+          working with documents where accuracy matters.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Compare two texts side by side</li>
-          <li>Highlight differences and changes</li>
-          <li>Character and word count analysis</li>
-          <li>Line-by-line comparison</li>
-          <li>Easy copy to clipboard</li>
+          <li>Instant comparison of two text inputs</li>
+          <li>Line-by-line and character-level difference detection</li>
+          <li>Word count, character count, and line statistics</li>
+          <li>Highlights identical vs. different lines</li>
+          <li>One-click copy of results for reports</li>
+          <li>Works directly in your browser — no data uploaded</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter the first text in the Text 1 field.</li>
-          <li>Enter the second text in the Text 2 field.</li>
-          <li>Click <strong>Compare Texts</strong> to see the differences.</li>
-          <li>Review the comparison results and statistics.</li>
+          <li>Paste or type your first text into the Text 1 field.</li>
+          <li>Paste or type your second text into the Text 2 field.</li>
+          <li>Click <strong>Compare Texts</strong> to generate the diff.</li>
+          <li>Review the highlighted differences and statistics.</li>
+          <li>Copy the results for documentation or sharing if needed.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Version control and document comparison</li>
-          <li>Content management and editing</li>
-          <li>Code review and debugging</li>
-          <li>Text analysis and validation</li>
+          <li><strong>Content Editing:</strong> Compare original vs. edited drafts of articles or essays.</li>
+          <li><strong>Programming:</strong> Review code changes between two versions for debugging.</li>
+          <li><strong>Legal:</strong> Check revisions in contracts, agreements, or policy documents.</li>
+          <li><strong>Academic:</strong> Compare student submissions with reference answers.</li>
+          <li><strong>Plagiarism Check:</strong> Spot differences between similar documents.</li>
+          <li><strong>Translation:</strong> Verify accuracy between original and translated text.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📊 Why is Text Comparison Important?</h4>
+        <p className="text-gray-700 mb-4">
+          Text comparison is not just about spotting differences — it ensures
+          accuracy, prevents mistakes, and maintains consistency. For developers,
+          even a single missing semicolon can cause errors. For businesses,
+          unnoticed changes in contracts may lead to costly consequences. For
+          students, small variations in assignments can affect grades. By automating
+          the process, a text diff checker reduces human error and improves
+          productivity.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Does this tool check formatting?</strong> No, it compares raw text, not styling.</li>
+          <li><strong>Can I compare very large documents?</strong> Yes, but for extremely large files, it may take a few seconds.</li>
+          <li><strong>Is my data safe?</strong> Yes, all comparisons happen in your browser — nothing is uploaded.</li>
+          <li><strong>Can I export the diff?</strong> Yes, you can copy the results and paste them anywhere.</li>
+          <li><strong>Is this free?</strong> Absolutely — no limits or hidden costs.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text Diff Checker is a must-have utility for anyone who works with
+          text. It simplifies comparison, saves time, and ensures accuracy across
+          writing, coding, legal, and academic tasks. Instead of wasting hours
+          scanning documents manually, you can detect differences instantly and
+          focus on meaningful work. Fast, private, and free — this tool is your
+          reliable companion for version control, content management, and everyday
+          writing tasks.
+        </p>
       </section>
     </ToolSection>
   );

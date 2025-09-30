@@ -118,38 +118,103 @@ export default function UuidGeneratorPage() {
           </div>
         </div>
 
-        {/* Info Section */}
+                {/* Info Section */}
         <section className="mt-10 bg-white border rounded-2xl shadow p-6">
           <h3 className="text-lg font-semibold mb-2 text-gray-800">
-            About UUID v4
+            About UUID v4 Generator
           </h3>
-          <p className="text-gray-700 mb-4">
-            UUID (Universally Unique Identifier) is a 128-bit value used to
-            uniquely identify objects or data. UUID v4 is generated using random
-            numbers, making collisions extremely unlikely.
+          <p className="text-gray-700 mb-4 text-sm">
+            A UUID (Universally Unique Identifier) is a 128-bit value used to
+            uniquely identify information in computer systems. Unlike simple
+            incremental IDs (1, 2, 3, …), a UUID is generated in such a way that
+            it is almost impossible for two values to be the same. The version 4
+            (v4) UUID is based entirely on random numbers, making it one of the
+            most common and secure ways to generate unique identifiers. This UUID
+            Generator allows you to create multiple UUID v4 values instantly,
+            directly in your browser, without needing any server or database.
           </p>
 
-          {/* Features */}
-          <h4 className="flex items-center text-lg font-semibold text-gray-800 mb-2">
-            <span className="text-yellow-500 mr-2">✨</span> Features
-          </h4>
-          <ul className="list-disc list-inside text-gray-700 space-y-1 pl-2">
-            <li>Generate multiple UUID v4 identifiers</li>
-            <li>Copy all results with one click</li>
-            <li>Clear/reset easily</li>
-            <li>Runs completely in your browser</li>
+          <h4 className="text-lg font-semibold text-gray-800 mt-4 mb-2">✨ Key Features</h4>
+          <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+            <li>Generates fully random UUID v4 identifiers.</li>
+            <li>Supports bulk generation — create up to 1000 UUIDs at once.</li>
+            <li>One-click copy for quick use in projects or documentation.</li>
+            <li>No server dependency — works entirely inside your browser.</li>
+            <li>Lightweight, fast, and privacy-friendly (no data leaves your system).</li>
           </ul>
 
-          {/* Use Cases */}
-          <h4 className="flex items-center text-lg font-semibold text-gray-800 mt-6 mb-2">
-            <span className="text-orange-500 mr-2">📦</span> Use Cases
-          </h4>
-          <ul className="list-disc list-inside text-gray-700 space-y-1 pl-2">
-            <li>Database primary keys</li>
-            <li>Unique identifiers in distributed systems</li>
-            <li>Session tokens or API keys</li>
-            <li>Tracking objects in large datasets</li>
+          <h4 className="text-lg font-semibold text-gray-800 mt-6 mb-2">📦 Practical Use Cases</h4>
+          <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+            <li><strong>Databases:</strong> Use UUIDs as primary keys instead of sequential IDs to avoid collisions in distributed databases.</li>
+            <li><strong>Web Development:</strong> Assign UUIDs to user sessions, API tokens, or authentication flows for security.</li>
+            <li><strong>Software Engineering:</strong> Track objects, configurations, or logs with globally unique IDs.</li>
+            <li><strong>Cloud & Distributed Systems:</strong> Ensure unique identifiers across servers without central coordination.</li>
+            <li><strong>Testing & Debugging:</strong> Generate mock data with unique values for load testing or QA environments.</li>
           </ul>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-6 mb-2">🔧 How Does UUID v4 Work?</h4>
+          <p className="text-gray-700 text-sm mb-4">
+            A UUID v4 is generated using 122 random bits. Certain bits are reserved
+            to mark the version (4) and variant (RFC 4122 standard). The randomness
+            ensures that the probability of two UUIDs being identical is close to
+            zero — approximately 1 in 2<sup>122</sup>. This level of uniqueness
+            makes UUID v4 suitable for high-scale systems where millions of IDs are
+            created every second across different machines.
+          </p>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-6 mb-2">⚡ Benefits of Using UUID v4</h4>
+          <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+            <li><strong>Collision Resistance:</strong> Almost impossible to generate duplicates.</li>
+            <li><strong>Scalability:</strong> Works across distributed systems without coordination.</li>
+            <li><strong>Security:</strong> Harder to guess compared to incremental IDs, reducing attack vectors.</li>
+            <li><strong>Flexibility:</strong> Can be used in databases, APIs, IoT, blockchain, and more.</li>
+            <li><strong>Standardized:</strong> Universally recognized format supported by most programming languages.</li>
+          </ul>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-6 mb-2">🔒 Security Considerations</h4>
+          <p className="text-gray-700 text-sm mb-4">
+            While UUID v4 provides randomness and unpredictability, it should not
+            be used as a replacement for cryptographic keys or passwords. UUIDs are
+            designed for uniqueness, not encryption. For sensitive applications
+            like authentication, always combine UUIDs with strong security
+            practices such as hashing, salting, and SSL/TLS communication.
+          </p>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-6 mb-2">📐 Best Practices</h4>
+          <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+            <li>Use UUIDs for distributed systems where central ID generation is not practical.</li>
+            <li>Store UUIDs as <code>CHAR(36)</code> strings or as <code>BINARY(16)</code> for efficiency.</li>
+            <li>Avoid using UUIDs as sequential primary keys in heavily indexed relational databases (consider UUID v1 or ULID if ordering matters).</li>
+            <li>For front-end projects, generate UUIDs in the client to reduce server load.</li>
+            <li>Keep logs of generated UUIDs only if necessary; otherwise, trust randomness.</li>
+          </ul>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-6 mb-2">❓ Frequently Asked Questions (FAQ)</h4>
+          <ul className="list-disc list-inside text-sm text-gray-700 space-y-2">
+            <li><strong>Q: What is the difference between UUID v1 and v4?</strong><br />
+              A: UUID v1 is based on timestamp + MAC address, while UUID v4 is purely random.</li>
+            <li><strong>Q: Can two UUID v4 values ever be the same?</strong><br />
+              A: The probability is so low it’s practically impossible (1 in 5.3e36).</li>
+            <li><strong>Q: Is UUID v4 safe for authentication?</strong><br />
+              A: It’s safe for identifiers but not for passwords or secret keys.</li>
+            <li><strong>Q: How long is a UUID?</strong><br />
+              A: A UUID is 128 bits, typically represented as a 36-character string (with hyphens).</li>
+            <li><strong>Q: Can I use UUIDs in URLs?</strong><br />
+              A: Yes, UUIDs are URL-safe and widely used in REST APIs.</li>
+          </ul>
+
+          <h4 className="text-lg font-semibold text-gray-800 mt-6 mb-2">🚀 Final Thoughts</h4>
+          <p className="text-gray-700 text-sm">
+            UUID v4 is one of the simplest yet most powerful ways to ensure
+            uniqueness in digital systems. From databases to cloud services, from
+            APIs to IoT devices — UUIDs have become a universal standard. This
+            browser-based UUID Generator helps you create as many identifiers as
+            you need instantly, without any installation or backend dependency.
+            Whether you are a developer, student, researcher, or just experimenting,
+            UUIDs will give you reliable, unique, and scalable IDs every time. By
+            using this tool, you eliminate duplication risks and future-proof your
+            projects with globally unique identifiers.
+          </p>
         </section>
       </div>
     </main>

@@ -115,21 +115,73 @@ export default function WebpToPngPage() {
           </div>
         )}
 
-        {/* SEO Info Section */}
+                {/* SEO Info Section */}
         <div className="mt-10 p-4 border rounded bg-white shadow-sm">
-          <h3 className="text-lg font-semibold mb-2">About WebP to PNG</h3>
-          <p className="text-gray-700 text-sm mb-2">
-            WebP is a modern image format developed by Google that provides
-            superior compression for images on the web. However, not all
-            platforms, apps, or editing tools support WebP yet. Converting WebP
-            to PNG ensures wider compatibility while maintaining high quality.
+          <h3 className="text-lg font-semibold mb-2">About WebP to PNG Converter</h3>
+          <p className="text-gray-700 text-sm mb-4">
+            WebP is a modern image format introduced by Google that offers superior
+            compression and smaller file sizes without compromising much on quality.
+            It is widely used across websites to improve loading speed and reduce
+            bandwidth usage. However, WebP is not universally supported — many
+            older software, design tools, and certain apps cannot open or edit WebP
+            images. This is where a WebP to PNG converter becomes essential. By
+            converting your WebP files into PNG format, you ensure maximum
+            compatibility across platforms, editing software, and publishing tools.
           </p>
-          <h4 className="font-medium">When should you convert?</h4>
+
+          <h4 className="font-medium mt-4 mb-2">✨ Key Features</h4>
           <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-            <li>When your software or CMS does not support WebP.</li>
-            <li>If you need lossless quality with alpha transparency.</li>
-            <li>When preparing assets for editing in tools like Photoshop.</li>
+            <li>Fast, browser-based conversion (no server upload needed).</li>
+            <li>Retains transparency and image quality during conversion.</li>
+            <li>Supports multiple WebP files in one go.</li>
+            <li>Instant preview before downloading converted PNGs.</li>
+            <li>Lightweight, secure, and completely free to use.</li>
           </ul>
+
+          <h4 className="font-medium mt-4 mb-2">🔧 How to Use</h4>
+          <ol className="list-decimal list-inside text-sm text-gray-700 space-y-1">
+            <li>Click the upload button or drag & drop your WebP files.</li>
+            <li>Wait for the tool to process and preview the images.</li>
+            <li>Click <strong>Convert</strong> and download PNG versions instantly.</li>
+            <li>Use the Reset button to clear and start fresh with new files.</li>
+          </ol>
+
+          <h4 className="font-medium mt-4 mb-2">📦 Practical Use Cases</h4>
+          <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+            <li><strong>Designers:</strong> Import PNG into Photoshop, Illustrator, or Figma.</li>
+            <li><strong>Developers:</strong> Use PNG for apps or CMSs that don’t support WebP.</li>
+            <li><strong>Marketers:</strong> Ensure brand assets are usable across all platforms.</li>
+            <li><strong>Students:</strong> Convert WebP screenshots for reports or presentations.</li>
+            <li><strong>General Users:</strong> Share universally supported PNG files via email or social media.</li>
+          </ul>
+
+          <h4 className="font-medium mt-4 mb-2">📐 Why Convert WebP to PNG?</h4>
+          <p className="text-gray-700 text-sm mb-4">
+            Although WebP is great for web performance, PNG is still the preferred
+            format for design and editing due to its lossless quality and transparency
+            support. Converting ensures you can open images on any device or software
+            without compatibility issues. If you frequently work with image editing
+            tools or need alpha channel transparency, PNG is often the best choice.
+          </p>
+
+          <h4 className="font-medium mt-4 mb-2">⚡ Best Practices</h4>
+          <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+            <li>Use WebP for website speed optimization but keep PNG for editing.</li>
+            <li>Always keep a backup of original files before conversion.</li>
+            <li>For logos, graphics, or transparent images — PNG works best.</li>
+            <li>Batch convert when dealing with multiple assets for projects.</li>
+          </ul>
+
+          <h4 className="font-medium mt-4 mb-2">🚀 Final Thoughts</h4>
+          <p className="text-gray-700 text-sm">
+            This WebP to PNG converter is a simple yet powerful tool for anyone
+            working with images. It removes the barrier of format incompatibility
+            and ensures your files can be edited, shared, and published anywhere
+            without restrictions. Whether you are a designer, developer, student,
+            or casual user, this converter saves time, ensures quality, and makes
+            your workflow smoother. Use it anytime you need quick, reliable, and
+            free WebP to PNG conversion directly in your browser.
+          </p>
         </div>
       </div>
     </main>

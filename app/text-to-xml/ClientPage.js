@@ -19,7 +19,7 @@ export default function TextToXmlPage() {
     try {
       // Create a simple XML structure from the text
       const lines = text.split('\n');
-      const xmlContent = lines.map((line, index) => 
+      const xmlContent = lines.map((line, index) =>
         `    <line number="${index + 1}">${line.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</line>`
       ).join('\n');
 
@@ -62,7 +62,7 @@ ${xmlContent}
     try {
       // Simple XML to text conversion
       let extractedText = xml;
-      
+
       // Extract text from XML elements
       const xmlMatches = extractedText.match(/<[^>]*>([^<]*)<\/[^>]*>/g);
       if (xmlMatches) {
@@ -251,35 +251,77 @@ ${xmlContent}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to XML Converter</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to XML code and XML to text. This tool helps you create 
-          structured XML code from plain text and extract text content from XML 
-          files, useful for data exchange and configuration management.
+          The Text to XML Converter is a free online tool that allows you to transform plain text
+          into well-structured XML code and also decode XML back into human-readable text. XML
+          (Extensible Markup Language) is widely used across industries for configuration,
+          communication, and structured data storage. With this tool, developers, students, and
+          content creators can quickly build XML snippets, check formatting, and easily switch
+          between raw text and markup code.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to XML code</li>
-          <li>Extract text from XML files</li>
-          <li>Character analysis and statistics</li>
-          <li>XML formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Instant conversion of text into XML format</li>
+          <li>Decodes XML tags back to plain text</li>
+          <li>Shows character, word, and line statistics</li>
+          <li>Proper escaping of special characters (&lt;, &gt;, &amp;)</li>
+          <li>Well-indented and readable XML output</li>
+          <li>Easy copy-to-clipboard functionality</li>
+          <li>Works directly in the browser without server uploads</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to XML</strong>.</li>
-          <li>Or enter XML code in the XML field and click <strong>XML to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Enter or paste text into the input box.</li>
+          <li>Click on <strong>Text to XML</strong> to generate a structured XML snippet.</li>
+          <li>Alternatively, paste XML code in the XML box and click <strong>XML to Text</strong> to decode.</li>
+          <li>Copy results with one click to use in your projects, APIs, or apps.</li>
+          <li>Check the character analysis section for quick stats on your text.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Data exchange and APIs</li>
-          <li>Configuration management</li>
-          <li>Web services and SOAP</li>
-          <li>Text to code conversion</li>
+          <li><strong>Data Exchange:</strong> Share structured data between different systems and platforms.</li>
+          <li><strong>APIs:</strong> Work with SOAP-based web services that rely heavily on XML.</li>
+          <li><strong>Configuration Files:</strong> Store application settings in XML format for flexibility.</li>
+          <li><strong>Education:</strong> Learn XML basics through simple text-to-XML experiments.</li>
+          <li><strong>Web Development:</strong> Create sitemaps, feeds, or config files.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🌍 Why XML Matters</h4>
+        <p className="text-gray-700 mb-4">
+          XML is one of the most versatile markup languages. Unlike JSON, which is popular today,
+          XML remains crucial in enterprise environments, legacy systems, and industries like
+          finance, healthcare, and telecom. It is self-descriptive, meaning tags can define data
+          in a way that is both human- and machine-readable. From RSS feeds to Android app
+          configurations, XML continues to play a key role in digital ecosystems.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">💡 Examples</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-1">
+          <li>Text: <code>Hello World</code> → XML: <code>&lt;line number=&quot;1&quot;&gt;Hello World&lt;/line&gt;</code></li>
+          <li>Text: <code>5 &lt; 10</code> → XML: <code>&lt;line number=&quot;1&quot;&gt;5 &amp;lt; 10&lt;/line&gt;</code></li>
+          <li>Multiple lines become sequential XML elements with line numbers.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Can I use this tool offline?</strong> Yes, it works completely in your browser without internet once loaded.</li>
+          <li><strong>Does it validate XML?</strong> The tool ensures basic structure and escaping, but for full validation, you may use an XML schema (XSD).</li>
+          <li><strong>Which industries use XML?</strong> Finance (SWIFT messages), publishing (EPUB format), mobile apps (Android layouts), and web feeds (RSS/Atom).</li>
+          <li><strong>Does it support Unicode?</strong> Yes, it supports all languages including Hindi, Chinese, Arabic, and emojis.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          This Text to XML Converter is a must-have utility for developers, students,
+          and professionals who deal with structured data. It simplifies the process
+          of generating clean XML code from raw text, while also making it easy to
+          extract text from existing XML files. Whether you are building an API,
+          configuring software, or learning markup languages, this tool saves time,
+          reduces errors, and improves productivity. Try it now and experience hassle-free
+          text-to-XML conversion!
+        </p>
       </section>
     </ToolSection>
   );

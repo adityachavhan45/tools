@@ -83,10 +83,14 @@ export default function UnixTimePage() {
                 className="w-full p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-slate-900 outline-none text-gray-800"
                 type="number"
                 value={timestamp}
-                onChange={(e) => setTimestamp(parseInt(e.target.value || "0", 10))}
+                onChange={(e) =>
+                  setTimestamp(parseInt(e.target.value || "0", 10))
+                }
               />
               <div className="p-3 border rounded-lg bg-gray-50 text-sm text-gray-700">
-                {showUTC ? dateFromTs.toUTCString() : dateFromTs.toLocaleString()}
+                {showUTC
+                  ? dateFromTs.toUTCString()
+                  : dateFromTs.toLocaleString()}
               </div>
               <button
                 onClick={() => copy(timestamp)}
@@ -127,7 +131,9 @@ export default function UnixTimePage() {
                 onChange={(e) => setAutoUpdate(e.target.checked)}
                 className="h-4 w-4 accent-slate-900"
               />
-              <span className="text-sm text-gray-700">Auto-update current time</span>
+              <span className="text-sm text-gray-700">
+                Auto-update current time
+              </span>
             </label>
 
             <label className="flex items-center gap-2 cursor-pointer">
@@ -149,43 +155,113 @@ export default function UnixTimePage() {
           </div>
         </div>
 
-        {/* Info Section */}
-        <section className="mt-10 bg-white border rounded-2xl shadow p-6">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">
-            About Unix Time Converter
-          </h3>
-          <p className="text-gray-700 mb-4">
-            Unix time (or Epoch time) is the number of seconds that have passed
-            since January 1, 1970 (UTC). It is widely used in programming,
-            databases, and systems to represent date and time in a universal format.
+        {/* Expanded Info Section */}
+        <section className="mt-10 bg-white border rounded-2xl shadow p-6 prose prose-sm sm:prose-base md:prose-lg max-w-none text-gray-800">
+          <h3 className="text-xl font-bold mb-4">About Unix Time Converter</h3>
+          <p>
+            Unix time, also known as Epoch time or POSIX time, is a way to
+            represent a point in time as the number of seconds that have passed
+            since <strong>January 1, 1970, 00:00:00 UTC</strong>. It has become
+            the universal standard in computing for storing and comparing time.
+            This tool allows you to convert Unix timestamps to
+            human-readable dates and vice versa, making it useful for developers,
+            system administrators, students, and anyone who deals with time data.
           </p>
 
-          {/* Features */}
-          <div className="mt-6">
-            <h4 className="flex items-center text-lg font-semibold text-gray-800 mb-2">
-              <span className="text-yellow-500 mr-2">✨</span> Features
-            </h4>
-            <ul className="list-disc list-inside text-gray-700 space-y-1 pl-2">
-              <li>Convert Unix timestamp to readable date</li>
-              <li>Convert ISO date to Unix timestamp</li>
-              <li>Auto-update current time option</li>
-              <li>Toggle between UTC and Local Time</li>
-              <li>Copy results with one click</li>
-            </ul>
-          </div>
+          <h4 className="mt-6 font-semibold">✨ Key Features</h4>
+          <ul>
+            <li>Convert Unix timestamp to readable date instantly</li>
+            <li>Convert ISO date to Unix timestamp</li>
+            <li>Toggle between UTC and local time zones</li>
+            <li>Enable auto-update for real-time clock</li>
+            <li>Copy results with one click</li>
+          </ul>
 
-          {/* Use Cases */}
-          <div className="mt-6">
-            <h4 className="flex items-center text-lg font-semibold text-gray-800 mb-2">
-              <span className="text-orange-500 mr-2">📦</span> Use Cases
-            </h4>
-            <ul className="list-disc list-inside text-gray-700 space-y-1 pl-2">
-              <li>Developers debugging APIs</li>
-              <li>Database time conversions</li>
-              <li>Log analysis and event tracking</li>
-              <li>System administrators monitoring servers</li>
-            </ul>
-          </div>
+          <h4 className="mt-6 font-semibold">📖 Why January 1, 1970?</h4>
+          <p>
+            The choice of January 1, 1970, as the epoch start is historical. It
+            was adopted during the development of Unix operating systems in the
+            late 1960s. By using a fixed starting point, computers can represent
+            time as a simple integer value, which is easy to store and compare.
+          </p>
+
+          <h4 className="mt-6 font-semibold">⏳ Seconds vs Milliseconds</h4>
+          <p>
+            By default, Unix time is measured in seconds. However, many modern
+            systems and programming languages also represent time in{" "}
+            <strong>milliseconds</strong>. For example:
+          </p>
+          <ul>
+            <li>JavaScript’s <code>Date.now()</code> returns milliseconds</li>
+            <li>Python’s <code>time.time()</code> returns seconds</li>
+            <li>Java’s <code>System.currentTimeMillis()</code> returns milliseconds</li>
+          </ul>
+
+          <h4 className="mt-6 font-semibold">💻 Programming Examples</h4>
+          <pre>
+{`// JavaScript
+console.log(Math.floor(Date.now() / 1000)); // Current Unix timestamp
+
+# Python
+import time
+print(int(time.time()))
+
+// PHP
+echo time();`}
+          </pre>
+
+          <h4 className="mt-6 font-semibold">📦 Real-World Use Cases</h4>
+          <ul>
+            <li>API request logging and event tracking</li>
+            <li>Database storage for date/time values</li>
+            <li>Blockchain transaction timestamps</li>
+            <li>IoT device synchronization</li>
+            <li>Scheduling jobs and cron tasks</li>
+          </ul>
+
+          <h4 className="mt-6 font-semibold">🔧 How to Use This Tool</h4>
+          <ol>
+            <li>Enter a Unix timestamp to see its corresponding date</li>
+            <li>Or input a date in ISO format to generate its timestamp</li>
+            <li>Toggle between UTC and local time to suit your needs</li>
+            <li>Use auto-update to keep track of current time</li>
+            <li>Copy results instantly for development or reporting</li>
+          </ol>
+
+          <h4 className="mt-6 font-semibold">❓ Frequently Asked Questions</h4>
+          <p><strong>Q1: What happens in 2038?</strong></p>
+          <p>
+            The Year 2038 Problem affects systems that store time as a 32-bit
+            signed integer. On January 19, 2038, the value will overflow. Modern
+            64-bit systems are safe from this issue.
+          </p>
+          <p><strong>Q2: Is Unix time always in UTC?</strong></p>
+          <p>
+            Yes, Unix time is always counted in UTC. You can convert it to local
+            time depending on your region or system settings.
+          </p>
+          <p><strong>Q3: How accurate is Unix time?</strong></p>
+          <p>
+            Unix time is precise to the second by default, but extensions using
+            milliseconds or nanoseconds are supported in many systems.
+          </p>
+
+          <h4 className="mt-6 font-semibold">🌍 Why Use an Online Converter?</h4>
+          <p>
+            While programming languages can convert Unix timestamps, online tools
+            provide quick, no-code access. Developers debugging APIs, analysts
+            parsing logs, and students learning about time representation can all
+            benefit from an instant converter like this one.
+          </p>
+
+          <h4 className="mt-6 font-semibold">📌 Conclusion</h4>
+          <p>
+            Unix time is the backbone of modern computing when it comes to
+            timestamps. From databases and APIs to everyday logging systems,
+            it ensures universal synchronization. With this tool, you can
+            effortlessly convert between Unix timestamps and readable dates,
+            explore time zones, and understand how computers perceive time.
+          </p>
         </section>
       </div>
     </main>

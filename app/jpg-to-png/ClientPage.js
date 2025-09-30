@@ -220,38 +220,76 @@ export default function JpgToPngPage() {
         </div>
       </div>
 
-      {/* Info Section */}
+            {/* Info Section */}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About JPG to PNG Conversion</h3>
         <p className="text-gray-700 mb-4">
-          Convert JPG images to PNG format for better quality and transparency support. This tool helps you 
-          convert JPG images to PNG, useful for web design, graphics, and image editing.
+          JPG (or JPEG) is the most widely used image format for photos because of its compression 
+          and small size. However, it does not support transparency and often sacrifices quality 
+          when compressed multiple times. On the other hand, PNG is a lossless image format that 
+          preserves higher quality and supports transparency (alpha channel), making it a popular 
+          choice for web design, logos, icons, and professional graphics. Converting JPG to PNG 
+          allows you to improve image quality, add transparent backgrounds, and prepare your visuals 
+          for design or publishing purposes.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert JPG to PNG format</li>
-          <li>Quality options and transparency support</li>
-          <li>Batch processing for multiple images</li>
-          <li>High-quality conversion with lossless compression</li>
-          <li>Easy copy to clipboard</li>
+          <li>Instant conversion from JPG to PNG format</li>
+          <li>Preserves high quality with lossless compression</li>
+          <li>Supports transparency for logos, icons, and graphics</li>
+          <li>Multiple quality levels (80% to 95%) for flexibility</li>
+          <li>Fast processing in your browser – no uploads required</li>
+          <li>Batch support for handling multiple files at once</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Upload a JPG image file.</li>
-          <li>Select the quality level.</li>
-          <li>Click <strong>Convert to PNG</strong> to process.</li>
-          <li>Download the PNG image file.</li>
+          <li>Upload your JPG image by clicking the file input or dragging it in.</li>
+          <li>Choose the desired quality level (95% for high quality, 80% for smaller file size).</li>
+          <li>Click <strong>Convert to PNG</strong> and wait for the process to finish.</li>
+          <li>Preview the result and download the converted PNG instantly.</li>
         </ol>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
+        <h4 className="font-semibold mt-4 mb-1">📐 Why Convert JPG to PNG?</h4>
+        <p className="text-gray-700 mb-4">
+          While JPG is great for storing photos, it has limitations for professional use. Every 
+          time a JPG image is saved, it loses some detail due to its lossy compression method. 
+          PNG, however, uses lossless compression, meaning that no quality is lost even after 
+          multiple edits and saves. PNG is also the only option if you need transparent backgrounds 
+          (for example, when designing logos, watermarks, or overlay graphics). By converting JPG 
+          to PNG, you make your image future-proof for editing, design, and publishing.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">📦 Common Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Web design and graphics</li>
-          <li>Image format conversion</li>
-          <li>Transparency and quality improvement</li>
-          <li>Image editing and processing</li>
+          <li><strong>Web Design:</strong> Convert photos or assets for websites that require transparent backgrounds.</li>
+          <li><strong>Logos and Branding:</strong> Ensure logos are crisp and scalable with no background.</li>
+          <li><strong>Image Editing:</strong> Retain quality while making adjustments in Photoshop, Figma, or Canva.</li>
+          <li><strong>Presentations:</strong> Use PNG images in slides to avoid pixelation.</li>
+          <li><strong>Social Media:</strong> Prepare high-quality posts, banners, and profile pictures.</li>
+          <li><strong>Print:</strong> Use PNG for sharper prints where JPG may appear blurry.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">⚡ Best Practices</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-1">
+          <li>Use <strong>95% quality</strong> for detailed graphics and high-resolution photos.</li>
+          <li>Select <strong>90% or 85%</strong> if you want a balance between quality and size.</li>
+          <li>Choose <strong>80%</strong> for web images where speed matters more than fine detail.</li>
+          <li>For logos and transparent backgrounds, always prefer PNG over JPG.</li>
+          <li>Compress your PNG further with a dedicated image compressor if the file is too large.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          Converting JPG to PNG is a simple but powerful step that improves the usability and quality 
+          of your images. With transparency support, higher fidelity, and lossless compression, PNG 
+          is ideal for professional design, web graphics, and branding. This tool makes the conversion 
+          process fast, secure, and user-friendly, working directly inside your browser without 
+          requiring uploads. Whether you are a designer, developer, student, or casual user, this 
+          converter ensures your images are ready for any project – from websites and social media to 
+          print and presentations.
+        </p>
       </section>
     </ToolSection>
   );

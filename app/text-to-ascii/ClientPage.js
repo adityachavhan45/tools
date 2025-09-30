@@ -19,7 +19,7 @@ export default function TextToAsciiPage() {
     try {
       // Create a simple ASCII structure from the text
       const lines = text.split('\n');
-      const asciiContent = lines.map((line, index) => 
+      const asciiContent = lines.map((line, index) =>
         `    "${line.split('').map(char => char.charCodeAt(0)).join(',')}"`
       ).join(',\n');
 
@@ -57,7 +57,7 @@ ${asciiContent}
     try {
       // Simple ASCII to text conversion
       let extractedText = ascii;
-      
+
       // Extract text from ASCII encoded strings
       const asciiMatches = extractedText.match(/\d+/g);
       if (asciiMatches) {
@@ -244,35 +244,87 @@ ${asciiContent}
       <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
         <h3 className="text-lg font-semibold mb-2">About Text to ASCII Converter</h3>
         <p className="text-gray-700 mb-4">
-          Convert text to ASCII code and ASCII to text. This tool helps you create 
-          ASCII-encoded strings from plain text and decode ASCII-encoded strings back 
-          to text, useful for programming and data analysis.
+          A Text to ASCII Converter is a simple yet powerful tool that allows you to
+          transform plain text into its ASCII representation and vice versa. ASCII
+          (American Standard Code for Information Interchange) is one of the most
+          widely used character encoding standards in computer science. Each letter,
+          number, punctuation mark, or control character is assigned a numerical
+          value between 0 and 127, making it easy for computers to store, process,
+          and transmit text data. With this tool, you can instantly convert text into
+          ASCII codes or decode ASCII codes back into human-readable text, directly
+          in your browser.
+        </p>
+
+        <p className="text-gray-700 mb-4">
+          Traditionally, developers used ASCII conversion for debugging, encryption,
+          and low-level programming tasks. Today, ASCII remains relevant for data
+          exchange, legacy systems, and educational purposes. By using this converter,
+          you can better understand how computers interpret characters and practice
+          working with encoding systems. Whether you are a programmer, a student, or
+          a tech enthusiast, this tool helps you visualize the bridge between text
+          and binary representation.
         </p>
 
         <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert text to ASCII code</li>
-          <li>Decode ASCII-encoded strings</li>
-          <li>Character analysis and statistics</li>
-          <li>ASCII formatting and validation</li>
-          <li>Easy copy to clipboard</li>
+          <li>Instantly convert text to ASCII code values</li>
+          <li>Decode ASCII code back to human-readable text</li>
+          <li>Supports multi-line input and formatting</li>
+          <li>Provides character statistics and analysis</li>
+          <li>Works directly in your browser — no uploads required</li>
+          <li>One-click copy of ASCII or text output</li>
+          <li>Safe, private, and free to use</li>
         </ul>
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter text in the text field and click <strong>Text to ASCII</strong>.</li>
-          <li>Or enter ASCII code in the ASCII field and click <strong>ASCII to Text</strong>.</li>
-          <li>Use the copy buttons to copy results to clipboard.</li>
-          <li>Review the character analysis for additional information.</li>
+          <li>Enter plain text into the text field and click <strong>Text to ASCII</strong>.</li>
+          <li>View the generated ASCII code, displayed as a sequence of numbers.</li>
+          <li>If you have ASCII codes, paste them into the ASCII field and click <strong>ASCII to Text</strong>.</li>
+          <li>Use the copy buttons to copy the results instantly.</li>
+          <li>Check the character analysis panel for statistics such as character count, word count, and line count.</li>
         </ol>
 
         <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
         <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Programming and debugging</li>
-          <li>Data analysis and representation</li>
-          <li>Character encoding and decoding</li>
-          <li>Text to code conversion</li>
+          <li><strong>Programming and Debugging:</strong> Inspect ASCII codes to detect issues with encoding or data corruption.</li>
+          <li><strong>Data Analysis:</strong> Convert raw text into ASCII values for computational processing or storage.</li>
+          <li><strong>Networking:</strong> ASCII encoding is still used in older communication protocols and file formats.</li>
+          <li><strong>Education:</strong> Learn how characters map to numerical codes in computer systems.</li>
+          <li><strong>Encryption & Security:</strong> Simple encoding schemes often use ASCII as a base.</li>
+          <li><strong>Legacy Systems:</strong> Work with old databases and systems that rely on ASCII representation.</li>
         </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">📊 Why ASCII is Important</h4>
+        <p className="text-gray-700 mb-4">
+          ASCII was introduced in the 1960s and quickly became the foundation for text
+          communication in computers and the internet. Even though modern encodings like
+          UTF-8 are more common today, ASCII forms the first 128 characters of UTF-8 and
+          remains universally supported. Without ASCII, early computing, email systems,
+          programming languages, and protocols such as HTTP and SMTP would not have been
+          possible. Understanding ASCII helps developers appreciate the evolution of
+          character encoding and the importance of standards in computer science.
+        </p>
+
+        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>What is the ASCII range?</strong> ASCII covers 128 characters from 0–127, including letters, digits, punctuation, and control codes.</li>
+          <li><strong>What’s the difference between ASCII and Unicode?</strong> ASCII is limited to 128 characters, while Unicode supports thousands of characters from multiple languages.</li>
+          <li><strong>Can I use this tool offline?</strong> Yes, since it runs in your browser, you can even use it without internet once loaded.</li>
+          <li><strong>Is my data safe?</strong> 100% — nothing is uploaded, everything is processed locally.</li>
+          <li><strong>Can I convert binary or hex to ASCII?</strong> This tool works with text and ASCII codes, but you can chain conversions using binary/hex converters.</li>
+        </ul>
+
+        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
+        <p className="text-gray-700">
+          The Text to ASCII Converter is more than just a utility — it’s a learning tool
+          and a productivity booster. It allows anyone to explore the fundamentals of
+          character encoding, verify text-to-code transformations, and decode ASCII back
+          to readable text. Whether you are writing software, analyzing data, or just
+          curious about how computers interpret text, this converter offers a fast,
+          reliable, and free solution. Next time you need to understand the numeric
+          representation of characters, this tool will be your go-to companion.
+        </p>
       </section>
     </ToolSection>
   );

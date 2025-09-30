@@ -187,43 +187,83 @@ export default function ImageResizerPage() {
           )}
         </div>
 
-        {/* Info Section */}
+                {/* Info Section */}
         <section className="mt-10 bg-white shadow-md rounded-xl p-6">
           <h3 className="text-lg font-semibold mb-2 text-slate-800">
             About Online Image Resizer
           </h3>
           <p className="text-gray-700 mb-4">
-            This free tool lets you resize images instantly in your browser. You
-            can set custom width and height, lock aspect ratio, and download the
-            result in PNG, JPG, or WebP format. No server upload required.
+            Image resizing is one of the most common tasks in digital workflows. Whether you are 
+            preparing photos for your website, optimizing images for social media, or simply reducing 
+            file size before sending them via email, this free online image resizer makes the job quick, 
+            simple, and reliable. Everything happens directly in your browser, so no images are uploaded 
+            to external servers — ensuring both speed and privacy.
           </p>
 
           <h4 className="font-semibold mt-4 mb-2 text-slate-800">✨ Key Features</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Resize images with custom width and height</li>
-            <li>Keep or unlock aspect ratio</li>
-            <li>Choose output format: PNG, JPG, or WebP</li>
-            <li>Fast processing inside your browser (secure & offline)</li>
-            <li>Download resized image instantly</li>
+            <li>Resize images with custom width and height inputs</li>
+            <li>Option to keep or unlock aspect ratio for proportional scaling</li>
+            <li>Support for PNG, JPG, and WebP formats</li>
+            <li>High-quality rendering with browser-based processing</li>
+            <li>Instant preview before downloading</li>
+            <li>Completely free, secure, and works offline</li>
           </ul>
 
           <h4 className="font-semibold mt-4 mb-2 text-slate-800">🔧 How to Use</h4>
           <ol className="list-decimal list-inside text-gray-700 space-y-1">
-            <li>Upload your image using the file input.</li>
-            <li>Enter desired width and/or height.</li>
-            <li>Enable <strong>Keep aspect</strong> if you want proportional resize.</li>
-            <li>Select output format (PNG, JPG, WebP).</li>
-            <li>Click Resize and download the result.</li>
+            <li>Upload your image using the file selector or drag &amp; drop area.</li>
+            <li>Enter desired width and/or height in pixels.</li>
+            <li>Enable <strong>Keep aspect</strong> if you want proportional resizing.</li>
+            <li>Choose output format (PNG, JPG, or WebP) based on your needs.</li>
+            <li>Click <strong>Resize</strong> to process and then download instantly.</li>
           </ol>
+
+          <h4 className="font-semibold mt-4 mb-2 text-slate-800">📐 Common Dimensions Guide</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-1">
+            <li>Instagram Post: 1080 × 1080 px (square)</li>
+            <li>Instagram Story / Reel: 1080 × 1920 px (vertical)</li>
+            <li>Facebook Cover: 820 × 312 px</li>
+            <li>YouTube Thumbnail: 1280 × 720 px</li>
+            <li>HD Wallpaper: 1920 × 1080 px</li>
+            <li>E-commerce Product Image: 2000 × 2000 px (high resolution)</li>
+          </ul>
+
+          <h4 className="font-semibold mt-4 mb-2 text-slate-800">⚡ Why Image Resizing Matters</h4>
+          <p className="text-gray-700 mb-4">
+            Properly sized images not only look professional but also improve performance. Oversized 
+            images slow down websites, increase bounce rates, and can negatively impact SEO rankings. 
+            On the other hand, images that are too small may appear blurry or pixelated. By resizing 
+            images smartly, you strike the perfect balance between quality and performance.
+          </p>
+
+          <h4 className="font-semibold mt-4 mb-2 text-slate-800">💡 Best Practices</h4>
+          <ul className="list-disc list-inside text-gray-700 space-y-1">
+            <li>Avoid unnecessary upscaling — it may reduce sharpness.</li>
+            <li>Use JPG for photos, PNG for graphics with transparency, and WebP for best balance of size and quality.</li>
+            <li>Always keep aspect ratio enabled unless you need custom dimensions.</li>
+            <li>Compress images further if preparing for web or mobile apps.</li>
+            <li>Preview the result before downloading to ensure correct proportions.</li>
+          </ul>
 
           <h4 className="font-semibold mt-4 mb-2 text-slate-800">📦 Practical Use Cases</h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Prepare images for websites or blogs</li>
-            <li>Optimize profile pictures for social media</li>
-            <li>Resize photos before emailing</li>
-            <li>Convert to WebP for faster web performance</li>
-            <li>Create thumbnails for projects</li>
+            <li>Preparing hero banners and blog images for websites</li>
+            <li>Optimizing profile pictures and cover photos for social media</li>
+            <li>Resizing product images for e-commerce stores</li>
+            <li>Creating email-friendly attachments with smaller file sizes</li>
+            <li>Generating lightweight images for presentations and documents</li>
+            <li>Converting to WebP for improved page speed and SEO performance</li>
           </ul>
+
+          <h4 className="font-semibold mt-4 mb-2 text-slate-800">🚀 Final Thoughts</h4>
+          <p className="text-gray-700">
+            Traditional image editing software can be bulky, expensive, and slow for quick tasks. 
+            This online Image Resizer provides a simple alternative — no installation, no learning curve, 
+            and no risk to your privacy. Whether you are a web designer, digital marketer, student, or 
+            casual user, this tool saves time and ensures your images are always in the right size and 
+            format. Resize, optimize, and share your visuals faster than ever!
+          </p>
         </section>
       </div>
     </main>
