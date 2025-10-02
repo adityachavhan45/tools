@@ -15,6 +15,7 @@ export const sections = [
       { href: "/images-to-pdf", label: "Images to PDF", desc: "Combine JPG/PNG images into a single PDF." },
       { href: "/image-cropper", label: "Image Cropper", desc: "Crop images with aspect ratio options." },
       { href: "/jpg-to-png", label: "JPG to PNG", desc: "Convert JPG images to PNG format." },
+      { href: "/google-discover-optimizer", label: "Google Discover Image Optimizer", desc: "Optimize images for Google Discover (1200x700px, enhanced contrast/brightness)." },
     ],
   },
   {

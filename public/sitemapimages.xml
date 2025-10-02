@@ -10,6 +10,16 @@
     </image:image>
   </url>
   
+  <!-- Featured Tool Screenshot - Top Priority -->
+  <url>
+    <loc>https://convertixy.com/google-discover-image-optimizer</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/google-discover-optimizer.jpg</image:loc>
+      <image:title>Google Discover Image Optimizer Tool</image:title>
+      <image:caption>Optimize images for Google Discover with perfect 1200x700px dimensions, enhanced contrast and brightness</image:caption>
+    </image:image>
+  </url>
+  
   <!-- Tool Screenshots -->
   <url>
     <loc>https://convertixy.com/pdf-merge</loc>

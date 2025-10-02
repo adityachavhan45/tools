@@ -8,6 +8,14 @@
     <priority>1.0</priority>
   </url>
   
+  <!-- Featured Tool - Top Priority -->
+  <url>
+    <loc>https://convertixy.com/google-discover-image-optimizer</loc>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
   <!-- Image Tools - High Priority -->
   <url>
     <loc>https://convertixy.com/image-compressor</loc>
