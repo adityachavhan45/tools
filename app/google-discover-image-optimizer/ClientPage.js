@@ -98,7 +98,7 @@ export default function ClientPage() {
         // Clear canvas and draw image
         ctx.clearRect(0, 0, targetWidth, targetHeight);
         
-        // Fill background with white (in case image doesn't cover entire canvas)
+        // Fill background with white (in case image does not cover entire canvas)
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, targetWidth, targetHeight);
         
@@ -467,15 +467,15 @@ export default function ClientPage() {
           <ol className="list-decimal list-inside text-sm sm:text-base text-gray-700 space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
             <li>Upload your image by dragging and dropping it into the upload area or clicking to browse files.</li>
             <li>Supported formats include JPG, PNG, and WebP images up to 10MB in size.</li>
-            <li>Click the "Optimize for Google Discover" button to process your image.</li>
+            <li>Click the &quot;Optimize for Google Discover&quot; button to process your image.</li>
             <li>Preview the optimized result with perfect 1200×700px dimensions and enhanced quality.</li>
             <li>Choose your preferred download format: JPG (universal compatibility), WebP (smaller file size), or AVIF (smallest file size).</li>
-            <li>Download your Google Discover-ready image with the filename "discover-friendly-image" in your chosen format.</li>
+            <li>Download your Google Discover-ready image with the filename &quot;discover-friendly-image&quot; in your chosen format.</li>
           </ol>
 
           <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">📱 Why Google Discover Image Optimization Matters</h3>
           <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4 leading-relaxed">
-            Google Discover is a personalized content feed that appears on mobile devices and drives significant traffic to websites. Images play a crucial role in Discover performance - they're the first thing users see and heavily influence click-through rates. Google recommends using high-quality images with a minimum width of 1200 pixels for optimal performance. Our tool ensures your images meet these requirements while enhancing visual appeal through contrast and brightness adjustments.
+            Google Discover is a personalized content feed that appears on mobile devices and drives significant traffic to websites. Images play a crucial role in Discover performance - they&apos;re the first thing users see and heavily influence click-through rates. Google recommends using high-quality images with a minimum width of 1200 pixels for optimal performance. Our tool ensures your images meet these requirements while enhancing visual appeal through contrast and brightness adjustments.
           </p>
 
           <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">🎯 Use Cases</h3>
@@ -483,7 +483,7 @@ export default function ClientPage() {
             <li><strong>Blog Article Images:</strong> Optimize featured images for blog posts to improve Google Discover visibility.</li>
             <li><strong>News Article Thumbnails:</strong> Enhance news article images for better engagement in Google Discover feeds.</li>
             <li><strong>Content Marketing:</strong> Prepare images for content marketing campaigns targeting Google Discover traffic.</li>
-            <li><strong>SEO Optimization:</strong> Improve image SEO by using Google's recommended dimensions and quality standards.</li>
+            <li><strong>SEO Optimization:</strong> Improve image SEO by using Google&apos;s recommended dimensions and quality standards.</li>
             <li><strong>Website Performance:</strong> Reduce image file sizes while maintaining quality for faster page loading.</li>
             <li><strong>Social Media Content:</strong> Create images that work well across Google Discover and social media platforms.</li>
           </ul>
@@ -534,7 +534,7 @@ export default function ClientPage() {
 
           <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">🌍 Benefits for Content Creators</h3>
           <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-            Whether you're a blogger, journalist, content marketer, or website owner, optimizing images for Google Discover can significantly impact your content's reach and engagement. Google Discover drives billions of impressions daily, and having properly optimized images increases your chances of appearing in users' personalized feeds. Our tool makes this optimization process simple, fast, and free, helping you focus on creating great content while ensuring maximum visibility in Google's ecosystem.
+            Whether you&apos;re a blogger, journalist, content marketer, or website owner, optimizing images for Google Discover can significantly impact your content&apos;s reach and engagement. Google Discover drives billions of impressions daily, and having properly optimized images increases your chances of appearing in users&apos; personalized feeds. Our tool makes this optimization process simple, fast, and free, helping you focus on creating great content while ensuring maximum visibility in Google&apos;s ecosystem.
           </p>
         </section>
 
