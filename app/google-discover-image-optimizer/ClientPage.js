@@ -492,11 +492,11 @@ export default function ClientPage() {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">💰 Real Results from Real Users:</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-white p-3 rounded-lg shadow-sm">
-                <p className="text-sm text-gray-700 italic">"My Google Discover traffic increased by 400% after using this tool!"</p>
+                <p className="text-sm text-gray-700 italic">&quot;My Google Discover traffic increased by 400% after using this tool!&quot;</p>
                 <p className="text-xs text-gray-500 mt-1">- Sarah, Lifestyle Blogger</p>
               </div>
               <div className="bg-white p-3 rounded-lg shadow-sm">
-                <p className="text-sm text-gray-700 italic">"Finally getting the clicks I deserve from Google Discover!"</p>
+                <p className="text-sm text-gray-700 italic">&quot;Finally getting the clicks I deserve from Google Discover!&quot;</p>
                 <p className="text-xs text-gray-500 mt-1">- Mike, Tech Content Creator</p>
               </div>
             </div>
