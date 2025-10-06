@@ -376,8 +376,8 @@ export default function LoveCalculatorPage() {
 
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-2">
-          <li>Enter your full name in the "Your Name" field.</li>
-          <li>Enter your partner full name in the "Partner Name" field.</li>
+          <li>Enter your full name in the &quot;Your Name&quot; field.</li>
+          <li>Enter your partner full name in the &quot;Partner Name&quot; field.</li>
           <li>Select your birth date using the date picker.</li>
           <li>Select your partner birth date using the date picker.</li>
           <li>
