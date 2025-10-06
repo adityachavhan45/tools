@@ -31,18 +31,6 @@ const sections = [
     ],
   },
   {
-    key: "text",
-    label: "Text",
-    dropdownWidth: "w-[280px]",
-    links: [
-      { href: "/word-counter", label: "Word Counter" },
-      { href: "/case-converter", label: "Case Converter" },
-      { href: "/slug-generator", label: "Slug Generator" },
-      { href: "/json-formatter", label: "JSON Formatter" },
-      { href: "/base64", label: "Base64 Encode/Decode" },
-    ],
-  },
-  {
     key: "seo",
     label: "SEO",
     dropdownWidth: "w-[300px]",
@@ -146,6 +134,9 @@ export default function Header() {
             <Link href="/google-discover-image-optimizer" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium text-blue-300 hover:text-blue-200" onClick={handleNavClick}>
               🚀 Discover Optimizer
             </Link>
+            <Link href="/adsense-rpm-calculator" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium text-green-300 hover:text-green-200" onClick={handleNavClick}>
+              💰 RPM Calculator
+            </Link>
             {sections.map((section) => (
               <div key={section.key} className="relative">
                 <button
@@ -207,6 +198,13 @@ export default function Header() {
               onClick={handleNavClick}
             >
               🚀 Discover Optimizer
+            </Link>
+            <Link
+              href="/adsense-rpm-calculator"
+              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium text-green-300 hover:text-green-200"
+              onClick={handleNavClick}
+            >
+              💰 RPM Calculator
             </Link>
             {sections.map((section) => (
               <div

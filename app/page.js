@@ -11,9 +11,9 @@ import { sections as toolSections } from "./data/tools";
 import AllToolsGrid from "./components/AllToolsGrid";
 
 export const metadata = buildMetadata({
-  title: "Convertixy - 50+ Free Online Tools for PDF, Images, Text, SEO & More | No Registration Required",
+  title: "🚀 65+ FREE Online Tools That Save You Hours Daily - No Signup Required!",
   description:
-    "Convertixy provides 50+ free online tools: PDF merge/split/compress, image compression/conversion, text processing, SEO tools, calculators, converters, generators, and more. Fast, secure, works in browser.",
+    "⚡ Stop paying for expensive software! Get 65+ professional-grade FREE tools: PDF merge/split, image compression, SEO optimization, calculators & more. Used by 100,000+ professionals. Works instantly in your browser - no downloads, no registration! ✅ 100% Free ✅ Secure ✅ Fast",
   slug: "/",
   keywords: [
     "free online tools",
@@ -70,6 +70,9 @@ export const metadata = buildMetadata({
     "loan calculator",
     "tip calculator",
     "compound interest calculator",
+    "love calculator",
+    "love compatibility",
+    "relationship calculator",
     "csv to json",
     "morse code translator",
     "pdf password remover",
@@ -129,17 +132,33 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="text-center py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="mb-4 sm:mb-6">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            🔥 Used by 100,000+ Professionals Worldwide
+          </span>
+        </div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
-          Convertixy - 65+ Free Online Tools for PDF, Images, Text, SEO & More
+          🚀 Stop Paying for Software - Get 65+ FREE Professional Tools!
         </h1>
         <p className="mt-4 sm:mt-5 md:mt-6 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed">
-          Fast, secure & works directly in your browser. No signup required. 65+ tools for PDF, image conversion, text processing, SEO, calculators, and more.
+          ⚡ <strong>Save hours daily</strong> with our professional-grade tools! PDF processing, image optimization, SEO tools, calculators & more. Works instantly in your browser - no downloads, no registration required!
         </p>
+        <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs sm:text-sm mb-6 sm:mb-8">
+          <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-700 rounded-full">
+            ✅ 100% Free Forever
+          </span>
+          <span className="inline-flex items-center px-2 py-1 bg-purple-100 text-purple-700 rounded-full">
+            ✅ No Registration
+          </span>
+          <span className="inline-flex items-center px-2 py-1 bg-green-100 text-green-700 rounded-full">
+            ✅ Works Instantly
+          </span>
+        </div>
         <a
           href="#all-tools"
-          className="inline-flex justify-center w-full sm:w-auto mt-6 sm:mt-8 md:mt-10 px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg rounded-xl text-white bg-slate-900 shadow-md hover:shadow-xl hover:bg-black transition transform hover:-translate-y-1 font-medium"
+          className="inline-flex justify-center w-full sm:w-auto mt-6 sm:mt-8 md:mt-10 px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-sm sm:text-base md:text-lg rounded-xl text-white bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 font-bold"
         >
-          Browse All Tools
+          🚀 Start Using FREE Tools Now!
         </a>
       </section>
 

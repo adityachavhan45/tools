@@ -87,6 +87,7 @@ export const sections = [
       { href: "/loan-calculator", label: "Loan Calculator", desc: "Calculate loan payments online." },
       { href: "/tip-calculator", label: "Tip Calculator", desc: "Calculate tips online." },
       { href: "/compound-interest-calculator", label: "Compound Interest Calculator", desc: "Calculate compound interest online." },
+      { href: "/love-calculator", label: "Love Calculator", desc: "Calculate love compatibility with names and birth dates." },
     ],
   },
   {

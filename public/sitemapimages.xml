@@ -19,6 +19,24 @@
       <image:caption>Optimize images for Google Discover with perfect 1200x700px dimensions, enhanced contrast and brightness</image:caption>
     </image:image>
   </url>
+
+  <url>
+    <loc>https://convertixy.com/adsense-rpm-calculator</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/adsense-rpm-calculator.jpg</image:loc>
+      <image:title>AdSense RPM Calculator Tool</image:title>
+      <image:caption>Calculate AdSense RPM for your website</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://convertixy.com/love-calculator</loc>
+    <image:image>
+      <image:loc>https://convertixy.com/screenshots/love-calculator.jpg</image:loc>
+      <image:title>Love Calculator Tool</image:title>
+      <image:caption>Calculate love compatibility percentage</image:caption>
+    </image:image>
+  </url>
   
   <!-- Tool Screenshots -->
   <url>
