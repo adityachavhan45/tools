@@ -263,7 +263,7 @@ Estimated Monthly Clicks: ${clicks.toLocaleString()}
           <li>Enter your website URL in the designated field.</li>
           <li>Input your average daily pageviews (you can find this in Google Analytics).</li>
           <li>Select your primary target country from the dropdown menu.</li>
-          <li>Choose your website's niche category for accurate multiplier application.</li>
+          <li>Choose your websites niche category for accurate multiplier application.</li>
           <li>Select your primary traffic source (organic search, social media, etc.).</li>
           <li>
             Click <strong>Calculate RPM</strong> to generate comprehensive revenue estimates.
@@ -321,7 +321,7 @@ Estimated Monthly Clicks: ${clicks.toLocaleString()}
         <p className="text-gray-700 mb-4">
           The estimates provided by this tool are based on industry averages and historical data. 
           Actual AdSense earnings can vary significantly due to factors including seasonal trends, 
-          ad quality scores, website user experience, ad placement optimization, and Google's 
+          ad quality scores, website user experience, ad placement optimization, and Googles 
           algorithm changes. These calculations should be used as rough guidelines for planning 
           purposes only. Always test and optimize your actual ad implementation for best results, 
           and consider diversifying revenue streams beyond AdSense for sustainable income.

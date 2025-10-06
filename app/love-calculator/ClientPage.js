@@ -210,13 +210,13 @@ export default function LoveCalculatorPage() {
         {/* Partner Name Input */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Partner's Name
+            Partners Name
           </label>
           <input
             type="text"
             value={partnerName}
             onChange={(e) => setPartnerName(e.target.value)}
-            placeholder="Enter your partner's name..."
+            placeholder="Enter your partner name..."
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
           />
         </div>
@@ -237,7 +237,7 @@ export default function LoveCalculatorPage() {
         {/* Partner Birth Date Input */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Partner's Birth Date
+            Partner Birth Date
           </label>
           <input
             type="date"
@@ -377,9 +377,9 @@ export default function LoveCalculatorPage() {
         <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
         <ol className="list-decimal list-inside text-gray-700 space-y-2">
           <li>Enter your full name in the "Your Name" field.</li>
-          <li>Enter your partner's full name in the "Partner's Name" field.</li>
+          <li>Enter your partner full name in the "Partner Name" field.</li>
           <li>Select your birth date using the date picker.</li>
-          <li>Select your partner's birth date using the date picker.</li>
+          <li>Select your partner birth date using the date picker.</li>
           <li>
             Click the <strong>Calculate Love</strong> button to generate your compatibility analysis.
           </li>
@@ -448,7 +448,7 @@ export default function LoveCalculatorPage() {
         <h4 className="font-semibold mt-4 mb-1">💡 Final Thoughts</h4>
         <p className="text-gray-700">
           The Love Calculator offers a delightful way to explore romantic compatibility through 
-          the lens of names and birth dates. Whether you're curious about your relationship, 
+          the lens of names and birth dates. Whether you are curious about your relationship, 
           looking for a fun activity with friends, or simply want to add some romance to your 
           day, this tool provides entertaining insights and beautiful visualizations. Remember 
           that the most important ingredients for lasting love are communication, respect, trust, 
