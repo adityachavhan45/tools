@@ -149,6 +149,10 @@ ${jsonContent}
           </label>
           <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
             {json || "JSON output will appear here..."}
+          </div>
+        </div>
+
+        {/* Action Buttons */}
         <div className="flex gap-3 flex-wrap">
           <button
             onClick={convertTextToJson}
