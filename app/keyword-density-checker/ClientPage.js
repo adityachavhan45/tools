@@ -139,17 +139,14 @@ export default function KeywordDensityCheckerPage() {
           />
         </div>
 
-        {/* Result Output */}
         {result && (
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Analysis Results
             </label>
-            <textarea
-              value={result}
-              readOnly
-              className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
-            />
+            <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
+              {result || "Analysis results will appear here..."}
+            </div>
           </div>
         )}
 

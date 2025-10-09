@@ -129,7 +129,6 @@ ${jsonContent}
             {message}
           </div>
         )}
-
         {/* Text Input */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -139,7 +138,7 @@ ${jsonContent}
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Enter text to convert to JSON code..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
           />
         </div>
 
@@ -148,18 +147,8 @@ ${jsonContent}
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Enter JSON Code
           </label>
-          <textarea
-            value={json}
-            onChange={(e) => setJson(e.target.value)}
-            placeholder="Enter JSON code to convert to text..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm"
-          />
-          <p className="text-xs text-gray-500 mt-1">
-            Enter valid JSON code
-          </p>
-        </div>
-
-        {/* Action Buttons */}
+          <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
+            {json || "JSON output will appear here..."}
         <div className="flex gap-3 flex-wrap">
           <button
             onClick={convertTextToJson}

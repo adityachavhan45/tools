@@ -19,43 +19,30 @@ export default function TextToSpeechPage() {
     }
 
     try {
-      const resultText = `# Text to Speech
-# Generated on: ${new Date().toISOString()}
+      const resultText = `Text to Speech
+Generated on: ${new Date().toISOString()}
 
-# Speech Settings
-# Voice: ${voice}
-# Speed: ${speed}x
-# Language: ${voice.split('-')[0]}
-# Quality: High
+Speech Settings
+Voice: ${voice}
+Speed: ${speed}x
+Language: ${voice.split('-')[0]}
+Quality: High
 
-# Text Information
-# - Length: ${text.length} characters
-# - Words: ${text.trim().split(/\s+/).length} words
-# - Voice: ${voice}
-# - Speed: ${speed}x
+Text Information
+- Length: ${text.length} characters
+- Words: ${text.trim().split(/\s+/).length} words
+- Voice: ${voice}
+- Speed: ${speed}x
 
-# Voice Options
-# - en-US: English (US)
-# - en-GB: English (UK)
-# - es-ES: Spanish (Spain)
-# - fr-FR: French (France)
-# - de-DE: German (Germany)
-# - it-IT: Italian (Italy)
-# - pt-BR: Portuguese (Brazil)
-# - ru-RU: Russian (Russia)
-
-# Usage Instructions
-# 1. Enter or paste text
-# 2. Select voice and language
-# 3. Adjust speech speed
-# 4. Click "Convert to Speech" to process
-# 5. Play the generated audio
-
-# Quality Notes
-# - High-quality speech synthesis
-# - Natural voice generation
-# - Multiple language support
-# - Adjustable speech speed`;
+Voice Options
+- en-US: English (US)
+- en-GB: English (UK)
+- es-ES: Spanish (Spain)
+{{ ... }}
+- High-quality speech synthesis
+- Natural voice generation
+- Multiple language support
+- Adjustable speech speed`;
 
       setResult(resultText);
       setMessage("✅ Text converted to speech successfully!");
@@ -169,11 +156,9 @@ export default function TextToSpeechPage() {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Speech Result
             </label>
-            <textarea
-              value={result}
-              readOnly
-              className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
-            />
+            <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap">
+              {result}
+            </div>
           </div>
         )}
 

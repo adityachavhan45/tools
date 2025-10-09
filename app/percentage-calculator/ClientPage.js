@@ -203,11 +203,9 @@ export default function PercentageCalculatorPage() {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Calculation Result
             </label>
-            <textarea
-              value={result}
-              readOnly
-              className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
-            />
+            <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
+              {result || "Calculation result will appear here..."}
+            </div>
           </div>
         )}
 

@@ -22,23 +22,23 @@ export default function TextDiffCheckerPage() {
       const lines1 = text1.split('\n');
       const lines2 = text2.split('\n');
 
-      let diffResult = "# Text Diff Comparison\n";
-      diffResult += `# Generated on: ${new Date().toISOString()}\n\n`;
+      let diffResult = "Text Diff Comparison\n";
+      diffResult += `Generated on: ${new Date().toISOString()}\n\n`;
 
-      diffResult += `# Text 1 Statistics\n`;
-      diffResult += `# Total Lines: ${lines1.length}\n`;
-      diffResult += `# Total Characters: ${text1.length}\n`;
-      diffResult += `# Total Words: ${text1.split(/\s+/).filter(word => word.length > 0).length}\n\n`;
+      diffResult += `Text 1 Statistics\n`;
+      diffResult += `Total Lines: ${lines1.length}\n`;
+      diffResult += `Total Characters: ${text1.length}\n`;
+      diffResult += `Total Words: ${text1.split(/\s+/).filter(word => word.length > 0).length}\n\n`;
 
-      diffResult += `# Text 2 Statistics\n`;
-      diffResult += `# Total Lines: ${lines2.length}\n`;
-      diffResult += `# Total Characters: ${text2.length}\n`;
-      diffResult += `# Total Words: ${text2.split(/\s+/).filter(word => word.length > 0).length}\n\n`;
+      diffResult += `Text 2 Statistics\n`;
+      diffResult += `Total Lines: ${lines2.length}\n`;
+      diffResult += `Total Characters: ${text2.length}\n`;
+      diffResult += `Total Words: ${text2.split(/\s+/).filter(word => word.length > 0).length}\n\n`;
 
-      diffResult += `# Comparison Results\n`;
-      diffResult += `# Lines are identical: ${text1 === text2}\n`;
-      diffResult += `# Character count difference: ${Math.abs(text1.length - text2.length)}\n`;
-      diffResult += `# Word count difference: ${Math.abs(text1.split(/\s+/).filter(word => word.length > 0).length - text2.split(/\s+/).filter(word => word.length > 0).length)}\n\n`;
+      diffResult += `Comparison Results\n`;
+      diffResult += `Lines are identical: ${text1 === text2}\n`;
+      diffResult += `Character count difference: ${Math.abs(text1.length - text2.length)}\n`;
+      diffResult += `Word count difference: ${Math.abs(text1.split(/\s+/).filter(word => word.length > 0).length - text2.split(/\s+/).filter(word => word.length > 0).length)}\n\n`;
 
       // Line-by-line comparison
       const maxLines = Math.max(lines1.length, lines2.length);
@@ -47,17 +47,15 @@ export default function TextDiffCheckerPage() {
         const line2 = lines2[i] || '';
 
         if (line1 === line2) {
-          diffResult += `# Line ${i + 1}: IDENTICAL\n`;
+          diffResult += `Line ${i + 1}: IDENTICAL\n`;
         } else {
-          diffResult += `# Line ${i + 1}: DIFFERENT\n`;
-          diffResult += `#   Text 1: "${line1}"\n`;
-          diffResult += `#   Text 2: "${line2}"\n`;
+          diffResult += `Line ${i + 1}: DIFFERENT\n`;
+          diffResult += `  Text 1: "${line1}"\n`;
+          diffResult += `  Text 2: "${line2}"\n`;
         }
       }
 
-      // Clean leading '# ' markers for display
-      const cleaned = diffResult.replace(/^\s*#\s?/gm, "");
-      setDiff(cleaned);
+      setDiff(diffResult);
       setMessage("✅ Text comparison completed successfully!");
     } catch (error) {
       setMessage("❌ Error comparing texts.");
@@ -116,7 +114,7 @@ export default function TextDiffCheckerPage() {
             value={text1}
             onChange={(e) => setText1(e.target.value)}
             placeholder="Enter first text to compare..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
           />
         </div>
 
@@ -127,8 +125,9 @@ export default function TextDiffCheckerPage() {
           </label>
           <textarea
             value={text2}
+            onChange={(e) => setText2(e.target.value)}
             placeholder="Enter second text to compare..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
           />
         </div>
 

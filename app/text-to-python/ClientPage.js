@@ -151,21 +151,17 @@ if __name__ == "__main__":
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Enter text to convert to Python code..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
           />
         </div>
-
         {/* Python Input */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Enter Python Code
           </label>
-          <textarea
-            value={python}
-            onChange={(e) => setPython(e.target.value)}
-            placeholder="Enter Python code to convert to text..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm"
-          />
+          <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
+            {python || "Python output will appear here..."}
+          </div>
           <p className="text-xs text-gray-500 mt-1">
             Enter valid Python code
           </p>

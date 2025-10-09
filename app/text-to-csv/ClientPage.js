@@ -17,21 +17,20 @@ export default function TextToCsvPage() {
     }
 
     try {
-      // Create a simple CSV structure from the text
       const lines = text.split('\n');
       const csvContent = lines.map((line, index) =>
         `"${line.replace(/"/g, '""')}"`
       ).join('\n');
 
-      const csvString = `# Text to CSV Conversion
-# Generated on: ${new Date().toISOString()}
+      const csvString = `Text to CSV Conversion
+Generated on: ${new Date().toISOString()}
 
 "Line Number","Content","Character Count","Word Count"
 ${lines.map((line, index) =>
         `"${index + 1}","${line.replace(/"/g, '""')}","${line.length}","${line.split(/\s+/).filter(word => word.length > 0).length}"`
       ).join('\n')}
 
-# Statistics
+Statistics
 "Total Lines","${lines.length}"
 "Total Characters","${text.length}"
 "Total Words","${text.split(/\s+/).filter(word => word.length > 0).length}"
@@ -135,7 +134,7 @@ ${lines.map((line, index) =>
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Enter text to convert to CSV code..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
           />
         </div>
 
@@ -144,12 +143,9 @@ ${lines.map((line, index) =>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Enter CSV Code
           </label>
-          <textarea
-            value={csv}
-            onChange={(e) => setCsv(e.target.value)}
-            placeholder="Enter CSV code to convert to text..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm"
-          />
+          <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
+            {csv || "CSV output will appear here..."}
+          </div>
           <p className="text-xs text-gray-500 mt-1">
             Enter valid CSV code
           </p>

@@ -113,12 +113,9 @@ export default function UrlEncoderPage() {
           </div>
 
           {/* Output */}
-          <textarea
-            className="mt-4 w-full min-h-[180px] p-3 border rounded-lg shadow-sm bg-gray-50 text-gray-800"
-            placeholder="Output"
-            value={output}
-            readOnly
-          />
+          <div className="mt-4 w-full min-h-[180px] p-3 border rounded-lg shadow-sm bg-gray-50 text-gray-800 whitespace-pre-wrap">
+            {output || "Output will appear here..."}
+          </div>
         </div>
 
                 {/* Info Section */}

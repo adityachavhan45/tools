@@ -115,7 +115,6 @@ ${JSON.stringify(jsonData, null, 2)}
             {message}
           </div>
         )}
-
         {/* CSV Input */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -125,7 +124,7 @@ ${JSON.stringify(jsonData, null, 2)}
             value={csv}
             onChange={(e) => setCsv(e.target.value)}
             placeholder="Enter or paste CSV data here..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm resize-y"
           />
         </div>
 
@@ -141,7 +140,7 @@ ${JSON.stringify(jsonData, null, 2)}
           >
             <option value=",">Comma (,)</option>
             <option value=";">Semicolon (;)</option>
-            <option value="\t">Tab (\t)</option>
+            <option value="\t">Tab</option>
             <option value="|">Pipe (|)</option>
             <option value=":">Colon (:)</option>
           </select>
@@ -153,11 +152,9 @@ ${JSON.stringify(jsonData, null, 2)}
             <label className="block text-sm font-medium text-gray-700 mb-2">
               JSON Output
             </label>
-            <textarea
-              value={result}
-              readOnly
-              className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
-            />
+            <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
+              {result || "JSON output will appear here..."}
+            </div>
           </div>
         )}
 

@@ -17,29 +17,28 @@ export default function TextToBase64Page() {
     }
 
     try {
-      // Create a simple Base64 structure from the text
       const lines = text.split('\n');
       const base64Content = lines.map((line, index) =>
         `    "${btoa(line)}"`
       ).join(',\n');
 
-      const base64String = `# Text to Base64 Conversion
-# Generated on: ${new Date().toISOString()}
+      const base64String = `Text to Base64 Conversion
+Generated on: ${new Date().toISOString()}
 
-# Base64 Encoded Text Lines
+Base64 Encoded Text Lines
 ${base64Content}
 
-# Statistics
-# Total Lines: ${lines.length}
-# Total Characters: ${text.length}
-# Total Words: ${text.split(/\s+/).filter(word => word.length > 0).length}
-# Average Line Length: ${Math.round(text.length / lines.length)}
-# Longest Line: ${Math.max(...lines.map(line => line.length))}
-# Shortest Line: ${Math.min(...lines.map(line => line.length))}
+Statistics
+Total Lines: ${lines.length}
+Total Characters: ${text.length}
+Total Words: ${text.split(/\s+/).filter(word => word.length > 0).length}
+Average Line Length: ${Math.round(text.length / lines.length)}
+Longest Line: ${Math.max(...lines.map(line => line.length))}
+Shortest Line: ${Math.min(...lines.map(line => line.length))}
 
-# Usage Examples
-# Single line: ${btoa(lines[0] || '')}
-# All lines: ${btoa(text)}`;
+Usage Examples
+Single line: ${btoa(lines[0] || '')}
+All lines: ${btoa(text)}`;
 
       setBase64(base64String);
       setMessage("✅ Text converted to Base64 code successfully!");
@@ -134,7 +133,7 @@ ${base64Content}
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Enter text to convert to Base64 code..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
           />
         </div>
 
@@ -143,12 +142,9 @@ ${base64Content}
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Enter Base64 Code
           </label>
-          <textarea
-            value={base64}
-            onChange={(e) => setBase64(e.target.value)}
-            placeholder="Enter Base64 code to convert to text..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm"
-          />
+          <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
+            {base64 || "Base64 output will appear here..."}
+          </div>
           <p className="text-xs text-gray-500 mt-1">
             Enter valid Base64 code
           </p>

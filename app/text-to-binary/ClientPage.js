@@ -17,29 +17,28 @@ export default function TextToBinaryPage() {
     }
 
     try {
-      // Create a simple Binary structure from the text
       const lines = text.split('\n');
       const binaryContent = lines.map((line, index) =>
         `    "${line.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join('')}"`
       ).join(',\n');
 
-      const binaryString = `# Text to Binary Conversion
-# Generated on: ${new Date().toISOString()}
+      const binaryString = `Text to Binary Conversion
+Generated on: ${new Date().toISOString()}
 
-# Binary Encoded Text Lines
+Binary Encoded Text Lines
 ${binaryContent}
 
-# Statistics
-# Total Lines: ${lines.length}
-# Total Characters: ${text.length}
-# Total Words: ${text.split(/\s+/).filter(word => word.length > 0).length}
-# Average Line Length: ${Math.round(text.length / lines.length)}
-# Longest Line: ${Math.max(...lines.map(line => line.length))}
-# Shortest Line: ${Math.min(...lines.map(line => line.length))}
+Statistics
+Total Lines: ${lines.length}
+Total Characters: ${text.length}
+Total Words: ${text.split(/\s+/).filter(word => word.length > 0).length}
+Average Line Length: ${Math.round(text.length / lines.length)}
+Longest Line: ${Math.max(...lines.map(line => line.length))}
+Shortest Line: ${Math.min(...lines.map(line => line.length))}
 
-# Usage Examples
-# Single line: ${lines[0]?.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join('') || ''}
-# All lines: ${text.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join('')}`;
+Usage Examples
+Single line: ${lines[0]?.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join('') || ''}
+All lines: ${text.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join('')}`;
 
       setBinary(binaryString);
       setMessage("✅ Text converted to Binary code successfully!");
@@ -137,7 +136,7 @@ ${binaryContent}
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Enter text to convert to Binary code..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
           />
         </div>
 
@@ -146,12 +145,9 @@ ${binaryContent}
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Enter Binary Code
           </label>
-          <textarea
-            value={binary}
-            onChange={(e) => setBinary(e.target.value)}
-            placeholder="Enter Binary code to convert to text..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm"
-          />
+          <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
+            {binary || "Binary output will appear here..."}
+          </div>
           <p className="text-xs text-gray-500 mt-1">
             Enter valid Binary code
           </p>

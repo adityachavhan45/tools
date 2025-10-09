@@ -12,92 +12,110 @@ export default function TextToAsciiPage() {
 
   function convertTextToAscii() {
     if (!text.trim()) {
-      setMessage("⚠️ Please enter text to convert to ASCII code.");
+      setMessage("Please enter text to convert to ASCII codes.");
       return;
     }
 
-    try {
-      // Create a simple ASCII structure from the text
-      const lines = text.split('\n');
-      const asciiContent = lines.map((line, index) =>
-        `    "${line.split('').map(char => char.charCodeAt(0)).join(',')}"`
-      ).join(',\n');
+    const asciiLines = text.split(/\r?\n/).map((line) => {
+      if (!line) {
+        return "";
+      }
 
-      const asciiString = `# Text to ASCII Conversion
-# Generated on: ${new Date().toISOString()}
+      return line
+        .split("")
+        .map((char) => char.charCodeAt(0))
+        .join(" ");
+    });
 
-# ASCII Encoded Text Lines
-${asciiContent}
-
-# Statistics
-# Total Lines: ${lines.length}
-# Total Characters: ${text.length}
-# Total Words: ${text.split(/\s+/).filter(word => word.length > 0).length}
-# Average Line Length: ${Math.round(text.length / lines.length)}
-# Longest Line: ${Math.max(...lines.map(line => line.length))}
-# Shortest Line: ${Math.min(...lines.map(line => line.length))}
-
-# Usage Examples
-# Single line: ${lines[0]?.split('').map(char => char.charCodeAt(0)).join(',') || ''}
-# All lines: ${text.split('').map(char => char.charCodeAt(0)).join(',')}`;
-
-      setAscii(asciiString);
-      setMessage("✅ Text converted to ASCII code successfully!");
-    } catch (error) {
-      setMessage("❌ Error converting text to ASCII code.");
-    }
+    setAscii(asciiLines.join("\n"));
+    setMessage("Text converted to ASCII codes.");
   }
 
   function convertAsciiToText() {
     if (!ascii.trim()) {
-      setMessage("⚠️ Please enter ASCII code to convert to text.");
+      setMessage("Please enter ASCII codes to convert to text.");
       return;
     }
 
     try {
-      // Simple ASCII to text conversion
-      let extractedText = ascii;
+      const textLines = ascii.split(/\r?\n/).map((line) => {
+        const trimmed = line.trim();
+        if (!trimmed) {
+          return "";
+        }
 
-      // Extract text from ASCII encoded strings
-      const asciiMatches = extractedText.match(/\d+/g);
-      if (asciiMatches) {
-        // Decode ASCII encoded characters
-        extractedText = asciiMatches.map(code => String.fromCharCode(parseInt(code, 10))).join('');
-      } else {
-        // If no ASCII encoding, try to extract from comments and docstrings
-        extractedText = extractedText.replace(/#.*$/gm, '');
-        extractedText = extractedText.replace(/^\s*[a-zA-Z_][a-zA-Z0-9_]*\s*:/gm, '');
-        extractedText = extractedText.replace(/^\s*-\s*/gm, '');
-        extractedText = extractedText.replace(/\s+/g, ' ').trim();
-      }
+        const characters = trimmed.split(/[\s,]+/).map((code) => {
+          const numericCode = Number(code);
 
-      setText(extractedText);
-      setMessage("✅ ASCII code converted to text successfully!");
+          if (!Number.isFinite(numericCode) || numericCode < 0 || numericCode > 255) {
+            throw new Error(`Invalid ASCII code: ${code}`);
+          }
+
+          return String.fromCharCode(numericCode);
+        });
+
+        return characters.join("");
+      });
+
+      setText(textLines.join("\n"));
+      setMessage("ASCII codes converted to text.");
     } catch (error) {
-      setMessage("❌ Error converting ASCII code to text. Please check your ASCII format.");
+      setMessage(
+        error instanceof Error ? error.message : "Unable to convert ASCII codes. Please check the format.",
+      );
     }
   }
 
-  function copyText() {
-    navigator.clipboard.writeText(text);
-    setMessage("📋 Text copied to clipboard!");
+  async function copyText() {
+    if (!text) {
+      setMessage("There is no text to copy.");
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(text);
+      setMessage("Text copied to clipboard.");
+    } catch {
+      setMessage("Unable to copy text. Please copy it manually.");
+    }
   }
 
-  function copyAscii() {
-    navigator.clipboard.writeText(ascii);
-    setMessage("📋 ASCII code copied to clipboard!");
+  async function copyAscii() {
+    if (!ascii) {
+      setMessage("There is no ASCII output to copy.");
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(ascii);
+      setMessage("ASCII codes copied to clipboard.");
+    } catch {
+      setMessage("Unable to copy ASCII codes. Please copy them manually.");
+    }
   }
 
   function reset() {
     setText("");
     setAscii("");
-    setMessage("🧹 Cleared!");
+    setMessage("Cleared.");
   }
+
+  const textLines = text ? text.split(/\r?\n/) : [];
+  const asciiValues = ascii
+    ? ascii
+        .split(/[\s,]+/)
+        .map((entry) => entry.trim())
+        .filter(Boolean)
+    : [];
+
+  const characterCount = text.length;
+  const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const lineCount = textLines.length || 0;
 
   return (
     <ToolSection
       title="Text to ASCII Converter"
-      subtitle="Convert text to ASCII code and ASCII to text online. Free text to ASCII converter with formatting and validation support."
+      subtitle="Convert text to ASCII code and ASCII code back to text instantly in your browser."
       plain
       plainSidebar
       whiteBackground
@@ -105,7 +123,7 @@ ${asciiContent}
       <JsonLd
         data={buildToolJsonLd({
           name: "Text to ASCII Converter",
-          description: "Convert text to ASCII code and ASCII to text online.",
+          description: "Convert text to ASCII code and ASCII code back to text online.",
           slug: "/text-to-ascii",
           category: "Utilities/Text",
         })}
@@ -117,215 +135,135 @@ ${asciiContent}
         ])}
       />
 
-      <div className="space-y-4">
-        {/* Status Messages */}
+      <div className="space-y-5">
         {message && (
-          <div className="px-3 py-2 bg-blue-100 border rounded text-blue-800 text-sm">
+          <div className="px-3 py-2 bg-blue-100 border border-blue-200 rounded text-sm text-blue-800">
             {message}
           </div>
         )}
 
-        {/* Text Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Enter Text
-          </label>
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Enter text to convert to ASCII code..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-          />
+        <div className="grid gap-5 lg:grid-cols-2">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700" htmlFor="text-input">
+              Text
+            </label>
+            <textarea
+              id="text-input"
+              value={text}
+              onChange={(event) => setText(event.target.value)}
+              placeholder="Enter text to convert to ASCII codes..."
+              className="w-full min-h-40 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700" htmlFor="ascii-input">
+              ASCII Codes
+            </label>
+            <textarea
+              id="ascii-input"
+              value={ascii}
+              onChange={(event) => setAscii(event.target.value)}
+              placeholder="Example: 72 101 108 108 111"
+              className="w-full min-h-40 px-3 py-2 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
         </div>
 
-        {/* ASCII Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Enter ASCII Code
-          </label>
-          <textarea
-            value={ascii}
-            onChange={(e) => setAscii(e.target.value)}
-            placeholder="Enter ASCII code to convert to text..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm"
-          />
-          <p className="text-xs text-gray-500 mt-1">
-            Enter valid ASCII code
-          </p>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-wrap gap-3">
           <button
             onClick={convertTextToAscii}
             disabled={!text.trim()}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                       bg-indigo-600 text-white shadow 
-                       hover:bg-indigo-700 disabled:opacity-60"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-indigo-600 text-white shadow hover:bg-indigo-700 disabled:opacity-60"
           >
-            🔤 Text to ASCII
+            Text to ASCII
           </button>
-
           <button
             onClick={convertAsciiToText}
             disabled={!ascii.trim()}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                       bg-green-600 text-white shadow 
-                       hover:bg-green-700 disabled:opacity-60"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-green-600 text-white shadow hover:bg-green-700 disabled:opacity-60"
           >
-            📡 ASCII to Text
+            ASCII to Text
           </button>
-
-          {text && (
-            <button
-              onClick={copyText}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                         bg-blue-600 text-white shadow 
-                         hover:bg-blue-700"
-            >
-              📋 Copy Text
-            </button>
-          )}
-
-          {ascii && (
-            <button
-              onClick={copyAscii}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                         bg-purple-600 text-white shadow 
-                         hover:bg-purple-700"
-            >
-              📋 Copy ASCII
-            </button>
-          )}
-
+          <button
+            onClick={copyText}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-blue-600 text-white shadow hover:bg-blue-700"
+          >
+            Copy Text
+          </button>
+          <button
+            onClick={copyAscii}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-purple-600 text-white shadow hover:bg-purple-700"
+          >
+            Copy ASCII
+          </button>
           <button
             onClick={reset}
-            disabled={!text.trim() && !ascii.trim()}
-            className="px-5 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200"
+            disabled={!text && !ascii}
+            className="px-5 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-60"
           >
             Reset
           </button>
         </div>
 
-        {/* Character Analysis */}
-        {text && (
-          <div className="border rounded-lg p-4 bg-gray-50">
-            <h4 className="text-sm font-medium text-gray-700 mb-2">Character Analysis</h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <div className="font-medium">Total Characters:</div>
-                <div>{text.length}</div>
-              </div>
-              <div>
-                <div className="font-medium">Words:</div>
-                <div>{text.split(/\s+/).filter(word => word.length > 0).length}</div>
-              </div>
-              <div>
-                <div className="font-medium">Lines:</div>
-                <div>{text.split('\n').length}</div>
-              </div>
-            </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-lg border border-gray-200 bg-white p-4 text-sm">
+            <div className="font-semibold text-gray-800">Lines</div>
+            <div className="text-gray-600">{lineCount}</div>
           </div>
-        )}
-
-        {/* ASCII Info */}
-        <div className="border rounded-lg p-4 bg-blue-50">
-          <h4 className="text-sm font-medium text-blue-700 mb-2">About ASCII</h4>
-          <div className="text-sm space-y-1">
-            <div>• ASCII is a character encoding standard</div>
-            <div>• Used for representing text in computers</div>
-            <div>• Supports 128 characters (0-127)</div>
-            <div>• Commonly used in programming and data processing</div>
+          <div className="rounded-lg border border-gray-200 bg-white p-4 text-sm">
+            <div className="font-semibold text-gray-800">Words</div>
+            <div className="text-gray-600">{wordCount}</div>
+          </div>
+          <div className="rounded-lg border border-gray-200 bg-white p-4 text-sm">
+            <div className="font-semibold text-gray-800">Characters</div>
+            <div className="text-gray-600">{characterCount}</div>
+          </div>
+          <div className="rounded-lg border border-gray-200 bg-white p-4 text-sm">
+            <div className="font-semibold text-gray-800">ASCII Values</div>
+            <div className="text-gray-600">{asciiValues.length}</div>
           </div>
         </div>
+
+        <section className="mt-8 rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
+          <h3 className="text-lg font-semibold text-gray-900">About the Text to ASCII Converter</h3>
+          <p className="mt-3 text-gray-700">
+            ASCII (American Standard Code for Information Interchange) assigns a number between 0 and 127 to
+            letters, digits, punctuation marks, and control characters. This tool helps you explore that mapping
+            by converting any text you provide into a list of ASCII values and decoding ASCII values back into
+            readable text. Everything runs in your browser, so nothing is uploaded or stored on a server.
+          </p>
+          <p className="mt-3 text-gray-700">
+            Developers use ASCII conversions when debugging encoding problems, inspecting payloads, or working
+            with legacy systems. Educators and students can also rely on it to demonstrate how computers
+            represent characters internally. Paste text, convert it, and review the statistics to understand the
+            makeup of the input at a glance.
+          </p>
+          <h4 className="mt-5 text-base font-semibold text-gray-900">Key Features</h4>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-gray-700">
+            <li>Bidirectional conversion between text and ASCII values.</li>
+            <li>Supports multi-line input and preserves line breaks.</li>
+            <li>Quick statistics for lines, words, characters, and ASCII values.</li>
+            <li>One-click copy buttons for both text and ASCII output.</li>
+            <li>Runs entirely in the browser for privacy and speed.</li>
+          </ul>
+          <h4 className="mt-5 text-base font-semibold text-gray-900">How to Use</h4>
+          <ol className="mt-2 list-decimal space-y-1 pl-5 text-gray-700">
+            <li>Enter or paste text in the left input and select Text to ASCII.</li>
+            <li>Review the generated ASCII values in the right input.</li>
+            <li>To decode, paste ASCII numbers (separated by spaces or commas) and select ASCII to Text.</li>
+            <li>Use the copy buttons to copy either representation.</li>
+            <li>Select Reset anytime to clear both inputs.</li>
+          </ol>
+          <h4 className="mt-5 text-base font-semibold text-gray-900">Frequently Asked Questions</h4>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-gray-700">
+            <li>What range should ASCII codes fall into? Standard ASCII uses values from 0 to 127.</li>
+            <li>Can I enter comma separated codes? Yes, separators can be spaces, new lines, or commas.</li>
+            <li>Does the converter support extended ASCII? Values up to 255 are accepted for convenience.</li>
+            <li>Is the conversion secure? All processing happens locally in your browser.</li>
+          </ul>
+        </section>
       </div>
-
-      {/* Info Section */}
-      <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
-        <h3 className="text-lg font-semibold mb-2">About Text to ASCII Converter</h3>
-        <p className="text-gray-700 mb-4">
-          A Text to ASCII Converter is a simple yet powerful tool that allows you to
-          transform plain text into its ASCII representation and vice versa. ASCII
-          (American Standard Code for Information Interchange) is one of the most
-          widely used character encoding standards in computer science. Each letter,
-          number, punctuation mark, or control character is assigned a numerical
-          value between 0 and 127, making it easy for computers to store, process,
-          and transmit text data. With this tool, you can instantly convert text into
-          ASCII codes or decode ASCII codes back into human-readable text, directly
-          in your browser.
-        </p>
-
-        <p className="text-gray-700 mb-4">
-          Traditionally, developers used ASCII conversion for debugging, encryption,
-          and low-level programming tasks. Today, ASCII remains relevant for data
-          exchange, legacy systems, and educational purposes. By using this converter,
-          you can better understand how computers interpret characters and practice
-          working with encoding systems. Whether you are a programmer, a student, or
-          a tech enthusiast, this tool helps you visualize the bridge between text
-          and binary representation.
-        </p>
-
-        <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Instantly convert text to ASCII code values</li>
-          <li>Decode ASCII code back to human-readable text</li>
-          <li>Supports multi-line input and formatting</li>
-          <li>Provides character statistics and analysis</li>
-          <li>Works directly in your browser — no uploads required</li>
-          <li>One-click copy of ASCII or text output</li>
-          <li>Safe, private, and free to use</li>
-        </ul>
-
-        <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter plain text into the text field and click <strong>Text to ASCII</strong>.</li>
-          <li>View the generated ASCII code, displayed as a sequence of numbers.</li>
-          <li>If you have ASCII codes, paste them into the ASCII field and click <strong>ASCII to Text</strong>.</li>
-          <li>Use the copy buttons to copy the results instantly.</li>
-          <li>Check the character analysis panel for statistics such as character count, word count, and line count.</li>
-        </ol>
-
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li><strong>Programming and Debugging:</strong> Inspect ASCII codes to detect issues with encoding or data corruption.</li>
-          <li><strong>Data Analysis:</strong> Convert raw text into ASCII values for computational processing or storage.</li>
-          <li><strong>Networking:</strong> ASCII encoding is still used in older communication protocols and file formats.</li>
-          <li><strong>Education:</strong> Learn how characters map to numerical codes in computer systems.</li>
-          <li><strong>Encryption & Security:</strong> Simple encoding schemes often use ASCII as a base.</li>
-          <li><strong>Legacy Systems:</strong> Work with old databases and systems that rely on ASCII representation.</li>
-        </ul>
-
-        <h4 className="font-semibold mt-4 mb-1">📊 Why ASCII is Important</h4>
-        <p className="text-gray-700 mb-4">
-          ASCII was introduced in the 1960s and quickly became the foundation for text
-          communication in computers and the internet. Even though modern encodings like
-          UTF-8 are more common today, ASCII forms the first 128 characters of UTF-8 and
-          remains universally supported. Without ASCII, early computing, email systems,
-          programming languages, and protocols such as HTTP and SMTP would not have been
-          possible. Understanding ASCII helps developers appreciate the evolution of
-          character encoding and the importance of standards in computer science.
-        </p>
-
-        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-2">
-          <li><strong>What is the ASCII range?</strong> ASCII covers 128 characters from 0–127, including letters, digits, punctuation, and control codes.</li>
-          <li><strong>What’s the difference between ASCII and Unicode?</strong> ASCII is limited to 128 characters, while Unicode supports thousands of characters from multiple languages.</li>
-          <li><strong>Can I use this tool offline?</strong> Yes, since it runs in your browser, you can even use it without internet once loaded.</li>
-          <li><strong>Is my data safe?</strong> 100% — nothing is uploaded, everything is processed locally.</li>
-          <li><strong>Can I convert binary or hex to ASCII?</strong> This tool works with text and ASCII codes, but you can chain conversions using binary/hex converters.</li>
-        </ul>
-
-        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
-        <p className="text-gray-700">
-          The Text to ASCII Converter is more than just a utility — it’s a learning tool
-          and a productivity booster. It allows anyone to explore the fundamentals of
-          character encoding, verify text-to-code transformations, and decode ASCII back
-          to readable text. Whether you are writing software, analyzing data, or just
-          curious about how computers interpret text, this converter offers a fast,
-          reliable, and free solution. Next time you need to understand the numeric
-          representation of characters, this tool will be your go-to companion.
-        </p>
-      </section>
     </ToolSection>
   );
 }

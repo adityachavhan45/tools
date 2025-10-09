@@ -49,41 +49,39 @@ export default function MarkdownToHtmlPage() {
       html = html.replace(/\n/g, '<br>');
 
       // Wrap in paragraph tags
-      html = '<p>' + html + '</p>';
-
       // Clean up empty paragraphs
       html = html.replace(/<p><\/p>/g, '');
       html = html.replace(/<p><br><\/p>/g, '');
 
-      const resultText = `# Markdown to HTML Conversion
-# Generated on: ${new Date().toISOString()}
+      const resultText = `Markdown to HTML Conversion
+Generated on: ${new Date().toISOString()}
 
-# Conversion Settings
-# Formatting: ${formatting}
-# Style: Pretty Print
-# Quality: High
-# Validation: Basic
+Conversion Settings
+Formatting: ${formatting}
+Style: Pretty Print
+Quality: High
+Validation: Basic
 
-# Markdown Information
-# - Length: ${markdown.length} characters
-# - Lines: ${markdown.split('\n').length} lines
-# - Formatting: ${formatting}
-# - Quality: High
+Markdown Information
+- Length: ${markdown.length} characters
+- Lines: ${markdown.split('\n').length} lines
+- Formatting: ${formatting}
+- Quality: High
 
-# HTML Output
+HTML Output
 ${html}
 
-# Usage Instructions
-# 1. Enter or paste Markdown text
-# 2. Select formatting style
-# 3. Click "Convert to HTML" to process
-# 4. Copy the HTML output
+Usage Instructions
+1. Enter or paste Markdown text
+2. Select formatting style
+3. Click "Convert to HTML" to process
+4. Copy the HTML output
 
-# Quality Notes
-# - Proper HTML formatting
-# - Consistent structure and tags
-# - Readable code output
-# - Optimized for web development`;
+Quality Notes
+- Proper HTML formatting
+- Consistent structure and tags
+- Readable code output
+- Optimized for web development`;
 
       setResult(resultText);
       setMessage("✅ Markdown converted to HTML successfully!");
@@ -144,7 +142,7 @@ ${html}
             value={markdown}
             onChange={(e) => setMarkdown(e.target.value)}
             placeholder="Enter or paste Markdown text here..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm resize-y"
           />
         </div>
 
@@ -171,11 +169,9 @@ ${html}
             <label className="block text-sm font-medium text-gray-700 mb-2">
               HTML Output
             </label>
-            <textarea
-              value={result}
-              readOnly
-              className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
-            />
+            <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap">
+              {result}
+            </div>
           </div>
         )}
 

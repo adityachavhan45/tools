@@ -141,7 +141,7 @@ ${xmlContent}
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Enter text to convert to XML code..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
           />
         </div>
 
@@ -150,12 +150,9 @@ ${xmlContent}
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Enter XML Code
           </label>
-          <textarea
-            value={xml}
-            onChange={(e) => setXml(e.target.value)}
-            placeholder="Enter XML code to convert to text..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm"
-          />
+          <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
+            {xml || "XML output will appear here..."}
+          </div>
           <p className="text-xs text-gray-500 mt-1">
             Enter valid XML code
           </p>

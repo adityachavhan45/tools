@@ -137,21 +137,17 @@ ${yamlContent}
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Enter text to convert to YAML code..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
           />
         </div>
-
         {/* YAML Input */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Enter YAML Code
           </label>
-          <textarea
-            value={yaml}
-            onChange={(e) => setYaml(e.target.value)}
-            placeholder="Enter YAML code to convert to text..."
-            className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-mono text-sm"
-          />
+          <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
+            {yaml || "YAML output will appear here..."}
+          </div>
           <p className="text-xs text-gray-500 mt-1">
             Enter valid YAML code
           </p>
