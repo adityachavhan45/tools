@@ -7,6 +7,14 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Internet Speed Test - High Priority -->
+  <url>
+    <loc>https://convertixy.com/internet-speed-test</loc>
+    <lastmod>2025-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   
   <!-- PDF Tools -->
 

@@ -132,10 +132,13 @@ export default function Header() {
               Home
             </Link>
             <Link href="/google-discover-image-optimizer" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium text-blue-300 hover:text-blue-200" onClick={handleNavClick}>
-              🚀 Discover Optimizer
+               Discover Optimizer
             </Link>
             <Link href="/adsense-rpm-calculator" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium text-green-300 hover:text-green-200" onClick={handleNavClick}>
-              💰 RPM Calculator
+               RPM Calculator
+            </Link>
+            <Link href="/internet-speed-test" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium text-orange-300 hover:text-orange-200" onClick={handleNavClick}>
+               Internet Speed
             </Link>
             {sections.map((section) => (
               <div key={section.key} className="relative">
@@ -197,14 +200,21 @@ export default function Header() {
               className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium text-blue-300 hover:text-blue-200"
               onClick={handleNavClick}
             >
-              🚀 Discover Optimizer
+               Discover Optimizer
             </Link>
             <Link
               href="/adsense-rpm-calculator"
               className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium text-green-300 hover:text-green-200"
               onClick={handleNavClick}
             >
-              💰 RPM Calculator
+               RPM Calculator
+            </Link>
+            <Link
+              href="/internet-speed-test"
+              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium text-orange-300 hover:text-orange-200"
+              onClick={handleNavClick}
+            >
+               Internet Speed
             </Link>
             {sections.map((section) => (
               <div

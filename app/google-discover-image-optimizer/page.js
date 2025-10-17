@@ -3,9 +3,9 @@ import { buildMetadata, buildToolJsonLd, buildHowToJsonLd, buildFaqJsonLd } from
 import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
-  title: "🚀 Boost Your Google Discover Traffic by 300% - Free Image Optimizer Tool",
+  title: "Google Discover Image Optimizer",
   description:
-    "⚡ Get MORE clicks from Google Discover! Our FREE tool instantly optimizes images to perfect 1200x700px with enhanced contrast. Used by 50,000+ content creators. Try now - takes 30 seconds! ✅ No signup required ✅ Works in browser ✅ Download JPG/WebP/AVIF",
+    "Free online tool to optimize images for Google Discover. Instantly resize to 1200x700px with enhanced contrast and brightness for maximum traffic boost.",
   slug: "/google-discover-image-optimizer",
   keywords:
     "google discover image optimizer, boost google discover traffic, increase google discover clicks, google discover images, optimize images for google discover, 1200x700 image resize, google discover optimization, image contrast brightness enhancer, free image optimizer, discover friendly images, seo image optimization, google discover format, image enhancement tool, online image processor, google discover seo, discover image requirements, google discover article images, optimize images for seo, image optimizer for google, google discover image size, discover image dimensions, google discover image specs, image optimizer online free, resize image for google discover, enhance image contrast brightness, google discover image tool, discover image converter, google discover photo optimizer, optimize photos for google discover, google discover image guidelines, best images for google discover, google discover thumbnail optimizer, discover feed image optimizer, google discover image best practices, webp optimizer, avif converter, modern image formats, image compression tool, picture optimizer for seo, google discover ready images, discover article image optimizer, increase website traffic, google discover ctr, google discover engagement, viral content images, trending article images"

@@ -217,11 +217,11 @@ export default function ClientPage() {
         <div className="text-center mb-6 sm:mb-8">
           <div className="mb-3 sm:mb-4">
             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 mb-2">
-              🔥 Used by 50,000+ Content Creators
+              🔥 Used For Content Creators
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
-            🚀 Boost Your Google Discover Traffic by 300%
+            Boost Your Google Discover Traffic 
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
             ⚡ Get MORE clicks from Google Discover! Instantly optimize images to perfect 1200×700px with enhanced contrast and brightness. Takes just 30 seconds - completely FREE!
@@ -485,22 +485,9 @@ export default function ClientPage() {
 
         {/* SEO Content Section */}
         <section className="mt-8 sm:mt-12 p-4 sm:p-6 md:p-8 bg-white border rounded-2xl shadow-sm">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">🚀 Why 50,000+ Content Creators Choose Our Google Discover Image Optimizer</h2>
           
           {/* Success Stories */}
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 sm:p-6 rounded-lg mb-4 sm:mb-6 border border-green-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">💰 Real Results from Real Users:</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white p-3 rounded-lg shadow-sm">
-                <p className="text-sm text-gray-700 italic">&quot;My Google Discover traffic increased by 400% after using this tool!&quot;</p>
-                <p className="text-xs text-gray-500 mt-1">- Sarah, Lifestyle Blogger</p>
-              </div>
-              <div className="bg-white p-3 rounded-lg shadow-sm">
-                <p className="text-sm text-gray-700 italic">&quot;Finally getting the clicks I deserve from Google Discover!&quot;</p>
-                <p className="text-xs text-gray-500 mt-1">- Mike, Tech Content Creator</p>
-              </div>
-            </div>
-          </div>
+          
 
           <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
             <strong>Stop losing traffic to poorly optimized images!</strong> Our Google Discover Image Optimizer is the secret weapon used by thousands of successful content creators to maximize their Google Discover visibility. This powerful, completely FREE tool automatically transforms your images into Google Discover magnets by resizing them to the perfect 1200×700 pixel dimensions and enhancing contrast and brightness for maximum engagement. The result? More clicks, more traffic, and more revenue from your content.
