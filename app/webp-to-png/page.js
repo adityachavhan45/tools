@@ -1,8 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { buildToolJsonLd, buildBreadcrumbJsonLd } from "../../lib/seo";
 import JsonLd from "../components/JsonLd";
-import { useState } from "react";
 
 export default function WebpToPngPage() {
   const [files, setFiles] = useState([]);
@@ -51,32 +51,77 @@ export default function WebpToPngPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-8">
+      {/* ✅ Tool Schema */}
       <JsonLd
         data={buildToolJsonLd({
-          name: "WebP to PNG",
-          description: "Convert WebP images to PNG quickly in your browser.",
+          name: "WebP to PNG Converter Online",
+          description:
+            "Convert WebP images to PNG instantly with our free, fast, and secure browser-based image converter.",
           slug: "/webp-to-png",
           category: "Utilities/Images",
         })}
       />
+
+      {/* ✅ Breadcrumb Schema */}
       <JsonLd
         data={buildBreadcrumbJsonLd([
           { name: "Home", slug: "/" },
-          { name: "WebP to PNG", slug: "/webp-to-png" },
+          { name: "WebP to PNG Converter", slug: "/webp-to-png" },
         ])}
       />
 
+      {/* ✅ FAQ Schema for Google Rich Results */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Is this WebP to PNG converter safe to use?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes, all conversions happen locally in your browser. Your images are never uploaded or stored on any server.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Does this converter preserve transparency?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes, transparency from WebP images is fully preserved when converting to PNG format.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can I convert multiple WebP images at once?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes, you can upload and batch-convert multiple WebP files instantly with one click.",
+              },
+            },
+          ],
+        }}
+      />
+
       <div className="max-w-5xl mx-auto px-4">
+        {/* Invisible H1 for SEO */}
+        <h1 className="sr-only">Free WebP to PNG Converter Online</h1>
+
         {/* Main Card */}
         <div className="bg-white shadow-xl rounded-2xl p-6 border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-800">WebP to PNG Converter</h2>
+          <h2 className="text-2xl font-bold text-gray-800">
+            WebP to PNG Converter
+          </h2>
           <p className="text-gray-600 mt-1">
             Convert WebP images to PNG easily, right in your browser.
           </p>
 
           {message && (
-            <div className="mt-3 px-4 py-2 rounded-lg text-sm shadow-sm 
-                            border bg-gray-50 text-gray-800">
+            <div
+              className="mt-3 px-4 py-2 rounded-lg text-sm shadow-sm 
+                            border bg-gray-50 text-gray-800"
+            >
               {message}
             </div>
           )}
@@ -111,9 +156,11 @@ export default function WebpToPngPage() {
               onClick={convert}
               disabled={processing || !files.length}
               className={`flex-1 px-5 py-2.5 rounded-lg font-medium transition 
-                ${!files.length || processing
-                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                  : "bg-slate-900 text-white hover:bg-slate-800 shadow"}`}
+                ${
+                  !files.length || processing
+                    ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                    : "bg-slate-900 text-white hover:bg-slate-800 shadow"
+                }`}
             >
               {processing ? "Converting…" : "Convert"}
             </button>
@@ -121,9 +168,11 @@ export default function WebpToPngPage() {
               onClick={reset}
               disabled={!files.length && !outputs.length}
               className={`flex-1 px-5 py-2.5 rounded-lg font-medium transition 
-                ${!files.length && !outputs.length
-                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                  : "bg-red-500 text-white hover:bg-red-600 shadow"}`}
+                ${
+                  !files.length && !outputs.length
+                    ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                    : "bg-red-500 text-white hover:bg-red-600 shadow"
+                }`}
             >
               Reset
             </button>
@@ -176,7 +225,7 @@ export default function WebpToPngPage() {
             <span className="text-orange-500 mr-2">📦</span> Use Cases
           </h4>
           <ul className="list-disc list-inside text-gray-700 space-y-1 pl-2 text-sm">
-            <li>When your CMS doesn’t support WebP</li>
+            <li>When your CMS doesnt support WebP</li>
             <li>Preserve transparency in lossless PNG</li>
             <li>Prepare assets for Photoshop & other editors</li>
             <li>Export files for apps that dont support WebP</li>

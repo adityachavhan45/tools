@@ -2,12 +2,13 @@ import ClientPage from "./ClientPage";
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "UUID Generator Online — Free Tool to Generate UUID v4 & GUIDs",
+  title:
+    "UUID Generator Online | Free, Fast & Secure UUID v4 & GUID Generator Tool",
   description:
-    "Free UUID Generator online. Instantly generate UUID v4 identifiers (GUIDs) in your browser with one click. Fast, secure, and reliable tool for developers, database administrators, API testing, and software projects.",
+    "Generate UUID v4 and GUIDs instantly with our free online UUID Generator. Create unique, random, and secure identifiers for APIs, databases, and software projects. Perfect for developers, testers, and backend engineers. 100% browser-based and reliable.",
   slug: "/uuid-generator",
   keywords:
-    "uuid generator, uuid v4, guid, uuid generator online, generate uuid, uuid tool, create uuid v4, guid generator, free uuid generator, instant uuid generator, secure uuid generator, uuid string generator, uuid generator for developers, api uuid generator, database uuid tool, random uuid generator, uuid v4 generator online, uuid maker, uuid code generator, uuid identifier tool"
+    "uuid generator, uuid v4, guid, uuid generator online, generate uuid, guid generator, uuid tool, create uuid v4, free uuid generator, instant uuid generator, secure uuid generator, random uuid generator, uuid string generator, uuid generator for developers, api uuid generator, database uuid tool, uuid maker, uuid code generator, uuid identifier tool, uuid generator tool"
 });
 
 export default function Page() {

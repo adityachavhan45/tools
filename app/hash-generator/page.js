@@ -2,12 +2,45 @@ import ClientPage from "./ClientPage";
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Hash Generator Online — Free Hash Calculator for MD5, SHA1, SHA256",
+  title:
+    "Hash Generator Online - Free MD5, SHA1, SHA256, and SHA512 Calculator Tool",
   description:
-    "Free Hash Generator online. Instantly generate secure hash values with MD5, SHA1, SHA256, SHA512, and more. Easy-to-use tool for developers, cybersecurity experts, students, and data integrity verification. Supports multiple algorithms and encoding formats.",
+    "Use this free Hash Generator online to instantly create secure hash values with MD5, SHA1, SHA256, SHA512, and more. Fast, accurate, and developer-friendly tool for encryption, password hashing, and data integrity verification.",
   slug: "/hash-generator",
-  keywords:
-    "hash generator, online hash calculator, hash function tool, cryptography tool, md5 generator, sha1 generator, sha256 generator, sha512 generator, password hash generator, online hashing tool, free hash converter, data integrity tool, generate hash online, text to hash converter, file hash calculator, secure hash algorithm, hash encoding tool, best online hash generator, quick hash generator, developer hash tool, string to hash converter, cryptographic hash function, hash value calculator, online encryption tool, hash verification tool, digital signature hash, security hash generator"
+  focusKeyword: "Hash Generator Online",
+  keywords: [
+    "hash generator",
+    "hash generator online",
+    "online hash calculator",
+    "md5 hash generator",
+    "sha1 hash generator",
+    "sha256 hash generator",
+    "sha512 hash generator",
+    "hash function tool",
+    "cryptography tool",
+    "password hash generator",
+    "generate hash online",
+    "text to hash converter",
+    "file hash calculator",
+    "hash value generator",
+    "data integrity tool",
+    "hash encoding tool",
+    "online hashing tool",
+    "free hash converter",
+    "secure hash algorithm tool",
+    "best online hash generator",
+    "developer hash calculator",
+    "string to hash converter",
+    "cryptographic hash function",
+    "hash value calculator",
+    "hash verification tool",
+    "digital signature hash",
+    "security hash generator",
+    "hash algorithm online",
+    "hash converter for developers",
+    "generate md5 sha1 sha256 online",
+    "online encryption and hashing tool"
+  ],
 });
 
 export default function Page() {

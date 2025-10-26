@@ -2,12 +2,13 @@ import ClientPage from "./ClientPage";
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Text Diff Checker Online — Free Tool to Compare & Find Text Differences",
+  title:
+    "Text Diff Checker Online | Free, Fast & Accurate Text Comparison Tool",
   description:
-    "Free Text Diff Checker online. Instantly compare two texts, documents, or code snippets and find differences with side-by-side highlighting. Perfect for writers, editors, developers, students, and professionals. Fast, secure, and works in your browser.",
+    "Compare text, code, or documents instantly with our free Text Diff Checker online. View side-by-side differences with color highlighting for easy analysis. Perfect for writers, editors, developers, and students. Fast, secure, and 100% browser-based.",
   slug: "/text-diff-checker",
   keywords:
-    "text diff, text difference, text compare, text comparison, diff checker, online text comparison, code diff tool, text difference checker, compare documents online, text diff highlighter, free diff checker, side by side text comparison, document compare tool, online diff checker, instant text compare, content comparison tool, text changes checker, text compare for writers, text diff for developers, best text difference tool"
+    "text diff, text difference, text compare, text comparison, diff checker, online text comparison, code diff tool, text difference checker, compare documents online, side by side text comparison, free diff checker, document compare tool, instant text compare, content comparison tool, text changes checker, text diff for developers, text compare for writers, best text difference tool, diff tool online, secure text diff"
 });
 
 export default function Page() {

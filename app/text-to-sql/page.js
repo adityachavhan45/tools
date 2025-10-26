@@ -2,12 +2,13 @@ import ClientPage from "./ClientPage";
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Text to SQL Converter Online — Free Tool to Generate & Format SQL Queries",
+  title:
+    "Text to SQL Converter Online | Free, Fast & Accurate SQL Query Generator Tool",
   description:
-    "Free Text to SQL Converter online. Instantly convert plain text into SQL queries and SQL back to text with validation, formatting, and copy options. Useful for students, developers, database administrators, and data analysts working with MySQL, PostgreSQL, or SQLite.",
+    "Convert text to SQL queries and SQL back to text instantly with our free online SQL Converter. Generate, format, and validate SQL code for MySQL, PostgreSQL, and SQLite with accuracy and ease. Perfect for developers, students, and data analysts. 100% browser-based and secure.",
   slug: "/text-to-sql",
   keywords:
-    "text to sql, sql to text, sql converter, sql query generator, text to sql code, convert text to sql, sql encoder, sql decoder, sql formatter, sql validator, online sql tool, sql string converter, sql generator online, free sql converter, sql code converter, instant sql query builder, best sql converter tool, sql parser online, sql database converter, text to sql for developers, text to sql for students"
+    "text to sql, sql to text, sql converter, sql query generator, text to sql code, convert text to sql, sql formatter, sql validator, sql encoder, sql decoder, sql generator online, online sql tool, free sql converter, instant sql query builder, sql parser online, sql code converter, sql database converter, text to sql for developers, best sql converter tool, sql generator for mysql, sql generator for postgresql"
 });
 
 export default function Page() {

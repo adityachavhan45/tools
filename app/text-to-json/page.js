@@ -2,12 +2,13 @@ import ClientPage from "./ClientPage";
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Text to JSON Converter Online — Free Tool to Format, Encode & Decode JSON",
+  title:
+    "Text to JavaScript Converter Online | Free, Fast & Secure JS Encode/Decode Tool",
   description:
-    "Free Text to JSON Converter online. Instantly convert text to JSON code and JSON back to text with formatting, validation, and copy options. Useful tool for developers, API testing, students, and data processing tasks.",
-  slug: "/text-to-json",
+    "Convert text to JavaScript (JS) and JavaScript back to text instantly with our free online JS Converter. Encode or decode strings with accuracy, formatting, and copy options. Ideal for developers, programmers, and students working on web projects. 100% browser-based and secure.",
+  slug: "/text-to-javascript",
   keywords:
-    "text to json, json to text, json converter, text to json code, convert text to json, json encoder, json decoder, json formatter, json validator, json generator, text to json online, free json converter, json parser, secure json converter, json data converter, instant json converter, best json converter, json string converter, json conversion tool, json for developers"
+    "text to javascript, text to js, javascript converter, js converter, text to js code, convert text to javascript, javascript encoder, javascript decoder, js code generator, text to js online, javascript converter tool, free text to javascript converter, secure js converter, instant js encoder, decode javascript online, js string converter, text to js for developers, javascript encoding tool, javascript converter online, javascript decode tool"
 });
 
 export default function Page() {

@@ -2,12 +2,13 @@ import ClientPage from "./ClientPage";
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Temperature Converter Online — Free Tool for Celsius, Fahrenheit & Kelvin",
+  title:
+    "Temperature Converter Online | Free, Fast & Accurate Celsius, Fahrenheit & Kelvin Tool",
   description:
-    "Free Temperature Converter online. Instantly convert between Celsius, Fahrenheit, and Kelvin with accurate results. Perfect tool for students, scientists, teachers, travelers, and weather use. Fast, secure, and works directly in your browser.",
+    "Convert temperature units instantly with our free Temperature Converter online. Switch easily between Celsius, Fahrenheit, and Kelvin with precise, accurate results. Ideal for students, teachers, scientists, and travelers. 100% browser-based — no sign-up or downloads required.",
   slug: "/temperature-converter",
   keywords:
-    "temperature converter, celsius fahrenheit, kelvin converter, temperature calculator, convert temperature online, celsius to fahrenheit, fahrenheit to celsius, celsius to kelvin, kelvin to celsius, fahrenheit to kelvin, temperature conversion tool, online temperature calculator, free temperature converter, scientific calculator temperature, quick temperature converter, accurate temperature conversion, instant temperature tool, convert degrees online, temperature converter for students, weather temperature converter"
+    "temperature converter, convert temperature online, celsius fahrenheit kelvin, temperature calculator, celsius to fahrenheit, fahrenheit to celsius, celsius to kelvin, kelvin to celsius, fahrenheit to kelvin, free temperature converter, online temperature converter, scientific temperature calculator, accurate temperature conversion, instant temperature converter, quick temperature tool, convert degrees online, weather temperature converter, temperature converter for students, temperature converter for scientists"
 });
 
 export default function Page() {

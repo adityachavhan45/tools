@@ -2,12 +2,13 @@ import ClientPage from "./ClientPage";
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Random Number Generator Online — Free Tool to Generate Numbers Instantly",
+  title:
+    "Random Number Generator Online | Free, Fast & Secure Number Randomizer Tool",
   description:
-    "Free Random Number Generator online. Instantly generate random numbers with custom range, quantity, and batch options. Perfect for statistics, math problems, gaming, lottery, testing, and simulations. Fast, secure, and works in your browser.",
+    "Generate random numbers online instantly with our free Random Number Generator. Choose custom range, quantity, or batch mode for games, math, testing, or lotteries. Simple, secure, and 100% browser-based — no downloads or sign-ups needed.",
   slug: "/random-number-generator",
   keywords:
-    "random number generator, random numbers, number generator, randomizer, free random number generator, online number generator, random numbers for lottery, random number picker, generate random numbers, random number generator tool, secure randomizer, random number generator with range, instant random number generator, batch random numbers, randomizer for statistics, random number generator for games, random number generator for testing, random number generator for math, online randomizer, random number generator fast"
+    "random number generator, random numbers, number generator, randomizer, online number generator, free random number generator, random number picker, random number generator tool, random number generator with range, secure randomizer, instant random number generator, batch random numbers, random number generator for games, random number generator for testing, random number generator for math, randomizer for statistics, random numbers for lottery, online randomizer, fast random number generator"
 });
 
 export default function Page() {
