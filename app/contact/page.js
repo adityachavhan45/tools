@@ -26,9 +26,8 @@ export default function ContactPage() {
         {/* Contact Form */}
         <form
           className="border rounded-2xl p-6 sm:p-8 bg-white shadow-lg hover:shadow-xl transition"
-          action="mailto:support@convertixy.com"
           method="post"
-          encType="text/plain"
+          autoComplete="on"
         >
           <div className="space-y-5">
             <div>
