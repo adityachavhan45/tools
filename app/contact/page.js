@@ -9,7 +9,8 @@ export const metadata = buildMetadata({
 
 export default function ContactPage() {
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="w-full bg-white">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <header className="text-center mb-12">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
@@ -38,7 +39,7 @@ export default function ContactPage() {
                 type="text"
                 name="name"
                 required
-                className="w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-900 placeholder-gray-500 bg-white"
                 placeholder="Your name"
               />
             </div>
@@ -51,7 +52,7 @@ export default function ContactPage() {
                 type="email"
                 name="email"
                 required
-                className="w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-900 placeholder-gray-500 bg-white"
                 placeholder="you@example.com"
               />
             </div>
@@ -64,7 +65,7 @@ export default function ContactPage() {
                 name="message"
                 rows={5}
                 required
-                className="w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-900 placeholder-gray-500 bg-white"
                 placeholder="How can we help?"
               />
             </div>
@@ -104,6 +105,7 @@ export default function ContactPage() {
           </div>
         </aside>
       </div>
-    </section>
+      </section>
+    </div>
   );
 }
