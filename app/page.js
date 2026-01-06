@@ -89,7 +89,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900">
             {/* ✅ Adsterra Script – Home Page Only */}
-      <script src="https://pl28412045.effectivegatecpm.com/66/18/7c/66187c7798d910a5dc5f689e377e6e4f.js"></script>
+      {/* <script src="https://pl28412045.effectivegatecpm.com/66/18/7c/66187c7798d910a5dc5f689e377e6e4f.js"></script> */}
 
       <JsonLd
         data={[
