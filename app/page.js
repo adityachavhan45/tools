@@ -89,7 +89,8 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900">
             {/* ✅ Adsterra Script – Home Page Only */}
-      {/* <script src="https://pl28412045.effectivegatecpm.com/66/18/7c/66187c7798d910a5dc5f689e377e6e4f.js"></script> */}
+      <script async="async" data-cfasync="false" src="https://pl28411841.effectivegatecpm.com/f404cdb5fbadd90423ffc4a3b6333a6d/invoke.js"></script>
+<div id="container-f404cdb5fbadd90423ffc4a3b6333a6d"></div>
 
       <JsonLd
         data={[
@@ -217,6 +218,7 @@ js
           ))}
         </div>
       </section>
+    
 
       {/* All Tools */}
       <AllToolsGrid tools={toolSections.flatMap((s) => s.links)} />
@@ -272,6 +274,7 @@ js
           </div>
         </div>
       </section>
+   
 
       {/* FAQ Section */}
       <section className="max-w-5xl mx-auto py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">

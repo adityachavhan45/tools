@@ -1,4 +1,5 @@
 "use client";
+import Script from "next/script";
 
 import { buildToolJsonLd, buildBreadcrumbJsonLd } from "../../lib/seo";
 import JsonLd from "../components/JsonLd";
@@ -62,12 +63,16 @@ export default function WebpToPngPage() {
           { name: "WebP to PNG", slug: "/webp-to-png" },
         ])}
       />
+
       <div className="max-w-5xl mx-auto p-4">
+         {/* ad script */}
+<script async="async" data-cfasync="false" src="https://pl28411841.effectivegatecpm.com/f404cdb5fbadd90423ffc4a3b6333a6d/invoke.js"></script>
+<div id="container-f404cdb5fbadd90423ffc4a3b6333a6d"></div>
+
         <h2 className="text-xl font-semibold">WebP to PNG</h2>
         <p className="text-gray-600 mt-1">
           Convert WebP images to PNG easily, all inside your browser.
         </p>
-
         <div className="mt-4 space-y-3">
           <input
             type="file"
@@ -114,6 +119,8 @@ export default function WebpToPngPage() {
             ))}
           </div>
         )}
+
+ 
 
                 {/* SEO Info Section */}
         <div className="mt-10 p-4 border rounded bg-white shadow-sm">

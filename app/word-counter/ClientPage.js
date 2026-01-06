@@ -1,5 +1,5 @@
 "use client";
-
+import Script from "next/script";
 import { buildToolJsonLd, buildBreadcrumbJsonLd } from "../../lib/seo";
 import JsonLd from "../components/JsonLd";
 import { useMemo, useState } from "react";
@@ -45,6 +45,9 @@ export default function WordCounterPage() {
           { name: "Word Counter", slug: "/word-counter" },
         ])}
       />
+      {/* ad script */}
+<script async="async" data-cfasync="false" src="https://pl28411841.effectivegatecpm.com/f404cdb5fbadd90423ffc4a3b6333a6d/invoke.js"></script>
+<div id="container-f404cdb5fbadd90423ffc4a3b6333a6d"></div>
 
       <div className="max-w-5xl mx-auto px-4">
         <div className="bg-white shadow-xl rounded-2xl p-6 border border-gray-100">
