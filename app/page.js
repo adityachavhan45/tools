@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 import {
   buildMetadata,
   buildWebsiteJsonLd,
@@ -86,6 +88,12 @@ export const metadata = buildMetadata({
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900">
+            {/* ✅ Adsterra Script – Home Page Only */}
+      <Script
+        src="https://pl28412045.effectivegatecpm.com/66/18/7c/66187c7798d910a5dc5f689e377e6e4f.js"
+        strategy="afterInteractive"
+      />
+
       <JsonLd
         data={[
           buildWebsiteJsonLd(),
@@ -160,7 +168,11 @@ export default function Home() {
       </section>
 
       {/* Featured Tools */}
-      <section id="tools" className="max-w-7xl mx-auto py-8 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-6 lg:px-8">
+      <section id="tools" className="max-w-7xl mx-auto pyFile ke top imports me ye line add karo 👇
+
+js
+￼Copy code
+-8 sm:py-12 md:py-14 lg:py-16 px-4 sm:px-6 lg:px-8">
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center">
           Most Popular Free Online Tools
         </h2>
