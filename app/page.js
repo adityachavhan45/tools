@@ -133,12 +133,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="text-center py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="mb-4 sm:mb-6">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-            🔥 Used by 100,000+ Professionals Worldwide
-          </span>
         </div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
-          🚀 Stop Paying for Software - Get 65+ FREE Professional Tools!
+          Stop Paying for Software - Get 65+ FREE Professional Tools!
         </h1>
         <p className="mt-4 sm:mt-5 md:mt-6 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed">
           ⚡ <strong>Save hours daily</strong> with our professional-grade tools! PDF processing, image optimization, SEO tools, calculators & more. Works instantly in your browser - no downloads, no registration required!
