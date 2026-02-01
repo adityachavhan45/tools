@@ -1,5 +1,4 @@
 "use client";
-import Script from "next/script";
 
 import { useState } from "react";
 import ToolSection from "../components/ToolSection";
@@ -139,10 +138,6 @@ main();`;
           { name: "Text to JavaScript Converter", slug: "/text-to-javascript" },
         ])}
       />
-
-      {/* ad script */}
-<script async="async" data-cfasync="false" src="https://pl28411841.effectivegatecpm.com/f404cdb5fbadd90423ffc4a3b6333a6d/invoke.js"></script>
-<div id="container-f404cdb5fbadd90423ffc4a3b6333a6d"></div>
 
       <div className="space-y-4">
         {/* Status Messages */}

@@ -1,5 +1,4 @@
 "use client";
-import Script from "next/script";
 
 import { buildToolJsonLd, buildBreadcrumbJsonLd } from "../../lib/seo";
 import JsonLd from "../components/JsonLd";
@@ -57,10 +56,6 @@ export default function UuidGeneratorPage() {
       />
 
       <div className="max-w-4xl mx-auto px-4">
-
-        {/* ad script */}
-<script async="async" data-cfasync="false" src="https://pl28411841.effectivegatecpm.com/f404cdb5fbadd90423ffc4a3b6333a6d/invoke.js"></script>
-<div id="container-f404cdb5fbadd90423ffc4a3b6333a6d"></div>
         {/* Card */}
         <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
           <h2 className="text-2xl font-bold text-gray-800">UUID Generator</h2>
