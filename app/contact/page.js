@@ -14,10 +14,10 @@ export default function ContactPage() {
       {/* Header */}
       <header className="text-center mb-12">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
-          Let’s Connect
+          Let Connect
         </h1>
         <p className="mt-3 text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-          Have a question, feedback, or partnership idea? We’d love to hear from you.
+          Have a question, feedback, or partnership idea? We love to hear from you.
         </p>
       </header>
 
@@ -94,7 +94,7 @@ export default function ContactPage() {
             <li>⏳ Response time: within 48 hours (business days)</li>
             <li>
               🐞 For bug reports, please include steps to reproduce and your
-              browser’s version.
+              browsers version.
             </li>
           </ul>
 
