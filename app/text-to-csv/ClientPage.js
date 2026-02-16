@@ -9,39 +9,36 @@ export default function TextToCsvPage() {
   const [text, setText] = useState("");
   const [csv, setCsv] = useState("");
   const [message, setMessage] = useState("");
+  const [delimiter, setDelimiter] = useState("comma");
+  const [includeHeaders, setIncludeHeaders] = useState(true);
 
   function convertTextToCsv() {
     if (!text.trim()) {
-      setMessage("⚠️ Please enter text to convert to CSV code.");
+      setMessage("⚠️ Please enter text to convert to CSV.");
       return;
     }
 
     try {
-      const lines = text.split('\n');
-      const csvContent = lines.map((line, index) =>
-        `"${line.replace(/"/g, '""')}"`
-      ).join('\n');
+      const lines = text.split('\n').filter(line => line.trim());
+      const delimiterChar = delimiter === 'comma' ? ',' : delimiter === 'semicolon' ? ';' : '\t';
+      
+      let csvContent = '';
+      
+      if (includeHeaders) {
+        csvContent = `"Line Number"${delimiterChar}"Content"${delimiterChar}"Character Count"${delimiterChar}"Word Count"\n`;
+      }
+      
+      csvContent += lines.map((line, index) => {
+        const escapedLine = `"${line.replace(/"/g, '""')}"`;
+        const charCount = line.length;
+        const wordCount = line.split(/\s+/).filter(word => word.length > 0).length;
+        return `"${index + 1}"${delimiterChar}${escapedLine}${delimiterChar}"${charCount}"${delimiterChar}"${wordCount}"`;
+      }).join('\n');
 
-      const csvString = `Text to CSV Conversion
-Generated on: ${new Date().toISOString()}
-
-"Line Number","Content","Character Count","Word Count"
-${lines.map((line, index) =>
-        `"${index + 1}","${line.replace(/"/g, '""')}","${line.length}","${line.split(/\s+/).filter(word => word.length > 0).length}"`
-      ).join('\n')}
-
-Statistics
-"Total Lines","${lines.length}"
-"Total Characters","${text.length}"
-"Total Words","${text.split(/\s+/).filter(word => word.length > 0).length}"
-"Average Line Length","${Math.round(text.length / lines.length)}"
-"Longest Line","${Math.max(...lines.map(line => line.length))}"
-"Shortest Line","${Math.min(...lines.map(line => line.length))}"`;
-
-      setCsv(csvString);
-      setMessage("✅ Text converted to CSV code successfully!");
+      setCsv(csvContent);
+      setMessage("✅ Text successfully converted to CSV!");
     } catch (error) {
-      setMessage("❌ Error converting text to CSV code.");
+      setMessage("❌ Error converting text to CSV. Please try again.");
     }
   }
 
@@ -52,52 +49,94 @@ Statistics
     }
 
     try {
-      // Simple CSV to text conversion
-      let extractedText = csv;
-
-      // Extract text from CSV fields
-      const csvMatches = extractedText.match(/"([^"\\]*(\\.[^"\\]*)*)"/g);
-      if (csvMatches) {
-        const textLines = csvMatches.map(match => {
-          const content = match.slice(1, -1); // Remove quotes
-          return content.replace(/""/g, '"').replace(/\\n/g, '\n');
-        });
-        extractedText = textLines.join('\n');
-      } else {
-        // If no CSV fields, try to extract from comments and docstrings
-        extractedText = extractedText.replace(/#.*$/gm, '');
-        extractedText = extractedText.replace(/^\s*[a-zA-Z_][a-zA-Z0-9_]*\s*:/gm, '');
-        extractedText = extractedText.replace(/^\s*-\s*/gm, '');
-        extractedText = extractedText.replace(/\s+/g, ' ').trim();
+      const lines = csv.split('\n').filter(line => line.trim());
+      const extractedLines = [];
+      
+      for (const line of lines) {
+        if (line.toLowerCase().includes('line number') || 
+            line.toLowerCase().includes('content') || 
+            line.toLowerCase().includes('character count')) {
+          continue;
+        }
+        
+        const matches = line.match(/"([^"\\]*(\\.[^"\\]*)*)"/g);
+        if (matches && matches.length >= 2) {
+          const content = matches[1].slice(1, -1).replace(/""/g, '"');
+          if (content && !content.match(/^\d+$/)) {
+            extractedLines.push(content);
+          }
+        }
       }
 
-      setText(extractedText);
-      setMessage("✅ CSV code converted to text successfully!");
+      if (extractedLines.length === 0) {
+        throw new Error("No valid CSV content found");
+      }
+
+      setText(extractedLines.join('\n'));
+      setMessage("✅ CSV successfully converted to text!");
     } catch (error) {
-      setMessage("❌ Error converting CSV code to text. Please check your CSV format.");
+      setMessage("❌ Error converting CSV to text. Please check the format.");
     }
   }
 
   function copyText() {
+    if (!text) {
+      setMessage("⚠️ There is no text to copy.");
+      return;
+    }
     navigator.clipboard.writeText(text);
     setMessage("📋 Text copied to clipboard!");
   }
 
   function copyCsv() {
+    if (!csv) {
+      setMessage("⚠️ There is no CSV output to copy.");
+      return;
+    }
     navigator.clipboard.writeText(csv);
     setMessage("📋 CSV code copied to clipboard!");
+  }
+
+  function downloadCsv() {
+    if (!csv) {
+      setMessage("⚠️ There is no CSV to download.");
+      return;
+    }
+    
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'converted-data.csv');
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setMessage("📥 CSV file downloaded successfully!");
   }
 
   function reset() {
     setText("");
     setCsv("");
-    setMessage("🧹 Cleared!");
+    setMessage("🧹 All fields cleared!");
+    setTimeout(() => setMessage(""), 2000);
   }
+
+  const textStats = {
+    chars: text.length,
+    words: text.trim() ? text.trim().split(/\s+/).length : 0,
+    lines: text ? text.split('\n').filter(l => l.trim()).length : 0
+  };
+
+  const csvStats = {
+    rows: csv ? csv.split('\n').filter(l => l.trim()).length : 0,
+    hasHeaders: includeHeaders
+  };
 
   return (
     <ToolSection
-      title="Text to CSV Converter"
-      subtitle="Convert text to CSV code and CSV to text online. Free text to CSV converter with formatting and validation support."
+      title="Text to CSV Converter - Free Online Tool"
+      subtitle="Convert text to CSV format and decode CSV back to text instantly. Free online CSV converter with custom delimiters, headers, and download options."
       plain
       plainSidebar
       whiteBackground
@@ -105,7 +144,7 @@ Statistics
       <JsonLd
         data={buildToolJsonLd({
           name: "Text to CSV Converter",
-          description: "Convert text to CSV code and CSV to text online.",
+          description: "Convert text to CSV format and CSV to text with custom delimiter support and download options.",
           slug: "/text-to-csv",
           category: "Utilities/Text",
         })}
@@ -117,216 +156,392 @@ Statistics
         ])}
       />
 
-      <div className="space-y-4">
-        {/* Status Messages */}
-        {message && (
-          <div className="px-3 py-2 bg-blue-100 border rounded text-blue-800 text-sm">
-            {message}
-          </div>
-        )}
-
-        {/* Text Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Enter Text
-          </label>
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Enter text to convert to CSV code..."
-            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
-          />
-        </div>
-
-        {/* CSV Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Enter CSV Code
-          </label>
-          <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
-            {csv || "CSV output will appear here..."}
-          </div>
-          <p className="text-xs text-gray-500 mt-1">
-            Enter valid CSV code
-          </p>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex gap-3 flex-wrap">
-          <button
-            onClick={convertTextToCsv}
-            disabled={!text.trim()}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                       bg-indigo-600 text-white shadow 
-                       hover:bg-indigo-700 disabled:opacity-60"
-          >
-            🔤 Text to CSV
-          </button>
-
-          <button
-            onClick={convertCsvToText}
-            disabled={!csv.trim()}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                       bg-green-600 text-white shadow 
-                       hover:bg-green-700 disabled:opacity-60"
-          >
-            📡 CSV to Text
-          </button>
-
-          {text && (
-            <button
-              onClick={copyText}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                         bg-blue-600 text-white shadow 
-                         hover:bg-blue-700"
-            >
-              📋 Copy Text
-            </button>
+      {/* Main Tool Section */}
+      <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+        <div className="space-y-6">
+          {/* Status Messages */}
+          {message && (
+            <div className={`px-4 py-3 rounded-xl shadow-sm border-l-4 ${
+              message.includes('✅') 
+                ? 'bg-green-50 border-green-500' 
+                : message.includes('⚠️')
+                ? 'bg-yellow-50 border-yellow-500'
+                : message.includes('📋') || message.includes('📥')
+                ? 'bg-blue-50 border-blue-500'
+                : 'bg-red-50 border-red-500'
+            }`}>
+              <p className="text-sm font-medium text-gray-800">{message}</p>
+            </div>
           )}
 
-          {csv && (
-            <button
-              onClick={copyCsv}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                         bg-purple-600 text-white shadow 
-                         hover:bg-purple-700"
-            >
-              📋 Copy CSV
-            </button>
-          )}
-
-          <button
-            onClick={reset}
-            disabled={!text.trim() && !csv.trim()}
-            className="px-5 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200"
-          >
-            Reset
-          </button>
-        </div>
-
-        {/* Character Analysis */}
-        {text && (
-          <div className="border rounded-lg p-4 bg-gray-50">
-            <h4 className="text-sm font-medium text-gray-700 mb-2">Character Analysis</h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <div className="font-medium">Total Characters:</div>
-                <div>{text.length}</div>
+          {/* Conversion Areas Grid */}
+          <div className="grid gap-5 lg:grid-cols-2">
+            {/* Text Input */}
+            <div className="bg-white rounded-xl p-5 shadow-sm">
+              <div className="flex items-center justify-between mb-3">
+                <label className="block text-sm font-semibold text-gray-700" htmlFor="text-input">
+                  📝 Plain Text
+                </label>
+                {text && (
+                  <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                    {textStats.lines} lines
+                  </span>
+                )}
               </div>
-              <div>
-                <div className="font-medium">Words:</div>
-                <div>{text.split(/\s+/).filter(word => word.length > 0).length}</div>
+              <textarea
+                id="text-input"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                placeholder="Enter text to convert to CSV... Each line will become a row."
+                className="w-full min-h-48 px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-base resize-y"
+              />
+              <p className="mt-2 text-xs text-gray-500">
+                Each line of text will be converted into a CSV row with metadata
+              </p>
+            </div>
+
+            {/* CSV Output */}
+            <div className="bg-white rounded-xl p-5 shadow-sm">
+              <div className="flex items-center justify-between mb-3">
+                <label className="block text-sm font-semibold text-gray-700" htmlFor="csv-input">
+                  📊 CSV Format
+                </label>
+                {csv && (
+                  <span className="text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full">
+                    {csvStats.rows} rows
+                  </span>
+                )}
               </div>
+              <textarea
+                id="csv-input"
+                value={csv}
+                onChange={(e) => setCsv(e.target.value)}
+                placeholder="CSV output will appear here or paste CSV to decode..."
+                className="w-full min-h-48 px-4 py-3 border-2 border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-y"
+              />
+              <p className="mt-2 text-xs text-gray-500">
+                Standard CSV format with proper escaping and delimiters
+              </p>
+            </div>
+          </div>
+
+          {/* CSV Options */}
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-5 border border-purple-200">
+            <h4 className="text-sm font-bold text-purple-900 mb-3 flex items-center gap-2">
+              <span className="text-xl">⚙️</span>
+              CSV Options
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <div className="font-medium">Lines:</div>
-                <div>{text.split('\n').length}</div>
+                <label className="block text-xs font-semibold text-gray-700 mb-2">
+                  Column Delimiter
+                </label>
+                <div className="flex flex-col gap-2">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="delimiter"
+                      value="comma"
+                      checked={delimiter === 'comma'}
+                      onChange={(e) => setDelimiter(e.target.value)}
+                      className="w-4 h-4 text-green-600"
+                    />
+                    <span className="text-sm text-gray-700">
+                      Comma <span className="text-xs text-gray-500">(,) - Standard</span>
+                    </span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="delimiter"
+                      value="semicolon"
+                      checked={delimiter === 'semicolon'}
+                      onChange={(e) => setDelimiter(e.target.value)}
+                      className="w-4 h-4 text-green-600"
+                    />
+                    <span className="text-sm text-gray-700">
+                      Semicolon <span className="text-xs text-gray-500">(;) - European</span>
+                    </span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="delimiter"
+                      value="tab"
+                      checked={delimiter === 'tab'}
+                      onChange={(e) => setDelimiter(e.target.value)}
+                      className="w-4 h-4 text-green-600"
+                    />
+                    <span className="text-sm text-gray-700">
+                      Tab <span className="text-xs text-gray-500">(TSV format)</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-2">
+                  Additional Options
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={includeHeaders}
+                    onChange={(e) => setIncludeHeaders(e.target.checked)}
+                    className="w-4 h-4 text-green-600 rounded"
+                  />
+                  <span className="text-sm text-gray-700">
+                    Include header row
+                  </span>
+                </label>
+                <p className="text-xs text-gray-500 mt-2 ml-6">
+                  Adds column names as the first row
+                </p>
               </div>
             </div>
           </div>
-        )}
 
-        {/* CSV Info */}
-        <div className="border rounded-lg p-4 bg-blue-50">
-          <h4 className="text-sm font-medium text-blue-700 mb-2">About CSV</h4>
-          <div className="text-sm space-y-1">
-            <div>• CSV is a comma-separated values file format</div>
-            <div>• Used for data exchange and spreadsheet import/export</div>
-            <div>• Supports tabular data with headers</div>
-            <div>• Commonly used with Excel, Google Sheets, and databases</div>
+          {/* Statistics Display */}
+          {text && (
+            <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-5 border border-blue-200">
+              <h4 className="text-sm font-bold text-blue-900 mb-3 flex items-center gap-2">
+                <span className="text-xl">📊</span>
+                Text Statistics
+              </h4>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+                  <div className="text-xs text-gray-600 mb-1">Total Lines</div>
+                  <div className="text-2xl font-bold text-green-600">{textStats.lines}</div>
+                  <div className="text-xs text-gray-500">will be rows</div>
+                </div>
+                <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+                  <div className="text-xs text-gray-600 mb-1">Characters</div>
+                  <div className="text-2xl font-bold text-teal-600">{textStats.chars}</div>
+                  <div className="text-xs text-gray-500">total chars</div>
+                </div>
+                <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+                  <div className="text-xs text-gray-600 mb-1">Words</div>
+                  <div className="text-2xl font-bold text-blue-600">{textStats.words}</div>
+                  <div className="text-xs text-gray-500">word count</div>
+                </div>
+                <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+                  <div className="text-xs text-gray-600 mb-1">CSV Rows</div>
+                  <div className="text-2xl font-bold text-purple-600">{csvStats.rows}</div>
+                  <div className="text-xs text-gray-500">
+                    {csvStats.hasHeaders ? 'with header' : 'no header'}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-3">
+            <button
+              onClick={convertTextToCsv}
+              disabled={!text.trim()}
+              className={`flex-1 min-w-[180px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-base shadow-lg transition-all duration-200
+                ${!text.trim()
+                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-green-600 to-teal-600 text-white hover:from-green-700 hover:to-teal-700 transform hover:scale-105"}`}
+            >
+              ➡️ Text to CSV
+            </button>
+
+            <button
+              onClick={convertCsvToText}
+              disabled={!csv.trim()}
+              className={`flex-1 min-w-[180px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-base shadow-lg transition-all duration-200
+                ${!csv.trim()
+                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-emerald-600 to-green-600 text-white hover:from-emerald-700 hover:to-green-700 transform hover:scale-105"}`}
+            >
+              ⬅️ CSV to Text
+            </button>
+
+            <button
+              onClick={copyText}
+              disabled={!text}
+              className={`px-6 py-3 rounded-xl font-semibold text-base shadow-lg transition-all duration-200
+                ${!text
+                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  : "bg-blue-600 text-white hover:bg-blue-700 transform hover:scale-105"}`}
+            >
+              📋 Copy Text
+            </button>
+
+            <button
+              onClick={copyCsv}
+              disabled={!csv}
+              className={`px-6 py-3 rounded-xl font-semibold text-base shadow-lg transition-all duration-200
+                ${!csv
+                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  : "bg-purple-600 text-white hover:bg-purple-700 transform hover:scale-105"}`}
+            >
+              📋 Copy CSV
+            </button>
+
+            <button
+              onClick={downloadCsv}
+              disabled={!csv}
+              className={`px-6 py-3 rounded-xl font-semibold text-base shadow-lg transition-all duration-200
+                ${!csv
+                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  : "bg-indigo-600 text-white hover:bg-indigo-700 transform hover:scale-105"}`}
+            >
+              📥 Download CSV
+            </button>
+
+            <button
+              onClick={reset}
+              disabled={!text && !csv}
+              className={`px-6 py-3 rounded-xl font-semibold text-base shadow-lg transition-all duration-200
+                ${!text && !csv
+                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  : "border-2 border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400"}`}
+            >
+              🔄 Reset All
+            </button>
+          </div>
+
+          {/* Quick Reference Card */}
+          <div className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-5 border border-orange-200">
+            <h4 className="text-base font-bold text-orange-900 mb-3 flex items-center gap-2">
+              <span className="text-xl">💡</span>
+              CSV Format Examples
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+              <div className="bg-white rounded-lg p-3">
+                <div className="font-semibold text-gray-900 mb-1">Simple Text</div>
+                <div className="text-gray-600 text-xs">Hello World → "Hello World"</div>
+              </div>
+              <div className="bg-white rounded-lg p-3">
+                <div className="font-semibold text-gray-900 mb-1">With Comma</div>
+                <div className="text-gray-600 text-xs">A, B, C → "A, B, C"</div>
+              </div>
+              <div className="bg-white rounded-lg p-3">
+                <div className="font-semibold text-gray-900 mb-1">With Quotes</div>
+                <div className="text-gray-600 text-xs">Say "Hi" → "Say ""Hi"""</div>
+              </div>
+              <div className="bg-white rounded-lg p-3">
+                <div className="font-semibold text-gray-900 mb-1">Numbers</div>
+                <div className="text-gray-600 text-xs">123 → "123"</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Info Section */}
-      <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
-        <h3 className="text-lg font-semibold mb-2">About Text to CSV Converter</h3>
-        <p className="text-gray-700 mb-4">
-          A Text to CSV Converter is a practical tool that helps you transform plain
-          text into structured CSV format and decode CSV files back into readable text.
-          CSV (Comma-Separated Values) is one of the most widely used formats for
-          storing and exchanging tabular data. From business reporting to database
-          exports, CSV is everywhere. With this converter, you can quickly generate
-          CSV code from notes, lists, or raw text, and also extract plain text from
-          any CSV snippet—all inside your browser without installing extra software.
-        </p>
+      {/* Comprehensive Information Section */}
+      <article className="prose prose-lg max-w-none">
+        <section className="bg-white rounded-2xl shadow-md p-6 md:p-10 mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+            Understanding CSV: The Universal Data Exchange Format
+          </h2>
+          
+          <div className="text-gray-700 leading-relaxed space-y-5" style={{ textAlign: 'justify' }}>
+            <p>
+              CSV (Comma-Separated Values) represents one of the oldest and most widely adopted file formats for storing and exchanging tabular data between different applications, platforms, and programming languages. Despite its simplicity—or perhaps because of it—CSV has remained the de facto standard for data interchange since its introduction in the early days of personal computing. The format organizes information into rows and columns using plain text, with commas (or other delimiters) separating individual field values and line breaks delineating separate records. This straightforward structure enables virtually any software application to read, write, and process CSV files without requiring complex parsers or proprietary libraries, making CSV an essential tool for data professionals, developers, analysts, and business users worldwide.
+            </p>
 
-        <p className="text-gray-700 mb-4">
-          The beauty of CSV lies in its simplicity. Each row represents a record,
-          and columns are separated by commas (or sometimes semicolons/tabs).
-          Applications like Microsoft Excel, Google Sheets, LibreOffice Calc, and
-          most programming languages natively support CSV. This makes CSV an
-          industry standard for data exchange. For example, when you download
-          contacts from Gmail or export analytics from a tool, chances are it comes
-          as a CSV file. This converter makes it easy to go back and forth between
-          text and CSV without worrying about formatting errors.
-        </p>
+            <p>
+              The historical development of CSV traces back to early database management systems and spreadsheet applications that needed portable methods for exporting and importing data across different computing environments. Before standardized file formats existed, each database or spreadsheet program used proprietary binary formats that other applications couldn't read, severely limiting data portability and collaboration. CSV emerged as a pragmatic solution allowing data export from one application and import into another regardless of vendor, operating system, or underlying technology. This interoperability proved so valuable that CSV quickly became ubiquitous across business computing, scientific research, government data publishing, and countless other domains requiring reliable data exchange mechanisms.
+            </p>
 
-        <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Instant conversion of text into CSV format</li>
-          <li>CSV to text decoding with error handling</li>
-          <li>Character and word count analysis</li>
-          <li>Supports multiline and bulk conversion</li>
-          <li>Validation for quotes and special characters</li>
-          <li>Offline, secure, and free to use</li>
-        </ul>
+            <p>
+              Modern applications of CSV extend far beyond simple data transfer to encompass critical roles in big data processing, machine learning workflows, web application development, and business intelligence systems. Data scientists regularly work with CSV files containing millions of rows when preparing datasets for analysis, using programming languages like Python, R, or Julia that provide powerful CSV parsing libraries. Web developers export database query results to CSV for download features in administrative interfaces or reporting dashboards. Business analysts extract CSV data from enterprise systems for spreadsheet analysis, visualization, or presentation to stakeholders. Government agencies publish public datasets in CSV format to ensure maximum accessibility across diverse user communities with varying technical capabilities and tool preferences.
+            </p>
 
-        <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter or paste plain text in the input box.</li>
-          <li>Click <strong>Text to CSV</strong> to generate structured CSV code.</li>
-          <li>Copy the result with the copy button and paste it into Excel, Sheets, or any database.</li>
-          <li>To decode, paste a CSV snippet in the CSV field and click <strong>CSV to Text</strong>.</li>
-          <li>Review the character analysis panel for quick stats like line count and word count.</li>
-        </ol>
+            <p>
+              Understanding CSV formatting conventions and best practices proves essential for anyone working with data, as seemingly minor formatting issues can cause import failures, data corruption, or misinterpretation. Special characters like commas within field values require proper escaping through quotation marks to prevent parsers from incorrectly splitting single fields into multiple columns. Quotation marks themselves must be escaped by doubling them when they appear within quoted fields. Line breaks within fields need careful handling to maintain data integrity. Different applications sometimes use varying delimiters—semicolons in European locales where commas serve as decimal separators, tabs for TSV (Tab-Separated Values) format—requiring awareness of these variations when exchanging data internationally or across different software ecosystems.
+            </p>
+          </div>
+        </section>
 
-        <h4 className="font-semibold mt-4 mb-1">📦 Common Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li><strong>Data Analysis:</strong> Quickly convert notes or logs into CSV for Excel analysis.</li>
-          <li><strong>Business Reporting:</strong> Generate CSV files that can be imported into dashboards.</li>
-          <li><strong>Database Export/Import:</strong> Prepare CSVs for MySQL, PostgreSQL, or SQLite databases.</li>
-          <li><strong>Spreadsheet Management:</strong> Convert text-based lists into ready-to-use tables.</li>
-          <li><strong>APIs & Web Development:</strong> Sometimes APIs return raw text—convert it into CSV format for structured processing.</li>
-        </ul>
+        <section className="bg-white rounded-2xl shadow-md p-6 md:p-10 mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+            Professional Applications of CSV Conversion
+          </h2>
+          
+          <div className="text-gray-700 leading-relaxed space-y-5" style={{ textAlign: 'justify' }}>
+            <p>
+              Business intelligence and analytics workflows depend heavily on CSV files for moving data between analysis tools, visualization platforms, and reporting systems. Analysts extract data from databases, APIs, or enterprise applications into CSV format for manipulation in spreadsheet software like Microsoft Excel or Google Sheets where they can apply formulas, create pivot tables, and generate charts. Business intelligence platforms import CSV files to populate dashboards displaying key performance indicators, sales metrics, or operational statistics. Marketing teams export campaign performance data as CSV for analysis across multiple tools, combining metrics from advertising platforms, web analytics, and customer relationship management systems into unified datasets enabling comprehensive performance evaluation and strategic planning.
+            </p>
 
-        <h4 className="font-semibold mt-4 mb-1">📊 Why CSV Matters</h4>
-        <p className="text-gray-700 mb-4">
-          CSV is lightweight, human-readable, and universally compatible. Unlike
-          binary formats such as XLSX, CSV can be opened in any text editor,
-          shared via email, or processed by scripts with minimal resources.
-          Developers love CSV because it is easy to parse in almost every
-          programming language—whether you are working with Python’s pandas,
-          JavaScript’s PapaParse, or Excel macros. This simplicity is why CSV has
-          survived for decades as the default data exchange format.
-        </p>
+            <p>
+              Database administration and data migration projects utilize CSV as an intermediary format when transferring information between different database management systems. DBAs export table contents to CSV from source databases, then import those files into target systems, enabling migrations between MySQL and PostgreSQL, Oracle and SQL Server, or on-premises databases and cloud platforms. This approach works regardless of underlying database architectures since CSV provides a neutral format all database systems can produce and consume. Data warehouse ETL (Extract, Transform, Load) processes frequently incorporate CSV files as temporary storage during complex transformation operations, writing intermediate results to CSV files between processing stages before loading final data into analytical databases.
+            </p>
 
-        <p className="text-gray-700 mb-4">
-          However, CSV also comes with challenges: handling special characters,
-          managing quotes, and ensuring correct delimiters. That’s where a reliable
-          Text to CSV Converter becomes essential. This tool ensures that your data
-          is clean, properly escaped, and ready for use in any application.
-        </p>
+            <p>
+              Scientific research and academic studies employ CSV extensively for sharing experimental data, survey results, and research findings with colleagues, collaborators, and the broader research community. Researchers export data from laboratory information management systems, statistical analysis software, or custom data collection tools into CSV files that accompany published papers, enabling independent verification of results and facilitating meta-analyses combining data across multiple studies. Open science initiatives mandate sharing research data in accessible formats, with CSV ranking among the most widely accepted due to its simplicity and longevity. Citizen science projects collect volunteer contributions through web forms or mobile applications, aggregating submitted data into CSV files for analysis by professional researchers.
+            </p>
 
-        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-2">
-          <li><strong>What is CSV used for?</strong> CSV is mainly used for storing and sharing structured data like spreadsheets, reports, and database exports.</li>
-          <li><strong>Is CSV the same as Excel?</strong> No. CSV is a plain text format, while Excel files (.xlsx) are binary with more features like formulas and charts.</li>
-          <li><strong>Can I open CSV without Excel?</strong> Yes. You can open CSV files in any text editor, Google Sheets, or even directly in a web browser.</li>
-          <li><strong>What happens if my text contains commas?</strong> The converter automatically adds quotes around such values to keep the format valid.</li>
-          <li><strong>Is CSV secure?</strong> Since it’s plain text, CSV doesn’t contain macros or scripts, making it safer than some other file formats.</li>
-        </ul>
+            <p>
+              Software development and web application projects incorporate CSV functionality for data import/export features, configuration file management, and testing data generation. Developers implement CSV export options allowing users to download data from web applications for offline analysis or record keeping. Configuration management sometimes uses CSV files for storing application settings, user preferences, or system parameters in human-readable formats that administrators can edit with text editors or spreadsheets. Automated testing frameworks generate test data as CSV files that test runners import to verify application behavior across diverse input scenarios. API development includes CSV response formats alongside JSON and XML, accommodating clients preferring tabular data representations suitable for direct spreadsheet import.
+            </p>
+          </div>
+        </section>
 
-        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
-        <p className="text-gray-700">
-          The Text to CSV Converter is an essential tool for students,
-          professionals, and developers alike. Whether you are preparing data
-          for analysis, creating reports, or simply organizing text into tables,
-          this converter saves time and ensures accuracy. By combining ease of
-          use with reliability, it empowers you to handle CSV files like a pro.
-          Try converting a sample text today and see how instantly it transforms
-          into structured data ready for Excel, Sheets, or databases.
-        </p>
-      </section>
+        <section className="bg-white rounded-2xl shadow-md p-6 md:p-10 mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+            Frequently Asked Questions About CSV Conversion
+          </h2>
+          
+          <div className="space-y-6" style={{ textAlign: 'justify' }}>
+            <div className="border-l-4 border-green-500 pl-6 py-3 bg-green-50 rounded-r-xl">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                What is the difference between CSV and Excel files?
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                CSV and Excel files serve similar purposes for storing tabular data but differ fundamentally in format and capabilities. CSV files use plain text format storing only raw data values separated by delimiters, while Excel files (.xlsx or .xls) use complex binary formats supporting advanced features like formulas, formatting, charts, multiple worksheets, and cell styling. CSV's simplicity enables universal compatibility across virtually all applications and programming languages, while Excel files require specific libraries or Excel software for processing. CSV files typically consume less storage space and transfer faster over networks, but Excel's rich features make it more suitable for complex spreadsheet work. For data exchange between different systems, CSV generally provides better interoperability.
+              </p>
+            </div>
+
+            <div className="border-l-4 border-green-500 pl-6 py-3 bg-green-50 rounded-r-xl">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                How do I handle commas within my data when converting to CSV?
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                This CSV converter automatically handles commas and other special characters within your text by enclosing all field values in quotation marks, following standard CSV escaping conventions. When your text contains commas, the converter wraps that content in double quotes, preventing CSV parsers from incorrectly interpreting those commas as field separators. For example, the text "apples, oranges, and bananas" converts to the CSV field "apples, oranges, and bananas" with quotes preserved in the output. If your text already contains quotation marks, the converter doubles them (replacing " with "") to escape properly.
+              </p>
+            </div>
+
+            <div className="border-l-4 border-green-500 pl-6 py-3 bg-green-50 rounded-r-xl">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Which delimiter should I choose for my CSV file?
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Delimiter selection depends primarily on your target application, regional preferences, and data content characteristics. Use standard comma delimiters for North American and English-language contexts where most software expects comma-separated format. Choose semicolon delimiters for European applications or locales using commas as decimal separators, ensuring compatibility with regional Excel and spreadsheet software preferences. Select tab delimiters when your data naturally contains both commas and semicolons, avoiding delimiter conflicts that complicate parsing.
+              </p>
+            </div>
+
+            <div className="border-l-4 border-green-500 pl-6 py-3 bg-green-50 rounded-r-xl">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Is this CSV converter free without usage restrictions?
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Yes, this CSV converter is completely free with absolutely no usage limitations, registration requirements, or hidden costs. Convert unlimited text to CSV and decode unlimited CSV files as frequently as needed for any purpose including personal, educational, or commercial applications. The converter operates entirely in your browser without backend infrastructure costs. Access the converter anytime from any device with a modern web browser, enjoying full functionality including multiple delimiter options and download capabilities without restrictions.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl shadow-md p-6 md:p-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+            Start Converting Text to CSV Today
+          </h2>
+          
+          <div className="text-gray-700 leading-relaxed space-y-5" style={{ textAlign: 'justify' }}>
+            <p>
+              CSV format serves as the universal language of data exchange, enabling seamless information transfer between spreadsheets, databases, programming languages, and business applications across all industries and technical domains. Understanding CSV conversion empowers data professionals, business analysts, researchers, developers, and everyday users to move information efficiently between tools while maintaining data integrity and format compatibility.
+            </p>
+
+            <p>
+              Try the CSV converter now and experience how effortless data structuring can be. Enter your text, configure delimiter preferences, generate professional CSV output, and download or copy results for immediate use in your projects. Start converting today and unlock the power of CSV for organizing, sharing, and analyzing information across the digital landscape.
+            </p>
+          </div>
+        </section>
+      </article>
     </ToolSection>
   );
 }

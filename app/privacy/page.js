@@ -1,150 +1,165 @@
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Privacy Policy",
+  title: "Privacy Policy | Convertixy – Data Protection & User Privacy",
   description:
-    "Privacy practices for Convertixy: how we handle data, use cookies, and protect your rights as a user.",
+    "Read Convertixy’s Privacy Policy to understand how we protect user privacy, handle information responsibly, and maintain transparency across our platform.",
   slug: "/privacy",
-  keywords: ["privacy", "policy", "data protection", "cookies", "user rights"],
+  keywords: [
+    "convertixy privacy policy",
+    "data protection policy",
+    "user privacy",
+    "online tools privacy",
+    "secure file processing",
+    "privacy safe tools",
+    "cookie policy",
+    "information security",
+  ],
+  focusKeyword: "Convertixy Privacy Policy",
 });
 
 export default function PrivacyPolicyPage() {
   return (
-    <section className="bg-gray-50 py-12 sm:py-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-gradient-to-br from-indigo-50 via-sky-50 to-purple-50 py-14 sm:py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
-        <header className="text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
+        <header className="text-center mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
             Privacy Policy
           </h1>
-          <p className="mt-4 text-gray-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Your privacy matters to us. This policy explains what information we
-            collect, how we process it, and the steps we take to keep your data
-            safe.
+
+          <p className="mt-4 text-gray-600 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+            At Convertixy, we value your privacy and are committed to maintaining
+            transparency, security, and responsible data practices.
           </p>
         </header>
 
-        {/* Content */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-10 space-y-10 leading-relaxed text-gray-800">
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+        {/* Main Content */}
+        <div className="bg-white/90 backdrop-blur border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-10 md:p-12 space-y-12 text-gray-800">
+
+          {/* Overview */}
+          <section className="bg-indigo-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-indigo-700 mb-3">
               Overview
             </h2>
+
             <p>
-              Convertixy provides browser-based tools designed with
-              privacy-first principles. Most processing happens locally in your
-              device’s browser, meaning files and inputs never leave your
-              computer unless explicitly required. We do not sell, trade, or
-              rent your personal data to anyone.
+              Convertixy provides browser-based tools designed to support
+              productivity and efficiency. Our platform emphasizes privacy,
+              clarity, and user-focused design across all services.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Information We Process
+          {/* Information Processing */}
+          <section className="bg-sky-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-sky-700 mb-4">
+              Information Processing
             </h2>
+
             <ul className="list-disc list-inside space-y-2">
               <li>
-                <strong>Tool inputs:</strong> The text, files, or images you
-                upload are processed locally whenever possible. For example, PDF
-                compression or image resizing is handled in your browser.
+                <strong>Tool Inputs:</strong> Files, text, and images are
+                processed primarily within your browser for fast and efficient
+                performance.
               </li>
+
               <li>
-                <strong>Analytics:</strong> We may collect basic usage analytics
-                such as page visits and tool popularity. These are aggregated
-                and non-identifying, helping us improve performance and features
-                without tracking individual users.
+                <strong>Usage Insights:</strong> Aggregated usage information
+                helps us understand how tools are used and improve features and
+                reliability.
               </li>
+
               <li>
-                <strong>Optional feedback:</strong> If you contact us via email,
-                we may store your message to better respond to your request.
+                <strong>User Communication:</strong> Messages sent to our
+                support team are handled carefully to provide assistance.
               </li>
             </ul>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Cookies
+          {/* Cookies */}
+          <section className="bg-emerald-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-emerald-700 mb-3">
+              Cookies & Preferences
             </h2>
+
             <p>
-              Convertixy may use cookies to enhance usability and remember your
-              preferences, such as language settings or recently used tools.
-              Cookies are small text files stored on your device and can be
-              managed or disabled through your browser’s settings. Disabling
-              cookies may limit some functionality, but most tools will continue
-              to work.
+              Cookies are used to enhance navigation, save preferences, and
+              improve overall usability. You can manage cookie settings through
+              your browser at any time.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Data Retention
+          {/* Data Handling */}
+          <section className="bg-purple-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-purple-700 mb-3">
+              Data Handling
             </h2>
+
             <p>
-              We minimize data retention. Files processed through browser-based
-              tools are not uploaded to our servers. In cases where a tool
-              requires temporary server-side processing (for example, converting
-              very large files), files are deleted automatically after the task
-              is complete. We do not keep permanent copies of user files.
+              We follow minimal data-handling practices and focus on processing
+              information only when necessary to deliver our services
+              efficiently.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+          {/* User Rights */}
+          <section className="bg-amber-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-amber-700 mb-3">
               Your Rights
             </h2>
+
             <p>
-              Depending on your jurisdiction, you may have legal rights over
-              your personal data, including the right to access, correct, or
-              delete information we may hold. You may also have the right to
-              object to processing or request data portability. We respect these
-              rights and encourage you to contact us if you wish to exercise
-              them.
+              Users may request information, updates, or clarification related
+              to their interactions with our platform. We aim to address all
+              inquiries promptly and transparently.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+          {/* Third Parties */}
+          <section className="bg-rose-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-rose-700 mb-3">
               Third-Party Services
             </h2>
+
             <p>
-              Some tools or pages may rely on third-party libraries or services,
-              such as analytics providers or ad networks. While we carefully
-              select partners, we are not responsible for their policies.
-              Please review third-party privacy statements to understand how
-              they handle your data.
+              Some features may use trusted third-party technologies to enhance
+              performance and reliability. These partners follow industry
+              standards for privacy and security.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Updates to This Policy
+          {/* Updates */}
+          <section className="bg-cyan-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-cyan-700 mb-3">
+              Policy Updates
             </h2>
+
             <p>
-              We may update this Privacy Policy from time to time to reflect
-              changes in our practices or for compliance with regulations. Any
-              updates will be posted on this page with a revised effective date.
-              We encourage you to review this page periodically.
+              This policy may be updated periodically to reflect platform
+              improvements and regulatory standards. The latest version will
+              always be available on this page.
             </p>
           </section>
 
-          <section>
+          {/* Contact */}
+          <section className="bg-gray-50 rounded-2xl p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Contact Us
+              Contact & Support
             </h2>
+
             <p>
-              If you have any questions about this Privacy Policy or our data
-              practices, please contact us at{" "}
+              For privacy-related questions or assistance, please contact us at{" "}
               <a
                 href="mailto:privacy@convertixy.com"
-                className="text-indigo-600 hover:underline"
+                className="font-medium text-indigo-600 hover:text-indigo-700 hover:underline transition"
               >
-                privacy@convertixy.com
+                contact@convertixy.com
               </a>
-              . We take privacy concerns seriously and will respond promptly to
-              your queries.
+              . Our team is dedicated to maintaining your trust and confidence.
             </p>
           </section>
+
         </div>
       </div>
     </section>

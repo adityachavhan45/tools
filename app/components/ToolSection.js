@@ -37,10 +37,6 @@ export default function ToolSection({
               <div className="tool-content p-4 sm:p-6">
                 {sidebar || (
                   <div className="text-sm sm:text-base text-gray-600 space-y-3">
-                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <p className="font-semibold text-blue-900 mb-2">🔒 Privacy First</p>
-                      <p>All processing happens in your browser. Your files never leave your device.</p>
-                    </div>
                     <div className="p-4 bg-green-50 rounded-lg border border-green-200">
                       <p className="font-semibold text-green-900 mb-2">💡 Pro Tip</p>
                       <p>Drag and drop files directly onto the input area for faster uploads.</p>
@@ -52,10 +48,6 @@ export default function ToolSection({
               <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6">
                 {sidebar || (
                   <div className="text-sm sm:text-base text-gray-600 space-y-3">
-                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <p className="font-semibold text-blue-900 mb-2">🔒 Privacy First</p>
-                      <p>All processing happens in your browser. Your files never leave your device.</p>
-                    </div>
                     <div className="p-4 bg-green-50 rounded-lg border border-green-200">
                       <p className="font-semibold text-green-900 mb-2">💡 Pro Tip</p>
                       <p>Drag and drop files directly onto the input area for faster uploads.</p>

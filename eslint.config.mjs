@@ -10,7 +10,17 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // Next.js default rules
   ...compat.extends("next/core-web-vitals"),
+
+  // Custom rules
+  {
+    rules: {
+      "react/no-unescaped-entities": "off", // 🔥 Disable quote error
+    },
+  },
+
+  // Ignore folders
   {
     ignores: [
       "node_modules/**",

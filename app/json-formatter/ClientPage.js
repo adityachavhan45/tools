@@ -2,10 +2,8 @@
 
 import { buildToolJsonLd, buildBreadcrumbJsonLd } from "../../lib/seo";
 import JsonLd from "../components/JsonLd";
-
-// metadata is defined in server wrapper page.js
-
 import { useState } from "react";
+import ToolSection from "../components/ToolSection";
 
 export default function JsonFormatterPage() {
   const [input, setInput] = useState("");
@@ -19,9 +17,10 @@ export default function JsonFormatterPage() {
       const obj = JSON.parse(input);
       const pretty = JSON.stringify(obj, null, 2);
       setOutput(pretty);
-      showMessage("✅ Beautified successfully!");
+      setMessage("Formatted. Copy or use the output below.");
     } catch (e) {
-      setError("❌ Invalid JSON");
+      setError("Invalid JSON. Check syntax (commas, brackets, quotes).");
+      setOutput("");
     }
   }
 
@@ -31,9 +30,10 @@ export default function JsonFormatterPage() {
       const obj = JSON.parse(input);
       const mini = JSON.stringify(obj);
       setOutput(mini);
-      showMessage("✅ Minified successfully!");
+      setMessage("Minified. Copy or use the output below.");
     } catch (e) {
-      setError("❌ Invalid JSON");
+      setError("Invalid JSON. Check syntax (commas, brackets, quotes).");
+      setOutput("");
     }
   }
 
@@ -41,28 +41,35 @@ export default function JsonFormatterPage() {
     setInput("");
     setOutput("");
     setError("");
-    showMessage("🧹 Cleared!");
+    setMessage("Cleared.");
   }
 
   function copyOutput() {
     if (output) {
       navigator.clipboard.writeText(output);
-      showMessage("📋 Output copied!");
+      setMessage("Output copied to clipboard.");
     }
   }
 
-  function showMessage(msg) {
-    setMessage(msg);
-    setTimeout(() => setMessage(""), 2000);
+  let livePreview = "Output preview";
+  try {
+    if (input.trim()) livePreview = JSON.stringify(JSON.parse(input), null, 2);
+  } catch {
+    livePreview = input.trim() || "Output preview";
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <ToolSection
+      title="Free JSON Formatter and Validator"
+      subtitle="Beautify, minify, and validate JSON in your browser. Live preview, no upload works on all devices."
+      plain
+      plainSidebar
+      whiteBackgrounds
+    >
       <JsonLd
         data={buildToolJsonLd({
-          name: "JSON Formatter & Validator",
-          description:
-            "Format, minify, and validate JSON with error highlighting and live preview.",
+          name: "JSON Formatter",
+          description: "Format, minify, and validate JSON. Beautify with indentation or compress to one line. In-browser, no sign-up.",
           slug: "/json-formatter",
           category: "Utilities/Text",
         })}
@@ -74,188 +81,140 @@ export default function JsonFormatterPage() {
         ])}
       />
 
-      <div className="max-w-5xl mx-auto p-4">
-        <h2 className="text-xl font-semibold">JSON Formatter / Beautifier</h2>
-        <p className="text-gray-600 mt-1">
-          Beautify, minify, and validate JSON with live preview.
-        </p>
+      {message && (
+        <div
+          className={`fixed top-5 right-5 z-50 px-4 py-3 rounded-lg shadow-lg text-white text-sm sm:text-base transition-all duration-300
+          ${message.includes("Formatted") || message.includes("Minified") || message.includes("copied") ? "bg-emerald-600" : ""}
+          ${message.includes("Cleared") ? "bg-sky-600" : ""}`}
+        >
+          {message}
+        </div>
+      )}
 
-        {message && (
-          <div className="mt-2 px-3 py-2 bg-green-100 border rounded text-green-800 text-sm">
-            {message}
+      <div className="space-y-6">
+        {/* Input and preview */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <div className="flex flex-col">
+            <label className="text-sm font-medium text-slate-700 mb-2">Paste or type JSON</label>
+            <textarea
+              className="w-full min-h-[280px] p-4 border border-slate-300 rounded-xl font-mono text-sm text-slate-800 bg-white focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-y"
+              placeholder='{"name": "example", "count": 1}'
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                setError("");
+              }}
+            />
           </div>
-        )}
-
-        {/* Input & Preview */}
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {/* Input Box */}
-          <textarea
-            className="w-full min-h-[300px] p-3 border rounded-lg shadow-inner 
-                       font-mono text-sm text-gray-800 bg-white 
-                       whitespace-pre-wrap leading-5 focus:ring-2 focus:ring-indigo-400"
-            placeholder="Paste JSON here..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-
-          {/* Live Preview */}
-          <pre
-            className="w-full min-h-[300px] p-3 border rounded-lg shadow-inner 
-                       font-mono text-sm text-slate-800 bg-gray-50 
-                       whitespace-pre-wrap overflow-auto leading-5"
-          >
-            {(() => {
-              try {
-                return JSON.stringify(JSON.parse(input), null, 2);
-              } catch {
-                return input || "Output (auto preview)";
-              }
-            })()}
-          </pre>
+          <div className="flex flex-col">
+            <label className="text-sm font-medium text-slate-700 mb-2">Live preview</label>
+            <pre className="w-full min-h-[280px] p-4 border border-slate-200 rounded-xl font-mono text-sm text-slate-700 bg-slate-50 overflow-auto whitespace-pre-wrap break-words">
+              {livePreview}
+            </pre>
+          </div>
         </div>
 
         {error && (
-          <div className="mt-3 px-3 py-2 bg-red-100 border border-red-300 rounded text-red-700 text-sm flex items-center gap-2">
-            <span>❌</span> {error}
+          <div className="px-4 py-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-sm">
+            {error}
           </div>
         )}
 
-        {/* Action Buttons */}
-        <div className="mt-4 flex flex-wrap gap-3">
+        {/* Actions */}
+        <div className="flex flex-wrap gap-3">
           <button
-            className="px-4 py-2 border rounded bg-blue-600 text-white hover:bg-blue-700"
             onClick={beautify}
+            className="px-6 py-3 rounded-xl bg-teal-600 text-white font-medium shadow-md hover:bg-teal-700 transition"
           >
             Beautify
           </button>
           <button
-            className="px-4 py-2 border rounded bg-green-500 text-white hover:bg-green-600"
             onClick={minify}
+            className="px-6 py-3 rounded-xl bg-slate-700 text-white font-medium shadow-md hover:bg-slate-800 transition"
           >
             Minify
           </button>
           <button
-            className="px-4 py-2 border rounded bg-gray-800 text-white hover:bg-black disabled:opacity-50"
             onClick={copyOutput}
             disabled={!output}
+            className="px-6 py-3 rounded-xl border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 font-medium transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Copy Output
+            Copy output
           </button>
           <button
-            className="px-4 py-2 border rounded hover:bg-gray-100"
             onClick={clearAll}
+            className="px-6 py-3 rounded-xl border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 font-medium transition"
           >
-            Clear
+            Clear all
           </button>
         </div>
 
-                {/* Info Section */}
-        <section className="mt-10 bg-white border rounded-lg p-5 shadow">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">
-            About JSON Formatter / Beautifier
-          </h3>
-          <p className="text-gray-700 mb-4">
-            JSON (JavaScript Object Notation) is one of the most widely used 
-            formats for exchanging and storing data across the web. It is 
-            lightweight, human-readable, and easy to parse by machines, which 
-            makes it the backbone of modern APIs, web services, configuration 
-            files, and countless applications. However, raw JSON data can often 
-            look cluttered, especially if it is minified into a single line. 
-            That’s where a JSON formatter and beautifier tool becomes essential. 
-            This free online tool helps you instantly beautify (format with 
-            indentation) or minify (compress into one line) JSON directly in 
-            your browser. No installations, no server uploads, and no privacy 
-            risks – everything happens locally on your device.
-          </p>
-
-          <h4 className="font-semibold mt-4 mb-2">✨ Key Features</h4>
-          <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li>Beautify JSON with indentation for better readability</li>
-            <li>Minify JSON into a single line for compact storage</li>
-            <li>Live auto-preview of JSON as you type</li>
-            <li>Error detection with instant feedback</li>
-            <li>Copy formatted or minified output to clipboard in one click</li>
-            <li>Runs fully offline in your browser (no server processing)</li>
-            <li>Free, fast, and secure – works on all devices</li>
-          </ul>
-
-          <h4 className="font-semibold mt-4 mb-2">🔧 How to Use</h4>
-          <ol className="list-decimal list-inside text-gray-700 space-y-1">
-            <li>Paste or type your raw JSON code into the left input area.</li>
-            <li>The live preview panel will automatically show formatted output.</li>
-            <li>Click <strong>Beautify</strong> to format JSON with indentation.</li>
-            <li>Click <strong>Minify</strong> to compress JSON into one line.</li>
-            <li>Copy the output or clear input with a single button.</li>
-          </ol>
-
-          <h4 className="font-semibold mt-4 mb-2">📦 Practical Use Cases</h4>
-          <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li><strong>Developers:</strong> Debugging API responses, ensuring JSON is valid before use.</li>
-            <li><strong>Students:</strong> Learning and understanding JSON structure more easily.</li>
-            <li><strong>Writers/Bloggers:</strong> Formatting JSON snippets for articles or tutorials.</li>
-            <li><strong>Config Management:</strong> Minifying config files (e.g., package.json) for performance.</li>
-            <li><strong>Data Analysis:</strong> Beautifying JSON exports from tools or databases for review.</li>
-          </ul>
-
-          <h4 className="font-semibold mt-4 mb-2">⚡ Benefits of Using JSON Formatter</h4>
-          <ul className="list-disc list-inside text-gray-700 space-y-1">
-            <li><strong>Readability:</strong> Proper indentation makes it easier to spot nested objects and arrays.</li>
-            <li><strong>Error Detection:</strong> Quickly identify misplaced commas, missing braces, or invalid syntax.</li>
-            <li><strong>Performance:</strong> Minified JSON reduces size, improving storage and transfer speed.</li>
-            <li><strong>Productivity:</strong> Saves time for developers by eliminating manual formatting.</li>
-          </ul>
-
-          <h4 className="font-semibold mt-4 mb-2">📖 Example</h4>
-          <pre className="bg-gray-100 p-3 rounded text-sm text-gray-800 overflow-x-auto">
-{`Unformatted:
-{"name":"John","age":30,"skills":["JavaScript","React","Node.js"]}
-
-Beautified:
-{
-  "name": "John",
-  "age": 30,
-  "skills": [
-    "JavaScript",
-    "React",
-    "Node.js"
-  ]
-}`}
-          </pre>
-
-          <h4 className="font-semibold mt-4 mb-2">🔒 Security & Privacy</h4>
-          <p className="text-gray-700 mb-4 text-sm">
-            Unlike online services that upload your data to a server, this 
-            JSON formatter works 100% offline in your browser. That means your 
-            sensitive JSON data, such as API responses, configuration files, 
-            or user data, never leaves your device. You maintain complete 
-            control and privacy.
-          </p>
-
-          <h4 className="font-semibold mt-4 mb-2">❓ FAQs</h4>
-          <ul className="list-disc list-inside text-sm text-gray-700 space-y-2">
-            <li><strong>Q: What happens if my JSON is invalid?</strong><br/> 
-              A: The tool will display an error instantly, helping you debug quickly.</li>
-            <li><strong>Q: Can I minify large JSON files?</strong><br/> 
-              A: Yes, this tool can handle large JSON strings and compress them efficiently.</li>
-            <li><strong>Q: Does it support comments in JSON?</strong><br/> 
-              A: Standard JSON does not support comments, so they will cause errors.</li>
-            <li><strong>Q: Do I need internet connection?</strong><br/> 
-              A: No, it works offline once loaded in your browser.</li>
-          </ul>
-
-          <h4 className="font-semibold mt-4 mb-2">🚀 Final Thoughts</h4>
-          <p className="text-gray-700 text-sm">
-            JSON is the universal language of modern applications, APIs, and 
-            web services. Keeping it clean and structured saves developers 
-            countless hours. With this free JSON Formatter & Validator, you 
-            can quickly beautify, minify, and validate JSON without worrying 
-            about errors or privacy risks. Whether you are a beginner learning 
-            JSON or an experienced developer debugging production APIs, this 
-            tool will save you time, reduce frustration, and improve efficiency 
-            in your daily workflow.
-          </p>
-        </section>
+        {/* Output (after beautify/minify) */}
+        {output && (
+          <div className="flex flex-col">
+            <label className="text-sm font-medium text-slate-700 mb-2">Output</label>
+            <pre className="w-full min-h-[200px] p-4 border border-slate-200 rounded-xl font-mono text-sm text-slate-800 bg-white overflow-auto whitespace-pre-wrap break-words">
+              {output}
+            </pre>
+          </div>
+        )}
       </div>
-    </main>
+
+      {/* Info section – 1000+ words, unique, text-justify */}
+      <section className="mt-12 sm:mt-14 p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-100">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
+          About This JSON Formatter and Validator
+        </h2>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          A JSON formatter is a tool that takes raw JSON text and either beautifies it (adds indentation and line breaks so it is easy to read) or minifies it (removes extra spaces and newlines so it fits in one compact line). JSON (JavaScript Object Notation) is a standard format for storing and exchanging data. It is used by APIs, config files, and many applications. When JSON is minified, it is hard for humans to read and debug. When it is beautified, the structure is clear. This formatter runs in your browser: you paste or type JSON, click beautify or minify, and get the result. No data is sent to a server, so the process is private and fast. The tool also validates JSON: if the input is not valid, it shows an error instead of producing output. Whether you are a developer debugging an API response, a student learning JSON, or someone preparing config or data, this tool helps you format and check JSON quickly.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">What Is JSON?</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          JSON is a text format for representing data. It uses objects (key–value pairs in curly braces), arrays (ordered lists in square brackets), strings (in double quotes), numbers, and the literals true, false, and null. It does not support comments, and keys must be double-quoted strings. JSON is both human-readable and easy for programs to parse. It is the default format for many web APIs: when you request data from a service, the response is often JSON. Configuration files like package.json or tsconfig.json are JSON. Databases and tools often export or import JSON. Because it is so common, being able to format, minify, and validate JSON is useful for anyone who works with data or code.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Why Format or Minify JSON?</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Formatted (beautified) JSON is easier to read and debug. Indentation and line breaks show the nesting of objects and arrays, so you can quickly spot structure and errors. Minified JSON uses less space: no unnecessary spaces or newlines. That is useful when you need to send JSON over a network, store it in a small space, or embed it in a web page. Many APIs return minified JSON to save bandwidth; developers often beautify it locally to inspect the response. Build tools and bundlers sometimes minify JSON before deployment. This formatter does both: you can paste minified JSON and beautify it to read it, or paste formatted JSON and minify it to reduce size.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">How This Tool Works</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          When you paste or type in the input area, the tool tries to parse the text as JSON. If the text is valid JSON, the live preview panel shows it formatted with indentation. If the text is invalid, the preview shows the raw input and the tool can show an error when you click beautify or minify. When you click beautify, the tool parses the input, then outputs the same data with indentation (two spaces per level) and line breaks. When you click minify, it parses the input and outputs the same data as a single line with no extra spaces. The output is shown in the output area and can be copied with one click. All parsing and formatting is done in your browser using JavaScript; no data is sent to a server. The tool also validates: invalid JSON produces an error message instead of output, so you know to fix the syntax before using the data.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Step-by-Step How to Use</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Open the tool in your browser. Paste your JSON into the left-hand input area (or type it). The live preview on the right will update: if the JSON is valid, you will see it formatted; if not, you will see the raw text. To get formatted output in the output area, click beautify. To get a single-line minified version, click minify. If the JSON is invalid, an error message will appear and you should fix the input (check for missing commas, extra commas, unclosed brackets, or unquoted keys). Once you have output, you can copy it with the copy button or use it elsewhere. Use clear all to reset the input and output and start over. There is no limit on how many times you format or minify; the tool works entirely in the browser.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Common JSON Errors</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Invalid JSON usually fails for a few recurring reasons. A trailing comma after the last element in an object or array is not allowed in standard JSON. Missing commas between elements will cause a parse error. Keys must be in double quotes; single quotes or unquoted keys are invalid. Strings must use double quotes for the outer quotes; escaped quotes inside are fine. Unclosed brackets or braces (missing closing brace or bracket) will cause an error. Sometimes the input is not JSON at all (for example JavaScript object literal with comments or single quotes); in that case you need to convert it to valid JSON first. This formatter does not fix errors automatically; it reports that the JSON is invalid so you can correct the source. Learning these rules helps you write and debug JSON quickly.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Use Cases</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Developers use JSON formatters to inspect API responses, debug payloads, and prepare request bodies. When a server returns minified JSON, pasting it into a formatter and clicking beautify makes it readable. When you need to send JSON in a header or store it in a small field, minifying reduces size. Students and educators use formatters to learn JSON structure and to check that exercises or examples are valid. Technical writers use them to format JSON snippets for documentation. System administrators and DevOps staff use them for config files and deployment data. Data analysts and scientists often work with JSON exports; formatting makes the structure clear. Anyone who receives or produces JSON in a minified or messy form can use this tool to make it readable or compact without leaving the browser.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Privacy and Security</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          This formatter runs entirely in your browser. The JSON you paste or type is not sent to any server. Parsing and formatting are done locally using JavaScript. Your data stays on your device. That is important when the JSON contains sensitive information: API keys, tokens, user data, or confidential configuration. You can use the tool on a shared or public computer with less worry about leaking data, as long as you clear the input and output when you are done. No account or login is required. The tool works offline once the page has loaded, so you can use it even on restricted or air-gapped networks.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Limitations</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          This tool uses standard JSON. It does not support comments, trailing commas, or single-quoted strings; those are JavaScript extensions, not valid JSON. Very large inputs (for example millions of characters) may slow down the browser or cause it to become unresponsive; for huge files, a desktop or command-line tool may be better. The tool does not modify the data or fix invalid JSON; it only formats valid JSON or reports an error. It does not syntax-highlight or fold long lines; it shows plain formatted or minified text. For most typical uses—API responses, config snippets, and small to medium data—these limitations do not affect the result. For advanced editing or huge files, consider a dedicated editor or script.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Conclusion</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
+          A JSON formatter and validator helps you beautify, minify, and check JSON quickly. This free tool runs in your browser, supports live preview, and gives you beautify and minify with one click. Your data is not uploaded to any server. Use it to make API responses readable, to shrink JSON for storage or transfer, or to validate syntax before using data. Fix common errors like trailing commas and unquoted keys, then format or minify again. Whether you are a developer, student, or someone working with JSON data, this tool is a simple and private way to format and validate JSON.
+        </p>
+      </section>
+    </ToolSection>
   );
 }

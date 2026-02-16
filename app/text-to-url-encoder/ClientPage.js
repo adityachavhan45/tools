@@ -7,97 +7,84 @@ import JsonLd from "../components/JsonLd";
 
 export default function TextToUrlEncoderPage() {
   const [text, setText] = useState("");
-  const [url, setUrl] = useState("");
+  const [encoded, setEncoded] = useState("");
   const [message, setMessage] = useState("");
+  const [encodeType, setEncodeType] = useState("standard"); // standard, component, full
 
-  function convertTextToUrl() {
+  function encodeText() {
     if (!text.trim()) {
-      setMessage("⚠️ Please enter text to convert to URL code.");
+      setMessage("⚠️ Please enter text to encode.");
       return;
     }
 
     try {
-      // Create a simple URL structure from the text
-      const lines = text.split('\n');
-      const urlContent = lines.map((line, index) =>
-        `    "${encodeURIComponent(line)}"`
-      ).join(',\n');
-
-      const urlString = `# Text to URL Conversion
-# Generated on: ${new Date().toISOString()}
-
-# URL Encoded Text Lines
-${urlContent}
-
-# Statistics
-# Total Lines: ${lines.length}
-# Total Characters: ${text.length}
-# Total Words: ${text.split(/\s+/).filter(word => word.length > 0).length}
-# Average Line Length: ${Math.round(text.length / lines.length)}
-# Longest Line: ${Math.max(...lines.map(line => line.length))}
-# Shortest Line: ${Math.min(...lines.map(line => line.length))}
-
-# Usage Examples
-# Single line: ${encodeURIComponent(lines[0] || '')}
-# All lines: ${lines.map(line => encodeURIComponent(line)).join('&')}`;
-
-      setUrl(urlString);
-      setMessage("✅ Text converted to URL code successfully!");
-    } catch (error) {
-      setMessage("❌ Error converting text to URL code.");
-    }
-  }
-
-  function convertUrlToText() {
-    if (!url.trim()) {
-      setMessage("⚠️ Please enter URL code to convert to text.");
-      return;
-    }
-
-    try {
-      // Simple URL to text conversion
-      let extractedText = url;
-
-      // Extract text from URL encoded strings
-      const urlMatches = extractedText.match(/%[0-9A-Fa-f]{2}/g);
-      if (urlMatches) {
-        // Decode URL encoded characters
-        extractedText = decodeURIComponent(extractedText);
-      } else {
-        // If no URL encoding, try to extract from comments and docstrings
-        extractedText = extractedText.replace(/#.*$/gm, '');
-        extractedText = extractedText.replace(/^\s*[a-zA-Z_][a-zA-Z0-9_]*\s*:/gm, '');
-        extractedText = extractedText.replace(/^\s*-\s*/gm, '');
-        extractedText = extractedText.replace(/\s+/g, ' ').trim();
+      let result = "";
+      
+      if (encodeType === "standard") {
+        result = encodeURIComponent(text);
+      } else if (encodeType === "component") {
+        result = encodeURIComponent(text);
+      } else if (encodeType === "full") {
+        result = encodeURI(text);
       }
 
-      setText(extractedText);
-      setMessage("✅ URL code converted to text successfully!");
+      setEncoded(result);
+      setMessage("✅ Text successfully encoded to URL format!");
     } catch (error) {
-      setMessage("❌ Error converting URL code to text. Please check your URL format.");
+      setMessage("❌ Error encoding text. Please try again.");
     }
   }
 
-  function copyText() {
-    navigator.clipboard.writeText(text);
-    setMessage("📋 Text copied to clipboard!");
+  function decodeText() {
+    if (!encoded.trim()) {
+      setMessage("⚠️ Please enter encoded text to decode.");
+      return;
+    }
+
+    try {
+      const result = decodeURIComponent(encoded);
+      setText(result);
+      setMessage("✅ Successfully decoded URL to text!");
+    } catch (error) {
+      setMessage("❌ Error decoding. Please check your encoded text.");
+    }
   }
 
-  function copyUrl() {
-    navigator.clipboard.writeText(url);
-    setMessage("📋 URL code copied to clipboard!");
+  function copyToClipboard(content, type) {
+    navigator.clipboard.writeText(content);
+    setMessage(`📋 ${type} copied to clipboard!`);
+  }
+
+  function downloadEncoded() {
+    const blob = new Blob([encoded], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `url-encoded_${Date.now()}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+    setMessage("📥 Encoded text downloaded successfully!");
   }
 
   function reset() {
     setText("");
-    setUrl("");
-    setMessage("🧹 Cleared!");
+    setEncoded("");
+    setEncodeType("standard");
+    setMessage("🧹 All fields cleared!");
   }
+
+  const stats = {
+    original: text.length,
+    encoded: encoded.length,
+    increase: encoded ? ((encoded.length - text.length) / text.length * 100).toFixed(1) : 0,
+    words: text.trim() ? text.trim().split(/\s+/).length : 0,
+    specialChars: (text.match(/[^a-zA-Z0-9\s]/g) || []).length
+  };
 
   return (
     <ToolSection
-      title="Text to URL Encoder"
-      subtitle="Convert text to URL code and URL to text online. Free text to URL encoder with formatting and validation support."
+      title="Text to URL Encoder & Decoder - Free Online Tool"
+      subtitle="Encode text to URL format and decode URL strings instantly. Perfect for web development, APIs, and safe data transmission."
       plain
       plainSidebar
       whiteBackground
@@ -105,7 +92,7 @@ ${urlContent}
       <JsonLd
         data={buildToolJsonLd({
           name: "Text to URL Encoder",
-          description: "Convert text to URL code and URL to text online.",
+          description: "Free online tool to encode text to URL format and decode URL strings. Perfect for web development and APIs.",
           slug: "/text-to-url-encoder",
           category: "Utilities/Text",
         })}
@@ -117,209 +104,376 @@ ${urlContent}
         ])}
       />
 
-      <div className="space-y-4">
-        {/* Status Messages */}
+      <div className="max-w-5xl mx-auto space-y-6">
+        {/* Status Message */}
         {message && (
-          <div className="px-3 py-2 bg-blue-100 border rounded text-blue-800 text-sm">
-            {message}
+          <div className="px-4 py-3 bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 rounded-lg shadow-sm">
+            <p className="text-sm font-medium text-green-800">{message}</p>
           </div>
         )}
 
-        {/* Text Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Enter Text
-          </label>
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Enter text to convert to URL code..."
-            className="w-full min-h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y"
-          />
-        </div>
-
-        {/* URL Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Enter URL Code
-          </label>
-          <div className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-32">
-            {url || "URL encoded output will appear here..."}
+        {/* Main Tool Section */}
+        <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+          <div className="bg-gradient-to-r from-green-600 to-teal-600 px-6 py-4">
+            <h2 className="text-xl font-bold text-white">URL Encoder & Decoder</h2>
+            <p className="text-green-100 text-sm mt-1">Convert text to URL-safe format and back instantly</p>
           </div>
-          <p className="text-xs text-gray-500 mt-1">
-            Enter valid URL code
-          </p>
+
+          <div className="p-6 space-y-5">
+            {/* Encoding Type Selector */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                🔧 Encoding Type
+              </label>
+              <div className="flex flex-wrap gap-3">
+                <label className="flex items-center gap-2 px-4 py-2 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-all">
+                  <input
+                    type="radio"
+                    name="encodeType"
+                    value="standard"
+                    checked={encodeType === "standard"}
+                    onChange={(e) => setEncodeType(e.target.value)}
+                    className="w-4 h-4 text-green-600"
+                  />
+                  <span className="text-sm font-medium">Standard (Recommended)</span>
+                </label>
+                <label className="flex items-center gap-2 px-4 py-2 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-all">
+                  <input
+                    type="radio"
+                    name="encodeType"
+                    value="component"
+                    checked={encodeType === "component"}
+                    onChange={(e) => setEncodeType(e.target.value)}
+                    className="w-4 h-4 text-green-600"
+                  />
+                  <span className="text-sm font-medium">Component</span>
+                </label>
+                <label className="flex items-center gap-2 px-4 py-2 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-all">
+                  <input
+                    type="radio"
+                    name="encodeType"
+                    value="full"
+                    checked={encodeType === "full"}
+                    onChange={(e) => setEncodeType(e.target.value)}
+                    className="w-4 h-4 text-green-600"
+                  />
+                  <span className="text-sm font-medium">Full URL</span>
+                </label>
+              </div>
+              <p className="text-xs text-gray-500 mt-1.5">Standard encoding works for most use cases</p>
+            </div>
+
+            {/* Text Input */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                📝 Your Text
+              </label>
+              <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                placeholder="Enter your text here to encode...&#10;Example: Hello World! This is a test.&#10;Special characters like @, #, %, & will be encoded."
+                className="w-full h-40 px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 font-mono text-sm resize-none transition-all"
+              />
+              {text && (
+                <div className="mt-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3 text-sm">
+                    <div className="text-center">
+                      <div className="font-bold text-lg text-green-600">{stats.original}</div>
+                      <div className="text-gray-600 text-xs">Characters</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-lg text-teal-600">{stats.words}</div>
+                      <div className="text-gray-600 text-xs">Words</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-lg text-blue-600">{stats.specialChars}</div>
+                      <div className="text-gray-600 text-xs">Special Chars</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-lg text-purple-600">{stats.encoded}</div>
+                      <div className="text-gray-600 text-xs">Encoded Size</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-lg text-orange-600">{stats.increase > 0 ? '+' : ''}{stats.increase}%</div>
+                      <div className="text-gray-600 text-xs">Size Change</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={encodeText}
+                disabled={!text.trim()}
+                className="flex-1 min-w-[200px] px-6 py-3 rounded-lg bg-gradient-to-r from-green-600 to-teal-600 text-white font-semibold shadow-md hover:shadow-lg hover:from-green-700 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105"
+              >
+                🔒 Encode to URL
+              </button>
+
+              <button
+                onClick={decodeText}
+                disabled={!encoded.trim()}
+                className="flex-1 min-w-[200px] px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-md hover:shadow-lg hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105"
+              >
+                🔓 Decode from URL
+              </button>
+
+              <button
+                onClick={reset}
+                disabled={!text.trim() && !encoded.trim()}
+                className="px-6 py-3 rounded-lg bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              >
+                🔄 Reset
+              </button>
+            </div>
+
+            {/* Encoded Output */}
+            {encoded && (
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  🔐 URL Encoded Result
+                </label>
+                <div className="relative">
+                  <div className="w-full px-4 py-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg font-mono text-sm break-all border-2 border-gray-300">
+                    {encoded}
+                  </div>
+                  <div className="absolute top-2 right-2 flex gap-2">
+                    <button
+                      onClick={() => copyToClipboard(encoded, "Encoded text")}
+                      className="px-3 py-1.5 bg-green-600 text-white text-xs rounded-md hover:bg-green-700 shadow transition-all"
+                      title="Copy Encoded"
+                    >
+                      📋 Copy
+                    </button>
+                    <button
+                      onClick={downloadEncoded}
+                      className="px-3 py-1.5 bg-teal-600 text-white text-xs rounded-md hover:bg-teal-700 shadow transition-all"
+                      title="Download"
+                    >
+                      📥 Download
+                    </button>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 mt-2">
+                  ✓ URL-encoded text is safe to use in web addresses and API requests
+                </p>
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex gap-3 flex-wrap">
-          <button
-            onClick={convertTextToUrl}
-            disabled={!text.trim()}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                       bg-indigo-600 text-white shadow 
-                       hover:bg-indigo-700 disabled:opacity-60"
-          >
-            🔤 Text to URL
-          </button>
-
-          <button
-            onClick={convertUrlToText}
-            disabled={!url.trim()}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                       bg-green-600 text-white shadow 
-                       hover:bg-green-700 disabled:opacity-60"
-          >
-            📡 URL to Text
-          </button>
-
-          {text && (
-            <button
-              onClick={copyText}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                         bg-blue-600 text-white shadow 
-                         hover:bg-blue-700"
-            >
-              📋 Copy Text
-            </button>
-          )}
-
-          {url && (
-            <button
-              onClick={copyUrl}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                         bg-purple-600 text-white shadow 
-                         hover:bg-purple-700"
-            >
-              📋 Copy URL
-            </button>
-          )}
-
-          <button
-            onClick={reset}
-            disabled={!text.trim() && !url.trim()}
-            className="px-5 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200"
-          >
-            Reset
-          </button>
-        </div>
-
-        {/* Character Analysis */}
-        {text && (
-          <div className="border rounded-lg p-4 bg-gray-50">
-            <h4 className="text-sm font-medium text-gray-700 mb-2">Character Analysis</h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <div className="font-medium">Total Characters:</div>
-                <div>{text.length}</div>
-              </div>
-              <div>
-                <div className="font-medium">Words:</div>
-                <div>{text.split(/\s+/).filter(word => word.length > 0).length}</div>
-              </div>
-              <div>
-                <div className="font-medium">Lines:</div>
-                <div>{text.split('\n').length}</div>
-              </div>
+        {/* Quick Examples */}
+        <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-200 shadow-sm">
+          <h3 className="text-lg font-bold text-orange-900 mb-3 flex items-center gap-2">
+            <span className="text-2xl">📚</span> Quick Examples
+          </h3>
+          <div className="space-y-3 text-sm">
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="font-semibold text-gray-700 mb-1">Example 1: Simple Text</div>
+              <div className="text-gray-600 mb-1">Original: <code className="bg-gray-100 px-2 py-1 rounded">Hello World!</code></div>
+              <div className="text-gray-600">Encoded: <code className="bg-gray-100 px-2 py-1 rounded">Hello%20World%21</code></div>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="font-semibold text-gray-700 mb-1">Example 2: Email Address</div>
+              <div className="text-gray-600 mb-1">Original: <code className="bg-gray-100 px-2 py-1 rounded">user@example.com</code></div>
+              <div className="text-gray-600">Encoded: <code className="bg-gray-100 px-2 py-1 rounded">user%40example.com</code></div>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="font-semibold text-gray-700 mb-1">Example 3: Special Characters</div>
+              <div className="text-gray-600 mb-1">Original: <code className="bg-gray-100 px-2 py-1 rounded">Price: $100 & Tax: 5%</code></div>
+              <div className="text-gray-600">Encoded: <code className="bg-gray-100 px-2 py-1 rounded">Price%3A%20%24100%20%26%20Tax%3A%205%25</code></div>
             </div>
           </div>
-        )}
+        </div>
 
-        {/* URL Info */}
-        <div className="border rounded-lg p-4 bg-blue-50">
-          <h4 className="text-sm font-medium text-blue-700 mb-2">About URL Encoding</h4>
-          <div className="text-sm space-y-1">
-            <div>• URL encoding converts special characters to percent-encoded format</div>
-            <div>• Used for safe transmission of data in URLs</div>
-            <div>• Supports international characters and spaces</div>
-            <div>• Commonly used in web applications and APIs</div>
+        {/* Comprehensive Information Section */}
+        <article className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 md:p-10">
+          <header className="mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Complete Guide to URL Encoding and Decoding</h2>
+            <div className="h-1 w-24 bg-gradient-to-r from-green-600 to-teal-600 rounded"></div>
+          </header>
+
+          <div className="prose max-w-none space-y-6 text-gray-700" style={{ textAlign: 'justify' }}>
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">What is URL Encoding and Why is it Essential?</h3>
+              <p className="leading-relaxed mb-4">
+                URL encoding, also known as percent-encoding, is a fundamental mechanism used in web technology to represent special characters in Uniform Resource Locators (URLs) in a safe and standardized manner. The World Wide Web operates on the principle that URLs should contain only a specific set of unreserved characters, which include letters (A-Z, a-z), digits (0-9), and a limited number of special characters like hyphens, underscores, periods, and tildes. Any character outside this safe set must be encoded to prevent misinterpretation by web browsers, servers, and network infrastructure.
+              </p>
+              <p className="leading-relaxed mb-4">
+                When you enter a URL in your browser's address bar or when an application sends an HTTP request to a server, the URL acts as a precise instruction for locating and retrieving specific resources. However, URLs can break or malfunction if they contain spaces, non-ASCII characters, or reserved symbols that have special meaning in URL syntax. For instance, the ampersand symbol (&) is used to separate query parameters, the question mark (?) denotes the beginning of a query string, and the forward slash (/) separates different parts of a URL path. If these characters appear in actual data values rather than as structural elements, they must be encoded to distinguish them from their syntactical usage.
+              </p>
+              <p className="leading-relaxed mb-4">
+                URL encoding replaces unsafe characters with a percent sign (%) followed by two hexadecimal digits representing the character's ASCII or UTF-8 code. For example, a space character is encoded as %20, an exclamation mark becomes %21, and the at symbol (@) is converted to %40. This encoding ensures that the URL remains valid and interpretable across different systems, operating systems, and network protocols. Without proper URL encoding, web applications would fail to transmit data correctly, leading to broken links, failed API calls, database errors, and security vulnerabilities.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Understanding Different Types of URL Encoding</h3>
+              <p className="leading-relaxed mb-4">
+                There are several methods of URL encoding, each serving different purposes in web development. The most common method is component encoding, implemented through the encodeURIComponent() function in JavaScript. This method encodes all characters except unreserved ones (A-Z, a-z, 0-9, hyphen, underscore, period, and tilde), making it ideal for encoding individual URL components such as query parameter values, form data, or user-generated content that will be embedded in URLs. Component encoding is the most aggressive form of encoding and ensures maximum safety when transmitting data through URLs.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Full URI encoding, implemented through the encodeURI() function, takes a more lenient approach. It preserves characters that have special meaning in URL syntax, such as colons, slashes, question marks, and ampersands, only encoding characters that would make the URL invalid. This method is useful when you want to encode an entire URL while maintaining its structural integrity. For example, if you need to pass a complete URL as a parameter to another URL, you would use full URI encoding to ensure the embedded URL remains functional while being safely transmitted.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Understanding the distinction between these encoding methods is crucial for web developers. Using component encoding when full URI encoding is needed can break URLs by encoding necessary structural characters. Conversely, using full URI encoding when component encoding is required can leave unsafe characters unencoded, potentially causing security issues or data corruption. The choice of encoding method depends on the specific use case and the nature of the data being transmitted. For most practical applications involving user input or data values, component encoding is the safer and recommended choice.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Real-World Applications and Use Cases</h3>
+              <p className="leading-relaxed mb-4">
+                URL encoding plays a critical role in modern web development across numerous scenarios. In web forms and search functionality, when users submit queries containing spaces or special characters, these inputs must be properly encoded before being appended to URLs. For example, when a user searches for "coffee & tea" on an e-commerce website, the search term must be encoded as "coffee%20%26%20tea" to create a valid URL like "example.com/search?q=coffee%20%26%20tea". Without encoding, the ampersand would be interpreted as a parameter separator, breaking the search functionality.
+              </p>
+              <p className="leading-relaxed mb-4">
+                API integration and RESTful web services heavily depend on URL encoding for transmitting data between different systems. When making API calls that include user-generated content, email addresses, file paths, or complex data structures in URL parameters, proper encoding prevents errors and ensures data integrity. For instance, when authenticating users through OAuth or passing redirect URLs as parameters, encoding is essential to maintain the structure and validity of nested URLs. Social media sharing buttons, analytics tracking pixels, and third-party integrations all rely on URL encoding to function correctly.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Internationalization and multilingual web applications present unique challenges that URL encoding addresses effectively. When users input text in languages using non-Latin alphabets such as Chinese, Arabic, Hebrew, Korean, or Hindi, these characters must be encoded to ensure they can be transmitted through URLs that fundamentally operate on ASCII-based protocols. URL encoding converts these Unicode characters into percent-encoded sequences that can travel safely through the internet infrastructure. This capability is essential for global websites and applications serving diverse international audiences.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Security applications benefit significantly from URL encoding as well. When building web applications, developers must encode user input before including it in URLs to prevent various types of injection attacks. Cross-Site Scripting (XSS) attacks often exploit improperly encoded URLs to inject malicious scripts into web pages. By encoding all user-generated content before placing it in URLs, developers create a crucial defense layer against such vulnerabilities. Similarly, SQL injection attacks can be mitigated when URL parameters are properly encoded before being processed by backend systems.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">How Our URL Encoder Tool Works</h3>
+              <p className="leading-relaxed mb-4">
+                Our Text to URL Encoder provides a user-friendly interface for quickly and accurately encoding text into URL-safe format and decoding encoded URLs back to readable text. The tool operates entirely within your web browser using client-side JavaScript, ensuring your data never leaves your computer and maintaining complete privacy and security. When you enter text and click the encode button, the tool applies the appropriate encoding algorithm based on your selected encoding type, instantly transforming your text into percent-encoded format.
+              </p>
+              <p className="leading-relaxed mb-4">
+                The tool offers three encoding modes to suit different requirements. Standard encoding provides the most comprehensive encoding suitable for general purposes and query parameters. Component encoding ensures all special characters are properly encoded for maximum safety when embedding data in URLs. Full URL encoding preserves URL structure while encoding only truly unsafe characters, making it ideal for encoding complete URLs that need to be passed as parameters. This flexibility allows you to choose the appropriate encoding method for your specific use case.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Beyond basic encoding and decoding, the tool provides valuable analytics about your text. It displays character counts for both original and encoded text, showing you exactly how much the encoding process expands your data. The percentage increase metric helps you understand the overhead introduced by encoding, which can be important when working with length-limited systems like SMS messages or database fields with size constraints. The special character counter identifies how many characters in your text require encoding, giving you insight into the complexity of your input data.
+              </p>
+              <p className="leading-relaxed mb-4">
+                The decoding functionality works seamlessly to reverse the encoding process. When you paste encoded text and click the decode button, the tool intelligently processes percent-encoded sequences and converts them back to their original characters. This bidirectional capability makes the tool invaluable for debugging URL-related issues, analyzing encoded URLs you encounter in the wild, and verifying that your encoding process works correctly. The one-click copy and download features streamline your workflow, allowing you to quickly integrate the results into your projects.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Common Characters and Their Encoded Equivalents</h3>
+              <p className="leading-relaxed mb-4">
+                Understanding how specific characters are encoded helps developers anticipate and troubleshoot URL-related issues. The space character, being the most common character requiring encoding, becomes %20 in encoded form. While some older systems use the plus sign (+) to represent spaces in query strings, modern standards prefer %20 for consistency and reliability. The exclamation mark (!) encodes to %21, quotation marks (") become %22, hash symbols (#) convert to %23, dollar signs ($) transform into %24, percent signs (%) double-encode to %25, and ampersands (&) become %26.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Parentheses are encoded as %28 for opening and %29 for closing parentheses. The asterisk (*) becomes %2A, plus signs (+) encode to %2B, commas (,) convert to %2C, forward slashes (/) become %2F, colons (:) transform into %3A, semicolons (;) encode to %3B, less-than symbols (&lt;) become %3C, equal signs (=) convert to %3D, greater-than symbols (&gt;) encode to %3E, question marks (?) transform into %3F, and at symbols (@) become %40. Square brackets encode as %5B and %5D, while curly braces use %7B and %7D.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Non-ASCII characters use UTF-8 encoding, which may result in multiple percent-encoded bytes for a single character. For example, the copyright symbol (©) encodes to %C2%A9, representing its two-byte UTF-8 encoding. Emoji characters, being even more complex Unicode sequences, generate longer encoded strings. The smiling face emoji (😊) encodes to %F0%9F%98%8A, using four bytes. This multi-byte encoding demonstrates why international text can significantly increase URL length when encoded, a consideration important for systems with URL length limitations.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Best Practices for URL Encoding</h3>
+              <p className="leading-relaxed mb-4">
+                Following best practices for URL encoding ensures your web applications function reliably and securely. Always encode user input before incorporating it into URLs, regardless of whether you expect special characters. Users can input unexpected characters, and automated systems or malicious actors might deliberately send specially crafted input to exploit vulnerabilities. Defensive programming dictates that all external input should be treated as potentially unsafe and properly encoded before use in URLs.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Choose the appropriate encoding method for your specific use case. Use component encoding (encodeURIComponent) for individual URL parameters, query string values, and form data. Use full URI encoding (encodeURI) only when encoding complete URLs that must maintain their structure. Never attempt to manually implement URL encoding by replacing characters with their encoded equivalents; always use built-in encoding functions provided by your programming language or framework. Manual encoding often misses edge cases and can introduce subtle bugs that are difficult to diagnose.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Be aware of double-encoding issues, which occur when already-encoded text is encoded again. This creates strings like %2520 instead of %20, causing decoding to fail or produce incorrect results. To prevent double encoding, check whether your data is already encoded before applying encoding functions. Similarly, avoid partial encoding where some characters are encoded while others are not, as this creates inconsistent and potentially broken URLs. Consistency in encoding practices across your application prevents subtle bugs and improves maintainability.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Consider URL length limitations when working with encoded text. Different browsers, servers, and proxies impose various maximum URL length restrictions, typically ranging from 2,000 to 8,000 characters. Encoded text is always longer than the original, sometimes significantly so for non-ASCII text. If you anticipate long URLs, consider using POST requests instead of GET requests, or implement URL shortening strategies. For APIs and web services, document the maximum accepted URL length to help client developers avoid truncation issues.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Troubleshooting Common URL Encoding Issues</h3>
+              <p className="leading-relaxed mb-4">
+                When URLs don't work as expected, encoding issues are often the culprit. If a URL containing encoded text produces errors or unexpected results, first verify that encoding was applied correctly. Copy the URL into a decoder tool (like ours) to see what the decoded values are. Common mistakes include forgetting to encode certain parameters, using the wrong encoding type, or encoding the same data multiple times. Systematic decoding and inspection of each URL component helps identify where the encoding process went wrong.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Mixed encoding can cause subtle problems that are difficult to diagnose. Some systems or legacy code might use different encoding standards or character sets, leading to incompatible encoded strings. When integrating with third-party APIs or working with URLs from external sources, verify the encoding standard they expect. UTF-8 is the modern standard, but some older systems might still use ISO-8859-1 or other legacy encodings. Mismatched character encoding can cause corrupted text, especially for non-ASCII characters.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Plus signs (+) in URLs deserve special attention because they have dual meaning in URL encoding. In query strings, plus signs traditionally represent spaces, but in modern URL encoding standards, %20 is preferred. Some systems still interpret plus signs as spaces, while others treat them as literal plus characters. This inconsistency can cause confusion and bugs. When encoding data that might contain plus signs, ensure your encoding and decoding processes handle them consistently according to the standards your system follows.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Security Considerations and Privacy</h3>
+              <p className="leading-relaxed mb-4">
+                Our URL encoder tool prioritizes your privacy and security by operating entirely within your web browser. Unlike server-based encoding tools that transmit your data to remote servers for processing, our client-side implementation ensures that your text never leaves your computer. This local processing approach makes the tool safe for encoding sensitive information, confidential data, or any content you prefer to keep private. No data is logged, stored, or transmitted to any third party, providing complete privacy and peace of mind.
+              </p>
+              <p className="leading-relaxed mb-4">
+                However, remember that URL-encoded data is not encrypted and provides no security against eavesdropping or interception. Encoding makes text URL-safe but does not obscure its meaning from anyone who can decode it. If you're transmitting sensitive information through URLs, always use HTTPS (SSL/TLS encryption) to protect the data in transit. Never include passwords, credit card numbers, social security numbers, or other highly sensitive information in URLs, even if encoded, as URLs are often logged by servers, proxies, and browser history.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Be cautious when clicking links containing encoded text from untrusted sources. Malicious actors can use URL encoding to obscure harmful URLs or inject malicious code. Before following a link with extensive encoding, decode it first to verify its destination and contents. Our decoding feature can help you inspect suspicious URLs safely. This practice is especially important for links received in emails, messages, or social media, where phishing attacks and malware distribution commonly occur.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Frequently Asked Questions</h3>
+              <div className="space-y-4">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="font-semibold text-gray-900 mb-2">What is the difference between URL encoding and Base64 encoding?</p>
+                  <p className="leading-relaxed">URL encoding (percent-encoding) is specifically designed for making text safe to include in URLs by replacing special characters with percent-encoded equivalents. Base64 encoding converts binary data into ASCII text using a 64-character alphabet, primarily used for encoding images, files, or binary data for transmission. They serve different purposes and are not interchangeable.</p>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Can URL encoding compress or reduce file size?</p>
+                  <p className="leading-relaxed">No, URL encoding actually increases the size of your text because each encoded character requires three characters (%, and two hexadecimal digits). Text containing many special characters or non-ASCII characters will become significantly larger when encoded. If you need compression, use dedicated compression algorithms like gzip or brotli instead.</p>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Is it safe to encode passwords or sensitive data?</p>
+                  <p className="leading-relaxed">While our tool is safe to use (all processing happens locally in your browser), you should never include passwords or sensitive information in URLs even when encoded. URLs are logged by browsers, servers, and proxies, making them unsuitable for transmitting confidential data. Use POST requests with encrypted HTTPS connections for sensitive information instead.</p>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Why does my encoded URL sometimes get double-encoded?</p>
+                  <p className="leading-relaxed">Double-encoding occurs when encoded text is encoded again, often due to multiple layers of URL handling in your application. For example, if your code encodes a parameter and then a framework or library encodes it again, you get double-encoded results. To prevent this, check if data is already encoded before applying encoding, and be aware of automatic encoding performed by frameworks.</p>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Can I use this tool offline?</p>
+                  <p className="leading-relaxed">Yes! Since the tool runs entirely in your browser without requiring server communication, you can save the webpage locally and use it offline. This makes it perfect for air-gapped environments or situations where internet access is restricted. Your data never leaves your computer regardless of online or offline use.</p>
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-8 p-6 bg-gradient-to-r from-green-50 to-teal-50 rounded-lg border border-green-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Conclusion and Final Recommendations</h3>
+              <p className="leading-relaxed mb-4">
+                URL encoding is an indispensable skill and tool for anyone working with web technologies. Whether you're a professional web developer building complex applications, a digital marketer managing campaign tracking links, a data analyst working with APIs, or a student learning web development fundamentals, understanding URL encoding empowers you to work more effectively and avoid common pitfalls. Our Text to URL Encoder simplifies this process by providing instant, accurate encoding and decoding capabilities without the need for programming knowledge or technical expertise.
+              </p>
+              <p className="leading-relaxed">
+                The importance of proper URL encoding extends beyond mere functionality; it impacts security, data integrity, user experience, and international accessibility. By using our free tool, you gain immediate access to professional-grade encoding capabilities that help you create robust, reliable web applications and integrations. The tool's privacy-focused design, comprehensive features, and intuitive interface make it an essential addition to your web development toolkit. Start using the Text to URL Encoder today to ensure your URLs are always properly formatted, safe, and functional across all platforms and use cases.
+              </p>
+            </section>
+          </div>
+        </article>
+
+        {/* Pro Tips Section */}
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200 shadow-sm">
+          <h3 className="text-lg font-bold text-indigo-900 mb-4">💡 Expert Tips for URL Encoding</h3>
+          <div className="grid md:grid-cols-2 gap-4 text-sm" style={{ textAlign: 'justify' }}>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="font-semibold text-indigo-700 mb-2">✓ Always Encode User Input</div>
+              <p className="text-gray-700 leading-relaxed">Never trust user input to be URL-safe. Always encode before including in URLs to prevent errors and security vulnerabilities.</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="font-semibold text-indigo-700 mb-2">✓ Use HTTPS for Sensitive Data</div>
+              <p className="text-gray-700 leading-relaxed">URL encoding does not encrypt data. Always use HTTPS to protect encoded information during transmission.</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="font-semibold text-indigo-700 mb-2">✓ Test Encoded URLs</div>
+              <p className="text-gray-700 leading-relaxed">Always test encoded URLs in your target environment to ensure they work correctly across different systems and browsers.</p>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="font-semibold text-indigo-700 mb-2">✓ Watch for Double Encoding</div>
+              <p className="text-gray-700 leading-relaxed">Check if data is already encoded before applying encoding again to avoid double-encoding issues that break URLs.</p>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Info Section */}
-      <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
-        <h3 className="text-lg font-semibold mb-2">About Text to URL Encoder</h3>
-        <p className="text-gray-700 mb-4">
-          The Text to URL Encoder is a free online tool that allows you to convert
-          plain text into URL-encoded format and also decode URL-encoded strings
-          back into readable text. URL encoding (also known as percent-encoding) is
-          an essential process in web development and digital communication. It
-          ensures that special characters such as spaces, symbols, or non-English
-          letters can be safely transmitted through web addresses and APIs. For
-          example, a space character is replaced with <code>%20</code> and symbols
-          like <code>@</code>, <code>?</code>, and <code>&</code> are transformed into
-          encoded values to prevent misinterpretation by browsers or servers.
-        </p>
-
-        <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Convert any plain text into URL-safe code instantly</li>
-          <li>Decode encoded strings back into original human-readable text</li>
-          <li>Character, word, and line count analysis included</li>
-          <li>Preserves international characters and supports Unicode</li>
-          <li>Easy one-click copy to clipboard for faster workflow</li>
-          <li>Completely free and works directly in the browser</li>
-        </ul>
-
-        <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-1">
-          <li>Enter or paste your text into the input box.</li>
-          <li>Click on <strong>Text to URL</strong> to encode your content.</li>
-          <li>Alternatively, paste a URL-encoded string into the URL field and click <strong>URL to Text</strong> to decode it.</li>
-          <li>Use the copy buttons to copy results for direct use in websites, APIs, or code.</li>
-          <li>Check the character analysis section to quickly see total characters, words, and lines.</li>
-        </ol>
-
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li><strong>Web development:</strong> Encode query parameters like names, emails, or IDs to avoid broken URLs.</li>
-          <li><strong>APIs and data transmission:</strong> Ensure safe transfer of values when making GET or POST requests.</li>
-          <li><strong>Security:</strong> Prevent injection attacks by encoding input before sending to servers.</li>
-          <li><strong>Internationalization:</strong> Encode non-ASCII characters (e.g., Chinese, Arabic, Hindi) for global web compatibility.</li>
-          <li><strong>Content sharing:</strong> Generate shareable and reliable links across platforms.</li>
-        </ul>
-
-        <h4 className="font-semibold mt-4 mb-1">🌍 Why URL Encoding is Important</h4>
-        <p className="text-gray-700 mb-4">
-          URLs are meant to contain only a specific set of characters. Characters like
-          spaces, quotes, or special symbols can break a URL if not encoded. For
-          example, a link like
-          <code>https://example.com/search?query=hello world</code> will fail because
-          of the space. When encoded, it becomes
-          <code>https://example.com/search?query=hello%20world</code>, which is valid.
-          Similarly, encoding is vital when working with APIs, RESTful services, and
-          even analytics tracking links. Without encoding, many systems may reject or
-          misinterpret the request, leading to errors or security vulnerabilities.
-        </p>
-
-        <h4 className="font-semibold mt-4 mb-1">💡 Examples</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Text: <code>Hello World!</code> → Encoded: <code>Hello%20World%21</code></li>
-          <li>Text: <code>email@example.com</code> → Encoded: <code>email%40example.com</code></li>
-          <li>Text: <code>100% safe</code> → Encoded: <code>100%25%20safe</code></li>
-          <li>Text: <code>https://site.com?name=John Doe&age=25</code> → Encoded: <code>https%3A%2F%2Fsite.com%3Fname%3DJohn%20Doe%26age%3D25</code></li>
-        </ul>
-        <h4 className="font-semibold mt-4 mb-1">🙋 Frequently Asked Questions</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-2">
-          <li><strong>Is URL encoding the same as Base64 encoding?</strong> No, URL encoding replaces unsafe characters with percent-encoded values, while Base64 is used for binary-to-text encoding (like images or files).</li>
-          <li><strong>Does this tool work offline?</strong> Yes, it works entirely in your browser without sending data to servers.</li>
-          <li><strong>Can I decode already encoded URLs?</strong> Yes, just paste them into the decoder box and click &quot;URL to Text&quot;.</li>
-          <li><strong>Which characters are encoded?</strong> Reserved characters such as <code>?</code>, <code>&amp;</code>, <code>=</code>, <code>/</code>, and spaces are always encoded for safety.</li>
-          <li><strong>Does it support Unicode?</strong> Yes, it supports all languages including Hindi, Arabic, Chinese, and emojis.</li>
-        </ul>
-
-        <h4 className="font-semibold mt-4 mb-1">🚀 Final Thoughts</h4>
-        <p className="text-gray-700">
-          The Text to URL Encoder is a must-have tool for developers, marketers, and
-          everyday users who frequently share links or work with APIs. By encoding
-          and decoding URLs properly, you can avoid broken links, improve web
-          security, and ensure smooth data transfer across platforms. Whether you are
-          building a website, integrating third-party services, or simply sharing a
-          link on social media, this tool helps you keep everything clean, safe, and
-          reliable. Try it now and make your links error-free.
-        </p>
-      </section>
     </ToolSection>
   );
 }

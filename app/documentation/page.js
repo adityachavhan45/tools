@@ -1,125 +1,146 @@
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Documentation",
+  title: "Documentation | Convertixy – Guides, Tips & Help Center",
   description:
-    "Convertixy documentation: quick start guides, usage tips, FAQs, and best practices for using our free tools.",
+    "Explore Convertixy documentation with step-by-step guides, usage tips, FAQs, and best practices for using our free online tools efficiently.",
   slug: "/documentation",
-  keywords: ["docs", "documentation", "help", "guide", "faq"],
+  keywords: [
+    "convertixy documentation",
+    "online tools guide",
+    "help center",
+    "tool usage guide",
+    "pdf tools guide",
+    "image tools help",
+    "seo tools documentation",
+    "free tools manual",
+  ],
+  focusKeyword: "Convertixy Documentation",
 });
 
 export default function DocumentationPage() {
   return (
-    <section className="bg-gray-50 py-12 sm:py-16">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-gradient-to-br from-indigo-50 via-sky-50 to-purple-50 py-14 sm:py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
-        <header className="text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
+        <header className="text-center mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
             Documentation
           </h1>
+
           <p className="mt-4 text-gray-600 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
-            Learn how to use our tools effectively. Explore quick start guides,
-            usage tips, and answers to the most common questions.
+            Everything you need to use Convertixy efficiently. Learn with
+            step-by-step guides, smart tips, and helpful resources.
           </p>
         </header>
 
-        {/* Content */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-10 space-y-10 leading-relaxed text-gray-800">
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Quick Start
+        {/* Main Card */}
+        <div className="bg-white/90 backdrop-blur border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-10 md:p-12 space-y-12 text-gray-800">
+
+          {/* Quick Start */}
+          <section className="bg-indigo-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-indigo-700 mb-4">
+              🚀 Quick Start
             </h2>
+
             <ol className="list-decimal list-inside space-y-2">
-              <li>Choose any tool from the homepage or use the search bar.</li>
-              <li>
-                Follow the on-screen instructions. Most tools run directly in
-                your browser, so files stay private.
-              </li>
-              <li>
-                Use the download or copy buttons to save results instantly.
-              </li>
+              <li>Select any tool from the homepage or search bar.</li>
+              <li>Follow the simple on-screen instructions.</li>
+              <li>Download or copy your results instantly.</li>
             </ol>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              File & PDF Tools
+          {/* PDF Tools */}
+          <section className="bg-sky-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-sky-700 mb-4">
+              📄 File & PDF Tools
             </h2>
+
             <p>
-              Our PDF tools include merge, split, compress, rotate, and convert
-              options. For large PDFs, close unused browser tabs to free memory.
-              Keep in mind that higher compression can reduce quality, so choose
-              the right balance based on your needs.
+              Manage PDFs with merge, split, compress, rotate, and convert
+              options. For best performance, close unused browser tabs and
+              choose compression levels that match your quality needs.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Image Tools
+          {/* Image Tools */}
+          <section className="bg-emerald-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-emerald-700 mb-4">
+              🖼️ Image Tools
             </h2>
+
             <p>
-              Image utilities allow you to compress, resize, crop, and convert
-              between formats. For web use, we recommend modern formats like{" "}
-              <strong>WebP</strong> or <strong>AVIF</strong> for smaller file
-              sizes. Always keep an original copy of your image if you need
-              lossless quality.
+              Compress, resize, crop, and convert images easily. Modern formats
+              like <strong>WebP</strong> and <strong>AVIF</strong> help reduce
+              file size while maintaining visual quality.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Text & SEO Tools
+          {/* Text & SEO */}
+          <section className="bg-purple-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-purple-700 mb-4">
+              ✍️ Text & SEO Tools
             </h2>
+
             <p>
-              Our text and SEO tools include word counters, case converters,
-              meta tag generators, and more. Use AI-generated or automated text
-              responsibly, and always review before publishing to ensure
-              accuracy and quality.
+              Improve content with word counters, case converters, and meta tag
+              generators. Review outputs carefully to maintain high-quality
+              publishing standards.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Frequently Asked Questions
+          {/* FAQ */}
+          <section className="bg-amber-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-amber-700 mb-6">
+              ❓ Frequently Asked Questions
             </h2>
-            <div className="space-y-4">
-              <div>
-                <p className="font-semibold text-gray-900">
+
+            <div className="grid sm:grid-cols-2 gap-6">
+
+              <div className="bg-white rounded-xl p-5 shadow-sm">
+                <p className="font-semibold text-gray-900 mb-1">
                   Do tools upload my files?
                 </p>
                 <p>
-                  No, most of our tools run locally in your browser. This means
-                  your files stay private and never leave your device.
+                  Most tools work directly in your browser, allowing you to
+                  process files instantly.
                 </p>
               </div>
-              <div>
-                <p className="font-semibold text-gray-900">
-                  Do I need an account to use Convertixy?
+
+              <div className="bg-white rounded-xl p-5 shadow-sm">
+                <p className="font-semibold text-gray-900 mb-1">
+                  Do I need an account?
                 </p>
                 <p>
-                  No, all tools are completely free and require no registration.
+                  No registration is required. All tools are available
+                  immediately.
                 </p>
               </div>
-              <div>
-                <p className="font-semibold text-gray-900">
-                  Can I use Convertixy on mobile?
+
+              <div className="bg-white rounded-xl p-5 shadow-sm">
+                <p className="font-semibold text-gray-900 mb-1">
+                  Can I use it on mobile?
                 </p>
                 <p>
-                  Yes, our platform is fully mobile-friendly, so you can access
-                  and use tools from any device.
+                  Yes, Convertixy works smoothly on smartphones, tablets, and
+                  desktops.
                 </p>
               </div>
-              <div>
-                <p className="font-semibold text-gray-900">
+
+              <div className="bg-white rounded-xl p-5 shadow-sm">
+                <p className="font-semibold text-gray-900 mb-1">
                   Are there any limits?
                 </p>
                 <p>
-                  Most tools are unlimited, but some heavy operations may depend
-                  on your device’s memory and processing power.
+                  Most tools are flexible and adapt to your device’s
+                  performance.
                 </p>
               </div>
+
             </div>
           </section>
+
         </div>
       </div>
     </section>

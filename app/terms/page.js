@@ -1,136 +1,145 @@
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Terms of Service",
+  title: "Terms of Service | Convertixy – Platform Usage & Guidelines",
   description:
-    "Terms and conditions for using Convertixy: rules, responsibilities, and limitations.",
+    "Read Convertixy’s Terms of Service to understand platform usage guidelines, user responsibilities, and service policies.",
   slug: "/terms",
-  keywords: ["terms", "service", "conditions", "agreement", "policy"],
+  keywords: [
+    "convertixy terms of service",
+    "website terms",
+    "user agreement",
+    "platform guidelines",
+    "service conditions",
+    "online tools policy",
+    "usage rules",
+    "convertixy terms",
+  ],
+  focusKeyword: "Convertixy Terms of Service",
 });
 
 export default function TermsPage() {
   return (
-    <section className="bg-gray-50 py-12 sm:py-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-gradient-to-br from-indigo-50 via-sky-50 to-purple-50 py-14 sm:py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
-        <header className="text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
+        <header className="text-center mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
             Terms of Service
           </h1>
-          <p className="mt-4 text-gray-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Please read these Terms of Service carefully before using Convertixy. 
-            By accessing or using our site, you agree to comply with the terms below.
+
+          <p className="mt-4 text-gray-600 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+            These Terms of Service explain how to use Convertixy responsibly
+            while enjoying a secure, transparent, and user-friendly experience.
           </p>
         </header>
 
-        {/* Content */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-10 space-y-10 leading-relaxed text-gray-800">
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+        {/* Main Content */}
+        <div className="bg-white/90 backdrop-blur border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-10 md:p-12 space-y-12 text-gray-800">
+
+          {/* Acceptance */}
+          <section className="bg-indigo-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-indigo-700 mb-3">
               Acceptance of Terms
             </h2>
+
             <p>
-              By using Convertixy, you acknowledge that you have read and agree to these 
-              Terms of Service as well as our{" "}
-              <a href="/privacy" className="text-indigo-600 hover:underline">
+              By accessing and using Convertixy, you confirm that you understand
+              and agree to follow these Terms of Service and our{" "}
+              <a
+                href="/privacy"
+                className="font-medium text-indigo-600 hover:underline"
+              >
                 Privacy Policy
               </a>
-              . If you do not agree, please discontinue use of our platform.
+              . These terms help ensure a positive experience for all users.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Use of the Service
+          {/* Usage */}
+          <section className="bg-sky-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-sky-700 mb-3">
+              Platform Usage
             </h2>
+
             <ul className="list-disc list-inside space-y-2">
-              <li>
-                You are responsible for how you use our tools and for any 
-                content you upload, process, or share.
-              </li>
-              <li>
-                You agree not to use our services for unlawful, harmful, 
-                or malicious activities.
-              </li>
-              <li>
-                You must not interfere with or disrupt the functionality 
-                of the site or misuse resources.
-              </li>
+              <li>Use tools responsibly and in good faith.</li>
+              <li>Respect applicable laws and digital standards.</li>
+              <li>Avoid activities that may disrupt platform performance.</li>
+              <li>Maintain ethical and respectful online behavior.</li>
             </ul>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+          {/* IP */}
+          <section className="bg-emerald-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-emerald-700 mb-3">
               Intellectual Property
             </h2>
+
             <p>
-              The design, branding, and content of Convertixy are protected by 
-              intellectual property rights. You retain ownership of your own 
-              files and inputs, but you may not copy, reproduce, or distribute 
-              our site’s design or code without permission.
-            </p>
-          </section>
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Disclaimer
-            </h2>
-            <p>
-              Convertixy tools are provided on an &quot;as is&quot; basis without 
-              warranties of any kind. While we strive to provide accurate results, 
-              we do not guarantee error-free operation, completeness, or suitability 
-              for a particular purpose.
-            </p>
-          </section>
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Limitation of Liability
-            </h2>
-            <p>
-              To the maximum extent permitted by law, Convertixy and its contributors 
-              shall not be held liable for indirect, incidental, or consequential 
-              damages resulting from your use of the service. You use the platform 
-              at your own risk.
+              Convertixy’s branding, interface, and platform design are protected
+              assets. Users retain full ownership of their own files and content
+              while using our tools.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Changes to Terms
+          {/* Service Quality */}
+          <section className="bg-purple-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-purple-700 mb-3">
+              Service Quality
             </h2>
+
             <p>
-              We may update or revise these Terms of Service from time to time. 
-              Any changes will be effective immediately once posted. Continued 
-              use of Convertixy after updates constitutes acceptance of the new terms.
+              We continuously work to maintain reliable performance, usability,
+              and accuracy across our tools through regular improvements and
+              optimization.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Governing Law
+          {/* Updates */}
+          <section className="bg-amber-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-amber-700 mb-3">
+              Policy Updates
             </h2>
+
             <p>
-              These Terms shall be governed by and interpreted under the laws 
-              applicable in your jurisdiction. Disputes arising from the use of 
-              Convertixy will be subject to the jurisdiction of relevant courts.
+              These terms may be updated periodically to reflect platform
+              enhancements and evolving standards. The latest version will
+              always be available on this page.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Contact Us
+          {/* Legal */}
+          <section className="bg-rose-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-rose-700 mb-3">
+              Legal Compliance
             </h2>
+
             <p>
-              If you have any questions or concerns about these Terms of Service, 
-              please contact us at{" "}
+              Convertixy operates in accordance with applicable legal and
+              regulatory requirements to promote transparency and fairness.
+            </p>
+          </section>
+
+          {/* Contact */}
+          <section className="bg-gray-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+              Contact & Support
+            </h2>
+
+            <p>
+              If you have questions regarding these Terms, please contact us Through 
               <a
-                href="mailto:legal@convertixy.com"
-                className="text-indigo-600 hover:underline"
+                href="/contactm"
+                className="font-medium text-indigo-600 hover:text-indigo-700 hover:underline transition"
               >
-                legal@convertixy.com
+                  &nbsp;Contact page 
               </a>
-              . We will respond to your inquiries as promptly as possible.
+              . Our team is here to support you.
             </p>
           </section>
+
         </div>
       </div>
     </section>

@@ -5,150 +5,71 @@ import ToolSection from "../components/ToolSection";
 import { buildToolJsonLd, buildBreadcrumbJsonLd } from "../../lib/seo";
 import JsonLd from "../components/JsonLd";
 
+function CalendarIcon({ className = "w-5 h-5 text-slate-400" }) {
+  return (
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  );
+}
+
+function getStatus(percentage) {
+  if (percentage >= 90) return { text: "Perfect match", color: "text-rose-600", bar: "bg-rose-500" };
+  if (percentage >= 80) return { text: "Excellent compatibility", color: "text-rose-500", bar: "bg-rose-400" };
+  if (percentage >= 70) return { text: "Great match", color: "text-pink-500", bar: "bg-pink-500" };
+  if (percentage >= 60) return { text: "Good compatibility", color: "text-pink-600", bar: "bg-pink-400" };
+  if (percentage >= 50) return { text: "Moderate match", color: "text-purple-600", bar: "bg-purple-500" };
+  if (percentage >= 40) return { text: "Fair compatibility", color: "text-indigo-600", bar: "bg-indigo-400" };
+  if (percentage >= 30) return { text: "Room to grow", color: "text-sky-600", bar: "bg-sky-400" };
+  return { text: "Opposites attract", color: "text-teal-600", bar: "bg-teal-400" };
+}
+
 export default function LoveCalculatorPage() {
   const [yourName, setYourName] = useState("");
   const [partnerName, setPartnerName] = useState("");
   const [yourBirthDate, setYourBirthDate] = useState("");
   const [partnerBirthDate, setPartnerBirthDate] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState(null);
   const [message, setMessage] = useState("");
-  const [lovePercentage, setLovePercentage] = useState(0);
-  const [loveStatus, setLoveStatus] = useState("");
 
   function calculateLove() {
     if (!yourName.trim() || !partnerName.trim()) {
-      setMessage("⚠️ Please enter both names.");
+      setMessage("Please enter both names.");
       return;
     }
-
-    if (!yourBirthDate || !partnerBirthDate) {
-      setMessage("⚠️ Please enter both birth dates.");
-      return;
+    setMessage("");
+    const name1 = yourName.toLowerCase().replace(/\s/g, "");
+    const name2 = partnerName.toLowerCase().replace(/\s/g, "");
+    let score = 0;
+    const combined = name1 + name2;
+    for (let i = 0; i < combined.length; i++) score += combined.charCodeAt(i);
+    score = score % 100;
+    if (yourBirthDate && partnerBirthDate) {
+      const d1 = new Date(yourBirthDate);
+      const d2 = new Date(partnerBirthDate);
+      const dayDiff = Math.abs(d1.getDate() - d2.getDate());
+      const monthDiff = Math.abs(d1.getMonth() - d2.getMonth());
+      const yearDiff = Math.abs(d1.getFullYear() - d2.getFullYear());
+      if (dayDiff === 0) score += 10;
+      if (monthDiff === 0) score += 15;
+      if (yearDiff <= 3) score += 5;
     }
-
-    try {
-      // Love calculation algorithm based on names and birth dates
-      const name1 = yourName.toLowerCase().replace(/\s/g, '');
-      const name2 = partnerName.toLowerCase().replace(/\s/g, '');
-      
-      // Calculate name compatibility
-      let nameScore = 0;
-      const combinedNames = name1 + name2;
-      for (let i = 0; i < combinedNames.length; i++) {
-        nameScore += combinedNames.charCodeAt(i);
-      }
-      
-      // Calculate birth date compatibility
-      const date1 = new Date(yourBirthDate);
-      const date2 = new Date(partnerBirthDate);
-      const dayDiff = Math.abs(date1.getDate() - date2.getDate());
-      const monthDiff = Math.abs(date1.getMonth() - date2.getMonth());
-      const yearDiff = Math.abs(date1.getFullYear() - date2.getFullYear());
-      
-      // Create a love percentage based on various factors
-      let loveScore = (nameScore % 100);
-      
-      // Adjust based on birth date compatibility
-      if (dayDiff === 0) loveScore += 10; // Same day bonus
-      if (monthDiff === 0) loveScore += 15; // Same month bonus
-      if (yearDiff <= 3) loveScore += 5; // Close age bonus
-      
-      // Add some randomness based on name lengths
-      const lengthFactor = (name1.length + name2.length) % 20;
-      loveScore += lengthFactor;
-      
-      // Ensure percentage is between 1-100
-      const percentage = Math.max(1, Math.min(100, loveScore));
-      
-      // Determine love status
-      let status = "";
-      let statusColor = "";
-      let emoji = "";
-      
-      if (percentage >= 90) {
-        status = "Perfect Match! Soulmates Forever! 💕";
-        statusColor = "text-pink-600";
-        emoji = "💖";
-      } else if (percentage >= 80) {
-        status = "Excellent Compatibility! True Love! ❤️";
-        statusColor = "text-red-500";
-        emoji = "❤️";
-      } else if (percentage >= 70) {
-        status = "Great Match! Strong Connection! 💗";
-        statusColor = "text-pink-500";
-        emoji = "💗";
-      } else if (percentage >= 60) {
-        status = "Good Compatibility! Sweet Love! 💓";
-        statusColor = "text-rose-500";
-        emoji = "💓";
-      } else if (percentage >= 50) {
-        status = "Moderate Match! Growing Love! 💕";
-        statusColor = "text-purple-500";
-        emoji = "💕";
-      } else if (percentage >= 40) {
-        status = "Fair Compatibility! Friendship First! 💜";
-        statusColor = "text-indigo-500";
-        emoji = "💜";
-      } else if (percentage >= 30) {
-        status = "Low Match! Work on It! 💙";
-        statusColor = "text-blue-500";
-        emoji = "💙";
-      } else {
-        status = "Challenging Match! Opposites Attract! 💚";
-        statusColor = "text-green-500";
-        emoji = "💚";
-      }
-
-      const resultText = `# Love Calculator Result
-# Generated on: ${new Date().toISOString()}
-
-# Couple Information
-# Your Name: ${yourName}
-# Partner Name: ${partnerName}
-# Your Birth Date: ${yourBirthDate}
-# Partner Birth Date: ${partnerBirthDate}
-
-# Love Analysis
-# Love Percentage: ${percentage}%
-# Love Status: ${status}
-# Compatibility Level: ${percentage >= 80 ? 'Excellent' : percentage >= 60 ? 'Good' : percentage >= 40 ? 'Fair' : 'Challenging'}
-
-# Detailed Analysis
-# Name Compatibility: ${nameScore % 100}%
-# Birth Date Harmony: ${dayDiff === 0 ? 'Perfect Day Match' : monthDiff === 0 ? 'Same Month' : 'Different Dates'}
-# Age Compatibility: ${yearDiff <= 3 ? 'Close Age Range' : 'Age Gap Present'}
-
-# Love Prediction
-# ${percentage >= 90 ? 'You two are destined to be together! Your souls are perfectly aligned.' :
-  percentage >= 80 ? 'Amazing chemistry! You complement each other beautifully.' :
-  percentage >= 70 ? 'Strong connection with great potential for lasting love.' :
-  percentage >= 60 ? 'Good foundation for a loving relationship with effort.' :
-  percentage >= 50 ? 'Moderate compatibility - communication is key.' :
-  percentage >= 40 ? 'Friendship can bloom into something special over time.' :
-  percentage >= 30 ? 'Challenges exist but love can overcome obstacles.' :
-  'Very different personalities - opposites can attract!'}
-
-# Love Tips
-# ${percentage >= 80 ? '• Keep nurturing your amazing connection\n• Plan romantic surprises together\n• Celebrate your compatibility' :
-  percentage >= 60 ? '• Communicate openly and honestly\n• Spend quality time together\n• Appreciate each other\'s differences' :
-  percentage >= 40 ? '• Build friendship first\n• Find common interests\n• Be patient with each other' :
-  '• Focus on understanding each other\n• Work on communication\n• Give love time to grow'}
-
-# Remember: Love is not just about compatibility percentages!
-# True love grows through understanding, respect, and commitment.`;
-
-      setResult(resultText);
-      setLovePercentage(percentage);
-      setLoveStatus(status);
-      setMessage(`✅ Love calculated successfully! ${emoji} ${percentage}% compatibility!`);
-    } catch (error) {
-      setMessage("❌ Error calculating love compatibility.");
-    }
-  }
-
-  function copyResult() {
-    navigator.clipboard.writeText(result);
-    setMessage("📋 Love result copied to clipboard!");
+    const lengthFactor = (name1.length + name2.length) % 20;
+    score += lengthFactor;
+    const percentage = Math.max(1, Math.min(100, score));
+    const status = getStatus(percentage);
+    setResult({
+      percentage,
+      status: status.text,
+      statusColor: status.color,
+      barClass: status.bar,
+      name1: yourName.trim(),
+      name2: partnerName.trim(),
+    });
+    setMessage("Result ready. For fun only.");
   }
 
   function reset() {
@@ -156,16 +77,14 @@ export default function LoveCalculatorPage() {
     setPartnerName("");
     setYourBirthDate("");
     setPartnerBirthDate("");
-    setResult("");
-    setLovePercentage(0);
-    setLoveStatus("");
-    setMessage("🧹 Cleared!");
+    setResult(null);
+    setMessage("Cleared.");
   }
 
   return (
     <ToolSection
-      title="Love Calculator"
-      subtitle="Calculate love compatibility online. Free love calculator with names and birth dates for relationship compatibility analysis and love percentage."
+      title="Free Love Calculator"
+      subtitle="Fun compatibility based on two names (and optional birth dates). For entertainment only no science, no upload."
       plain
       plainSidebar
       whiteBackground
@@ -173,7 +92,7 @@ export default function LoveCalculatorPage() {
       <JsonLd
         data={buildToolJsonLd({
           name: "Love Calculator",
-          description: "Calculate love compatibility online with names and birth dates.",
+          description: "Fun love compatibility from two names. Entertainment only, in-browser.",
           slug: "/love-calculator",
           category: "Utilities/Entertainment",
         })}
@@ -185,278 +104,193 @@ export default function LoveCalculatorPage() {
         ])}
       />
 
-      <div className="space-y-4">
-        {/* Status Messages */}
-        {message && (
-          <div className="px-3 py-2 bg-blue-100 border rounded text-blue-800 text-sm">
-            {message}
+      {message && (
+        <div
+          className={`fixed top-5 right-5 z-50 px-4 py-3 rounded-lg shadow-lg text-white text-sm sm:text-base transition-all duration-300
+          ${message.includes("Result") ? "bg-emerald-600" : ""}
+          ${message.includes("Please enter") ? "bg-amber-600" : ""}
+          ${message.includes("Cleared") ? "bg-sky-600" : ""}`}
+        >
+          {message}
+        </div>
+      )}
+
+      <div className="space-y-6">
+        {/* Inputs */}
+        <div className="p-4 sm:p-5 bg-white rounded-xl border border-slate-200 shadow-sm space-y-4">
+          <p className="text-sm font-medium text-slate-700">Enter names (birth dates optional)</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm text-slate-600 mb-1">Your name</label>
+              <input
+                type="text"
+                value={yourName}
+                onChange={(e) => setYourName(e.target.value)}
+                placeholder="First name or full name"
+                className="w-full px-3 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm text-slate-600 mb-1">Partner name</label>
+              <input
+                type="text"
+                value={partnerName}
+                onChange={(e) => setPartnerName(e.target.value)}
+                placeholder="First name or full name"
+                className="w-full px-3 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+              />
+            </div>
           </div>
-        )}
-
-        {/* Your Name Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Your Name
-          </label>
-          <input
-            type="text"
-            value={yourName}
-            onChange={(e) => setYourName(e.target.value)}
-            placeholder="Enter your name..."
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
-          />
-        </div>
-
-        {/* Partner Name Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Partners Name
-          </label>
-          <input
-            type="text"
-            value={partnerName}
-            onChange={(e) => setPartnerName(e.target.value)}
-            placeholder="Enter your partner name..."
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
-          />
-        </div>
-
-        {/* Your Birth Date Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Your Birth Date
-          </label>
-          <input
-            type="date"
-            value={yourBirthDate}
-            onChange={(e) => setYourBirthDate(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
-          />
-        </div>
-
-        {/* Partner Birth Date Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Partner Birth Date
-          </label>
-          <input
-            type="date"
-            value={partnerBirthDate}
-            onChange={(e) => setPartnerBirthDate(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
-          />
-        </div>
-
-        {/* Love Percentage Display */}
-        {lovePercentage > 0 && (
-          <div className="bg-gradient-to-r from-pink-100 to-red-100 border border-pink-200 rounded-lg p-4">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-pink-600 mb-2">
-                {lovePercentage}%
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 love-calc-dates">
+            <style dangerouslySetInnerHTML={{ __html: `
+              .love-calc-dates input[type="date"] {
+                color-scheme: light;
+                min-height: 2.75rem;
+              }
+              .love-calc-dates input[type="date"]::-webkit-calendar-picker-indicator {
+                opacity: 0;
+                position: absolute;
+                right: 0;
+                width: 2.5rem;
+                height: 100%;
+                cursor: pointer;
+              }
+              .love-calc-dates input[type="date"]::-webkit-date-and-time-value {
+                text-align: left;
+              }
+            `}} />
+            <div>
+              <label className="block text-sm text-slate-600 mb-1">Your birth date (optional)</label>
+              <div className="relative">
+                <input
+                  type="date"
+                  value={yourBirthDate}
+                  onChange={(e) => setYourBirthDate(e.target.value)}
+                  className="w-full pl-3 pr-10 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white"
+                />
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true">
+                  <CalendarIcon />
+                </span>
               </div>
-              <div className={`text-lg font-medium ${lovePercentage >= 80 ? 'text-red-500' : lovePercentage >= 60 ? 'text-pink-500' : lovePercentage >= 40 ? 'text-purple-500' : 'text-blue-500'}`}>
-                {loveStatus}
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-4 mt-3">
-                <div 
-                  className={`h-4 rounded-full transition-all duration-1000 ${
-                    lovePercentage >= 80 ? 'bg-gradient-to-r from-red-400 to-pink-500' :
-                    lovePercentage >= 60 ? 'bg-gradient-to-r from-pink-400 to-purple-500' :
-                    lovePercentage >= 40 ? 'bg-gradient-to-r from-purple-400 to-blue-500' :
-                    'bg-gradient-to-r from-blue-400 to-green-500'
-                  }`}
-                  style={{ width: `${lovePercentage}%` }}
-                ></div>
+            </div>
+            <div>
+              <label className="block text-sm text-slate-600 mb-1">Partner birth date (optional)</label>
+              <div className="relative">
+                <input
+                  type="date"
+                  value={partnerBirthDate}
+                  onChange={(e) => setPartnerBirthDate(e.target.value)}
+                  className="w-full pl-3 pr-10 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white"
+                />
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true">
+                  <CalendarIcon />
+                </span>
               </div>
             </div>
           </div>
-        )}
+        </div>
 
-        {/* Result Output */}
-        {result && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Detailed Love Analysis
-            </label>
-            <textarea
-              value={result}
-              readOnly
-              className="w-full h-40 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
-            />
-          </div>
-        )}
-
-        {/* Action Buttons */}
+        {/* Actions */}
         <div className="flex gap-3 flex-wrap">
           <button
             onClick={calculateLove}
-            disabled={!yourName.trim() || !partnerName.trim() || !yourBirthDate || !partnerBirthDate}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                       bg-gradient-to-r from-pink-500 to-red-500 text-white shadow 
-                       hover:from-pink-600 hover:to-red-600 disabled:opacity-60"
+            disabled={!yourName.trim() || !partnerName.trim()}
+            className="px-6 py-3 rounded-xl bg-teal-600 text-white font-medium shadow-md hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
           >
-            💕 Calculate Love
+            Calculate
           </button>
-
-          {result && (
-            <button
-              onClick={copyResult}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg 
-                         bg-blue-600 text-white shadow 
-                         hover:bg-blue-700"
-            >
-              📋 Copy Result
-            </button>
-          )}
-
           <button
             onClick={reset}
-            disabled={!yourName.trim() && !partnerName.trim() && !result.trim()}
-            className="px-5 py-2 border rounded-lg bg-gray-100 hover:bg-gray-200"
+            className="px-6 py-3 rounded-xl border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 font-medium transition"
           >
-            Reset
+            Clear all
           </button>
         </div>
 
-        {/* Love Info */}
-        <div className="border rounded-lg p-4 bg-pink-50">
-          <h4 className="text-sm font-medium text-pink-700 mb-2">Love Compatibility Scale</h4>
-          <div className="text-sm space-y-1">
-            <div>💖 90-100%: Perfect Match - Soulmates</div>
-            <div>❤️ 80-89%: Excellent - True Love</div>
-            <div>💗 70-79%: Great - Strong Connection</div>
-            <div>💓 60-69%: Good - Sweet Love</div>
-            <div>💕 50-59%: Moderate - Growing Love</div>
-            <div>💜 40-49%: Fair - Friendship First</div>
-            <div>💙 30-39%: Low - Work on It</div>
-            <div>💚 0-29%: Challenging - Opposites Attract</div>
+        {/* Result */}
+        {result && (
+          <div className="p-6 rounded-xl border border-slate-200 bg-white shadow-sm text-center">
+            <p className="text-slate-600 text-sm mb-2">
+              {result.name1} and {result.name2}
+            </p>
+            <p className="text-4xl sm:text-5xl font-bold text-slate-900 mb-1">{result.percentage}%</p>
+            <p className={`text-lg font-medium ${result.statusColor}`}>{result.status}</p>
+            <div className="mt-4 w-full h-3 bg-slate-200 rounded-full overflow-hidden">
+              <div
+                className={`h-full rounded-full transition-all duration-500 ${result.barClass}`}
+                style={{ width: `${result.percentage}%` }}
+              />
+            </div>
+            <p className="mt-4 text-xs text-slate-500">For entertainment only. Not a real compatibility test.</p>
           </div>
+        )}
+
+        {/* Scale */}
+        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-700">
+          <p className="font-semibold text-slate-800 mb-2">Rough scale (for fun)</p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-justify">
+            <li>90–100%: Perfect match</li>
+            <li>80–89%: Excellent</li>
+            <li>70–79%: Great match</li>
+            <li>60–69%: Good</li>
+            <li>50–59%: Moderate</li>
+            <li>40–49%: Fair</li>
+            <li>30–39%: Room to grow</li>
+            <li>1–29%: Opposites attract</li>
+          </ul>
         </div>
       </div>
 
-      {/* Info Section */}
-      <section className="mt-10 p-5 bg-white border rounded-lg shadow-sm">
-        <h3 className="text-lg font-semibold mb-2">About Love Calculator</h3>
-        <p className="text-gray-700 mb-4">
-          The Love Calculator is a fun and entertaining tool that analyzes the romantic compatibility 
-          between two people based on their names and birth dates. Using a unique algorithm that 
-          considers name numerology, birth date harmony, and various compatibility factors, this 
-          calculator provides a love percentage and detailed relationship analysis. While this tool 
-          is designed for entertainment purposes, it can spark interesting conversations about 
-          relationships and compatibility factors that matter in real love.
+      {/* Info section – 1000+ words, unique, text-justify */}
+      <section className="mt-12 sm:mt-14 p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-100">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
+          About This Love Calculator
+        </h2>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          A love calculator is a fun tool that takes two names (and sometimes birth dates) and shows a compatibility score, usually as a percentage. It is not scientific and does not predict real relationships. The result is produced by a simple formula based on the letters in the names (and optionally date differences), so it is meant for entertainment only. This calculator runs in your browser: you enter two names, optionally two birth dates, and click to see a score and a short label. No data is sent to a server. Many people use it as a light-hearted game at parties, as a conversation starter, or to share a silly result with a friend or partner. It is important to remember that real compatibility depends on communication, respect, and shared values, not on a number generated from names or dates.
         </p>
 
-        <h4 className="font-semibold mt-4 mb-1">✨ Key Features</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-2">
-          <li>
-            <strong>Name compatibility analysis:</strong> Uses advanced name numerology to calculate 
-            compatibility based on the letters in both names.
-          </li>
-          <li>
-            <strong>Birth date harmony:</strong> Analyzes birth dates to find patterns and 
-            compatibility factors between partners.
-          </li>
-          <li>
-            <strong>Love percentage:</strong> Provides a clear percentage score from 1-100% 
-            representing relationship compatibility.
-          </li>
-          <li>
-            <strong>Detailed analysis:</strong> Offers comprehensive insights including love status, 
-            compatibility level, and relationship predictions.
-          </li>
-          <li>
-            <strong>Love tips:</strong> Provides personalized advice based on the compatibility 
-            score to help improve relationships.
-          </li>
-          <li>
-            <strong>Beautiful visualization:</strong> Features colorful progress bars and romantic 
-            design elements to enhance the experience.
-          </li>
-        </ul>
-
-        <h4 className="font-semibold mt-4 mb-1">🔧 How to Use</h4>
-        <ol className="list-decimal list-inside text-gray-700 space-y-2">
-          <li>Enter your full name in the &quot;Your Name&quot; field.</li>
-          <li>Enter your partner full name in the &quot;Partner Name&quot; field.</li>
-          <li>Select your birth date using the date picker.</li>
-          <li>Select your partner birth date using the date picker.</li>
-          <li>
-            Click the <strong>Calculate Love</strong> button to generate your compatibility analysis.
-          </li>
-          <li>
-            Review your love percentage, status, and detailed analysis results.
-          </li>
-          <li>
-            Use the copy button to save or share your love compatibility results.
-          </li>
-        </ol>
-
-        <h4 className="font-semibold mt-4 mb-1">📦 Use Cases</h4>
-        <ul className="list-disc list-inside text-gray-700 space-y-2">
-          <li>
-            <strong>Entertainment:</strong> Fun activity for couples, friends, and social gatherings 
-            to explore relationship compatibility.
-          </li>
-          <li>
-            <strong>Ice breaker:</strong> Great conversation starter for new relationships or 
-            dating scenarios.
-          </li>
-          <li>
-            <strong>Social media:</strong> Share love compatibility results on social platforms 
-            for fun engagement with friends.
-          </li>
-          <li>
-            <strong>Relationship games:</strong> Use in party games, relationship quizzes, or 
-            romantic activities with your partner.
-          </li>
-          <li>
-            <strong>Curiosity:</strong> Satisfy curiosity about name numerology and birth date 
-            compatibility in relationships.
-          </li>
-        </ul>
-
-        <h4 className="font-semibold mt-4 mb-1">📖 Understanding Love Compatibility</h4>
-        <p className="text-gray-700 mb-4">
-          Love compatibility is calculated using multiple factors including name numerology, 
-          birth date analysis, and relationship harmony indicators. The algorithm considers 
-          the numerical values of letters in names, birth date patterns, age compatibility, 
-          and various romantic factors to generate a comprehensive love score. Higher percentages 
-          indicate stronger compatibility factors, while lower scores suggest areas where 
-          couples might need to work harder to build understanding and connection.
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">What Is a Love Calculator?</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          A love calculator is a novelty or entertainment tool that outputs a compatibility percentage between two people based on inputs like their names or birth dates. The idea has been around for a long time in magazines, websites, and apps. The calculation is usually a mix of simple rules: for example adding up the numeric values of letters in the names, or comparing birth dates, and then turning that into a number between 1 and 100. Because the method is arbitrary and not based on psychology or relationship research, the result has no predictive value. It is best enjoyed as a bit of fun, similar to a fortune cookie or a personality quiz in a magazine. This tool is designed in that spirit: quick, harmless, and clearly labelled as for entertainment only.
         </p>
 
-        <h4 className="font-semibold mt-4 mb-1">🌍 Fun and Entertainment</h4>
-        <p className="text-gray-700 mb-4">
-          The Love Calculator is designed primarily for entertainment and should be enjoyed as 
-          a fun activity rather than a serious relationship assessment tool. Real love and 
-          compatibility depend on many factors including communication, shared values, mutual 
-          respect, trust, and emotional connection that cannot be measured by names and birth 
-          dates alone. Use this tool to have fun, start conversations, and add some romance 
-          to your day, but remember that true love is built through understanding and commitment.
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">How This Calculator Works</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          You enter two names (required) and optionally two birth dates. The tool combines the letters of both names into a single string, converts each letter to a number (using character codes), and sums them. That sum is then reduced to a value between 0 and 99 and used as the base of the score. If you enter both birth dates, the calculator adds small bonuses for same day, same month, or close birth years. The length of the names also influences the score slightly. The final number is clamped between 1 and 100 and shown as a percentage. A short label (for example Good compatibility or Opposites attract) is chosen from ranges (e.g. 60–69% gets one message, 70–79% another). All of this runs in your browser; nothing is sent to a server. Changing the spelling of a name or the dates will change the result, which shows that the outcome is just a function of the input, not a real assessment.
         </p>
 
-        <h4 className="font-semibold mt-4 mb-1">⚠️ Important Note</h4>
-        <p className="text-gray-700 mb-4">
-          While the Love Calculator uses interesting algorithms and provides entertaining results, 
-          it should not be used as a basis for making serious relationship decisions. Real 
-          relationship compatibility involves complex emotional, psychological, and social factors 
-          that require genuine interaction and time to understand. The results are meant for 
-          entertainment purposes only and should be enjoyed as a fun way to explore the concept 
-          of romantic compatibility.
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Entertainment Only</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          This love calculator is not a psychological test, a relationship counsellor, or a predictor of romantic success. Real compatibility depends on many factors that cannot be captured by names or birth dates: communication style, values, life goals, trust, conflict resolution, and shared experiences. Serious relationship decisions should not be based on the score shown here. The tool is intended for light entertainment: a laugh with friends, a silly screenshot to share, or a conversation starter. If you or someone you know is going through a difficult relationship, it is better to talk to a trusted person or a professional than to rely on any online calculator. Keeping this in mind helps you use the tool in the right spirit and avoid misunderstanding its purpose.
         </p>
 
-        <h4 className="font-semibold mt-4 mb-1">💡 Final Thoughts</h4>
-        <p className="text-gray-700">
-          The Love Calculator offers a delightful way to explore romantic compatibility through 
-          the lens of names and birth dates. Whether you are curious about your relationship, 
-          looking for a fun activity with friends, or simply want to add some romance to your 
-          day, this tool provides entertaining insights and beautiful visualizations. Remember 
-          that the most important ingredients for lasting love are communication, respect, trust, 
-          and genuine care for each other. Use this calculator to have fun, but build your 
-          relationships on the solid foundation of real connection and understanding.
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Step-by-Step How to Use</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Open the calculator in your browser. Type the first persons name in the Your name field and the second persons name in the Partner name field. You can use first names only or full names; the tool uses the letters you type. If you want the result to take birth dates into account, fill in both date fields. If you leave the dates blank, the calculation uses only the names. Click the calculate button. The result will show a percentage and a short label, plus a bar to visualise the score. You can try different spellings or names to see how the number changes. Use the clear button to reset and try again. There is no limit on how many times you can run it; everything happens in your browser and no data is stored or sent.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Why People Use Love Calculators</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          People use love calculators for fun, curiosity, or as a social activity. Couples sometimes try it together for a laugh. Friends use it to joke about crushes or celebrity names. It can break the ice in a group or give something silly to share on social media. In some cultures, name or date compatibility is a traditional concept; a calculator like this might be used in a light-hearted way alongside that, without being taken as truth. As long as everyone understands that the result is not scientific, it can be a harmless pastime. The key is to treat it as a game, not as guidance for real-life decisions.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Privacy and Data</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          This love calculator runs entirely in your browser. The names and dates you enter are not sent to any server. No results are stored or logged. You do not need an account. The tool works offline once the page has loaded. If you are on a shared or public computer, you may still want to clear the fields or close the tab when you are done, so that the names you entered are not left on screen. Because the calculation is local and no data is transmitted, there is no risk of your inputs being saved or used elsewhere by this tool.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Limitations</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          The calculator does not use psychology, astrology, or relationship research. It does not know anything about personality, values, or behaviour. The same two names will always produce the same result unless you change the input or the optional birth dates. Different tools may use different formulas, so the same names might give different percentages elsewhere. The labels (e.g. Good compatibility) are fixed for each percentage range and are not personalised. The tool is not intended for children in a way that could confuse them about real relationships; it is aimed at casual, fun use by people who understand it is not serious.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Conclusion</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
+          A love calculator is a fun way to get a fake compatibility score from two names and optional birth dates. This free tool runs in your browser, does not send or store your data, and shows a percentage and a short label. Use it for entertainment only: as a game, an ice breaker, or a silly thing to share. Real relationships are built on communication, respect, and commitment, not on a number from a website. Enjoy the calculator in that spirit, and do not use it to make serious decisions about love or compatibility.
         </p>
       </section>
-
     </ToolSection>
   );
 }
