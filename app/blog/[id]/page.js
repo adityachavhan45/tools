@@ -136,7 +136,7 @@ export default function BlogDetailPage() {
 
         {!loading && !error && blog ? (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <article className="lg:col-span-8">
+            <article className="lg:col-span-8 min-w-0">
               <h1 className="text-3xl font-semibold text-black">{blog.title}</h1>
               <p className="text-sm text-gray-600 mt-2">{formatDate(blog.createdAt)}</p>
 
@@ -155,9 +155,8 @@ export default function BlogDetailPage() {
             </article>
 
             <aside className="lg:col-span-4">
-              <div className="border border-gray-300 rounded-xl p-4">
-                <h2 className="text-lg font-semibold text-black mb-4">Latest Blogs</h2>
-
+              <section className="border border-gray-300 rounded-xl p-5">
+                <h2 className="text-xl font-semibold text-black mb-4">Latest Blogs</h2>
                 {latestBlogs.length === 0 ? (
                   <p className="text-sm text-gray-600">No latest blogs found.</p>
                 ) : (
@@ -175,7 +174,7 @@ export default function BlogDetailPage() {
                     ))}
                   </ul>
                 )}
-              </div>
+              </section>
             </aside>
           </div>
         ) : null}

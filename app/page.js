@@ -6,12 +6,10 @@ import {
   buildSoftwareApplicationJsonLd,
   buildItemListJsonLd,
 } from "../lib/seo";
-import Link from "next/link";
-import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import JsonLd from "./components/JsonLd";
 import HomeAllToolsSection from "./components/HomeAllToolsSection";
+import HomeLatestBlogsSection from "./components/HomeLatestBlogsSection";
 import { sections as toolSections } from "./data/tools";
-import { db } from "@/lib/firebase/firebaseConfig";
 
 export const metadata = buildMetadata({
   title: "Convertixy - Free Online Tools for PDF, Images, Text and More",
@@ -83,57 +81,7 @@ export const metadata = buildMetadata({
   ],
 });
 
-function toDateLabel(timestamp) {
-  if (!timestamp) return "";
-  if (typeof timestamp?.toDate === "function") {
-    return timestamp.toDate().toLocaleDateString("en-IN", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    });
-  }
-
-  const seconds = Number(timestamp?.seconds || 0);
-  const nanoseconds = Number(timestamp?.nanoseconds || 0);
-  const millis = seconds * 1000 + Math.floor(nanoseconds / 1_000_000);
-
-  if (!millis) return "";
-
-  return new Date(millis).toLocaleDateString("en-IN", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-}
-
-async function getLatestBlogs() {
-  try {
-    const latestBlogsQuery = query(
-      collection(db, "blogs"),
-      orderBy("createdAt", "desc"),
-      limit(6)
-    );
-
-    const snapshot = await getDocs(latestBlogsQuery);
-    return snapshot.docs.map((blogDoc) => {
-      const data = blogDoc.data();
-      return {
-        id: blogDoc.id,
-        title: data.title || "Untitled Blog",
-        slug: data.slug || blogDoc.id,
-        featureImage: data.featureImage || "",
-        createdAt: data.createdAt || null,
-      };
-    });
-  } catch (error) {
-    console.error("Failed to fetch latest blogs for home page:", error);
-    return [];
-  }
-}
-
-export default async function Home() {
-  const latestBlogs = await getLatestBlogs();
-
+export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
 
@@ -214,41 +162,7 @@ export default async function Home() {
 
         {/* Latest Blogs Section */}
         <div className="max-w-6xl mx-auto mt-8 sm:mt-10 text-left">
-          <div className="flex items-center justify-between gap-4 mb-4">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Latest Blogs</h2>
-            <Link href="/blog" className="text-sm font-medium text-blue-600 hover:underline">
-              View All
-            </Link>
-          </div>
-
-          {latestBlogs.length === 0 ? (
-            <p className="text-sm text-gray-600">No blogs available right now.</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {latestBlogs.map((blog) => (
-                <Link
-                  key={blog.id}
-                  href={`/blog/${blog.slug}`}
-                  className="block rounded-xl border border-gray-200 overflow-hidden bg-white hover:border-blue-300 hover:shadow-sm transition"
-                >
-                  {blog.featureImage ? (
-                    <img
-                      src={blog.featureImage}
-                      alt={blog.title}
-                      className="w-full aspect-video object-cover"
-                    />
-                  ) : (
-                    <div className="w-full aspect-video bg-gray-100" />
-                  )}
-
-                  <div className="p-4">
-                    <h3 className="text-base font-semibold text-gray-900 line-clamp-2">{blog.title}</h3>
-                    <p className="text-xs text-gray-500 mt-2">{toDateLabel(blog.createdAt)}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
+          <HomeLatestBlogsSection />
         </div>
         
         <p className="mt-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
