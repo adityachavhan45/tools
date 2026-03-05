@@ -158,6 +158,7 @@ main input[type="file"]::file-selector-button:hover {
 .tool-content input[type="range"],
 main input[type="range"] {
   -webkit-appearance: none;
+  appearance: none;
   width: 14rem;
   height: 6px;
   background: #e5e7eb; /* gray-200 */
@@ -314,3 +315,11 @@ main textarea[readonly] {
 }
 
 .tool-output code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+.admin-blog-editor .ql-container {
+  min-height: 320px;
+}
+
+.admin-blog-editor .ql-editor {
+  min-height: 320px;
+}

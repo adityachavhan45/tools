@@ -132,13 +132,7 @@ export default function Header() {
               Home
             </Link>
             <Link href="/google-discover-image-optimizer" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium text-blue-300 hover:text-blue-200" onClick={handleNavClick}>
-               Google Discover Image 
-            </Link>
-            <Link href="/adsense-rpm-calculator" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium text-green-300 hover:text-green-200" onClick={handleNavClick}>
-               RPM Calculator
-            </Link>
-            <Link href="/internet-speed-test" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium text-orange-300 hover:text-orange-200" onClick={handleNavClick}>
-               Internet Speed
+              Google Discover Image
             </Link>
             {sections.map((section) => (
               <div key={section.key} className="relative">
@@ -182,6 +176,9 @@ export default function Header() {
             <Link href="/contact" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Contact
             </Link>
+            <Link href="/blog" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+              Blog
+            </Link>
           </div>
         </nav>
       </div>
@@ -200,21 +197,7 @@ export default function Header() {
               className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium text-blue-300 hover:text-blue-200"
               onClick={handleNavClick}
             >
-              Google Discover Image 
-            </Link>
-            <Link
-              href="/adsense-rpm-calculator"
-              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium text-green-300 hover:text-green-200"
-              onClick={handleNavClick}
-            >
-               RPM Calculator
-            </Link>
-            <Link
-              href="/internet-speed-test"
-              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium text-orange-300 hover:text-orange-200"
-              onClick={handleNavClick}
-            >
-               Internet Speed
+              Google Discover Image
             </Link>
             {sections.map((section) => (
               <div
@@ -259,10 +242,16 @@ export default function Header() {
             >
               Contact
             </Link>
+            <Link
+              href="/blog"
+              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
+              onClick={handleNavClick}
+            >
+              Blog
+            </Link>
           </nav>
         </div>
       )}
     </header>
   );
 }
-

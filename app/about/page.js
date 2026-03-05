@@ -414,7 +414,7 @@ export default function AboutPage() {
                 </p>
 
                 <a
-                  href="/privacy-policy"
+                    href="/privacy"
                   className="inline-flex items-center px-6 py-3 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-200"
                 >
                   Read Our Privacy Policy

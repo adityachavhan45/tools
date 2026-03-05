@@ -131,7 +131,7 @@ export default function TermsPage() {
             <p>
               If you have questions regarding these Terms, please contact us Through 
               <a
-                href="/contactm"
+                href="/contact"
                 className="font-medium text-indigo-600 hover:text-indigo-700 hover:underline transition"
               >
                   &nbsp;Contact page 

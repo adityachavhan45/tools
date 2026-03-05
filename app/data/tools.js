@@ -15,7 +15,7 @@ export const sections = [
       { href: "/images-to-pdf", label: "Images to PDF", desc: "Combine JPG/PNG images into a single PDF." },
       { href: "/image-cropper", label: "Image Cropper", desc: "Crop images with aspect ratio options." },
       { href: "/jpg-to-png", label: "JPG to PNG", desc: "Convert JPG images to PNG format." },
-      { href: "/google-discover-optimizer", label: "Google Discover Image Optimizer", desc: "Optimize images for Google Discover (1200x700px, enhanced contrast/brightness)." },
+      { href: "/google-discover-image-optimizer", label: "Google Discover Image Optimizer", desc: "Optimize images for Google Discover (1200x700px, enhanced contrast/brightness)." },
     ],
   },
   {
@@ -41,7 +41,7 @@ export const sections = [
       { href: "/case-converter", label: "Case Converter", desc: "Uppercase, lowercase, title and sentence case." },
       { href: "/slug-generator", label: "Slug Generator", desc: "Generate URL-friendly slugs from text." },
       { href: "/json-formatter", label: "JSON Formatter", desc: "Format and validate JSON." },
-      { href: "/base64", label: "Base64 Encode/Decode", desc: "Encode or decode Base64 text/files." },
+      { href: "/text-to-base64", label: "Base64 Encode/Decode", desc: "Encode or decode Base64 text/files." },
       { href: "/text-to-speech", label: "Text to Speech", desc: "Convert text to speech online." },
       { href: "/html-formatter", label: "HTML Formatter", desc: "Format HTML code online." },
       { href: "/markdown-to-html", label: "Markdown to HTML", desc: "Convert Markdown to HTML online." },
@@ -124,4 +124,5 @@ export const sections = [
     ],
   },
 ];
+
 

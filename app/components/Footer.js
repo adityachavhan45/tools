@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 sm:mt-20 bg-gradient-to-b from-gray-900 to-black text-gray-300 border-t border-gray-800">
+    <footer className="bg-gradient-to-b from-gray-900 to-black text-gray-300 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-12">
           {/* Brand Section */}
@@ -29,33 +29,26 @@ export default function Footer() {
               <li><Link href="/qr-code" className="text-gray-400 hover:text-white transition-colors duration-200">QR Code Generator</Link></li>
             </ul>
           </div>
-          
-          {/* Categories */}
+
+          {/* Footer Links */}
           <div>
-            <h4 className="text-base sm:text-lg font-semibold text-white mb-4">Categories</h4>
+            <h4 className="text-base sm:text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm sm:text-base">
-              <li><Link href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">PDF Tools</Link></li>
-              <li><Link href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">Image Tools</Link></li>
-              <li><Link href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">Text Tools</Link></li>
-              <li><Link href="/#tools" className="text-gray-400 hover:text-white transition-colors duration-200">SEO Tools</Link></li>
+              <li><Link href="/privacy" className="text-gray-400 hover:text-white transition-colors duration-200">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-gray-400 hover:text-white transition-colors duration-200">Terms of Service</Link></li>
+              <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors duration-200">About</Link></li>
+              <li><Link href="/documentation" className="text-gray-400 hover:text-white transition-colors duration-200">Documentation</Link></li>
+              <li><Link href="/disclaimer" className="text-gray-400 hover:text-white transition-colors duration-200">Disclaimer</Link></li>
             </ul>
           </div>
         </div>
         
         {/* Bottom Section */}
         <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-800">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex justify-center items-center">
             <p className="text-xs sm:text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} Convertixy. All rights reserved.
+              &copy; {new Date().getFullYear()} Convertixy. All rights reserved. Designed and Developed by Aditya Chavhan ❤️
             </p>
-            <div className="flex flex-wrap gap-6 text-xs sm:text-sm">
-              <Link href="/privacy" className="text-gray-500 hover:text-white transition-colors duration-200">Privacy Policy</Link>
-              <Link href="/terms" className="text-gray-500 hover:text-white transition-colors duration-200">Terms of Service</Link>
-              <Link href="/contact" className="text-gray-500 hover:text-white transition-colors duration-200">Contact</Link>
-              <Link href="/about" className="text-gray-500 hover:text-white transition-colors duration-200">About</Link>
-              <Link href="/documentation" className="text-gray-500 hover:text-white transition-colors duration-200">Documentation</Link>
-              <Link href="/disclaimer" className="text-gray-500 hover:text-white transition-colors duration-200">Disclaimer</Link>
-            </div>
           </div>
         </div>
       </div>

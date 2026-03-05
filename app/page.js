@@ -6,8 +6,12 @@ import {
   buildSoftwareApplicationJsonLd,
   buildItemListJsonLd,
 } from "../lib/seo";
+import Link from "next/link";
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import JsonLd from "./components/JsonLd";
+import HomeAllToolsSection from "./components/HomeAllToolsSection";
 import { sections as toolSections } from "./data/tools";
+import { db } from "@/lib/firebase/firebaseConfig";
 
 export const metadata = buildMetadata({
   title: "Convertixy - Free Online Tools for PDF, Images, Text and More",
@@ -79,7 +83,57 @@ export const metadata = buildMetadata({
   ],
 });
 
-export default function Home() {
+function toDateLabel(timestamp) {
+  if (!timestamp) return "";
+  if (typeof timestamp?.toDate === "function") {
+    return timestamp.toDate().toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  }
+
+  const seconds = Number(timestamp?.seconds || 0);
+  const nanoseconds = Number(timestamp?.nanoseconds || 0);
+  const millis = seconds * 1000 + Math.floor(nanoseconds / 1_000_000);
+
+  if (!millis) return "";
+
+  return new Date(millis).toLocaleDateString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+async function getLatestBlogs() {
+  try {
+    const latestBlogsQuery = query(
+      collection(db, "blogs"),
+      orderBy("createdAt", "desc"),
+      limit(6)
+    );
+
+    const snapshot = await getDocs(latestBlogsQuery);
+    return snapshot.docs.map((blogDoc) => {
+      const data = blogDoc.data();
+      return {
+        id: blogDoc.id,
+        title: data.title || "Untitled Blog",
+        slug: data.slug || blogDoc.id,
+        featureImage: data.featureImage || "",
+        createdAt: data.createdAt || null,
+      };
+    });
+  } catch (error) {
+    console.error("Failed to fetch latest blogs for home page:", error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const latestBlogs = await getLatestBlogs();
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
 
@@ -157,6 +211,45 @@ export default function Home() {
           <br />
           <span className="text-gray-700">for Your Daily Tasks</span>
         </h1>
+
+        {/* Latest Blogs Section */}
+        <div className="max-w-6xl mx-auto mt-8 sm:mt-10 text-left">
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Latest Blogs</h2>
+            <Link href="/blog" className="text-sm font-medium text-blue-600 hover:underline">
+              View All
+            </Link>
+          </div>
+
+          {latestBlogs.length === 0 ? (
+            <p className="text-sm text-gray-600">No blogs available right now.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {latestBlogs.map((blog) => (
+                <Link
+                  key={blog.id}
+                  href={`/blog/${blog.slug}`}
+                  className="block rounded-xl border border-gray-200 overflow-hidden bg-white hover:border-blue-300 hover:shadow-sm transition"
+                >
+                  {blog.featureImage ? (
+                    <img
+                      src={blog.featureImage}
+                      alt={blog.title}
+                      className="w-full aspect-video object-cover"
+                    />
+                  ) : (
+                    <div className="w-full aspect-video bg-gray-100" />
+                  )}
+
+                  <div className="p-4">
+                    <h3 className="text-base font-semibold text-gray-900 line-clamp-2">{blog.title}</h3>
+                    <p className="text-xs text-gray-500 mt-2">{toDateLabel(blog.createdAt)}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
         
         <p className="mt-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Convertixy provides a comprehensive collection of online utilities to help you work more efficiently. Our tools cover PDF processing, image optimization, text editing, calculations, and file conversions.
@@ -324,456 +417,7 @@ export default function Home() {
       </section>
 
       {/* All Tools */}
-      <section id="all-tools" className="max-w-7xl mx-auto py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              All Available Tools
-            </span>
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Browse our complete collection of 65+ professional tools
-          </p>
-        </div>
-
-        <div className="space-y-12">
-          {toolSections.map((section, idx) => (
-            <div key={idx}>
-              {/* <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <span className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center text-white text-xl">
-                  {section.icon }
-                </span>
-                {section.title}
-              </h3> */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {section.links.map((tool) => {
-                  // Icon mapping for different tools
-                  const getToolIcon = (href) => {
-                    const iconMap = {
-                      // PDF Tools
-                      '/pdf-merge': '📄',
-                      '/pdf-split': '✂️',
-                      '/pdf-compress': '🗜️',
-                      '/pdf-rotate': '🔄',
-                      '/pdf-to-word': '📝',
-                      '/pdf-password-remover': '🔓',
-                      
-                      // Image Tools
-                      '/image-compressor': '🖼️',
-                      '/image-resizer': '📐',
-                      '/image-cropper': '✂️',
-                      '/png-to-jpg': '🔄',
-                      '/jpg-to-png': '🔄',
-                      '/jpg-to-webp': '🌐',
-                      '/webp-to-png': '🌐',
-                      '/svg-to-png': '🎨',
-                      '/png-to-ico': '⭐',
-                      '/images-to-pdf': '📑',
-                      '/pdf-to-image': '🖼️',
-                      
-                      // Text Tools
-                      '/word-counter': '📝',
-                      '/character-counter': '🔤',
-                      '/case-converter': '🔡',
-                      '/text-to-speech': '🔊',
-                      '/slug-generator': '🔗',
-                      '/lorem-ipsum': '📄',
-                      '/text-diff': '📊',
-                      '/json-formatter': '{ }',
-                      '/html-formatter': '< >',
-                      '/markdown-to-html': '📝',
-                      '/binary-to-text': '0️⃣1️⃣',
-                      
-                      // SEO Tools
-                      '/meta-tag-generator': '🏷️',
-                      '/url-encoder': '🔗',
-                      '/password-generator': '🔐',
-                      '/uuid-generator': '🆔',
-                      '/qr-code-generator': '📱',
-                      '/base64-encoder': '🔐',
-                      '/hash-generator': '#️⃣',
-                      '/keyword-density': '🔍',
-                      '/password-strength': '💪',
-                      
-                      // Calculators
-                      '/bmi-calculator': '⚖️',
-                      '/age-calculator': '📅',
-                      '/percentage-calculator': '💯',
-                      '/loan-calculator': '💰',
-                      '/tip-calculator': '🧾',
-                      '/compound-interest': '📈',
-                      
-                      // Converters
-                      '/temperature-converter': '🌡️',
-                      '/unit-converter': '📏',
-                      '/time-zone-converter': '🌍',
-                      '/csv-to-json': '📊',
-                      '/morse-code': '📡',
-                      
-                      // Color Tools
-                      '/color-picker': '🎨',
-                      '/color-palette': '🎨',
-                      
-                      // Other
-                      '/unix-timestamp': '⏰',
-                      '/random-number': '🎲',
-                    };
-                    return iconMap[href] || '🔧';
-                  };
-
-                  const icon = getToolIcon(tool.href);
-                  
-                  // Gradient mapping for variety
-                  const gradients = [
-                    'from-blue-500 to-cyan-500',
-                    'from-purple-500 to-pink-500',
-                    'from-green-500 to-emerald-500',
-                    'from-orange-500 to-red-500',
-                    'from-indigo-500 to-blue-500',
-                    'from-pink-500 to-rose-500',
-                    'from-yellow-500 to-orange-500',
-                    'from-cyan-500 to-blue-500',
-                  ];
-                  const gradient = gradients[Math.floor(Math.random() * gradients.length)];
-
-                  return (
-                    <a
-                      key={tool.href}
-                      href={tool.href}
-                      className="group relative block p-5 bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200"
-                    >
-                      {/* Gradient Background on Hover */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-xl`}></div>
-                      
-                      {/* Icon */}
-                      <div className="relative mb-3">
-                        <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${gradient} text-white text-xl shadow-md group-hover:scale-110 transition-transform`}>
-                          {icon}
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="relative">
-                        <h4 className="text-base font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                          {tool.label}
-                        </h4>
-                        {tool.desc && (
-                          <p className="text-gray-600 text-xs mt-2 leading-relaxed">
-                            {tool.desc}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Arrow */}
-                      <div className="relative mt-3 flex items-center text-blue-600 text-xs font-medium">
-                        <span className="group-hover:mr-1 transition-all">Use Tool</span>
-                        <svg className="w-3 h-3 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Comprehensive Information Section */}
-      <section id="about" className="bg-gradient-to-b from-white to-gray-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                About Convertixy
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Your Complete Online Toolkit for Professional Work
-            </p>
-          </div>
-          
-          <div className="space-y-8 text-gray-700 leading-relaxed mb-16">
-            <div className="bg-white rounded-2xl p-8 shadow-md border border-gray-100">
-              <p className="text-base sm:text-lg text-justify">
-                Convertixy is a comprehensive platform providing free access to over 65 professional-grade online tools designed to streamline your digital workflow. Whether you are a content creator, web developer, digital marketer, student, or business professional, our suite of utilities offers practical solutions for everyday tasks without the need for expensive software subscriptions or complicated installations.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-md border border-gray-100">
-              <p className="text-base sm:text-lg text-justify">
-                In todays digital landscape, efficiency and productivity are paramount. Our platform was created with the understanding that many professionals and individuals require quick access to reliable tools for file manipulation, data conversion, and content optimization. Rather than downloading multiple applications or paying for various software packages, Convertixy consolidates essential utilities into one accessible, browser-based platform that works seamlessly across all devices.
-              </p>
-            </div>
-          </div>
-
-          {/* Privacy Section with Icon */}
-          <div className="mb-16">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg">
-                🔒
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900">
-                Privacy and Data Security
-              </h3>
-            </div>
-            
-            <div className="space-y-6">
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-100">
-                <p className="text-base sm:text-lg text-justify text-gray-700">
-                  Understanding user concerns about data privacy in the digital age, Convertixy implements a client-side processing architecture. This technical approach means that when you upload a PDF document to merge or an image to compress, the file processing occurs entirely within your web browser using JavaScript. The file data never travels across the internet to our servers or any third-party services.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
-                  <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
-                      ✓
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Complete Control</h4>
-                      <p className="text-sm text-gray-600 text-justify">Your files remain under your complete control at all times during processing.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
-                  <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                      ⚡
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Faster Processing</h4>
-                      <p className="text-sm text-gray-600 text-justify">No upload or download delays since everything happens locally.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
-                  <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
-                      🛡️
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Confidential Files Safe</h4>
-                      <p className="text-sm text-gray-600 text-justify">Process sensitive documents without concern about data exposure.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
-                  <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
-                      🚫
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">No Tracking</h4>
-                      <p className="text-sm text-gray-600 text-justify">We dont track, log, or monitor what files you process.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-md border border-gray-100">
-                <p className="text-base sm:text-lg text-justify text-gray-700">
-                  The platform does not implement any tracking cookies, analytics that monitor file contents, or logging systems that record what documents you process. Standard web server logs may record basic technical information like IP addresses and browser types for security purposes, but these logs do not capture or store any information about the files you work with or the content you process through our tools.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Technical Implementation Section */}
-          <div className="mb-16">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg">
-                ⚙️
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900">
-                Technical Implementation
-              </h3>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-md border border-gray-100 mb-6">
-              <p className="text-base sm:text-lg text-justify text-gray-700">
-                Convertixy utilizes modern web technologies including HTML5, CSS3, and advanced JavaScript libraries to deliver functionality that previously required desktop software. The File API enables secure file handling, Canvas API powers image manipulation, and various specialized libraries handle format conversions and data processing. These technologies are supported by all contemporary web browsers, ensuring consistent functionality across different platforms.
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-              {[
-                { name: "Chrome", version: "90+", color: "yellow" },
-                { name: "Firefox", version: "88+", color: "orange" },
-                { name: "Safari", version: "14+", color: "blue" },
-                { name: "Edge", version: "90+", color: "cyan" },
-                { name: "Opera", version: "76+", color: "red" }
-              ].map((browser) => (
-                <div key={browser.name} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 text-center border border-gray-200 hover:shadow-md transition-shadow">
-                  <div className="font-semibold text-gray-900">{browser.name}</div>
-                  <div className="text-sm text-gray-600 mt-1">{browser.version}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Tool Categories Section */}
-          <div className="mb-16">
-            <h3 className="text-2xl sm:text-3xl font-semibold mb-8 text-gray-900">
-              Comprehensive Tool Categories
-            </h3>
-
-            <div className="bg-gray-50 rounded-lg p-6 mb-6">
-              <h4 className="text-xl font-semibold mb-3 text-gray-900">PDF Processing Tools</h4>
-              <p className="text-base text-justify mb-3">
-                Our PDF toolkit includes powerful utilities for merging multiple documents into single files, splitting large PDFs into separate pages, compressing file sizes without quality loss, rotating pages to correct orientation, removing password protection from secured documents, and converting PDFs to editable Word format. These tools are essential for anyone working with digital documents, from students organizing research materials to professionals preparing business presentations.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-6 mb-6">
-              <h4 className="text-xl font-semibold mb-3 text-gray-900">Image Optimization and Conversion</h4>
-              <p className="text-base text-justify mb-3">
-                The image processing suite offers comprehensive solutions for photographers, designers, and content creators. Compress images to reduce file sizes for faster website loading, resize photos to specific dimensions for social media platforms, crop images to focus on important elements, and convert between formats including PNG to JPG, JPG to WebP, SVG to PNG, WebP to PNG, and PNG to ICO. These tools maintain image quality while optimizing for web performance and storage efficiency.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-6 mb-6">
-              <h4 className="text-xl font-semibold mb-3 text-gray-900">Text Processing and Formatting</h4>
-              <p className="text-base text-justify mb-3">
-                Writers, editors, and developers benefit from our text utilities that include word and character counting with detailed statistics, case conversion for changing text between uppercase, lowercase, and title case, slug generation for creating URL-friendly strings, JSON formatting and validation for developers, HTML formatting for code readability, Markdown to HTML conversion, text-to-speech functionality, binary to text conversion, and text difference checking for comparing document versions.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-6 mb-6">
-              <h4 className="text-xl font-semibold mb-3 text-gray-900">SEO and Web Development Utilities</h4>
-              <p className="text-base text-justify mb-3">
-                Digital marketers and web developers can leverage our SEO tools for generating optimized meta tags with proper title, description, and keyword formatting, encoding and decoding URLs for proper web formatting, creating secure random passwords with customizable complexity, generating UUID identifiers for database records, encoding and decoding Base64 data, checking keyword density for content optimization, analyzing password strength, and generating QR codes for marketing campaigns and product information.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-6 mb-6">
-              <h4 className="text-xl font-semibold mb-3 text-gray-900">Calculators for Daily Use</h4>
-              <p className="text-base text-justify mb-3">
-                Our calculator collection provides practical solutions for health, finance, and everyday calculations. Calculate BMI (Body Mass Index) to track health metrics, determine exact age in years, months, and days, compute percentages for various applications, calculate loan payments with interest rates and terms, determine appropriate tip amounts for dining, calculate compound interest for investment planning, and perform unit conversions for temperature, length, weight, and volume across different measurement systems.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-6 mb-6">
-              <h4 className="text-xl font-semibold mb-3 text-gray-900">File Converters and Generators</h4>
-              <p className="text-base text-justify mb-3">
-                Convert data between formats effortlessly with tools for CSV to JSON conversion for data processing, Morse code translation for educational purposes, temperature conversion between Celsius, Fahrenheit, and Kelvin, time zone conversion for international scheduling, random number generation for statistical sampling, Lorem Ipsum text generation for design mockups, color palette generation for design projects, and hash generation for data verification and security applications.
-              </p>
-            </div>
-          </div>
-
-          {/* File Formats Section */}
-          <div className="mb-16">
-            <h3 className="text-2xl sm:text-3xl font-semibold mb-6 text-gray-900">
-              Understanding File Formats and Optimization
-            </h3>
-
-            <p className="text-base sm:text-lg text-justify">
-              Different file formats serve specific purposes in digital workflows. PDF (Portable Document Format) maintains consistent formatting across devices and platforms, making it ideal for official documents, forms, and publications. However, PDFs can become large when containing multiple pages or high-resolution images, which is where compression tools become valuable for reducing file sizes while preserving readability.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              Image formats each have distinct characteristics. JPEG files use lossy compression suitable for photographs with gradual color transitions. PNG files support transparency and use lossless compression, ideal for graphics, logos, and images requiring sharp edges. WebP is a modern format offering superior compression with quality comparable to JPEG while supporting transparency like PNG. SVG represents vector graphics that scale infinitely without quality loss, perfect for icons and illustrations.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              Understanding when to convert between formats helps optimize content for specific uses. Converting PNG to JPEG reduces file size for photographs where transparency is unnecessary. Converting images to WebP decreases page load times for websites. Converting PDFs to Word enables editing of document content. Each conversion serves a practical purpose in content creation and distribution workflows.
-            </p>
-          </div>
-
-          {/* Best Practices Section */}
-          <div className="mb-16">
-            <h3 className="text-2xl sm:text-3xl font-semibold mb-6 text-gray-900">
-              Best Practices for Using Online Tools
-            </h3>
-
-            <p className="text-base sm:text-lg text-justify">
-              To achieve optimal results when using online tools, consider file size limitations based on your browsers processing capacity. While Convertixy handles most standard files efficiently, extremely large files (over 100MB) may cause slower processing or browser memory issues. For very large projects, consider breaking files into smaller segments or using tools iteratively.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              When compressing images or PDFs, preview results to ensure quality meets your requirements. Compression involves trade-offs between file size and quality. Higher compression produces smaller files but may introduce visible artifacts or reduce clarity. Finding the right balance depends on how the file will be used - web display typically allows more compression than print materials.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              For text processing tasks, save your work frequently by copying results to a document editor or text file. Browser-based tools do not automatically save your work, and closing the tab or refreshing the page will clear any unsaved content. This practice prevents data loss and allows you to maintain versions of your work throughout the editing process.
-            </p>
-          </div>
-
-          {/* Why Choose Section */}
-          <div className="mb-16">
-            <h3 className="text-2xl sm:text-3xl font-semibold mb-6 text-gray-900">
-              Why Choose Convertixy for Your Online Tool Needs
-            </h3>
-
-            <p className="text-base sm:text-lg text-justify">
-              Convertixy operates on principles of accessibility and user convenience. The platform does not require user accounts, which eliminates concerns about password management, email spam, or data breaches associated with account databases. This approach respects user privacy and removes barriers to accessing tools when needed.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              The responsive design philosophy ensures that interface elements adapt appropriately to different screen sizes. Navigation menus collapse into mobile-friendly formats on smartphones. Form controls and buttons maintain adequate size for touch interaction. Text remains legible without requiring zoom gestures. These design considerations create consistent usability regardless of device type.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              Performance optimization focuses on efficient code execution and minimal resource usage. Tools load quickly even on slower internet connections. Processing algorithms are optimized to complete operations in reasonable timeframes. The interface provides visual feedback during processing so users understand when operations are in progress. These technical considerations contribute to positive user experience.
-            </p>
-          </div>
-
-          {/* Use Cases Section */}
-          <div className="mb-16">
-            <h3 className="text-2xl sm:text-3xl font-semibold mb-6 text-gray-900">
-              Common Use Cases and Applications
-            </h3>
-
-            <p className="text-base sm:text-lg text-justify">
-              Educational institutions and students utilize document processing tools for various academic tasks. Combining multiple research sources into single PDF documents helps organize reference materials. Image compression enables sharing visual content within email attachment limits. Word counting ensures assignments meet specified length requirements. Text formatting tools help prepare citations and bibliographies according to style guidelines.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              Business environments benefit from efficient document handling capabilities. Contract documents often need splitting into individual sections for different departments. Presentation images require optimization for email distribution or web display. Financial calculations assist with budgeting, loan analysis, and percentage computations. Format conversions enable compatibility across different software systems and platforms.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              Web development and design professionals utilize various technical tools in their workflows. Image optimization reduces website loading times and bandwidth consumption. Code formatting improves readability of HTML, JSON, and other markup languages. Color tools assist with design consistency and palette creation. UUID generation provides unique identifiers for database records and API implementations.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              Content creation activities involve multiple tool types. Writers use word counters and text analyzers to meet publication requirements. Editors employ text comparison tools to track changes between document versions. Digital marketers optimize images for social media and generate meta tags for search engine optimization. Photographers convert and resize images for different distribution channels and display contexts.
-            </p>
-          </div>
-
-          {/* Platform Development Section */}
-          <div className="mb-16">
-            <h3 className="text-2xl sm:text-3xl font-semibold mb-6 text-gray-900">
-              Platform Development and Maintenance
-            </h3>
-
-            <p className="text-base sm:text-lg text-justify">
-              Convertixy maintains code quality through regular testing and updates. Browser compatibility testing occurs across multiple platforms and versions. Security reviews examine code for potential vulnerabilities. Performance profiling identifies optimization opportunities. User feedback helps identify issues and feature requests that guide development priorities.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              The technical architecture utilizes established JavaScript libraries and frameworks that are actively maintained by their respective developer communities. These libraries undergo regular updates to address security issues, add functionality, and improve performance. Convertixy incorporates these updates to maintain current standards and capabilities.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              Tool accuracy and reliability receive ongoing attention. PDF processing tools handle various document structures and specifications. Image processors work with different color spaces and bit depths. Text tools accommodate various character encodings and formatting options. Calculator implementations use appropriate mathematical precision for their specific purposes.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              Documentation and user guidance help individuals understand tool capabilities and limitations. Tool descriptions explain what each utility does and what file formats it supports. Error messages provide specific information about problems when they occur. Interface design uses familiar patterns and conventions that align with user expectations from other web applications.
-            </p>
-
-            <p className="text-base sm:text-lg text-justify">
-              The platform continues evolving based on technological advances and user requirements. New tools are evaluated for addition based on usefulness and feasibility. Existing tools receive improvements to expand capabilities or enhance usability. The goal remains providing practical utilities that serve genuine needs without unnecessary complexity or barriers to access.
-            </p>
-          </div>
-        </div>
-      </section>
+      <HomeAllToolsSection toolSections={toolSections} />
 
       {/* Benefits Section */}
       <section className="relative bg-gradient-to-b from-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -980,4 +624,4 @@ export default function Home() {
 
     </main>
   );
-}
+}                                                            
