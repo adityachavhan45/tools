@@ -8,6 +8,13 @@
     <priority>1.0</priority>
   </url>
 
+<url>
+    <loc>https://convertixy.com/blog</loc>
+     <lastmod>2026-02-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
   <url>
     <loc>https://convertixy.com/adsense-rpm-calculator</loc>
     <lastmod>2026-02-18</lastmod>
