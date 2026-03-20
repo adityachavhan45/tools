@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { siteConstants } from "../lib/seo";
 import GoogleAnalytics from "./components/googleanalyatics";
+import Script from "next/script";
 
 export const metadata = (() => {
   const { SITE_NAME, SITE_URL, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SUPPORTED_LANGUAGES } = siteConstants();
@@ -115,8 +116,12 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3433372780420104"
-     crossorigin="anonymous"></script>
+        <Script
+          id="adsense-script"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3433372780420104"
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
       </head>
       
       <body>

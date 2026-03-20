@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "@/lib/firebase/firebaseConfig";
 
 function toMillis(timestamp) {
@@ -96,10 +96,10 @@ export default function BlogDetailClient({ slugOrId }) {
     setLoading(true);
     setError("");
 
-    const latestQuery = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
-    const unsubscribeLatest = onSnapshot(
-      latestQuery,
-      (snapshot) => {
+    const fetchBlogs = async () => {
+      try {
+        const latestQuery = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
+        const snapshot = await getDocs(latestQuery);
         const allItems = snapshot.docs.map((latestDoc) => {
           const latestData = latestDoc.data();
           return {
@@ -171,17 +171,14 @@ export default function BlogDetailClient({ slugOrId }) {
 
         const latestItems = allItems.filter((item) => item.id !== currentBlog.id).slice(0, 6);
         setLatestBlogs(latestItems);
-      },
-      () => {
+      } catch {
         setError("Blog load nahi hua.");
         setLoading(false);
         setLatestBlogs([]);
       }
-    );
-
-    return () => {
-      unsubscribeLatest();
     };
+
+    fetchBlogs();
   }, [resolvedParam, resolvedParamKey]);
 
   useEffect(() => {
@@ -216,6 +213,8 @@ export default function BlogDetailClient({ slugOrId }) {
                 <img
                   src={blog.featureImage}
                   alt={blog.title}
+                  width="1280"
+                  height="720"
                   className="w-full mt-6 rounded-xl border border-gray-300"
                 />
               ) : null}

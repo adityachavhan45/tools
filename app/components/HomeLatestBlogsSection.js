@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { collection, limit, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { db } from "@/lib/firebase/firebaseConfig";
 
 function toDateLabel(timestamp) {
@@ -32,15 +32,14 @@ export default function HomeLatestBlogsSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const latestBlogsQuery = query(
-      collection(db, "blogs"),
-      orderBy("createdAt", "desc"),
-      limit(6)
-    );
-
-    const unsubscribe = onSnapshot(
-      latestBlogsQuery,
-      (snapshot) => {
+    const fetchLatestBlogs = async () => {
+      try {
+        const latestBlogsQuery = query(
+          collection(db, "blogs"),
+          orderBy("createdAt", "desc"),
+          limit(6)
+        );
+        const snapshot = await getDocs(latestBlogsQuery);
         const items = snapshot.docs.map((blogDoc) => {
           const data = blogDoc.data();
           return {
@@ -54,14 +53,13 @@ export default function HomeLatestBlogsSection() {
 
         setLatestBlogs(items);
         setLoading(false);
-      },
-      () => {
+      } catch {
         setLatestBlogs([]);
         setLoading(false);
       }
-    );
+    };
 
-    return () => unsubscribe();
+    fetchLatestBlogs();
   }, []);
 
   if (loading) {
@@ -91,6 +89,8 @@ export default function HomeLatestBlogsSection() {
                 <img
                   src={blog.featureImage}
                   alt={blog.title}
+                  width="1280"
+                  height="720"
                   className="w-full aspect-video object-cover"
                 />
               ) : (
@@ -108,4 +108,3 @@ export default function HomeLatestBlogsSection() {
     </>
   );
 }
-

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "@/lib/firebase/firebaseConfig";
 
 function toMillis(timestamp) {
@@ -49,10 +49,10 @@ export default function BlogListPage() {
     setLoading(true);
     setError("");
 
-    const blogQuery = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
-    const unsubscribe = onSnapshot(
-      blogQuery,
-      (snapshot) => {
+    const fetchBlogs = async () => {
+      try {
+        const blogQuery = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
+        const snapshot = await getDocs(blogQuery);
         const blogItems = snapshot.docs.map((blogDoc) => {
           const data = blogDoc.data();
           return {
@@ -66,14 +66,13 @@ export default function BlogListPage() {
 
         setBlogs(blogItems);
         setLoading(false);
-      },
-      () => {
+      } catch {
         setError("Blogs load nahi hue.");
         setLoading(false);
       }
-    );
+    };
 
-    return () => unsubscribe();
+    fetchBlogs();
   }, []);
 
   const hasBlogs = useMemo(() => blogs.length > 0, [blogs]);
@@ -100,6 +99,8 @@ export default function BlogListPage() {
                   <img
                     src={blog.featureImage}
                     alt={blog.title}
+                    width="1280"
+                    height="720"
                     className="w-full aspect-video object-cover"
                   />
                 ) : null}
