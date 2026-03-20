@@ -20,10 +20,30 @@ function formatDate(timestamp) {
   return new Date(millis).toLocaleString();
 }
 
+function upsertMetaTag(attribute, key, content) {
+  if (!content) return;
+
+  let tag = document.head.querySelector(`meta[${attribute}="${key}"]`);
+
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute(attribute, key);
+    document.head.appendChild(tag);
+  }
+
+  tag.setAttribute("content", content);
+}
+
 export default function BlogListPage() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    document.title = "Blogs";
+    upsertMetaTag("name", "description", "Read the latest blogs on Convertixy.");
+    upsertMetaTag("name", "keywords", "blogs, convertixy blog, latest blog posts");
+  }, []);
 
   useEffect(() => {
     setLoading(true);

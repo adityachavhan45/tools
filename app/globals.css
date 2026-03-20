@@ -324,6 +324,24 @@ main textarea[readonly] {
   min-height: 320px;
 }
 
+/* Ensure Quill list bullets/numbers stay visible in admin editor */
+.admin-blog-editor .ql-editor li[data-list] {
+  display: list-item;
+  margin-left: 1.25rem;
+}
+
+.admin-blog-editor .ql-editor li[data-list="bullet"] {
+  list-style-type: disc;
+}
+
+.admin-blog-editor .ql-editor li[data-list="ordered"] {
+  list-style-type: decimal;
+}
+
+.admin-blog-editor .ql-editor li > .ql-ui {
+  display: none;
+}
+
 /* Blog detail content styles (Quill output) */
 .blog-content {
   line-height: 1.75;
@@ -373,6 +391,24 @@ main textarea[readonly] {
 
 .blog-content li {
   margin: 0.35rem 0;
+}
+
+/* Support Quill-rendered list HTML on blog detail */
+.blog-content li[data-list] {
+  display: list-item;
+  margin-left: 1.25rem;
+}
+
+.blog-content li[data-list="bullet"] {
+  list-style-type: disc;
+}
+
+.blog-content li[data-list="ordered"] {
+  list-style-type: decimal;
+}
+
+.blog-content li > .ql-ui {
+  display: none;
 }
 
 .blog-content blockquote {
