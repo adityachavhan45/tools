@@ -91,7 +91,7 @@ export default function HomeLatestBlogsSection() {
                   alt={blog.title}
                   width="1280"
                   height="720"
-                  className="w-full aspect-video object-cover"
+                  className="w-full h-auto"
                 />
               ) : (
                 <div className="w-full aspect-video bg-gray-100" />
