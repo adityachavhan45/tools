@@ -38,6 +38,9 @@ const sections = [
     dropdownWidth: "w-[300px]",
     links: [
       { href: "/meta-tag-generator", label: "Meta Tag Generator" },
+      { href: "/schema-markup-generator", label: "Schema Markup Generator" },
+      { href: "/robots-txt-generator", label: "Robots.txt Generator" },
+      { href: "/serp-snippet-preview", label: "SERP Snippet Preview" },
       { href: "/url-encoder", label: "URL Encoder/Decoder" },
       { href: "/uuid-generator", label: "UUID Generator" },
       { href: "/password-generator", label: "Password Generator" },
@@ -51,6 +54,10 @@ const sections = [
       { href: "/color-picker", label: "Color Picker" },
       { href: "/qr-code", label: "QR Code" },
       { href: "/unix-time", label: "Unix Time" },
+      { href: "/json-to-csv", label: "JSON to CSV" },
+      { href: "/regex-tester", label: "Regex Tester" },
+      { href: "/sip-calculator", label: "SIP Calculator" },
+      { href: "/gst-calculator", label: "GST Calculator" },
     ],
   },
 ];
