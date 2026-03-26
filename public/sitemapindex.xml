@@ -3,19 +3,19 @@
   <!-- Main sitemap -->
   <sitemap>
     <loc>https://convertixy.com/sitemap.xml</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-03-26</lastmod>
   </sitemap>
   
   <!-- Tools sitemap -->
   <sitemap>
-    <loc>https://convertixy.com/sitemap-tools.xml</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://convertixy.com/sitemaptools.xml</loc>
+    <lastmod>2026-03-26</lastmod>
   </sitemap>
   
   <!-- Images sitemap -->
   <sitemap>
-    <loc>https://convertixy.com/sitemap-images.xml</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://convertixy.com/sitemapimages.xml</loc>
+    <lastmod>2026-03-26</lastmod>
   </sitemap>
   
   <!-- International sitemaps -->
