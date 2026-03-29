@@ -47,7 +47,7 @@ export default function Footer() {
         <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-800">
           <div className="flex justify-center items-center">
             <p className="text-xs sm:text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} Convertixy. All rights reserved. Designed and Developed by Aditya Chavhan ❤️
+              &copy; {new Date().getFullYear()} Convertixy. All rights reserved. 
             </p>
           </div>
         </div>
