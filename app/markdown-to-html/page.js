@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "Markdown to HTML Converter Online - Free Tool for Developers, Bloggers & Writers",
+    "Markdown to HTML Converter Online Convert MD Files to Clean HTML Code Free 2026",
   description:
-    "Use this free Markdown to HTML Converter online to instantly convert Markdown text or .md files into clean HTML code with proper formatting, syntax highlighting, and live preview. Perfect for developers, content creators, and technical writers.",
+    "Convert Markdown text and MD files to clean HTML code instantly with our free online Markdown to HTML Converter. Get proper formatting, syntax highlighting and live preview. Perfect for developers, bloggers and technical writers. Fast and no signup needed!",
   slug: "/markdown-to-html",
-  focusKeyword: "Markdown to HTML Converter Online",
+  focusKeyword: "Markdown to HTML Converter Online Free",
   keywords: [
     "markdown to html",
     "convert markdown to html",

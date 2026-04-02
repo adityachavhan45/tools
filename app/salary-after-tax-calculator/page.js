@@ -9,10 +9,12 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title: "Salary After Tax Calculator Online | Free Net Salary Estimator",
+  title:
+    "Salary After Tax Calculator Online Calculate Annual and Monthly Net Income Free 2026",
   description:
-    "Estimate salary after tax online with gross salary, tax rate, and deductions. Use this free Salary After Tax Calculator to calculate annual and monthly net income quickly.",
+    "Calculate your exact salary after tax instantly with our free online Salary After Tax Calculator. Enter gross salary, tax rate and deductions to get accurate annual and monthly net income estimates. Perfect for salaried employees and job seekers. No signup needed!",
   slug: "/salary-after-tax-calculator",
+  focusKeyword: "Salary After Tax Calculator Online Free",
   keywords: [
     "salary after tax calculator",
     "net salary calculator",

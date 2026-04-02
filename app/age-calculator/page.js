@@ -2,11 +2,11 @@ import ClientPage from "./ClientPage";
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Age Calculator Online - Calculate Your Exact Age by Date of Birth (Free Tool)",
+  title: "Age Calculator Find Your Exact Age in Years Months and Days Free 2026",
   description:
-    "Use this free Age Calculator online to instantly calculate your exact age in years, months, and days using your date of birth. Fast, accurate, and easy tool to find how old you are, check next birthday, and calculate upcoming anniversaries.",
+    "Instantly calculate your exact age from date of birth in years, months and days. Check days until next birthday, upcoming anniversaries and more. 100% free, fast and accurate age calculator online. No signup needed!",
   slug: "/age-calculator",
-  focusKeyword: "Age Calculator Online",
+  focusKeyword: "Age Calculator by Date of Birth",
   keywords: [
     "age calculator",
     "age calculator online",

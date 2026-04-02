@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Image Resizer Online - Free Tool to Resize JPG, PNG, and WebP Instantly Without Quality Loss",
+    "Image Resizer Online Resize JPG PNG and WebP Images by Width and Height Free 2026",
   description:
-    "Use this free Image Resizer online to resize JPG, PNG, and WebP images instantly by width and height. Fast, secure, and easy-to-use tool for web design, social media, blogs, and eCommerce. Resize photos without losing quality in seconds.",
+    "Resize JPG, PNG and WebP images instantly by width and height with our free online Image Resizer. Perfect for web design, social media, blogs and eCommerce. Resize photos without losing quality in seconds. Fast, secure and no signup needed!",
   slug: "/image-resizer",
-  focusKeyword: "Image Resizer Online",
+  focusKeyword: "Image Resizer Online Free",
   keywords: [
     "image resizer",
     "image resizer online",

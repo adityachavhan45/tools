@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Image Compressor Online - Free Tool to Reduce Image Size Instantly Without Quality Loss",
+    "Image Compressor Online Reduce Image Size Without Quality Loss for JPG PNG and WebP Free 2026",
   description:
-    "Use this free Image Compressor online to reduce image size (JPG, PNG, WebP) instantly without losing quality. Fast, secure, and easy-to-use tool for web optimization, SEO performance, faster loading speed, and storage saving.",
+    "Compress and reduce image size instantly without losing quality with our free online Image Compressor. Supports JPG, PNG and WebP formats. Perfect for web optimization, SEO performance and faster page loading. Fast, secure and no signup needed!",
   slug: "/image-compressor",
-  focusKeyword: "Image Compressor Online",
+  focusKeyword: "Image Compressor Online Free",
   keywords: [
     "image compressor",
     "image compressor online",

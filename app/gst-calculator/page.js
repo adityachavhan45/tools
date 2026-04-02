@@ -9,10 +9,12 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title: "GST Calculator Online | Free Add or Remove GST Tool",
+  title:
+    "GST Calculator Online Add or Remove GST from Any Amount with Tax Breakdown Free 2026",
   description:
-    "Calculate GST online quickly. Add GST to a base amount or remove GST from an inclusive amount using this free GST Calculator with a clear tax breakdown.",
+    "Calculate GST instantly with our free online GST Calculator. Add GST to a base amount or remove GST from an inclusive amount with a clear tax breakdown. Perfect for business owners, accountants and freelancers. Fast, accurate and no signup needed!",
   slug: "/gst-calculator",
+  focusKeyword: "GST Calculator Online Free",
   keywords: [
     "gst calculator",
     "gst calculator online",

@@ -9,10 +9,12 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title: "Notice Period Buyout Calculator Online | Free Notice Pay Estimator",
+  title:
+    "Notice Period Buyout Calculator Online Calculate Notice Pay and Recovery Amount Free 2026",
   description:
-    "Calculate notice period buyout online with monthly salary, total notice days, served days, and extra recovery. Use this free Notice Period Buyout Calculator for a quick estimate.",
+    "Calculate your exact notice period buyout amount instantly with our free online Notice Period Buyout Calculator. Enter monthly salary, total notice days, served days and extra recovery to get accurate estimates. Perfect for employees and HR professionals. No signup needed!",
   slug: "/notice-period-buyout-calculator",
+  focusKeyword: "Notice Period Buyout Calculator Online Free",
   keywords: [
     "notice period buyout calculator",
     "notice pay calculator",

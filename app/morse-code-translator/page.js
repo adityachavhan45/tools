@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "Morse Code Translator Online - Free Text to Morse & Morse to Text Encoder/Decoder",
+    "Morse Code Translator Online Convert Text to Morse and Morse to Text with Sound Free 2026",
   description:
-    "Free Morse Code Translator online. Instantly convert text to Morse code and Morse code to text with sound and light simulation. Perfect learning, communication, and cryptography tool for students, hobbyists, and developers.",
+    "Convert text to Morse code and Morse code to text instantly with our free online Morse Code Translator. Includes sound and light simulation for learning and practice. Perfect for students, hobbyists and developers. Fast and no signup needed!",
   slug: "/morse-code-translator",
-  focusKeyword: "Morse Code Translator Online",
+  focusKeyword: "Morse Code Translator Online Free",
   keywords: [
     "morse code",
     "morse translator",

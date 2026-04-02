@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "Loan Calculator Online - Free EMI, Interest & Payment Calculator Tool",
+    "Loan Calculator Online Calculate EMI Interest and Amortization Schedule Free 2026",
   description:
-    "Use this free Loan Calculator online to instantly calculate loan payments, EMI, total interest, and amortization schedules. Simple and accurate financial tool for personal loans, home loans, car loans, business financing, and mortgages.",
+    "Calculate loan EMI, total interest and amortization schedule instantly with our free online Loan Calculator. Supports personal loans, home loans, car loans, business loans and mortgages. Fast, accurate and no signup needed!",
   slug: "/loan-calculator",
-  focusKeyword: "Loan Calculator Online",
+  focusKeyword: "Loan Calculator Online Free",
   keywords: [
     "loan calculator",
     "loan calculator online",

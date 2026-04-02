@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "Meta Tag Generator Online - Free SEO, Open Graph & Twitter Card Creator",
+    "Meta Tag Generator Online Create SEO Open Graph and Twitter Card Tags Free 2026",
   description:
-    "Use this free Meta Tag Generator online to instantly create SEO meta tags, Open Graph tags for Facebook, and Twitter Card tags with live preview. Perfect tool for bloggers, developers, and marketers to improve CTR and website SEO.",
+    "Create SEO meta tags, Open Graph tags and Twitter Card tags instantly with our free online Meta Tag Generator. Get live preview for every tag. Perfect for bloggers, developers and marketers to improve CTR and website rankings. No signup needed!",
   slug: "/meta-tag-generator",
-  focusKeyword: "Meta Tag Generator Online",
+  focusKeyword: "Meta Tag Generator Online Free",
   keywords: [
     "meta tag generator",
     "meta tag generator online",
@@ -48,7 +48,6 @@ export const metadata = buildMetadata({
     "meta tag seo tool",
   ],
 });
-
 export default function Page() {
   return (
     <>

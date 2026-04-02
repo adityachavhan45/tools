@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Hash Generator Online - Free MD5, SHA1, SHA256, and SHA512 Calculator Tool",
+    "Hash Generator Online Generate MD5 SHA1 SHA256 and SHA512 Hash Values Free 2026",
   description:
-    "Use this free Hash Generator online to instantly create secure hash values with MD5, SHA1, SHA256, SHA512, and more. Fast, accurate, and developer-friendly tool for encryption, password hashing, and data integrity verification.",
+    "Generate secure hash values instantly with our free online Hash Generator. Supports MD5, SHA1, SHA256, SHA512 and more. Perfect for developers, encryption, password hashing and data integrity verification. Fast, accurate and no signup needed!",
   slug: "/hash-generator",
-  focusKeyword: "Hash Generator Online",
+  focusKeyword: "Hash Generator Online Free",
   keywords: [
     "hash generator",
     "hash generator online",

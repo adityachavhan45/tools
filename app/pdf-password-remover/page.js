@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "PDF Password Remover Online - Free & Secure PDF Unlock Tool",
+    "PDF Password Remover Online Unlock Secured PDF and Remove Restrictions Instantly Free 2026",
   description:
-    "Free PDF Password Remover online. Instantly unlock secured PDF files and remove restrictions for printing, copying, and editing. 100% browser-based, safe, and easy-to-use tool for fast PDF unlocking and secure document access.",
+    "Unlock secured PDF files and remove printing, copying and editing restrictions instantly with our free online PDF Password Remover. 100% browser based, safe and easy to use. Fast and no signup needed!",
   slug: "/pdf-password-remover",
-  focusKeyword: "PDF Password Remover Online",
+  focusKeyword: "PDF Password Remover Online Free",
   keywords: [
     "pdf password remover",
     "remove pdf password",

@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Compound Interest Calculator Online - Calculate Investment Growth Instantly (Free Tool)",
+    "Compound Interest Calculator Online Calculate Investment Growth and Savings Free 2026",
   description:
-    "Use this free Compound Interest Calculator online to calculate your investment growth instantly. Find compound interest for daily, monthly, or yearly periods. Perfect for savings, retirement, and wealth management planning — fast, accurate, and easy to use.",
+    "Calculate compound interest and investment growth instantly with our free online Compound Interest Calculator. Supports daily, monthly and yearly compounding. Perfect for savings, retirement and wealth management planning. Fast, accurate and no signup needed!",
   slug: "/compound-interest-calculator",
-  focusKeyword: "Compound Interest Calculator Online",
+  focusKeyword: "Compound Interest Calculator Online Free",
   keywords: [
     "compound interest calculator",
     "compound interest calculator online",

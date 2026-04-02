@@ -9,11 +9,11 @@ import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
   title:
-    "💕 Love Calculator Online - Free Relationship Compatibility Test by Name & Birth Date",
+    "Love Calculator Online Test Relationship Compatibility by Name and Birth Date Free 2026",
   description:
-    "💖 Free Love Calculator Online! Test your love compatibility with names and birth dates. Get instant love percentage, detailed relationship insights, and compatibility score. 100% Free • Fun • Private • No Signup Needed.",
+    "Test your love compatibility instantly with our free online Love Calculator. Enter names and birth dates to get love percentage, relationship insights and compatibility score. Fun, private and no signup needed!",
   slug: "/love-calculator",
-  focusKeyword: "Love Calculator Online",
+  focusKeyword: "Love Calculator Online Free",
   keywords: [
     "love calculator",
     "love calculator online",

@@ -3,12 +3,12 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Unix Time Converter Online | Free, Fast & Accurate Epoch Timestamp Tool",
+    "Unix Timestamp Converter Free Online | Epoch to Date and Date to Epoch",
   description:
-    "Convert Unix timestamp (epoch time) to human-readable date and vice versa instantly with our free Unix Time Converter online. Accurate, fast, and secure — ideal for developers, programmers, sysadmins, and blockchain applications. Works 100% in your browser.",
+    "Convert Unix timestamp to human-readable date and date to epoch instantly. Free, no login required. Fast, accurate and secure. Ideal for developers, sysadmins and blockchain applications. Works 100% in your browser.",
   slug: "/unix-time",
   keywords:
-    "unix time, epoch converter, timestamp, unix timestamp converter, epoch to human date, human date to unix, timestamp converter, unix epoch converter, epoch time calculator, unix date converter, online unix time tool, free epoch converter, instant timestamp converter, unix format converter, developer timestamp converter, epoch converter online, unix to utc converter, timestamp to date, date to epoch, unix time tool"
+    "unix timestamp converter, epoch converter, unix time converter, epoch to date, date to epoch, timestamp converter online, unix epoch converter, epoch time calculator, unix date converter, free epoch converter, instant timestamp converter, epoch converter online, unix to utc converter, timestamp to date converter, date to unix timestamp, unix time tool, epoch timestamp tool, developer timestamp converter, unix timestamp calculator, best epoch converter"
 });
 
 export default function Page() {

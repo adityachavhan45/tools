@@ -3,12 +3,12 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Text to Speech Converter Online | Free, Fast & Realistic TTS Voice Generator",
+    "Free Text to Speech Converter Online – Realistic AI Voices",
   description:
-    "Convert text to natural-sounding speech instantly with our free Text to Speech Converter online. Choose from multiple voices, control pitch and speed, and download lifelike audio. Ideal for creators, teachers, accessibility users, and productivity. 100% browser-based and secure.",
+    "Convert any text to natural-sounding speech instantly. Choose from multiple AI voices, adjust speed & pitch, and download audio — 100% free & browser-based. No sign-up needed.",
   slug: "/text-to-speech",
   keywords:
-    "text to speech, tts, voice generator, text reader, text to voice, tts converter, speech generator, realistic text to speech, ai voice generator, free text to speech tool, convert text to speech, online tts tool, speech synthesis, audio from text, instant tts converter, natural voice generator, best free tts, text to speech online free, accessibility tts tool, text reader online"
+    "text to speech converter online, free tts online, text to speech free, ai voice generator, realistic text to speech, convert text to audio, speech synthesis tool, browser based tts, online voice generator, text to speech no sign up"
 });
 
 export default function Page() {

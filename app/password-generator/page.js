@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "Password Generator Online - Free Strong & Secure Random Password Tool",
+    "Password Generator Online Create Strong Secure and Random Passwords Instantly Free 2026",
   description:
-    "Use this free Password Generator online to instantly create strong, secure, and random passwords with custom length, symbols, and numbers. Perfect for securing online accounts, data protection, and developer use.",
+    "Generate strong, secure and random passwords instantly with our free online Password Generator. Customize length, symbols and numbers for maximum security. Perfect for securing online accounts, data protection and developer use. Fast and no signup needed!",
   slug: "/password-generator",
-  focusKeyword: "Password Generator Online",
+  focusKeyword: "Password Generator Online Free",
   keywords: [
     "password generator",
     "password generator online",

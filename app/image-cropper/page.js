@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Image Cropper Online - Free Tool to Crop & Resize Images Instantly (JPG, PNG, WebP)",
+    "Image Cropper Online Crop and Resize JPG PNG and WebP Images Instantly Free 2026",
   description:
-    "Use this free Image Cropper online to crop, resize, and edit images instantly. Supports JPG, PNG, and WebP formats with custom aspect ratios and batch processing. Perfect for web design, social media, and professional photo editing.",
+    "Crop, resize and edit images instantly with our free online Image Cropper. Supports JPG, PNG and WebP formats with custom aspect ratios and batch processing. Perfect for web design, social media and professional photo editing. No signup needed!",
   slug: "/image-cropper",
-  focusKeyword: "Image Cropper Online",
+  focusKeyword: "Image Cropper Online Free",
   keywords: [
     "image cropper",
     "image cropper online",

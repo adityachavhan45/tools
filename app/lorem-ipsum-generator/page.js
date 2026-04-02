@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "Lorem Ipsum Generator Online - Free Dummy Text & Placeholder Tool for Designers",
+    "Lorem Ipsum Generator Online Create Dummy Text and Placeholder Content for Designers Free 2026",
   description:
-    "Use this free Lorem Ipsum Generator online to instantly create dummy text, placeholder paragraphs, and filler content for web design, mockups, and creative projects. Simple, fast, and customizable for developers, designers, and writers.",
+    "Generate dummy text, placeholder paragraphs and filler content instantly with our free online Lorem Ipsum Generator. Perfect for web design, mockups and creative projects. Customizable for developers, designers and writers. Fast and no signup needed!",
   slug: "/lorem-ipsum-generator",
-  focusKeyword: "Lorem Ipsum Generator Online",
+  focusKeyword: "Lorem Ipsum Generator Online Free",
   keywords: [
     "lorem ipsum",
     "lorem ipsum generator",

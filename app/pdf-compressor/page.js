@@ -8,11 +8,12 @@ import {
 import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
-  title: "PDF Compressor Online - Free Tool to Reduce PDF File Size Instantly",
+  title:
+    "PDF Compressor Online Reduce PDF File Size Without Losing Quality Instantly Free 2026",
   description:
-    "Free PDF Compressor online. Quickly compress and reduce PDF size without losing quality. Fast, secure, and easy-to-use PDF optimization tool for students, professionals, and businesses. Works 100% in your browser.",
+    "Compress and reduce PDF file size instantly without losing quality with our free online PDF Compressor. Fast, secure and works 100% in your browser. Perfect for students, professionals and businesses. No signup needed!",
   slug: "/pdf-compressor",
-  focusKeyword: "PDF Compressor Online",
+  focusKeyword: "PDF Compressor Online Free",
   keywords: [
     "pdf compressor",
     "compress pdf",

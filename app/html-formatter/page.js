@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "HTML Formatter Online - Free HTML Beautifier & Code Prettifier Tool",
+    "HTML Formatter Online Format Beautify and Clean HTML Code Instantly Free 2026",
   description:
-    "Use this free HTML Formatter online to instantly format, beautify, and clean your HTML code. Perfect for developers, web designers, and students. Improve code readability with proper indentation, clean structure, and syntax highlighting.",
+    "Format, beautify and clean your HTML code instantly with our free online HTML Formatter. Get proper indentation, clean structure and syntax highlighting. Perfect for developers, web designers and students. Fast, accurate and no signup needed!",
   slug: "/html-formatter",
-  focusKeyword: "HTML Formatter Online",
+  focusKeyword: "HTML Formatter Online Free",
   keywords: [
     "html formatter",
     "html formatter online",

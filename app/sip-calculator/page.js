@@ -9,10 +9,12 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title: "SIP Calculator Online | Free Systematic Investment Plan Calculator",
+  title:
+    "SIP Calculator Online Calculate Monthly Investment Returns and Maturity Value Free 2026",
   description:
-    "Calculate SIP returns online with monthly investment, expected return, and time period. Use this free SIP Calculator to estimate invested amount, expected returns, and maturity value quickly.",
+    "Calculate SIP returns, invested amount and maturity value instantly with our free online SIP Calculator. Enter monthly investment, expected return rate and time period to get accurate estimates. Perfect for mutual fund investors and financial planners. No signup needed!",
   slug: "/sip-calculator",
+  focusKeyword: "SIP Calculator Online Free",
   keywords: [
     "sip calculator",
     "sip calculator online",

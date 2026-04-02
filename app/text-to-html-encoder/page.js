@@ -3,10 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Text to HTML Encoder Online | Free, Fast & Secure HTML Encode/Decode Tool",
+    "Text to HTML Encoder Online Convert Text to HTML and Decode HTML Entities Free 2026",
   description:
-    "Convert text to HTML and HTML to text instantly with our free online HTML Encoder. Encode or decode HTML entities with accuracy, formatting, and copy support. Perfect for developers, bloggers, content creators, and SEO professionals. 100% browser-based and secure.",
+    "Convert text to HTML and decode HTML entities instantly with our free online Text to HTML Encoder. Includes formatting and copy support. Perfect for developers, bloggers, content creators and SEO professionals. Fast, secure and no signup needed!",
   slug: "/text-to-html-encoder",
+  focusKeyword: "Text to HTML Encoder Online Free",
   keywords:
     "text to html, html to text, html encoder, html decoder, text to html code, convert text to html, html escape tool, html converter online, html code generator, html formatter, encode html entities, html decode tool, free html encoder, instant html converter, secure html tool, html string converter, html encoding tool, html converter for developers, html entity encoder, online html encoder, text to html converter"
 });
