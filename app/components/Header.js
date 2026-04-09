@@ -1,91 +1,163 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../../lib/firebase/firebaseConfig";
+import { auth, db } from "../../lib/firebase/firebaseConfig";
+import { sections as toolSections } from "../data/tools";
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 
-const sections = [
-  {
-    key: "images",
-    label: "Images",
-    dropdownWidth: "w-[320px] md:w-[520px]",
-    gridClass: "md:grid-cols-2",
-    links: [
-      { href: "/image-compressor", label: "Image Compressor" },
-      { href: "/image-resizer", label: "Image Resizer" },
-      { href: "/png-to-jpg", label: "PNG to JPG" },
-      { href: "/jpg-to-webp", label: "JPG to WebP" },
-      { href: "/webp-to-png", label: "WebP to PNG" },
-      { href: "/svg-to-png", label: "SVG to PNG" },
-      { href: "/png-to-ico", label: "PNG to ICO" },
-      { href: "/images-to-pdf", label: "Images to PDF" },
-    ],
-  },
-  {
-    key: "pdf",
-    label: "PDF",
-    dropdownWidth: "w-[280px]",
-    links: [
-      { href: "/pdf-merge", label: "PDF Merge" },
-      { href: "/pdf-split", label: "PDF Split" },
-      { href: "/pdf-to-image", label: "PDF to Image" },
-    ],
-  },
-  {
-    key: "seo",
-    label: "SEO",
-    dropdownWidth: "w-[300px]",
-    links: [
-      { href: "/meta-tag-generator", label: "Meta Tag Generator" },
-      { href: "/schema-markup-generator", label: "Schema Markup Generator" },
-      { href: "/robots-txt-generator", label: "Robots.txt Generator" },
-      { href: "/serp-snippet-preview", label: "SERP Snippet Preview" },
-      { href: "/url-encoder", label: "URL Encoder/Decoder" },
-      { href: "/uuid-generator", label: "UUID Generator" },
-      { href: "/password-generator", label: "Password Generator" },
-    ],
-  },
-  {
-    key: "extras",
-    label: "Extras",
-    dropdownWidth: "w-[280px]",
-    links: [
-      { href: "/color-picker", label: "Color Picker" },
-      { href: "/qr-code", label: "QR Code" },
-      { href: "/unix-time", label: "Unix Time" },
-      { href: "/json-to-csv", label: "JSON to CSV" },
-      { href: "/regex-tester", label: "Regex Tester" },
-      { href: "/sip-calculator", label: "SIP Calculator" },
-      { href: "/gst-calculator", label: "GST Calculator" },
-    ],
-  },
-];
+function SearchBox({ onNavigate }) {
+  const [query, setQuery] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
+  const [blogs, setBlogs] = useState([]);
 
-function CaretIcon({ isOpen }) {
+  const allTools = useMemo(() => {
+    return toolSections.flatMap((section) =>
+      section.links.map((tool) => ({
+        ...tool,
+        sectionKey: section.key,
+      }))
+    );
+  }, []);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const blogsQuery = query(
+          collection(db, "blogs"),
+          orderBy("createdAt", "desc"),
+          limit(50)
+        );
+        const snapshot = await getDocs(blogsQuery);
+        const items = snapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            href: `/blog/${data.slug || doc.id}`,
+            label: data.title || "Untitled Blog",
+            desc: data.excerpt || "",
+            sectionKey: "blog",
+          };
+        });
+        setBlogs(items);
+      } catch {
+        setBlogs([]);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    const combined = [...allTools, ...blogs];
+    if (!q) return combined.slice(0, 10);
+    return combined
+      .filter((tool) =>
+        [tool.label, tool.desc, tool.sectionKey]
+          .filter(Boolean)
+          .some((val) => val.toLowerCase().includes(q))
+      )
+      .slice(0, 10);
+  }, [allTools, blogs, query]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (filtered.length > 0) {
+      onNavigate(filtered[0].href);
+    }
+  };
+
   return (
-    <svg
-      aria-hidden="true"
-      className={`h-3 w-3 transform transition-transform duration-200 ${
-        isOpen ? "rotate-180" : ""
-      }`}
-      viewBox="0 0 12 12"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-    >
-      <path
-        d="M2 4l4 4 4-4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <div className="relative w-full flex-1 min-w-0 max-w-full" style={{ minWidth: "400px" }}>
+      <form
+        onSubmit={handleSubmit}
+        className="relative flex items-center"
+      >
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setTimeout(() => setIsFocused(false), 120)}
+          placeholder="Search tools"
+          className="w-full rounded-xl border border-white/30 bg-black/20 px-3 py-2 pr-16 text-sm text-white placeholder:text-white/70 focus:border-blue-300 focus:outline-none"
+          aria-label="Search tools"
+          autoComplete="off"
+          inputMode="search"
+        />
+        {query ? (
+          <button
+            type="button"
+            onClick={() => setQuery("")}
+            className="absolute right-10 flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-white/80 hover:bg-white/25"
+            aria-label="Clear search"
+          >
+            <svg
+              className="h-3.5 w-3.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        ) : null}
+        <svg
+          className="absolute right-3 h-4 w-4 text-white/80 pointer-events-none"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="11" cy="11" r="7" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      </form>
+
+      {isFocused && filtered.length > 0 && (
+        <div className="absolute left-0 right-0 mt-3 rounded-2xl border border-gray-200 bg-white text-gray-900 shadow-2xl shadow-blue-500/10 overflow-hidden">
+          <ul className="divide-y divide-gray-100 text-sm">
+            {filtered.map((tool) => (
+              <li key={tool.href}>
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => onNavigate(tool.href)}
+                  className="flex w-full items-start gap-3 px-4 py-3 text-left hover:bg-gray-50 transition"
+                >
+                  <span className="mt-0.5 rounded-lg bg-gray-100 px-2.5 py-1 text-[10px] font-semibold text-gray-700">
+                    {tool.sectionKey?.toUpperCase() || "TOOL"}
+                  </span>
+                  <div>
+                    <div className="font-semibold">{tool.label}</div>
+                    {tool.desc ? (
+                      <div className="text-xs text-gray-600 line-clamp-2">{tool.desc}</div>
+                    ) : null}
+                  </div>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {isFocused && filtered.length === 0 && (
+        <div className="absolute left-0 right-0 mt-2 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 shadow-2xl">
+          No matching tools yet.
+        </div>
+      )}
+    </div>
   );
 }
 
 export default function Header() {
-  const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
@@ -111,23 +183,15 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
-  const toggleDropdown = (key) => {
-    setOpenDropdown((prev) => (prev === key ? null : key));
-  };
-
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => {
       const next = !prev;
-      if (!next) {
-        setOpenDropdown(null);
-      }
       return next;
     });
   };
 
   const handleNavClick = () => {
     setMobileMenuOpen(false);
-    setOpenDropdown(null);
     setProfileMenuOpen(false);
   };
 
@@ -135,6 +199,12 @@ export default function Header() {
     await signOut(auth);
     setProfileMenuOpen(false);
     setMobileMenuOpen(false);
+  };
+
+  const handleNavigate = (href) => {
+    window.location.href = href;
+    setMobileMenuOpen(false);
+    setProfileMenuOpen(false);
   };
 
   const profileLabel = (user?.displayName || user?.email || "P").trim().charAt(0).toUpperCase();
@@ -168,57 +238,16 @@ export default function Header() {
               <line x1="4" y1="18" x2="20" y2="18" />
             </svg>
           </button>
-          <div className="hidden md:flex items-center gap-1 lg:gap-2 text-sm lg:text-base">
-            <Link href="/" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+          <div className="hidden md:flex items-center gap-3 lg:gap-4 text-sm lg:text-base w-full">
+            <Link href="/" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Home
             </Link>
-            <Link href="/google-discover-image-optimizer" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium text-blue-300 hover:text-blue-200" onClick={handleNavClick}>
-              Google Discover Image
-            </Link>
-            {sections.map((section) => (
-              <div key={section.key} className="relative">
-                <button
-                  type="button"
-                  onClick={() => toggleDropdown(section.key)}
-                  className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-blue-500/40 transition-all duration-200 font-medium"
-                  aria-expanded={openDropdown === section.key}
-                  aria-controls={`${section.key}-menu`}
-                >
-                  <span>{section.label}</span>
-                  <CaretIcon isOpen={openDropdown === section.key} />
-                </button>
-                {openDropdown === section.key && (
-                  <div
-                    id={`${section.key}-menu`}
-                    className={`absolute left-0 mt-2 ${
-                      section.dropdownWidth ?? "w-64"
-                    } bg-white rounded-xl shadow-xl border border-gray-200 p-3 animate-in fade-in-0 zoom-in-95 duration-200`}
-                  >
-                    <div
-                      className={`grid grid-cols-1 gap-1 text-sm ${
-                        section.gridClass ?? ""
-                      }`}
-                    >
-                      {section.links.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700 hover:text-gray-900 transition-all duration-200 font-medium"
-                          onClick={handleNavClick}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-            <Link href="/contact" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
-              Contact
-            </Link>
-            <Link href="/blog" className="px-2 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+            <SearchBox onNavigate={handleNavigate} />
+            <Link href="/blog" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Blog
+            </Link>
+            <Link href="/contact" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+              Contact
             </Link>
             {user ? (
               <div className="relative" ref={profileMenuRef}>
@@ -253,70 +282,30 @@ export default function Header() {
       </div>
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-white/10 bg-black/80 backdrop-blur-sm animate-in slide-in-from-top-2 duration-200">
-          <nav className="px-4 sm:px-6 py-4 space-y-3 text-sm">
+          <nav className="px-4 sm:px-6 py-4 space-y-4 text-sm">
+            <div className="rounded-lg border border-white/10 bg-black/40 p-3">
+              <SearchBox onNavigate={handleNavigate} />
+            </div>
             <Link
               href="/"
-              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
+              className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
               onClick={handleNavClick}
             >
               Home
             </Link>
             <Link
-              href="/google-discover-image-optimizer"
-              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium text-blue-300 hover:text-blue-200"
-              onClick={handleNavClick}
-            >
-              Google Discover Image
-            </Link>
-            {sections.map((section) => (
-              <div
-                key={`${section.key}-mobile`}
-                className="rounded-lg border border-white/10 bg-black/30"
-              >
-                <button
-                  type="button"
-                  onClick={() => toggleDropdown(section.key)}
-                  className="flex w-full items-center justify-between px-3 py-2.5 text-left hover:bg-white/10 transition-all duration-200 font-medium"
-                  aria-expanded={openDropdown === section.key}
-                  aria-controls={`${section.key}-mobile-menu`}
-                >
-                  <span>{section.label}</span>
-                  <CaretIcon isOpen={openDropdown === section.key} />
-                </button>
-                {openDropdown === section.key && (
-                  <div
-                    id={`${section.key}-mobile-menu`}
-                    className="border-t border-white/10 px-3 py-2 animate-in slide-in-from-top-1 duration-200"
-                  >
-                    <div className="grid grid-cols-1 gap-1">
-                      {section.links.map((link) => (
-                        <Link
-                          key={`${link.href}-mobile`}
-                          href={link.href}
-                          className="block rounded-lg border border-white/10 px-3 py-2 hover:bg-white/10 transition-all duration-200 font-medium"
-                          onClick={handleNavClick}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-            <Link
-              href="/contact"
-              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
-              onClick={handleNavClick}
-            >
-              Contact
-            </Link>
-            <Link
               href="/blog"
-              className="block rounded-lg px-3 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
+              className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
               onClick={handleNavClick}
             >
               Blog
+            </Link>
+            <Link
+              href="/contact"
+              className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
+              onClick={handleNavClick}
+            >
+              Contact
             </Link>
             {user ? (
               <button
