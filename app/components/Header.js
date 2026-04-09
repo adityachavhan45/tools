@@ -80,7 +80,7 @@ function SearchBox({ onNavigate }) {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 120)}
-          placeholder="Search tools"
+          placeholder="Search Something..."
           className="w-full rounded-xl border border-white/30 bg-black/20 px-3 py-2 pr-16 text-sm text-white placeholder:text-white/70 focus:border-blue-300 focus:outline-none"
           aria-label="Search tools"
           autoComplete="off"
