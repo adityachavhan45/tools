@@ -12,9 +12,9 @@ import HomeLatestBlogsSection from "./components/HomeLatestBlogsSection";
 import { sections as toolSections } from "./data/tools";
 
 export const metadata = buildMetadata({
-  title: "Convertixy - Free Online Tools for PDF, Images, Text and More",
+  title: "Free tools use in daily life | Convertixy",
   description:
-    "Professional online tools for PDF processing, image optimization, text editing, calculators and converters. Free to use, works in your browser, no registration required. Secure and private file processing.",
+    "Free tools use in daily life 100% free tools for everyone. Fast, secure and mobile-friendly online tools for all your file processing needs.",
   slug: "/",
   keywords: [
     "free online tools",
