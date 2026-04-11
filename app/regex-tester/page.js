@@ -9,12 +9,10 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title:
-    "Regex Tester Online Test Regular Expressions with Live Matches and Replace Preview Free 2026",
+  title: "Regex Tester Online | Free Regular Expression Test Tool",
   description:
-    "Test regular expressions online instantly with live matches, flags, capture groups and replace preview using our free Regex Tester. Perfect for developers and programmers to debug and check regex patterns fast. No signup needed!",
+    "Test regular expressions online with live matches, flags, capture groups, and replace preview. Use this free Regex Tester for fast regular expression checking and debugging.",
   slug: "/regex-tester",
-  focusKeyword: "Regex Tester Online Free",
   keywords: [
     "regex tester",
     "regular expression tester",

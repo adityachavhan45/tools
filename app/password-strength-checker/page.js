@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "Password Strength Checker Online Test How Strong and Secure Your Password Is Free 2026",
+    "Password Strength Checker Online - Free Secure Password Testing Tool",
   description:
-    "Test how strong and secure your password is instantly with our free online Password Strength Checker. Get live analysis, score rating and security tips to improve your password. Perfect for personal data safety, developers and security experts. No signup needed!",
+    "Free Password Strength Checker online. Instantly test how strong and secure your password is with live analysis, score rating, and security tips. Perfect for personal data safety, developers, and online security experts.",
   slug: "/password-strength-checker",
-  focusKeyword: "Password Strength Checker Online Free",
+  focusKeyword: "Password Strength Checker Online",
   keywords: [
     "password strength checker",
     "password security",

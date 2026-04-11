@@ -9,12 +9,10 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title:
-    "Robots.txt Generator Online Create Allow Disallow and Sitemap Rules for SEO Free 2026",
+  title: "Robots.txt Generator Online | Free Robots.txt File Creator",
   description:
-    "Create a clean robots.txt file instantly with allow, disallow, crawl delay and sitemap rules using our free online Robots.txt Generator. Perfect for bloggers, developers and SEO professionals. Simple, fast and no signup needed!",
+    "Create a clean robots.txt file online for search engines. Generate allow, disallow, crawl delay, and sitemap rules instantly with this free Robots.txt Generator. Simple, fast, and browser based.",
   slug: "/robots-txt-generator",
-  focusKeyword: "Robots.txt Generator Online Free",
   keywords: [
     "robots txt generator",
     "robots.txt generator online",

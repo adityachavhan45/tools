@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "PDF to Image Converter Online Convert PDF Pages to JPG and PNG Instantly Free 2026",
+    "PDF to Image Converter Online - Free Tool to Convert PDF to JPG & PNG Instantly",
   description:
-    "Convert PDF pages to high quality JPG and PNG images instantly with our free online PDF to Image Converter. Fast, private and works 100% in your browser. Perfect for students, professionals and businesses. No signup needed!",
+    "Free PDF to Image Converter online. Instantly convert PDF pages into high-quality JPG or PNG images. Fast, private, and secure converter for students, professionals, and businesses. Works 100% in your browser — no uploads or signups required.",
   slug: "/pdf-to-image",
-  focusKeyword: "PDF to Image Converter Online Free",
+  focusKeyword: "PDF to Image Converter Online",
   keywords: [
     "pdf to image",
     "pdf to png",

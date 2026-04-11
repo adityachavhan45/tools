@@ -9,12 +9,10 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title:
-    "Schema Markup Generator Online Create JSON LD Structured Data for SEO Free 2026",
+  title: "Schema Markup Generator Online | Free JSON-LD Structured Data Creator",
   description:
-    "Create valid JSON LD structured data instantly for articles, FAQs, products, organizations, websites and local business pages with our free online Schema Markup Generator. Perfect for bloggers, developers and SEO professionals. Fast and no signup needed!",
+    "Use this free Schema Markup Generator online to create valid JSON-LD structured data for articles, FAQs, products, organizations, websites, and local business pages. Fast, simple, and browser based.",
   slug: "/schema-markup-generator",
-  focusKeyword: "Schema Markup Generator Online Free",
   keywords: [
     "schema markup generator",
     "schema generator online",
@@ -33,6 +31,7 @@ export const metadata = buildMetadata({
     "google rich results schema generator",
   ],
 });
+
 export default function Page() {
   return (
     <>

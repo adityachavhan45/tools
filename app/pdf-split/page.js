@@ -8,12 +8,11 @@ import {
 import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
-  title:
-    "PDF Split Online Split PDF Files and Extract Specific Pages Instantly Free 2026",
+  title: "PDF Split Online - Free Tool to Split & Extract PDF Pages Instantly",
   description:
-    "Split PDF files into separate pages and extract specific sections instantly with our free online PDF Split tool. Fast, private and works 100% in your browser. Perfect for students, professionals and businesses. No signup needed!",
+    "Free PDF Split tool online. Instantly split PDF files into separate pages or extract specific sections securely in your browser. Fast, private, and easy-to-use PDF splitter for students, professionals, and businesses. No signup or upload required.",
   slug: "/pdf-split",
-  focusKeyword: "PDF Split Online Free",
+  focusKeyword: "PDF Split Online",
   keywords: [
     "pdf split",
     "split pdf",

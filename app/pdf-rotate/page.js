@@ -8,12 +8,11 @@ import {
 import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
-  title:
-    "PDF Rotate Online Rotate PDF Pages by 90 180 and 270 Degrees Instantly Free 2026",
+  title: "PDF Rotate Online - Free Tool to Rotate PDF Pages Instantly",
   description:
-    "Rotate PDF pages by 90, 180 and 270 degrees instantly with our free online PDF Rotate tool. Supports batch rotation for multiple pages. Fast, secure and works 100% in your browser. Perfect for students, professionals and business users. No signup needed!",
+    "Free PDF Rotate tool online. Instantly rotate PDF pages by 90°, 180°, or 270° with batch rotation support. Fast, secure, and privacy-friendly PDF rotator for students, professionals, and business users. Works 100% in your browser.",
   slug: "/pdf-rotate",
-  focusKeyword: "PDF Rotate Online Free",
+  focusKeyword: "PDF Rotate Online",
   keywords: [
     "pdf rotate",
     "rotate pdf",

@@ -8,12 +8,11 @@ import {
 import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
-  title:
-    "PDF Merge Online Combine and Join Multiple PDF Files into One Instantly Free 2026",
+  title: "PDF Merge Online - Free Tool to Combine & Join PDF Files Instantly",
   description:
-    "Combine and join multiple PDF files into one document instantly with our free online PDF Merge tool. Works 100% in your browser. Fast, private and secure. Perfect for students, professionals and business users. No signup needed!",
+    "Free PDF Merge tool online. Quickly combine multiple PDF files into one document directly in your browser. Fast, private, and secure — perfect for students, professionals, and business users. No upload or registration required.",
   slug: "/pdf-merge",
-  focusKeyword: "PDF Merge Online Free",
+  focusKeyword: "PDF Merge Online",
   keywords: [
     "pdf merge",
     "merge pdf",

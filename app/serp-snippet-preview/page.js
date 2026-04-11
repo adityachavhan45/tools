@@ -9,12 +9,10 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title:
-    "SERP Snippet Preview Tool Preview Google Search Results Before Publishing Free 2026",
+  title: "SERP Snippet Preview Tool | Free Google Snippet Simulator",
   description:
-    "Preview how your page title, URL and meta description will look in Google search results instantly with our free online SERP Snippet Preview Tool. Improve SEO titles and meta descriptions before publishing. Perfect for bloggers, developers and SEO professionals. No signup needed!",
+    "Preview how your page title, URL, and meta description may look in Google search results. Use this free SERP Snippet Preview tool online to improve SEO titles and meta descriptions before publishing.",
   slug: "/serp-snippet-preview",
-  focusKeyword: "SERP Snippet Preview Tool Online Free",
   keywords: [
     "serp snippet preview",
     "serp snippet preview tool",
