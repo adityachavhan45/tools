@@ -9,12 +9,10 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title:
-    "In Hand Salary Calculator Online Calculate Your Monthly Take Home Salary Free 2026",
+  title: "In-Hand Salary Calculator Online | Free Monthly Take Home Estimator",
   description:
-    "Calculate your exact in hand salary instantly with our free online In Hand Salary Calculator. Enter gross salary, PF, tax, professional tax and other deductions to get accurate take home salary estimates. Perfect for salaried employees and job seekers. No signup needed!",
+    "Calculate in-hand salary online with gross monthly salary, PF, tax, professional tax, and other deductions. Use this free In-Hand Salary Calculator for a quick take-home estimate.",
   slug: "/in-hand-salary-calculator",
-  focusKeyword: "In Hand Salary Calculator Online Free",
   keywords: [
     "in hand salary calculator",
     "take home salary calculator",

@@ -9,9 +9,9 @@ import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
   title:
-    "AdSense RPM Calculator Instantly Estimate Your Blog Earnings in 2026",
+    "AdSense Revenue Calculator Tool: Estimate Your Earnings free in 2026",
   description:
-    "Calculate your exact AdSense RPM, CPC & monthly earnings in seconds. Enter your traffic, niche & country — get accurate revenue estimates. Trusted by 10,000+ bloggers & publishers. Try free now!",
+    "Check your AdSense RPM and calculate website earnings in seconds. Simply enter traffic, CPC, and CTR to see accurate revenue estimates. Free online AdSense calculator designed for bloggers, YouTubers, and digital publishers.",
   slug: "/adsense-rpm-calculator",
   keywords: [
     "adsense rpm calculator",
@@ -36,7 +36,7 @@ export const metadata = buildMetadata({
     "best adsense tools for bloggers",
     "adsense rpm meaning and formula",
   ],
-  focusKeyword: "AdSense RPM Calculator Free Online",
+  focusKeyword: "AdSense RPM Calculator",
 });
 
 export default function AdSenseRPMEstimatorPage() {

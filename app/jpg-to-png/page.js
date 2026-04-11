@@ -4,11 +4,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "JPG to PNG Converter Online Convert JPG Images to PNG with Transparency Free 2026",
+    "JPG to PNG Converter Online - Free & Instant Image Conversion with Transparency",
   description:
-    "Convert JPG images to high quality PNG format with full transparency support instantly with our free online JPG to PNG Converter. Perfect for designers, students and professionals. Convert single or batch images in seconds. Fast, secure and no signup needed!",
+    "Use this free JPG to PNG Converter online to instantly convert JPG images into high-quality PNG format with full transparency support. Fast, secure, and easy-to-use converter for designers, students, and professionals. Convert single or batch images in seconds.",
   slug: "/jpg-to-png",
-  focusKeyword: "JPG to PNG Converter Online Free",
+  focusKeyword: "JPG to PNG Converter Online",
   keywords: [
     "jpg to png",
     "jpg to png converter",

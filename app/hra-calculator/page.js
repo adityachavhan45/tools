@@ -9,12 +9,10 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title:
-    "HRA Calculator Online Calculate House Rent Allowance and Tax Exemption Free 2026",
+  title: "HRA Calculator Online | Free House Rent Allowance Calculator",
   description:
-    "Calculate your exact HRA exemption instantly with our free online HRA Calculator. Enter basic salary, HRA received, rent paid and metro or non metro status to get accurate house rent allowance estimates. Perfect for salaried employees and tax planning. No signup needed!",
+    "Calculate HRA exemption online with basic salary, HRA received, rent paid, and metro status. Use this free HRA Calculator for a quick house rent allowance estimate.",
   slug: "/hra-calculator",
-  focusKeyword: "HRA Calculator Online Free",
   keywords: [
     "hra calculator",
     "hra exemption calculator",

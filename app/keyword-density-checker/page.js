@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "Keyword Density Checker Online Analyze Keyword Usage and Frequency for Better SEO Free 2026",
+    "Keyword Density Checker Online - Free SEO Tool for Content Optimization & Ranking Boost",
   description:
-    "Analyze keyword usage, frequency and density percentage in your content instantly with our free online Keyword Density Checker. Detect keyword stuffing, improve on page SEO and optimize articles for better Google rankings. Perfect for bloggers, writers and marketers. No signup needed!",
+    "Use this free Keyword Density Checker online to analyze keyword usage, frequency, and percentage in your content. Instantly find keyword stuffing, improve on-page SEO, and optimize articles for better Google rankings. Perfect for bloggers, writers, and marketers.",
   slug: "/keyword-density-checker",
-  focusKeyword: "Keyword Density Checker Online Free",
+  focusKeyword: "Keyword Density Checker Online",
   keywords: [
     "keyword density checker",
     "keyword density checker online",

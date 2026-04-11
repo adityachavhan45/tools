@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "CSV to JSON Converter Online Convert CSV Files to JSON Format Free and Instantly 2026",
+    "CSV to JSON Converter Online - Free & Instant Data Conversion Tool for Developers",
   description:
-    "Convert CSV files to structured JSON format instantly with our free online CSV to JSON Converter. Supports validation, array output and API integration. Perfect for developers, data analysts and students. Fast, secure and no signup needed!",
+    "Use this free CSV to JSON Converter online to instantly convert CSV files into structured JSON format. Fast, secure, and accurate tool for developers, data analysts, and students. Supports validation, array output, and API integration.",
   slug: "/csv-to-json",
-  focusKeyword: "CSV to JSON Converter Online Free",
+  focusKeyword: "CSV to JSON Converter Online",
   keywords: [
     "csv to json converter",
     "csv to json converter online",

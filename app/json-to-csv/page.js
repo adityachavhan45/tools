@@ -9,12 +9,10 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title:
-    "JSON to CSV Converter Online Convert JSON Data to CSV and Export Instantly Free 2026",
+  title: "JSON to CSV Converter Online | Free JSON to CSV Tool",
   description:
-    "Convert JSON data to clean CSV format instantly with our free online JSON to CSV Converter. Paste JSON, flatten records and export CSV output in one click. Perfect for developers, analysts and spreadsheet users. Fast, accurate and no signup needed!",
+    "Convert JSON to CSV online for free. Paste JSON data, flatten records, and export clean CSV output instantly with this lightweight browser tool for developers, analysts, and spreadsheet users.",
   slug: "/json-to-csv",
-  focusKeyword: "JSON to CSV Converter Online Free",
   keywords: [
     "json to csv",
     "json to csv converter",

@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "Google Discover Image Optimizer Resize Images to 1200x700 and Boost Clicks Free 2026",
+    "Google Discover Image Optimizer - Boost Clicks with 1200x700 SEO-Ready Images (Free Tool)",
   description:
-    "Instantly resize images to 1200x700px and enhance contrast, brightness and clarity with our free Google Discover Image Optimizer. Create Discover friendly images that drive more impressions, clicks and traffic to your blog or news site. No signup needed!",
+    "Use this free Google Discover Image Optimizer to instantly resize images to 1200x700px and enhance contrast, brightness, and clarity. Create Discover-friendly images that drive more impressions, clicks, and traffic to your blog or news site — no signup required.",
   slug: "/google-discover-image-optimizer",
-  focusKeyword: "Google Discover Image Optimizer Free",
+  focusKeyword: "Google Discover Image Optimizer",
   keywords: [
     "google discover image optimizer",
     "optimize images for google discover",

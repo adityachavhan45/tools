@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "Internet Speed Test Online Check Download Upload and Latency Speed Free 2026",
+    "Internet Speed Test Online - Free & Accurate Network Speed Checker with Latency",
   description:
-    "Check your download, upload and latency speed instantly with our free online Internet Speed Test. Supports WiFi, broadband, mobile 4G 5G and ethernet connections. Fast, accurate and secure network speed checker. No signup needed!",
+    "Use this free Internet Speed Test online to instantly check your download, upload, and latency performance. Fast, accurate, and secure network speed checker for WiFi, broadband, mobile (4G/5G), and ethernet connections.",
   slug: "/internet-speed-test",
-  focusKeyword: "Internet Speed Test Online Free",
+  focusKeyword: "Internet Speed Test Online",
   keywords: [
     "internet speed test",
     "internet speed test online",

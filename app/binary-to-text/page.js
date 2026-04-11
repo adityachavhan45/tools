@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Binary to Text Converter Online Decode Binary Code to Readable Text Free 2026",
+    "Binary to Text Converter Online - Decode Binary Code to Text Instantly (Free Tool)",
   description:
-    "Convert binary code to readable text instantly with our free online Binary to Text Converter. Supports ASCII decoding, binary encoding and one click text formatting. Perfect for developers, students and programmers. No signup needed!",
+    "Free Binary to Text Converter online. Instantly convert binary code to readable text or ASCII format. Fast, accurate, and easy tool for developers, students, and programmers. Supports binary decoding, encoding, and text formatting in one click.",
   slug: "/binary-to-text",
-  focusKeyword: "Binary to Text Converter Online",
+  focusKeyword: "Binary to Text Converter",
   keywords: [
     "binary to text converter",
     "binary to text",

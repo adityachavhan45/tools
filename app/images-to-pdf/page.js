@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Images to PDF Online Convert JPG and PNG to PDF Instantly Free 2026",
+    "Images to PDF Online - Free JPG & PNG to PDF Converter (Instant & Secure)",
   description:
-    "Convert JPG, PNG and other image formats into a single PDF file instantly with our free online Images to PDF Converter. Perfect for documents, assignments, receipts and professional use. Combine multiple photos into one PDF in seconds. Secure and no signup needed!",
+    "Use this free Images to PDF Converter online to instantly convert JPG, PNG, and other image formats into a single PDF file. Fast, secure, and easy-to-use tool for documents, assignments, receipts, and professional use. Combine multiple photos into one PDF in seconds.",
   slug: "/images-to-pdf",
-  focusKeyword: "Images to PDF Converter Online Free",
+  focusKeyword: "Images to PDF Online",
   keywords: [
     "images to pdf",
     "images to pdf online",

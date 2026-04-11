@@ -9,12 +9,10 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title:
-    "Gratuity Calculator Online Calculate Your Gratuity Amount with Salary and Service Years Free 2026",
+  title: "Gratuity Calculator Online | Free Gratuity Amount Estimator",
   description:
-    "Calculate your exact gratuity amount instantly with our free online Gratuity Calculator. Enter your last drawn salary and years of service to get accurate gratuity estimates. Perfect for employees and HR professionals planning retirement. No signup needed!",
+    "Calculate gratuity online with last drawn salary and years of service. Use this free Gratuity Calculator to estimate gratuity amount quickly for planning purposes.",
   slug: "/gratuity-calculator",
-  focusKeyword: "Gratuity Calculator Online Free",
   keywords: [
     "gratuity calculator",
     "gratuity amount calculator",

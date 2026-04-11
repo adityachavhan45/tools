@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "JSON Formatter and Validator Online Format Beautify Minify and Validate JSON Free 2026",
+    "JSON Formatter & Validator Online - Free Tool to Beautify, Minify & Check JSON",
   description:
-    "Format, beautify, minify and validate JSON code instantly with our free online JSON Formatter and Validator. Detect syntax errors, highlight structure and debug APIs easily. Perfect for developers, testers and data analysts. Fast, accurate and no signup needed!",
+    "Use this free JSON Formatter & Validator online to instantly format, beautify, minify, and validate JSON code. Detect syntax errors, highlight structure, and debug APIs easily — perfect for developers, testers, and data analysts.",
   slug: "/json-formatter",
-  focusKeyword: "JSON Formatter and Validator Online Free",
+  focusKeyword: "JSON Formatter & Validator Online",
   keywords: [
     "json formatter",
     "json validator",

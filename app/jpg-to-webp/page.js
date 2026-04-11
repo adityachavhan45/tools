@@ -9,11 +9,11 @@ import JsonLd from "../components/JsonLd";
 
 export const metadata = buildMetadata({
   title:
-    "JPG to WebP Converter Online Convert JPG Images to WebP for Faster Web Loading Free 2026",
+    "JPG to WebP Converter Online - Free & Fast Image Conversion for Web Optimization",
   description:
-    "Convert JPG images to WebP format instantly with our free online JPG to WebP Converter. Get smaller file sizes and higher quality for faster website loading and better SEO performance. Fast, secure and no signup needed!",
+    "Use this free JPG to WebP Converter online to instantly convert JPG images into WebP format for faster website loading, smaller file sizes, and higher quality. Secure, private, and easy-to-use tool for SEO and web performance optimization.",
   slug: "/jpg-to-webp",
-  focusKeyword: "JPG to WebP Converter Online Free",
+  focusKeyword: "JPG to WebP Converter Online",
   keywords: [
     "jpg to webp",
     "jpg to webp converter",

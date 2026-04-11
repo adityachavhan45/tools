@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "BMI Calculator Online Calculate Your Body Mass Index Free and Instantly 2026",
+    "BMI Calculator Online - Calculate Your Body Mass Index Instantly (Free Tool)",
   description:
-    "Calculate your BMI instantly with our free online BMI Calculator. Enter your height and weight to find out if you are underweight, healthy, overweight or obese. Accurate and easy body mass index tool for health, diet and fitness tracking. No signup needed!",
+    "Use this free BMI Calculator online to calculate your Body Mass Index instantly. Find out if you are underweight, healthy, overweight, or obese based on your height and weight. Accurate BMI tool for health, diet, and fitness tracking.",
   slug: "/bmi-calculator",
-  focusKeyword: "BMI Calculator Online Free",
+  focusKeyword: "BMI Calculator Online",
   keywords: [
     "bmi calculator",
     "bmi calculator online",

@@ -3,11 +3,11 @@ import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
   title:
-    "Color Palette Generator Online Create Beautiful Color Schemes and Gradients Free 2026",
+    "Color Palette Generator Online - Create Beautiful Color Schemes Instantly (Free Tool)",
   description:
-    "Generate stunning color palettes, gradients and color schemes instantly with our free online Color Palette Generator. Get HEX, RGB and HSL values perfect for web design, UI UX, branding and digital art. No signup needed!",
+    "Use this free Color Palette Generator online to instantly create stunning color schemes, gradients, and design palettes. Perfect for web design, UI/UX, branding, and digital art. Generate harmonious color combinations with HEX, RGB, and HSL values.",
   slug: "/color-palette-generator",
-  focusKeyword: "Color Palette Generator Online Free",
+  focusKeyword: "Color Palette Generator Online",
   keywords: [
     "color palette generator",
     "color scheme generator",
