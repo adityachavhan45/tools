@@ -9,21 +9,28 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title: "Gratuity Calculator Online | Free Gratuity Amount Estimator",
+  title:
+    "Gratuity Calculator | Calculate Gratuity Amount from Salary Instantly",
   description:
-    "Calculate gratuity online with last drawn salary and years of service. Use this free Gratuity Calculator to estimate gratuity amount quickly for planning purposes.",
+    "Free Gratuity Calculator to estimate your gratuity amount using last drawn salary and years of service. Calculate gratuity instantly for better financial planning.",
   slug: "/gratuity-calculator",
+  focusKeyword: "Gratuity Calculator",
   keywords: [
     "gratuity calculator",
+    "calculate gratuity",
     "gratuity amount calculator",
     "salary gratuity calculator",
     "employee gratuity calculator",
     "retirement gratuity calculator",
-    "service gratuity calculator",
-    "gratuity estimate calculator",
-    "last drawn salary gratuity calculator",
-    "free gratuity calculator",
+    "gratuity formula",
+    "gratuity calculation india",
+    "last drawn salary gratuity",
+    "years of service gratuity",
     "online gratuity calculator",
+    "free gratuity calculator",
+    "gratuity estimate tool",
+    "financial planning calculator",
+    "gratuity payout calculator"
   ],
 });
 

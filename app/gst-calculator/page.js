@@ -9,21 +9,31 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title: "GST Calculator Online | Free Add or Remove GST Tool",
+  title: "GST Calculator Online Free | Add or Remove GST Instantly",
   description:
-    "Calculate GST online quickly. Add GST to a base amount or remove GST from an inclusive amount using this free GST Calculator with a clear tax breakdown.",
+    "Calculate GST instantly. Add or remove GST from any amount and get a clear tax breakdown with this free online GST calculator.",
   slug: "/gst-calculator",
   keywords: [
     "gst calculator",
     "gst calculator online",
     "add gst calculator",
     "remove gst calculator",
-    "gst inclusive exclusive calculator",
-    "tax calculator gst",
-    "free gst calculator",
-    "online gst calculator",
-    "gst amount calculator",
+    "gst inclusive calculator",
+    "gst exclusive calculator",
     "gst tax calculator",
+    "gst amount calculator",
+    "online gst tool",
+    "calculate gst amount",
+    "gst breakdown calculator",
+    "gst price calculator",
+    "gst percentage calculator",
+    "india gst calculator",
+    "gst reverse calculator",
+    "gst add remove tool",
+    "simple gst calculator",
+    "free gst calculator",
+    "gst inclusive exclusive tool",
+    "gst calculation tool"
   ],
 });
 

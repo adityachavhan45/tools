@@ -17,7 +17,7 @@ export default function WordCounterPage() {
     const readingTime = Math.ceil(words / 200) || 0; // avg 200 wpm
     const speakingTime = Math.ceil(words / 130) || 0; // avg 130 wpm
     const avgWordLength = words > 0 ? (charactersNoSpaces / words).toFixed(1) : 0;
-    
+
     return {
       characters,
       charactersNoSpaces,
@@ -97,7 +97,7 @@ export default function WordCounterPage() {
                 ✍️ Enter or Paste Your Text
               </label>
               <textarea
-                className="w-full min-h-[240px] px-5 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all bg-gray-50 focus:bg-white resize-none"
+                className="w-full min-h-[240px] px-5 py-4 text-base text-gray-900 placeholder-gray-500 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all bg-white resize-none leading-relaxed caret-black"
                 placeholder="Start typing or paste your text here to see instant statistics..."
                 value={text}
                 onChange={(e) => setText(e.target.value)}
@@ -135,24 +135,24 @@ export default function WordCounterPage() {
               <h3 className="text-lg font-bold text-violet-900 mb-5 flex items-center gap-2">
                 📊 Text Statistics
               </h3>
-              
+
               {/* Primary Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="bg-white p-5 rounded-xl shadow-md text-center border border-violet-100">
                   <div className="text-3xl font-bold text-violet-600">{stats.words}</div>
                   <div className="text-xs font-semibold text-gray-600 mt-1">WORDS</div>
                 </div>
-                
+
                 <div className="bg-white p-5 rounded-xl shadow-md text-center border border-purple-100">
                   <div className="text-3xl font-bold text-purple-600">{stats.characters}</div>
                   <div className="text-xs font-semibold text-gray-600 mt-1">CHARACTERS</div>
                 </div>
-                
+
                 <div className="bg-white p-5 rounded-xl shadow-md text-center border border-fuchsia-100">
                   <div className="text-3xl font-bold text-fuchsia-600">{stats.charactersNoSpaces}</div>
                   <div className="text-xs font-semibold text-gray-600 mt-1">NO SPACES</div>
                 </div>
-                
+
                 <div className="bg-white p-5 rounded-xl shadow-md text-center border border-pink-100">
                   <div className="text-3xl font-bold text-pink-600">{stats.sentences}</div>
                   <div className="text-xs font-semibold text-gray-600 mt-1">SENTENCES</div>
@@ -165,22 +165,22 @@ export default function WordCounterPage() {
                   <div className="text-xl font-bold text-gray-700">{stats.paragraphs}</div>
                   <div className="text-xs text-gray-600 mt-1">Paragraphs</div>
                 </div>
-                
+
                 <div className="bg-white p-4 rounded-lg shadow-sm text-center border border-gray-200">
                   <div className="text-xl font-bold text-gray-700">{stats.lines}</div>
                   <div className="text-xs text-gray-600 mt-1">Lines</div>
                 </div>
-                
+
                 <div className="bg-white p-4 rounded-lg shadow-sm text-center border border-gray-200">
                   <div className="text-xl font-bold text-gray-700">{stats.readingTime}</div>
                   <div className="text-xs text-gray-600 mt-1">Min Read</div>
                 </div>
-                
+
                 <div className="bg-white p-4 rounded-lg shadow-sm text-center border border-gray-200">
                   <div className="text-xl font-bold text-gray-700">{stats.speakingTime}</div>
                   <div className="text-xs text-gray-600 mt-1">Min Speak</div>
                 </div>
-                
+
                 <div className="bg-white p-4 rounded-lg shadow-sm text-center border border-gray-200">
                   <div className="text-xl font-bold text-gray-700">{stats.avgWordLength}</div>
                   <div className="text-xs text-gray-600 mt-1">Avg Word</div>
@@ -217,7 +217,7 @@ export default function WordCounterPage() {
                 </li>
               </ul>
             </div>
-            
+
             <div className="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
               <div className="font-bold text-blue-800 mb-3 text-base">📱 Social Media</div>
               <ul className="space-y-2 text-sm text-gray-700">
@@ -239,7 +239,7 @@ export default function WordCounterPage() {
                 </li>
               </ul>
             </div>
-            
+
             <div className="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
               <div className="font-bold text-blue-800 mb-3 text-base">🎓 Academic</div>
               <ul className="space-y-2 text-sm text-gray-700">
@@ -372,17 +372,17 @@ export default function WordCounterPage() {
               <div className="font-bold text-orange-800 mb-2.5 text-base">✓ Quality Over Quantity</div>
               <p className="text-gray-700 text-sm leading-relaxed" style={{ textAlign: 'justify' }}>Never pad content just to meet word counts. Focus on delivering value, and length will follow naturally. Concise, valuable content always beats long, fluffy text.</p>
             </div>
-            
+
             <div className="bg-white p-5 rounded-xl shadow-sm border border-orange-100">
               <div className="font-bold text-orange-800 mb-2.5 text-base">✓ Know Your Platform</div>
               <p className="text-gray-700 text-sm leading-relaxed" style={{ textAlign: 'justify' }}>Different platforms have different optimal lengths. Twitter needs brevity, blogs need depth, and emails need clarity. Adapt your word count to the medium.</p>
             </div>
-            
+
             <div className="bg-white p-5 rounded-xl shadow-sm border border-orange-100">
               <div className="font-bold text-orange-800 mb-2.5 text-base">✓ Monitor While Writing</div>
               <p className="text-gray-700 text-sm leading-relaxed" style={{ textAlign: 'justify' }}>Check word count throughout the writing process, not just at the end. This helps you pace content properly and avoid major rewrites to meet requirements.</p>
             </div>
-            
+
             <div className="bg-white p-5 rounded-xl shadow-sm border border-orange-100">
               <div className="font-bold text-orange-800 mb-2.5 text-base">✓ Consider Reading Time</div>
               <p className="text-gray-700 text-sm leading-relaxed" style={{ textAlign: 'justify' }}>Respect your readers time. If content takes 15+ minutes to read, ensure it provides enough value to justify that investment or consider breaking it into parts.</p>

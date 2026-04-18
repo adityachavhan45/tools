@@ -22,7 +22,7 @@ export default function ClientPage() {
 
   return (
     <section className="min-h-[70vh] px-4 py-12 bg-white">
-      <div className="max-w-4xl mx-auto card-surface p-6 sm:p-8">
+      <div className="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg">
         <h1 className="text-3xl font-semibold text-black mb-6">Case Converter</h1>
 
         <label className="block text-sm font-medium mb-2 text-black">Input Text</label>

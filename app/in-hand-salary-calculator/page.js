@@ -9,21 +9,30 @@ import JsonLd from "../components/JsonLd";
 import ClientPage from "./ClientPage";
 
 export const metadata = buildMetadata({
-  title: "In-Hand Salary Calculator Online | Free Monthly Take Home Estimator",
+  title: "In Hand Salary Calculator Online Free | Calculate Take Home Salary",
   description:
-    "Calculate in-hand salary online with gross monthly salary, PF, tax, professional tax, and other deductions. Use this free In-Hand Salary Calculator for a quick take-home estimate.",
+    "Calculate your in hand salary instantly. Enter salary and deductions to get a clear monthly take home estimate with this free calculator.",
   slug: "/in-hand-salary-calculator",
+  focusKeyword: "in hand salary calculator online",
   keywords: [
     "in hand salary calculator",
+    "in hand salary calculator online",
     "take home salary calculator",
-    "monthly in hand salary calculator",
+    "monthly in hand salary",
     "salary breakup calculator",
-    "salary take home calculator",
-    "net pay calculator",
-    "in hand income calculator",
-    "salary after deductions calculator",
+    "net salary calculator",
+    "salary after deductions",
     "employee salary calculator",
-    "free in hand salary calculator",
+    "take home pay calculator",
+    "salary deduction calculator",
+    "gross to net salary",
+    "salary estimate tool",
+    "monthly salary calculator",
+    "income after tax calculator",
+    "salary calculator india",
+    "free salary calculator",
+    "net pay calculator",
+    "salary calculation tool"
   ],
 });
 
