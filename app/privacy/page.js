@@ -1,12 +1,14 @@
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Privacy Policy | Convertixy – Data Protection & User Privacy",
+  title: "Privacy Policy | Convertixy - Cookies, Ads & Data Protection",
   description:
-    "Read Convertixy’s Privacy Policy to understand how we protect user privacy, handle information responsibly, and maintain transparency across our platform.",
+    "Read Convertixy's Privacy Policy to learn how we handle tool data, cookies, Google AdSense advertising, analytics, and user privacy choices.",
   slug: "/privacy",
   keywords: [
     "convertixy privacy policy",
+    "google ads privacy",
+    "adsense privacy policy",
     "data protection policy",
     "user privacy",
     "online tools privacy",
@@ -30,8 +32,13 @@ export default function PrivacyPolicyPage() {
           </h1>
 
           <p className="mt-4 text-gray-600 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
-            At Convertixy, we value your privacy and are committed to maintaining
-            transparency, security, and responsible data practices.
+            At Convertixy, we respect your privacy and explain clearly how our
+            tools, cookies, analytics, and advertising partners may handle
+            information when you use this website.
+          </p>
+
+          <p className="mt-3 text-sm text-gray-500">
+            Effective date: April 24, 2026
           </p>
         </header>
 
@@ -45,34 +52,39 @@ export default function PrivacyPolicyPage() {
             </h2>
 
             <p>
-              Convertixy provides browser-based tools designed to support
-              productivity and efficiency. Our platform emphasizes privacy,
-              clarity, and user-focused design across all services.
+              Convertixy provides free browser-based tools for file conversion,
+              PDF utilities, image processing, text formatting, SEO tasks, and
+              calculators. This Privacy Policy explains what information we may
+              collect, how we use it, how third-party services such as Google may
+              process data, and the choices available to you.
             </p>
           </section>
 
           {/* Information Processing */}
           <section className="bg-sky-50 rounded-2xl p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-sky-700 mb-4">
-              Information Processing
+              Information We Process
             </h2>
 
             <ul className="list-disc list-inside space-y-2">
               <li>
-                <strong>Tool Inputs:</strong> Files, text, and images are
-                processed primarily within your browser for fast and efficient
-                performance.
+                <strong>Tool inputs:</strong> Many files, images, and text values
+                are processed directly in your browser. For these tools, your
+                input is not intentionally uploaded to our servers.
               </li>
 
               <li>
-                <strong>Usage Insights:</strong> Aggregated usage information
-                helps us understand how tools are used and improve features and
-                reliability.
+                <strong>Usage data:</strong> We may collect basic usage
+                information such as pages visited, device type, browser type,
+                approximate location, referring pages, and interactions with site
+                features to improve reliability and user experience.
               </li>
 
               <li>
-                <strong>User Communication:</strong> Messages sent to our
-                support team are handled carefully to provide assistance.
+                <strong>Contact details:</strong> If you contact us, we may
+                receive your name, email address, message content, and any other
+                information you choose to provide so we can respond to your
+                request.
               </li>
             </ul>
           </section>
@@ -80,39 +92,79 @@ export default function PrivacyPolicyPage() {
           {/* Cookies */}
           <section className="bg-emerald-50 rounded-2xl p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-emerald-700 mb-3">
-              Cookies & Preferences
+              Cookies, Advertising & Google AdSense
             </h2>
 
-            <p>
-              Cookies are used to enhance navigation, save preferences, and
-              improve overall usability. You can manage cookie settings through
-              your browser at any time.
-            </p>
+            <div className="space-y-4">
+              <p>
+                Convertixy may use cookies and similar technologies to keep the
+                website functional, understand site performance, remember basic
+                preferences, and show advertisements.
+              </p>
+
+              <p>
+                We may display ads through Google AdSense or other Google
+                advertising services. Google and its partners may use cookies,
+                including the DoubleClick cookie, to serve ads based on your
+                visits to this and other websites. These cookies help personalize
+                ads, limit repeated ads, measure ad performance, and detect
+                invalid activity.
+              </p>
+
+              <p>
+                You can control or disable cookies in your browser settings. You
+                can also manage Google ad personalization at{" "}
+                <a
+                  href="https://adssettings.google.com/"
+                  className="font-medium text-emerald-700 hover:underline"
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
+                >
+                  Google Ads Settings
+                </a>{" "}
+                and learn more about how Google uses information from sites that
+                use its services at{" "}
+                <a
+                  href="https://policies.google.com/technologies/partner-sites"
+                  className="font-medium text-emerald-700 hover:underline"
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
+                >
+                  Google's partner sites policy
+                </a>
+                .
+              </p>
+            </div>
           </section>
 
           {/* Data Handling */}
           <section className="bg-purple-50 rounded-2xl p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-purple-700 mb-3">
-              Data Handling
+              How We Use Information
             </h2>
 
-            <p>
-              We follow minimal data-handling practices and focus on processing
-              information only when necessary to deliver our services
-              efficiently.
-            </p>
+            <ul className="list-disc list-inside space-y-2">
+              <li>To operate, maintain, and improve Convertixy tools.</li>
+              <li>To monitor performance, fix errors, and prevent abuse.</li>
+              <li>To respond to support, feedback, and contact requests.</li>
+              <li>To understand which tools and pages are useful to visitors.</li>
+              <li>To display, measure, and improve advertising where applicable.</li>
+            </ul>
           </section>
 
           {/* User Rights */}
           <section className="bg-amber-50 rounded-2xl p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-amber-700 mb-3">
-              Your Rights
+              Data Storage & Security
             </h2>
 
             <p>
-              Users may request information, updates, or clarification related
-              to their interactions with our platform. We aim to address all
-              inquiries promptly and transparently.
+              We use reasonable technical and organizational measures to protect
+              information handled through the website. Browser-based tools are
+              designed to reduce unnecessary server-side processing. However, no
+              internet service can guarantee complete security, so avoid entering
+              highly sensitive personal, financial, medical, or confidential
+              information into online tools unless you understand the risk.
             </p>
           </section>
 
@@ -122,10 +174,48 @@ export default function PrivacyPolicyPage() {
               Third-Party Services
             </h2>
 
+            <div className="space-y-4">
+              <p>
+                We may use third-party services for hosting, analytics,
+                advertising, contact handling, and website functionality. These
+                services may process information according to their own privacy
+                policies.
+              </p>
+
+              <p>
+                Third-party services may include Google AdSense, Google
+                Analytics, Google Tag Manager, Firebase, hosting providers, and
+                other tools used to operate and improve Convertixy.
+              </p>
+            </div>
+          </section>
+
+          {/* User Rights */}
+          <section className="bg-amber-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-amber-700 mb-3">
+              Your Privacy Choices
+            </h2>
+
+            <ul className="list-disc list-inside space-y-2">
+              <li>You can block or delete cookies through your browser settings.</li>
+              <li>You can manage Google ad personalization from Google Ads Settings.</li>
+              <li>You can contact us to ask privacy-related questions or request clarification.</li>
+              <li>You can avoid submitting personal data in tool inputs whenever possible.</li>
+            </ul>
+          </section>
+
+          {/* Children */}
+          <section className="bg-orange-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-orange-700 mb-3">
+              Children's Privacy
+            </h2>
+
             <p>
-              Some features may use trusted third-party technologies to enhance
-              performance and reliability. These partners follow industry
-              standards for privacy and security.
+              Convertixy is intended for a general audience and is not directed
+              to children under 13. We do not knowingly collect personal
+              information from children under 13. If you believe a child has
+              provided personal information through our website, please contact
+              us so we can review and take appropriate action.
             </p>
           </section>
 
@@ -136,9 +226,10 @@ export default function PrivacyPolicyPage() {
             </h2>
 
             <p>
-              This policy may be updated periodically to reflect platform
-              improvements and regulatory standards. The latest version will
-              always be available on this page.
+              We may update this Privacy Policy from time to time to reflect
+              changes in our tools, advertising setup, analytics, legal
+              requirements, or data practices. The latest version will always be
+              available on this page with an updated effective date.
             </p>
           </section>
 
@@ -149,14 +240,15 @@ export default function PrivacyPolicyPage() {
             </h2>
 
             <p>
-              For privacy-related questions or assistance, please contact us at{" "}
+              For privacy-related questions, ad/cookie concerns, or data
+              requests, please contact us at{" "}
               <a
-                href="mailto:privacy@convertixy.com"
+                href="mailto:contact@convertixy.com"
                 className="font-medium text-indigo-600 hover:text-indigo-700 hover:underline transition"
               >
                 contact@convertixy.com
               </a>
-              . Our team is dedicated to maintaining your trust and confidence.
+              . We aim to respond to genuine requests within a reasonable time.
             </p>
           </section>
 

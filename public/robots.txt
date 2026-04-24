@@ -52,6 +52,7 @@ Allow: /
 Sitemap: https://convertixy.com/sitemap.xml
 Sitemap: https://convertixy.com/sitemaptools.xml
 Sitemap: https://convertixy.com/sitemapimages.xml
+sitemap: https://convertixy.com/blogsitemap.xml
 
 # Host (mainly for Yandex)
 Host: convertixy.com
