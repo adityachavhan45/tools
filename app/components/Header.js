@@ -69,7 +69,7 @@ function SearchBox({ onNavigate }) {
   };
 
   return (
-    <div className="relative w-full flex-1 min-w-0 max-w-full" style={{ minWidth: "400px" }}>
+    <div className="relative w-full flex-1 min-w-0 max-w-full md:min-w-[400px]">
       <form
         onSubmit={handleSubmit}
         className="relative flex items-center"
@@ -243,6 +243,9 @@ export default function Header() {
               Home
             </Link>
             <SearchBox onNavigate={handleNavigate} />
+            {/* <Link href="/pro-tool" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+              Pro Tool
+            </Link> */}
             <Link href="/blog" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Blog
             </Link>
@@ -300,6 +303,13 @@ export default function Header() {
             >
               Blog
             </Link>
+            {/* <Link
+              href="/pro-tool"
+              className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
+              onClick={handleNavClick}
+            >
+              Pro Tool
+            </Link> */}
             <Link
               href="/contact"
               className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
