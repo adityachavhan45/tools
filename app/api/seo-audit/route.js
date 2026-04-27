@@ -1,7 +1,11 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { verifyFirebaseToken } from "../../../lib/firebaseAuth";
-import { SEO_AUDIT_FREE_LIMIT, getSeoAuditPlan } from "../../../lib/seoAuditPlans";
+import {
+  SEO_AUDIT_FREE_LIMIT,
+  SEO_AUDIT_PRICING_PLAN,
+  getSeoAuditPlan,
+} from "../../../lib/seoAuditPlans";
 import {
   SEO_AUDIT_PREMIUM_COOKIE,
   buildSeoAuditPremiumCookieHeader,
@@ -1024,6 +1028,27 @@ async function getPremiumAccess(request, user) {
   }
 }
 
+function resolveSeoAuditPlanFromEntitlement(premiumAccess) {
+  if (!premiumAccess) return null;
+
+  const byId = getSeoAuditPlan(premiumAccess.planId);
+  if (byId) return byId;
+
+  const normalizedPlanName = String(premiumAccess.planName || "")
+    .trim()
+    .toLowerCase();
+  const defaultPlanName = String(SEO_AUDIT_PRICING_PLAN.name || "")
+    .trim()
+    .toLowerCase();
+
+  if (normalizedPlanName && normalizedPlanName === defaultPlanName) {
+    return SEO_AUDIT_PRICING_PLAN;
+  }
+
+  // Single premium tier product: legacy/missing plan IDs should still map to premium.
+  return SEO_AUDIT_PRICING_PLAN;
+}
+
 export async function POST(request) {
   try {
     const user = await verifyFirebaseToken(request);
@@ -1044,7 +1069,7 @@ export async function POST(request) {
 
     const usage = getUsageFromCookie(request);
     const premiumAccess = await getPremiumAccess(request, user);
-    const premiumPlan = premiumAccess ? getSeoAuditPlan(premiumAccess.planId) : null;
+    const premiumPlan = resolveSeoAuditPlanFromEntitlement(premiumAccess);
     const hasPremiumAccess = Boolean(premiumAccess && premiumPlan);
 
     if (!hasPremiumAccess && usage.used >= SEO_AUDIT_FREE_LIMIT) {

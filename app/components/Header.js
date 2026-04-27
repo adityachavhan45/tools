@@ -269,9 +269,9 @@ export default function Header() {
             <SearchBox onNavigate={handleNavigate} />
             
             {/* navigate */}
-            {/* <Link href="/pro-tool" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+            <Link href="/pro-tool" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               <span suppressHydrationWarning>{premiumToolsLabel}</span>
-            </Link> */}
+            </Link>
 
             <Link href="/blog" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Blog
@@ -354,13 +354,13 @@ export default function Header() {
             </Link>
 
             {/* premium tools navigate */}
-            {/* <Link
+            <Link
               href="/pro-tool"
               className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
               onClick={handleNavClick}
             >
               <span suppressHydrationWarning>{premiumToolsLabel}</span>
-            </Link> */}
+            </Link>
             <Link
               href="/contact"
               className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"

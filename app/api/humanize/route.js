@@ -1,7 +1,11 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { verifyFirebaseToken } from "../../../lib/firebaseAuth";
-import { HUMANIZER_FREE_LIMIT, getHumanizerPlan } from "../../../lib/humanizerPlans";
+import {
+  HUMANIZER_FREE_LIMIT,
+  HUMANIZER_PRICING_PLANS,
+  getHumanizerPlan,
+} from "../../../lib/humanizerPlans";
 import {
   HUMANIZER_PREMIUM_COOKIE,
   buildPremiumCookieHeader,
@@ -139,6 +143,23 @@ async function getPremiumAccess(request, user) {
   }
 }
 
+function resolveHumanizerPlanFromEntitlement(premiumAccess) {
+  if (!premiumAccess) return null;
+
+  const byId = getHumanizerPlan(premiumAccess.planId);
+  if (byId) return byId;
+
+  const normalizedPlanName = String(premiumAccess.planName || "")
+    .trim()
+    .toLowerCase();
+  if (!normalizedPlanName) return null;
+
+  const byName = HUMANIZER_PRICING_PLANS.find(
+    (plan) => String(plan.name || "").trim().toLowerCase() === normalizedPlanName
+  );
+  return byName || null;
+}
+
 export async function POST(request) {
   try {
     const user = await verifyFirebaseToken(request);
@@ -155,7 +176,7 @@ export async function POST(request) {
     const inputWords = countWords(input);
     const usage = getUsageFromCookie(request);
     const premiumAccess = await getPremiumAccess(request, user);
-    const premiumPlan = premiumAccess ? getHumanizerPlan(premiumAccess.planId) : null;
+    const premiumPlan = resolveHumanizerPlanFromEntitlement(premiumAccess);
     const hasPremiumAccess = Boolean(premiumAccess && premiumPlan);
     const requestLimit = hasPremiumAccess
       ? premiumPlan.maxWordsPerRequest
