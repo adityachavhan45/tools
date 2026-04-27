@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
@@ -90,6 +91,38 @@ export default function AuthForm() {
     }
   };
 
+  const handleForgotPassword = async () => {
+    const trimmedEmail = email.trim();
+
+    if (!trimmedEmail) {
+      setError("Please enter your email address first.");
+      setSuccess("");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const baseUrl =
+        process.env.NEXT_PUBLIC_APP_URL?.replace(/\/+$/, "") ||
+        window.location.origin;
+
+      await sendPasswordResetEmail(auth, trimmedEmail, {
+        url: `${baseUrl}/reset-password`,
+        handleCodeInApp: false,
+      });
+      setSuccess(
+        "Password reset link sent. Please check your inbox. If you do not see it, kindly check your spam folder."
+      );
+    } catch (submitError) {
+      setError(submitError.message || "Unable to send reset link. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="min-h-screen bg-gradient-to-b from-gray-50 to-white px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-md">
@@ -153,6 +186,19 @@ export default function AuthForm() {
                 minLength={6}
               />
             </div>
+
+            {!isRegister ? (
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={handleForgotPassword}
+                  disabled={loading}
+                  className="text-sm font-medium text-blue-600 transition hover:text-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  Forgot Password?
+                </button>
+              </div>
+            ) : null}
 
             {error ? (
               <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
