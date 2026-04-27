@@ -5,7 +5,10 @@ import Link from "next/link";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../../lib/firebase/firebaseConfig";
 import { sections as toolSections } from "../data/tools";
-import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
+import {
+  getValidatedPremiumFromStorage,
+} from "../../lib/humanizerPlans";
+import { collection, getDocs, limit, orderBy, query as firestoreQuery } from "firebase/firestore";
 
 function SearchBox({ onNavigate }) {
   const [query, setQuery] = useState("");
@@ -24,7 +27,7 @@ function SearchBox({ onNavigate }) {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const blogsQuery = query(
+        const blogsQuery = firestoreQuery(
           collection(db, "blogs"),
           orderBy("createdAt", "desc"),
           limit(50)
@@ -158,9 +161,11 @@ function SearchBox({ onNavigate }) {
 }
 
 export default function Header() {
+  const premiumToolsLabel = "Premium Tools";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const [premiumPlan, setPremiumPlan] = useState(null);
   const profileMenuRef = useRef(null);
 
   useEffect(() => {
@@ -171,6 +176,25 @@ export default function Header() {
 
     return unsubscribe;
   }, []);
+
+  useEffect(() => {
+    setPremiumPlan(getValidatedPremiumFromStorage(user));
+
+    const intervalId = window.setInterval(() => {
+      setPremiumPlan(getValidatedPremiumFromStorage(user));
+    }, 60 * 1000);
+
+    const handleStorage = () => {
+      setPremiumPlan(getValidatedPremiumFromStorage(user));
+    };
+
+    window.addEventListener("storage", handleStorage);
+
+    return () => {
+      window.clearInterval(intervalId);
+      window.removeEventListener("storage", handleStorage);
+    };
+  }, [user]);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -243,9 +267,12 @@ export default function Header() {
               Home
             </Link>
             <SearchBox onNavigate={handleNavigate} />
+            
+            {/* navigate */}
             {/* <Link href="/pro-tool" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
-              Pro Tool
+              <span suppressHydrationWarning>{premiumToolsLabel}</span>
             </Link> */}
+
             <Link href="/blog" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Blog
             </Link>
@@ -264,7 +291,29 @@ export default function Header() {
                   {profileLabel}
                 </button>
                 {profileMenuOpen ? (
-                  <div className="absolute right-0 mt-2 w-36 rounded-xl border border-gray-200 bg-white p-2 shadow-xl">
+                  <div className="absolute right-0 mt-2 w-64 rounded-xl border border-gray-200 bg-white p-2 shadow-xl">
+                    <div className="mb-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                        Subscription
+                      </div>
+                      <div className="mt-1 text-sm font-bold text-gray-900">
+                        {premiumPlan ? premiumPlan.planName : "Free Plan"}
+                      </div>
+                      <div className="mt-1 text-xs text-gray-600">
+                        {premiumPlan
+                          ? `Active until ${new Date(
+                              premiumPlan.expiresAt * 1000
+                            ).toLocaleDateString()}`
+                          : "No active premium access"}
+                      </div>
+                    </div>
+                    <Link
+                      href="/profile"
+                      onClick={handleNavClick}
+                      className="mb-1 block w-full rounded-lg px-3 py-2 text-left text-sm font-medium text-gray-700 transition hover:bg-gray-100"
+                    >
+                      My Profile
+                    </Link>
                     <button
                       type="button"
                       onClick={handleLogout}
@@ -303,12 +352,14 @@ export default function Header() {
             >
               Blog
             </Link>
+
+            {/* premium tools navigate */}
             {/* <Link
               href="/pro-tool"
               className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
               onClick={handleNavClick}
             >
-              Pro Tool
+              <span suppressHydrationWarning>{premiumToolsLabel}</span>
             </Link> */}
             <Link
               href="/contact"
@@ -318,6 +369,29 @@ export default function Header() {
               Contact
             </Link>
             {user ? (
+              <>
+              <Link
+                href="/profile"
+                className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
+                onClick={handleNavClick}
+              >
+                Profile
+              </Link>
+              <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-3 text-left">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-400">
+                  Subscription
+                </div>
+                <div className="mt-1 text-sm font-bold text-white">
+                  {premiumPlan ? premiumPlan.planName : "Free Plan"}
+                </div>
+                <div className="mt-1 text-xs text-gray-300">
+                  {premiumPlan
+                    ? `Active until ${new Date(
+                        premiumPlan.expiresAt * 1000
+                      ).toLocaleDateString()}`
+                    : "No active premium access"}
+                </div>
+              </div>
               <button
                 type="button"
                 className="block w-full rounded-lg bg-white px-3 py-2.5 text-center font-semibold text-red-600 transition-all duration-200 hover:bg-gray-100"
@@ -325,6 +399,7 @@ export default function Header() {
               >
                 Logout
               </button>
+              </>
             ) : (
               <Link
                 href="/login"

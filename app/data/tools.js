@@ -38,6 +38,7 @@ export const sections = [
     dropdownWidth: "w-[320px]",
     links: [
       { href: "/word-counter", label: "Word Counter", desc: "Count words and characters in text." },
+      { href: "/ai-humanizer", label: "AI Humanizer", desc: "Rewrite AI text into natural human-like writing." },
       { href: "/case-converter", label: "Case Converter", desc: "Uppercase, lowercase, title and sentence case." },
       { href: "/slug-generator", label: "Slug Generator", desc: "Generate URL-friendly slugs from text." },
       { href: "/json-formatter", label: "JSON Formatter", desc: "Format and validate JSON." },
@@ -71,6 +72,7 @@ export const sections = [
       { href: "/meta-tag-generator", label: "Meta Tag Generator", desc: "Generate SEO, OG and Twitter meta tags." },
       { href: "/schema-markup-generator", label: "Schema Markup Generator", desc: "Generate JSON-LD schema markup for common SEO use cases." },
       { href: "/robots-txt-generator", label: "Robots.txt Generator", desc: "Create a robots.txt file with crawler and sitemap rules." },
+      { href: "/seo-audit-checker", label: "SEO Audit Checker (Pro)", desc: "Run manual + AI SEO audit with technical, on-page, content and performance checks." },
       { href: "/serp-snippet-preview", label: "SERP Snippet Preview", desc: "Preview your title and meta description for search results." },
       { href: "/url-encoder", label: "URL Encoder/Decoder", desc: "Encode or decode URLs (percent-encoding)." },
       { href: "/uuid-generator", label: "UUID Generator", desc: "Generate UUID v4 identifiers." },
@@ -136,5 +138,3 @@ export const sections = [
     ],
   },
 ];
-
-

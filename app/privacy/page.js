@@ -204,6 +204,25 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
+          {/* Refund Policy */}
+          <section className="bg-lime-50 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold text-lime-700 mb-3">
+              Refund Policy
+            </h2>
+
+            <div className="space-y-3">
+              <p>
+                If a payment is eligible for refund based on our internal
+                verification and support review, the refunded amount will be
+                processed and credited within <strong>24-48 hours</strong>.
+              </p>
+              <p>
+                Actual credit timing may also depend on your bank, card issuer,
+                or payment provider processing timeline.
+              </p>
+            </div>
+          </section>
+
           {/* Children */}
           <section className="bg-orange-50 rounded-2xl p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-orange-700 mb-3">

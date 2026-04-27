@@ -42,6 +42,7 @@ const ICON_MAP = {
   "/schema-markup-generator": "SCH",
   "/robots-txt-generator": "BOT",
   "/serp-snippet-preview": "SERP",
+  "/seo-audit-checker": "AUD",
   "/url-encoder": "URL",
   "/uuid-generator": "UUID",
   "/password-generator": "PWD",

@@ -177,6 +177,13 @@ export default function AdminDashboardPage() {
           >
             Add Blog
           </button>
+          <button
+            type="button"
+            onClick={() => router.push("/admin/subscriptions")}
+            className="!bg-white !text-black !border !border-black !rounded-xl !shadow-none !py-2 !px-4 !text-sm !font-medium"
+          >
+            Subscriptions
+          </button>
         </div>
 
         <div>
@@ -238,6 +245,7 @@ export default function AdminDashboardPage() {
             </div>
           ) : null}
         </div>
+
       </div>
     </section>
   );

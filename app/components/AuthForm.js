@@ -55,7 +55,9 @@ export default function AuthForm() {
           ? "Account created successfully. Redirecting..."
           : "Login successful. Redirecting..."
       );
-      router.push("/");
+      const redirectTo =
+        new URLSearchParams(window.location.search).get("redirect") || "/";
+      router.push(redirectTo);
     } catch (submitError) {
       setError(submitError.message || "Something went wrong. Please try again.");
     } finally {
@@ -78,7 +80,9 @@ export default function AuthForm() {
           ? "Google account connected successfully. Redirecting..."
           : "Google login successful. Redirecting..."
       );
-      router.push("/");
+      const redirectTo =
+        new URLSearchParams(window.location.search).get("redirect") || "/";
+      router.push(redirectTo);
     } catch (submitError) {
       setError(submitError.message || "Google sign-in failed. Please try again.");
     } finally {
