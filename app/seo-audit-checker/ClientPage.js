@@ -19,10 +19,11 @@ import {
   Zap,
 } from "lucide-react";
 import { onAuthStateChanged } from "firebase/auth";
+import { collection, getDocs, limit, query, where } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import JsonLd from "../components/JsonLd";
 import { buildBreadcrumbJsonLd, buildToolJsonLd } from "../../lib/seo";
-import { auth } from "../../lib/firebase/firebaseConfig";
+import { auth, db } from "../../lib/firebase/firebaseConfig";
 import {
   SEO_AUDIT_PREMIUM_STORAGE_KEY,
   SEO_AUDIT_PRICING_PLAN,
@@ -251,6 +252,82 @@ export default function ClientPage() {
     }, 60 * 1000);
 
     return () => window.clearInterval(intervalId);
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (!currentUser || currentUser.uid === GUEST_USER.uid) {
+      return;
+    }
+
+    let isCancelled = false;
+
+    async function syncPremiumFromDb() {
+      try {
+        const snapshot = await getDocs(
+          query(
+            collection(db, "seo_audit_subscriptions"),
+            where("uid", "==", currentUser.uid),
+            limit(25)
+          )
+        );
+
+        if (snapshot.empty || isCancelled) {
+          return;
+        }
+
+        const now = Math.floor(Date.now() / 1000);
+        let latest = null;
+
+        snapshot.docs.forEach((subscriptionDoc) => {
+          const data = subscriptionDoc.data();
+          const expiresAt = Number(data?.expiresAt || 0);
+
+          if (!Number.isFinite(expiresAt) || expiresAt <= now) {
+            return;
+          }
+
+          if (!latest || expiresAt > latest.expiresAt) {
+            latest = {
+              planId: data?.planId || "",
+              planName:
+                data?.subscriptionName || data?.planName || SEO_AUDIT_PRICING_PLAN.name,
+              expiresAt,
+            };
+          }
+        });
+
+        if (!latest || isCancelled) {
+          return;
+        }
+
+        const premiumData = {
+          uid: currentUser.uid,
+          planId: latest.planId || SEO_AUDIT_PRICING_PLAN.id,
+          planName: latest.planName || SEO_AUDIT_PRICING_PLAN.name,
+          expiresAt: latest.expiresAt,
+        };
+
+        const existing = getValidatedSeoAuditPremiumFromStorage(currentUser);
+        const existingExpiresAt = Number(existing?.expiresAt || 0);
+        if (existing && existingExpiresAt >= premiumData.expiresAt) {
+          return;
+        }
+
+        window.localStorage.setItem(
+          SEO_AUDIT_PREMIUM_STORAGE_KEY,
+          JSON.stringify(premiumData)
+        );
+        setActivePremiumPlan(premiumData);
+      } catch {
+        // Keep current local premium state when DB lookup fails.
+      }
+    }
+
+    syncPremiumFromDb();
+
+    return () => {
+      isCancelled = true;
+    };
   }, [currentUser]);
 
   const isPremium = Boolean(activePremiumPlan);

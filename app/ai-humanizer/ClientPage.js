@@ -12,10 +12,11 @@ import {
   Wand2,
 } from "lucide-react";
 import { onAuthStateChanged } from "firebase/auth";
+import { collection, getDocs, limit, query, where } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import JsonLd from "../components/JsonLd";
 import { buildBreadcrumbJsonLd, buildToolJsonLd } from "../../lib/seo";
-import { auth } from "../../lib/firebase/firebaseConfig";
+import { auth, db } from "../../lib/firebase/firebaseConfig";
 import {
   HUMANIZER_FREE_LIMIT,
   HUMANIZER_PREMIUM_STORAGE_KEY,
@@ -351,6 +352,89 @@ export default function ClientPage() {
     }, 60 * 1000);
 
     return () => window.clearInterval(intervalId);
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (!currentUser || currentUser.uid === GUEST_USER.uid) {
+      return;
+    }
+
+    let isCancelled = false;
+
+    async function syncPremiumFromDb() {
+      try {
+        const snapshot = await getDocs(
+          query(
+            collection(db, "humanizer_subscriptions"),
+            where("uid", "==", currentUser.uid),
+            limit(25)
+          )
+        );
+
+        if (snapshot.empty || isCancelled) {
+          return;
+        }
+
+        const now = Math.floor(Date.now() / 1000);
+        let latest = null;
+
+        snapshot.docs.forEach((subscriptionDoc) => {
+          const data = subscriptionDoc.data();
+          const expiresAt = Number(data?.expiresAt || 0);
+
+          if (!Number.isFinite(expiresAt) || expiresAt <= now) {
+            return;
+          }
+
+          if (!latest || expiresAt > latest.expiresAt) {
+            latest = {
+              planId: data?.planId || "",
+              planName: data?.subscriptionName || data?.planName || "Premium Plan",
+              expiresAt,
+            };
+          }
+        });
+
+        if (!latest || isCancelled) {
+          return;
+        }
+
+        const fallbackPlan =
+          HUMANIZER_PRICING_PLANS.find((plan) => {
+            const normalizedDbName = String(latest.planName || "").trim().toLowerCase();
+            const normalizedPlanName = String(plan.name || "").trim().toLowerCase();
+            return normalizedDbName && normalizedDbName === normalizedPlanName;
+          }) || HUMANIZER_PRICING_PLANS[0];
+
+        const premiumData = {
+          uid: currentUser.uid,
+          planId: latest.planId || fallbackPlan?.id || "",
+          planName: latest.planName || fallbackPlan?.name || "Premium Plan",
+          maxWordsPerRequest: fallbackPlan?.maxWordsPerRequest || HUMANIZER_FREE_LIMIT,
+          expiresAt: latest.expiresAt,
+        };
+
+        const existing = getValidatedPremiumFromStorage(currentUser);
+        const existingExpiresAt = Number(existing?.expiresAt || 0);
+        if (existing && existingExpiresAt >= premiumData.expiresAt) {
+          return;
+        }
+
+        window.localStorage.setItem(
+          HUMANIZER_PREMIUM_STORAGE_KEY,
+          JSON.stringify(premiumData)
+        );
+        setActivePremiumPlan(premiumData);
+      } catch {
+        // Keep current local premium state when DB lookup fails.
+      }
+    }
+
+    syncPremiumFromDb();
+
+    return () => {
+      isCancelled = true;
+    };
   }, [currentUser]);
 
   const inputStats = useMemo(
