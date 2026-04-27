@@ -549,22 +549,6 @@ export default function ClientPage() {
       return;
     }
 
-    if (!activePremiumPlan && isOverLimit) {
-      setError("");
-      setLimitNotice(
-        `You have ${remainingWords} free words left today. Upgrade to Premium to humanize more text.`
-      );
-      return;
-    }
-
-    if (activePremiumPlan && isOverLimit) {
-      setError("");
-      setLimitNotice(
-        `${activePremiumPlan.planName} allows up to ${remainingWords} words per request.`
-      );
-      return;
-    }
-
     setError("");
     setLimitNotice("");
     setIsLoading(true);

@@ -430,7 +430,7 @@ export default function ClientPage() {
         body: JSON.stringify({
           url,
           keyword,
-          includeAi: includeAi && Boolean(activePremiumPlan),
+          includeAi,
         }),
       });
 
