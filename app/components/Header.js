@@ -239,10 +239,20 @@ export default function Header() {
         <Link href="/" className="font-bold text-lg sm:text-xl md:text-2xl tracking-tight hover:opacity-90 transition-all duration-200 hover:scale-105">
           convertixy
         </Link>
-        <nav className="flex items-center gap-2 sm:gap-3 text-sm">
+        <nav className="flex items-center gap-4 sm:gap-4 text-sm">
+          {user ? (
+            <Link
+              href="/profile"
+              className="lg:hidden flex h-9 w-9 items-center justify-center rounded-full bg-white text-xs font-bold text-gray-900 shadow-md transition hover:bg-gray-100"
+              onClick={handleNavClick}
+              aria-label="Go to profile"
+            >
+              {profileLabel}
+            </Link>
+          ) : null}
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center rounded-lg border border-white/20 p-2 sm:p-2.5 text-gray-100 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+            className="lg:hidden ml-1 inline-flex items-center justify-center rounded-lg border border-white/20 p-2 sm:p-2.5 text-gray-100 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
             aria-label="Toggle navigation"
             aria-expanded={mobileMenuOpen}
             onClick={toggleMobileMenu}
@@ -262,7 +272,7 @@ export default function Header() {
               <line x1="4" y1="18" x2="20" y2="18" />
             </svg>
           </button>
-          <div className="hidden md:flex items-center gap-3 lg:gap-4 text-sm lg:text-base w-full">
+          <div className="hidden lg:flex items-center gap-3 lg:gap-4 text-sm lg:text-base w-full">
             <Link href="/" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Home
             </Link>
@@ -292,7 +302,7 @@ export default function Header() {
                 </button>
                 {profileMenuOpen ? (
                   <div className="absolute right-0 mt-2 w-64 rounded-xl border border-gray-200 bg-white p-2 shadow-xl">
-                    <div className="mb-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
+                    {/* <div className="mb-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
                       <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-500">
                         Subscription
                       </div>
@@ -306,7 +316,7 @@ export default function Header() {
                             ).toLocaleDateString()}`
                           : "No active premium access"}
                       </div>
-                    </div>
+                    </div> */}
                     <Link
                       href="/profile"
                       onClick={handleNavClick}
@@ -333,7 +343,7 @@ export default function Header() {
         </nav>
       </div>
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-white/10 bg-black/80 backdrop-blur-sm animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden border-t border-white/10 bg-black/80 backdrop-blur-sm animate-in slide-in-from-top-2 duration-200">
           <nav className="px-4 sm:px-6 py-4 space-y-4 text-sm">
             <div className="rounded-lg border border-white/10 bg-black/40 p-3">
               <SearchBox onNavigate={handleNavigate} />
@@ -377,7 +387,7 @@ export default function Header() {
               >
                 Profile
               </Link>
-              <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-3 text-left">
+              {/* <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-3 text-left">
                 <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-400">
                   Subscription
                 </div>
@@ -391,7 +401,7 @@ export default function Header() {
                       ).toLocaleDateString()}`
                     : "No active premium access"}
                 </div>
-              </div>
+              </div> */}
               <button
                 type="button"
                 className="block w-full rounded-lg bg-white px-3 py-2.5 text-center font-semibold text-red-600 transition-all duration-200 hover:bg-gray-100"
