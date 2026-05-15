@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ToolSection from "../components/ToolSection";
 import { buildToolJsonLd, buildBreadcrumbJsonLd } from "../../lib/seo";
 import JsonLd from "../components/JsonLd";
@@ -9,146 +9,64 @@ export default function TextToJavascriptPage() {
   const [text, setText] = useState("");
   const [javascript, setJavascript] = useState("");
   const [message, setMessage] = useState("");
-  const [outputFormat, setOutputFormat] = useState("array"); // array, object, function
+  const [isGenerated, setIsGenerated] = useState(false);
+  const inputRef = useRef(null);
+  const outputSectionRef = useRef(null);
 
-  function convertTextToJavascript() {
+  const autoResize = (element) => {
+    if (!element) return;
+    element.style.height = "auto";
+    element.style.height = `${element.scrollHeight}px`;
+  };
+
+  useEffect(() => {
+    autoResize(inputRef.current);
+  }, [text]);
+
+  useEffect(() => {
+    if (javascript.trim()) {
+      outputSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [javascript]);
+
+  async function convertTextToJavascript() {
     if (!text.trim()) {
       setMessage("⚠️ Please enter text to convert to JavaScript code.");
       return;
     }
 
     try {
-      const lines = text.split('\n');
-      let jsString = "";
+      setMessage("");
+      setIsGenerated(false);
 
-      if (outputFormat === "array") {
-        const jsContent = lines.map((line) =>
-          `  "${line.replace(/"/g, '\\"').replace(/\\/g, '\\\\').replace(/\n/g, '\\n')}"`
-        ).join(',\n');
+      const response = await fetch("/api/text-to-javascript", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text,
+        }),
+      });
 
-        jsString = `// Text to JavaScript Array Conversion
-// Generated: ${new Date().toLocaleString()}
-// Total Lines: ${lines.length}
-
-const textData = [
-${jsContent}
-];
-
-// Usage Example
-console.log('Total lines:', textData.length);
-console.log('First line:', textData[0]);
-
-// Process all lines
-textData.forEach((line, index) => {
-  console.log(\`Line \${index + 1}: \${line}\`);
-});
-
-// Export for use in other modules
-export default textData;`;
-      } else if (outputFormat === "object") {
-        const jsContent = lines.map((line, index) =>
-          `  line${index + 1}: "${line.replace(/"/g, '\\"').replace(/\\/g, '\\\\').replace(/\n/g, '\\n')}"`
-        ).join(',\n');
-
-        jsString = `// Text to JavaScript Object Conversion
-// Generated: ${new Date().toLocaleString()}
-
-const textObject = {
-${jsContent}
-};
-
-// Usage Example
-console.log('Total properties:', Object.keys(textObject).length);
-console.log('Access specific line:', textObject.line1);
-
-// Iterate through object
-Object.entries(textObject).forEach(([key, value]) => {
-  console.log(\`\${key}: \${value}\`);
-});
-
-export default textObject;`;
-      } else {
-        const jsContent = lines.map((line) =>
-          `    "${line.replace(/"/g, '\\"').replace(/\\/g, '\\\\').replace(/\n/g, '\\n')}"`
-        ).join(',\n');
-
-        jsString = `// Text to JavaScript Function Conversion
-// Generated: ${new Date().toLocaleString()}
-
-function getTextData() {
-  const lines = [
-${jsContent}
-  ];
-  
-  return {
-    lines: lines,
-    count: lines.length,
-    totalChars: lines.reduce((sum, line) => sum + line.length, 0),
-    totalWords: lines.reduce((sum, line) => {
-      return sum + line.trim().split(/\\s+/).filter(w => w.length > 0).length;
-    }, 0),
-    getLine: (index) => lines[index - 1] || null,
-    search: (keyword) => lines.filter(line => line.includes(keyword)),
-    join: (separator = '\\n') => lines.join(separator)
-  };
-}
-
-// Usage Example
-const data = getTextData();
-console.log('Total lines:', data.count);
-console.log('Total characters:', data.totalChars);
-console.log('Total words:', data.totalWords);
-console.log('Get specific line:', data.getLine(1));
-
-export default getTextData;`;
+      if (!response.ok) {
+        setMessage("❌ Unable to convert right now. Please try again.");
+        setIsGenerated(false);
+        return;
       }
 
-      setJavascript(jsString);
-      setMessage("✅ Text successfully converted to JavaScript code!");
-    } catch (error) {
-      setMessage("❌ Error converting text. Please check your input.");
-      console.error(error);
-    }
-  }
-
-  function convertJavascriptToText() {
-    if (!javascript.trim()) {
-      setMessage("⚠️ Please enter JavaScript code to convert to text.");
-      return;
-    }
-
-    try {
-      let extractedText = "";
-      
-      // Extract string literals from JavaScript
-      const stringMatches = javascript.match(/"([^"\\]*(\\.[^"\\]*)*)"|'([^'\\]*(\\.[^'\\]*)*)'/g);
-      
-      if (stringMatches && stringMatches.length > 0) {
-        const textLines = stringMatches.map(match => {
-          const content = match.slice(1, -1);
-          return content
-            .replace(/\\"/g, '"')
-            .replace(/\\'/g, "'")
-            .replace(/\\n/g, '\n')
-            .replace(/\\t/g, '\t')
-            .replace(/\\\\/g, '\\');
-        });
-        extractedText = textLines.join('\n');
-      } else {
-        extractedText = "No string literals found in JavaScript code.";
+      const data = await response.json();
+      if (!data?.code) {
+        setMessage("❌ Unable to convert right now. Please try again.");
+        setIsGenerated(false);
+        return;
       }
-
-      setText(extractedText);
-      setMessage("✅ JavaScript code successfully converted to text!");
+      setJavascript(data.code);
+      setIsGenerated(true);
+      setMessage("");
     } catch (error) {
-      setMessage("❌ Error converting JavaScript. Please check the code format.");
+      setMessage("❌ Unable to convert right now. Please try again.");
+      setIsGenerated(false);
       console.error(error);
     }
-  }
-
-  function copyText() {
-    navigator.clipboard.writeText(text);
-    setMessage("📋 Text copied to clipboard!");
   }
 
   function copyJavascript() {
@@ -173,6 +91,7 @@ export default getTextData;`;
     setText("");
     setJavascript("");
     setMessage("🧹 All fields cleared!");
+    setIsGenerated(false);
   }
 
   return (
@@ -198,7 +117,7 @@ export default getTextData;`;
         ])}
       />
 
-      <div className="space-y-6">
+      <div className="space-y-6 max-w-6xl mx-auto w-full">
         {/* Status Messages */}
         {message && (
           <div className="px-4 py-3 bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-indigo-500 rounded-r-lg text-gray-800 text-sm shadow-sm">
@@ -206,143 +125,89 @@ export default getTextData;`;
           </div>
         )}
 
-        {/* Output Format Selection */}
-        <div className="bg-white border rounded-xl p-5 shadow-sm">
-          <label className="block text-sm font-semibold text-gray-800 mb-3">
-            📦 Output Format
-          </label>
-          <div className="flex flex-wrap gap-3">
-            <button
-              onClick={() => setOutputFormat("array")}
-              className={`px-5 py-2.5 rounded-lg font-medium transition-all duration-200 ${
-                outputFormat === "array"
-                  ? "bg-indigo-600 text-white shadow-md"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              📚 Array Format
-            </button>
-            <button
-              onClick={() => setOutputFormat("object")}
-              className={`px-5 py-2.5 rounded-lg font-medium transition-all duration-200 ${
-                outputFormat === "object"
-                  ? "bg-indigo-600 text-white shadow-md"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              🗂️ Object Format
-            </button>
-            <button
-              onClick={() => setOutputFormat("function")}
-              className={`px-5 py-2.5 rounded-lg font-medium transition-all duration-200 ${
-                outputFormat === "function"
-                  ? "bg-indigo-600 text-white shadow-md"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              ⚡ Function Format
-            </button>
-          </div>
-        </div>
-
         {/* Text Input */}
-        <div className="bg-white border rounded-xl p-5 shadow-sm">
-          <label className="block text-sm font-semibold text-gray-800 mb-3">
+        <div className="bg-white rounded-xl p-5 shadow-sm">
+          <label className="block text-base md:text-lg font-semibold text-gray-800 mb-3">
             📝 Input Text
           </label>
           <textarea
+            ref={inputRef}
             value={text}
             onChange={(e) => setText(e.target.value)}
+            onInput={(e) => autoResize(e.currentTarget)}
             placeholder="Enter or paste your text here... Multiple lines are supported. Special characters will be automatically escaped."
-            className="w-full min-h-48 px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y font-mono text-sm transition-all duration-200"
+            className="w-full min-h-32 md:min-h-36 px-4 md:px-5 py-3 md:py-4 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none overflow-hidden font-mono text-lg md:text-xl transition-all duration-200"
             style={{ textAlign: 'justify' }}
           />
-          <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
+          <div className="flex items-center justify-between mt-2 text-sm text-gray-500">
             <span>💡 Tip: Paste multi-line text for batch conversion</span>
             {text && <span className="font-medium">{text.length} characters</span>}
           </div>
+          <div className="flex gap-3 flex-wrap mt-4">
+            <button
+              onClick={convertTextToJavascript}
+              disabled={!text.trim()}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
+                         bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg 
+                         hover:from-indigo-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed
+                         transform transition-all duration-200 hover:scale-105"
+            >
+              🔄 Convert to JavaScript
+            </button>
+            {javascript && (
+              <>
+                <button
+                  onClick={copyJavascript}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
+                             bg-purple-600 text-white shadow-lg hover:bg-purple-700
+                             transform transition-all duration-200 hover:scale-105"
+                >
+                  📋 Copy Code
+                </button>
+
+                <button
+                  onClick={downloadJavascript}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
+                             bg-orange-600 text-white shadow-lg hover:bg-orange-700
+                             transform transition-all duration-200 hover:scale-105"
+                >
+                  💾 Download JS
+                </button>
+              </>
+            )}
+
+            <button
+              onClick={reset}
+              disabled={!text.trim() && !javascript.trim()}
+              className="px-6 py-3 rounded-lg font-semibold border-2 border-gray-300 bg-white 
+                         hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed
+                         transform transition-all duration-200 hover:scale-105"
+            >
+              🗑️ Clear All
+            </button>
+          </div>
         </div>
 
+        {isGenerated && (
+          <div className="text-green-600 font-semibold text-lg">
+            Code generated successfully
+          </div>
+        )}
+
         {/* JavaScript Output */}
-        <div className="bg-white border rounded-xl p-5 shadow-sm">
-          <label className="block text-sm font-semibold text-gray-800 mb-3">
+        <div ref={outputSectionRef}>
+          <label className="block text-base md:text-lg font-semibold text-gray-800 mb-3">
             💻 JavaScript Output
           </label>
-          <div className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-gray-50 font-mono text-sm whitespace-pre-wrap min-h-48 overflow-x-auto max-h-96 overflow-y-auto">
-            {javascript || "// JavaScript output will appear here...\n// Select a format and click 'Convert to JavaScript'"}
-          </div>
-          <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
+          <pre className="w-full min-h-48 md:min-h-52 px-4 md:px-5 py-3 md:py-4 border-2 border-gray-200 rounded-lg bg-gray-900 text-gray-100 font-mono text-lg md:text-xl whitespace-pre-wrap break-words">
+            <code>
+              {javascript || "// JavaScript output will appear here...\n// Click 'Convert to JavaScript'"}
+            </code>
+          </pre>
+          <div className="flex items-center justify-between mt-2 text-sm text-gray-500">
             <span>✨ Ready-to-use JavaScript code with proper formatting</span>
             {javascript && <span className="font-medium">{javascript.length} characters</span>}
           </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex gap-3 flex-wrap">
-          <button
-            onClick={convertTextToJavascript}
-            disabled={!text.trim()}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
-                       bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg 
-                       hover:from-indigo-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed
-                       transform transition-all duration-200 hover:scale-105"
-          >
-            🔄 Convert to JavaScript
-          </button>
-
-          <button
-            onClick={convertJavascriptToText}
-            disabled={!javascript.trim()}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
-                       bg-gradient-to-r from-green-600 to-teal-600 text-white shadow-lg 
-                       hover:from-green-700 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed
-                       transform transition-all duration-200 hover:scale-105"
-          >
-            📄 Convert to Text
-          </button>
-
-          {text && (
-            <button
-              onClick={copyText}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
-                         bg-blue-600 text-white shadow-lg hover:bg-blue-700
-                         transform transition-all duration-200 hover:scale-105"
-            >
-              📋 Copy Text
-            </button>
-          )}
-
-          {javascript && (
-            <>
-              <button
-                onClick={copyJavascript}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
-                           bg-purple-600 text-white shadow-lg hover:bg-purple-700
-                           transform transition-all duration-200 hover:scale-105"
-              >
-                📋 Copy Code
-              </button>
-              
-              <button
-                onClick={downloadJavascript}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold
-                           bg-orange-600 text-white shadow-lg hover:bg-orange-700
-                           transform transition-all duration-200 hover:scale-105"
-              >
-                💾 Download JS
-              </button>
-            </>
-          )}
-
-          <button
-            onClick={reset}
-            disabled={!text.trim() && !javascript.trim()}
-            className="px-6 py-3 rounded-lg font-semibold border-2 border-gray-300 bg-white 
-                       hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed
-                       transform transition-all duration-200 hover:scale-105"
-          >
-            🗑️ Clear All
-          </button>
         </div>
 
         {/* Text Statistics */}
