@@ -119,7 +119,8 @@ FROM ${tableName};`;
       title="Text to SQL Converter - Free Online Tool"
       subtitle="Convert plain text to SQL queries instantly. Generate SQL INSERT, CREATE, and SELECT statements from text. Fast, free, and easy to use."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd

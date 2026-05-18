@@ -75,7 +75,8 @@ export default function JpgToPngPage() {
       title="Free JPG to PNG Converter"
       subtitle="Convert JPG or JPEG images to PNG in your browser. Lossless conversion, no upload to server works on all devices."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd
@@ -105,9 +106,18 @@ export default function JpgToPngPage() {
         </div>
       )}
 
-      <div className="space-y-6">
+      <div className="mx-auto w-full max-w-5xl space-y-6">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            JPG to PNG Converter Tool
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Convert JPG and JPEG images into high-quality PNG format in seconds.
+          </p>
+        </div>
+
         {/* Upload */}
-        <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 sm:p-8 text-center bg-slate-50/50 hover:bg-slate-100/70 hover:border-slate-400 transition-all duration-200">
+        <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 sm:p-8 text-center bg-slate-50/50 hover:bg-slate-100/70 hover:border-slate-400 transition-all duration-200 shadow-sm">
           <p className="text-slate-600 mb-3 text-sm sm:text-base">
             Choose a JPG or JPEG image to convert
           </p>
@@ -121,7 +131,7 @@ export default function JpgToPngPage() {
 
         {/* Preview */}
         {image && (
-          <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div className="p-4 sm:p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
             <p className="text-sm font-medium text-slate-700 mb-2">Preview</p>
             <div className="inline-block max-w-full rounded-lg overflow-hidden border border-slate-200 bg-slate-100">
               <img
@@ -134,7 +144,7 @@ export default function JpgToPngPage() {
         )}
 
         {/* Actions */}
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap justify-center sm:justify-start">
           <button
             onClick={convertToPng}
             disabled={!image.trim() || processing}
@@ -152,7 +162,7 @@ export default function JpgToPngPage() {
 
         {/* Result */}
         {result && (
-          <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div className="p-4 sm:p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
             <p className="text-sm font-medium text-slate-700 mb-3">PNG image</p>
             <div className="flex flex-col sm:flex-row gap-4 items-start">
               <img
@@ -173,60 +183,195 @@ export default function JpgToPngPage() {
       </div>
 
       {/* Info section – 1000+ words, unique, text-justify */}
-      <section className="mt-12 sm:mt-14 p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-100">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
-          About JPG to PNG Conversion
-        </h2>
+     <section className="mx-auto mt-12 sm:mt-14 w-full max-w-5xl p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-200">
+  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
+    Transform JPEG Images Into High-Quality PNG Files Without Software
+  </h2>
 
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Converting JPG to PNG means turning a JPEG image into a PNG image. JPG (or JPEG) is a format that uses lossy compression: it keeps file sizes small but discards some detail each time the image is saved. PNG uses lossless compression, so it keeps every pixel exactly as it is and supports transparency, which JPG does not. This converter runs in your browser: you select a JPG file, click convert, and download the resulting PNG. No file is sent to a server, so the process is private and fast. People convert JPG to PNG when they need a transparent background, when they want to avoid further quality loss from re-saving, or when a website or application requires PNG format. Whether you are a designer, a student, or someone preparing images for the web or print, this tool provides a simple way to get a PNG from a JPG without installing software.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Image format conversion has become an important part of modern digital workflows. Different websites, design platforms, applications, and editing tools support different image formats depending on quality requirements, transparency support, and compression methods. One of the most common conversions people perform online is converting JPG images into PNG format. This process helps users preserve image quality, improve editing flexibility, and meet platform-specific upload requirements.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">What Is the Difference Between JPG and PNG?</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          JPG was designed for photographs. It uses lossy compression, which means that when you save a JPG, some visual information is discarded to reduce file size. The result is usually good for viewing, but if you open, edit, and save the same JPG again and again, quality can drop. JPG also does not support transparency: every pixel is either a colour or opaque. PNG was designed for graphics, logos, and images where sharp edges and transparency matter. It uses lossless compression, so saving a PNG does not reduce quality. PNG supports an alpha channel, so pixels can be fully transparent, partly transparent, or opaque. That makes PNG the usual choice for logos, icons, overlays, and web graphics that need to sit on different backgrounds. Converting a JPG to PNG does not add detail that was already lost in the JPG; it prevents further loss from future saves and, if you need a transparent background, you would need to edit the image separately to add transparency. For most uses, converting to PNG is about preserving quality and meeting format requirements.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This JPG to PNG converter provides a simple and fast way to change image formats directly inside the browser. Users can upload a JPG image, convert it into PNG format within seconds, and download the final file instantly without installing any software. Since the conversion process happens locally on the device, files remain private throughout the entire process.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">How This Converter Works</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          When you select a JPG file, the tool loads it in your browser and shows a preview. When you click the convert button, the image is drawn onto an off-screen canvas at its original dimensions. The canvas is then exported as a PNG data URL, which is displayed as the result and offered as a download. The conversion is lossless from the point of view of the pixel data: the PNG contains the same pixels as the JPG you uploaded. Because PNG uses a different compression method, the file size of the PNG may be larger or smaller than the JPG depending on the image content. All of this happens locally; no copy of your image is sent to a server. The tool works in any modern browser that supports the canvas API and works on desktop, tablet, and phone.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Why People Convert JPG Images Into PNG Format
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">When to Use PNG Instead of JPG</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Use PNG when you need transparency (for example a logo or icon without a background), when you are going to edit the image many times and want to avoid the quality loss that comes with re-saving JPG, or when the target platform or tool requires PNG. Use JPG when you are storing or sharing photographs and want smaller file sizes and when transparency is not needed. Many websites and design tools accept both; some specify one or the other. Print shops and publishers sometimes prefer PNG for graphics because of the lossless quality. Converting an existing JPG to PNG is useful when you have received or downloaded a JPG and need to supply a PNG for a project, or when you want to archive an image in a format that will not lose quality if someone opens and saves it again later.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    JPG and PNG formats are designed for different purposes. JPG images are usually smaller in size because they use lossy compression. This makes JPG ideal for photographs, social media uploads, and websites where smaller file size matters more than perfect image preservation.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Step-by-Step How to Use</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Open the tool in your browser on a computer, tablet, or phone. Click the upload area or the file button and select a JPG or JPEG image from your device. The image will appear as a preview. Check that it is the correct file. Then click the convert to PNG button. The tool will process the image in a few seconds. When the conversion is complete, the PNG version will appear with a download link. Click the download link to save the PNG file to your device. You can then use the file in your design software, upload it to a website, or attach it to an email. If you need to convert another image, use the clear button and select a new file. There is no limit on how many images you convert; each conversion is done one image at a time.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    PNG files, on the other hand, are designed for higher image preservation and transparency support. Designers, developers, students, content creators, and businesses often prefer PNG when they need cleaner graphics, sharper text, or transparent backgrounds. Because PNG uses lossless compression, image quality remains more stable during repeated editing and saving.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Quality and File Size</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          PNG is a lossless format, so the converter does not reduce the resolution or colour information of your image. The PNG you get has the same dimensions and the same pixel data as the JPG you uploaded (as your browser decoded it). The file size of the PNG can be larger than the JPG, especially for photographs, because PNG compression is lossless and does not discard detail. For graphics with flat colours and sharp edges, PNG files are often small and efficient. If the resulting PNG is too large for your needs, you can use a separate image compressor or resizer after conversion. This tool focuses only on format conversion; it does not compress or resize the image.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Users who later want smaller optimized versions of PNG images often use{" "}
+    <a
+      href="https://convertixy.com/image-compressor"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      Image Compressor
+    </a>{" "}
+    to reduce file size while maintaining acceptable visual quality.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Use Cases</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Web designers and developers often need PNGs for logos, icons, and graphics that must have transparent backgrounds or stay sharp at different sizes. Converting a JPG to PNG is a first step when the only available version of an asset is JPG. Students and educators might convert diagrams or screenshots to PNG before inserting them into documents or presentations to avoid further quality loss. Small businesses might convert product photos or branding images to PNG for use in templates or print. Social media managers and content creators sometimes need PNG for overlays or graphics that require transparency. Anyone who has received a JPG from a camera, phone, or download and needs to submit or use a PNG for a form, platform, or project can use this converter to get the right format quickly without installing software.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Understanding the Main Difference Between JPG and PNG
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Privacy and Security</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This converter runs entirely in your browser. The JPG file you select is read by the browser and kept in memory only for the time you are on the page. The conversion is done locally using the canvas API; no copy of your image is sent to a server or stored by us. When you download the PNG, it is saved from your browser to your device. If you close the tab or leave the page, the image data is gone. This local-first approach is useful when you are converting sensitive or confidential images and do not want to upload them to an online service. You can use the tool on a shared or public computer with less worry about leaving files behind, as long as you download your result and clear the page when you are done.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    JPG format is mainly optimized for photographs and smaller file sizes. It reduces image size by removing some visual information that may not be immediately noticeable to the human eye. This process helps reduce storage usage and improve loading speed on websites.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Limitations</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This tool converts one JPG to PNG at a time. It does not support batch conversion of multiple files in one go; for that you would run the tool multiple times or use a desktop application. The output PNG has the same dimensions as the input JPG; the tool does not resize, crop, or add transparency. If your JPG has no transparent areas (which is normal for JPG), the PNG will also have no transparency; adding a transparent background would require editing in an image editor. Very large images (for example tens of megapixels) may take a few seconds to process or, on low-memory devices, may cause the browser to slow down. The tool accepts only JPG and JPEG files; for other formats you would need a different converter. For most users converting typical photos or graphics, these limitations do not affect the result.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    PNG format focuses more on preserving image details. It supports transparent backgrounds and keeps image data more accurately during editing. This makes PNG useful for graphics, screenshots, logos, UI elements, presentations, diagrams, and digital artwork where image clarity is important.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Conclusion</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-          Converting JPG to PNG is a simple way to get a lossless, widely compatible image format from a JPEG file. This free converter runs in your browser, accepts JPG and JPEG, and produces a PNG that you can download with one click. Your files are not uploaded to any server. Use it when you need a PNG for a website, design, or submission, or when you want to avoid further quality loss from re-saving. For transparency or advanced editing, use an image editor after conversion. For quick, private, and straightforward JPG to PNG conversion, this tool is a reliable option.
-        </p>
-      </section>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Converting a JPG image into PNG does not magically restore details already lost during JPG compression, but it helps prevent additional quality reduction during future editing and saving operations.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Common Situations Where PNG Works Better
+  </h3>
+
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>Creating logos and transparent graphics</li>
+    <li>Designing website elements and interface components</li>
+    <li>Editing screenshots and diagrams</li>
+    <li>Preparing images for presentations and documents</li>
+    <li>Preserving visual quality during repeated editing</li>
+    <li>Uploading graphics to platforms that require PNG format</li>
+    <li>Creating overlays for videos and social media content</li>
+  </ul>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    These situations explain why PNG remains one of the most popular image formats for design-related workflows.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    How This JPG to PNG Converter Works
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This converter works completely inside the browser using modern web technologies. After selecting a JPG image, the browser processes the file locally and converts it into PNG format within seconds. Once the conversion finishes, the PNG file becomes available for download immediately.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Since no external server upload is required, the process remains fast and private. Users do not need to create accounts, install applications, or share personal files with third-party services.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Why Designers Prefer PNG Files
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Designers frequently work with layered graphics, icons, logos, screenshots, and interface components where sharpness matters. PNG helps preserve edge clarity and text readability much better than heavily compressed JPG files.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Transparency support is another major advantage. PNG allows transparent backgrounds, making it useful for website logos, product cutouts, overlays, stickers, and social media designs. JPG format does not support transparency, which limits its flexibility for certain creative workflows.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    File Size and Quality Considerations
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    PNG images are often larger than JPG files because they preserve more visual information. This means PNG is usually better for editing and graphics, while JPG remains better for lightweight photo sharing and web performance.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Users managing websites often balance quality and performance carefully. They may use PNG for graphics and logos while using JPG or WebP for photographs. Many developers also convert optimized PNG images using{" "}
+    <a
+      href="https://convertixy.com/jpg-to-webp"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      JPG to WebP
+    </a>{" "}
+    workflows to improve modern website loading performance.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Best Practices Before Converting Images
+  </h3>
+
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>Use the highest-quality original JPG image possible</li>
+    <li>Avoid repeatedly saving heavily compressed JPG files</li>
+    <li>Resize oversized images before conversion if necessary</li>
+    <li>Keep backup copies of original files</li>
+    <li>Choose PNG mainly for graphics and editing flexibility</li>
+    <li>Use optimized formats for website performance when needed</li>
+  </ul>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Following these practices helps maintain cleaner image quality and better workflow efficiency during editing and publishing.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Browser-Based Conversion Advantages
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Browser-based image converters provide several advantages compared to traditional desktop software. Users can access tools instantly without installation, licensing costs, or technical setup. This makes online converters highly convenient for quick tasks and everyday image editing needs.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This converter works on Windows, Linux, macOS, Android, and iPhone devices directly through the browser. Whether users are working from a desktop computer or mobile device, the conversion process remains simple and accessible.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Website owners and content creators often improve visual optimization using{" "}
+    <a
+      href="https://convertixy.com/google-discover-image-optimizer"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      Google Discover Image Optimizer
+    </a>{" "}
+    for better loading speed and search visibility across image-heavy webpages.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Privacy and Local File Processing
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Privacy concerns are becoming more important for online users, especially when handling personal images, confidential graphics, or business files. Some online converters upload files to remote servers, which may create security concerns for sensitive data.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This JPG to PNG converter processes files locally inside the browser instead of relying on external uploads. Images remain on the device during conversion, helping users maintain better privacy and faster processing speeds.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Difference Between Conversion and Editing
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Image conversion changes the file format, while image editing changes the visual content itself. Converting a JPG into PNG does not automatically remove backgrounds, sharpen blurry photos, or improve image resolution. It simply changes the storage format and compression behavior.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    If users need transparent backgrounds or advanced editing, they usually perform those tasks separately using dedicated design or editing software after conversion.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Final Thoughts
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
+    Converting JPG images into PNG format is a practical solution for users who need stronger image preservation, transparent graphics support, and better editing flexibility. Whether you are a designer, developer, student, blogger, content creator, or casual user, PNG files often provide cleaner and more reliable results for graphics-focused workflows.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mt-4 text-justify">
+    This free JPG to PNG converter offers a fast, browser-based, and privacy-focused way to change image formats without software installation or account registration. With local file processing, instant conversion, and broad device compatibility, the tool helps users handle image format changes quickly and efficiently whenever PNG output is required.
+  </p>
+</section>
     </ToolSection>
   );
 }

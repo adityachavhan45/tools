@@ -109,7 +109,8 @@ export default function TextToHexPage() {
       title="Free Text to Hex Converter - Convert Text to Hexadecimal Online"
       subtitle="Professional online text to hex converter tool. Convert text to hexadecimal code and decode hex to text instantly with our free, secure, and easy-to-use converter."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd
@@ -128,11 +129,19 @@ export default function TextToHexPage() {
       />
 
       <div className="max-w-5xl mx-auto">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm mb-8">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            Text to Hex Converter
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Convert text to hexadecimal and decode hex back to text in real time.
+          </p>
+        </div>
         {/* Main Converter Card */}
-        <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden mb-8">
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden mb-8">
+          <div className="bg-gradient-to-r from-cyan-700 to-blue-700 px-6 py-4">
             <h2 className="text-white text-xl font-bold">Text ⇄ Hexadecimal Converter</h2>
-            <p className="text-indigo-100 text-sm mt-1">Convert between text and hex format in real-time</p>
+            <p className="text-cyan-100 text-sm mt-1">Convert between text and hex format in real-time</p>
           </div>
 
           <div className="p-6 space-y-6">

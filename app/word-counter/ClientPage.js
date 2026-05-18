@@ -75,7 +75,7 @@ export default function WordCounterPage() {
         ])}
       />
 
-      <div className="max-w-6xl mx-auto px-4 space-y-8">
+      <div className="max-w-5xl mx-auto px-4 space-y-8">
         {/* Status Message */}
         {message && (
           <div className="px-5 py-3.5 bg-gradient-to-r from-purple-50 to-fuchsia-50 border-l-4 border-purple-500 rounded-xl shadow-sm animate-fadeIn">

@@ -77,7 +77,8 @@ export default function LoanCalculatorPage() {
       title="Free Loan Calculator"
       subtitle="Estimate monthly payment, total interest, and see a short amortization view. For planning only no upload, works in your browser."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd
@@ -106,7 +107,16 @@ export default function LoanCalculatorPage() {
         </div>
       )}
 
-      <div className="space-y-6">
+      <div className="mx-auto w-full max-w-5xl space-y-6">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            Loan Calculator Tool
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Estimate monthly payment, total interest, and short amortization preview.
+          </p>
+        </div>
+
         {/* Inputs */}
         <div className="p-4 sm:p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
           <p className="text-sm font-medium text-slate-700 mb-4">Loan details</p>
@@ -151,7 +161,7 @@ export default function LoanCalculatorPage() {
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap justify-center sm:justify-start">
           <button
             onClick={calculateLoan}
             disabled={!loanAmount.trim() || !interestRate.trim() || !loanTerm.trim()}
@@ -233,55 +243,183 @@ export default function LoanCalculatorPage() {
       </div>
 
       {/* Info section – 1000+ words, unique, text-justify */}
-      <section className="mt-12 sm:mt-14 p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-100">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
-          About This Loan Calculator
-        </h2>
+      <section className="mx-auto mt-12 sm:mt-14 w-full max-w-5xl p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-200">
+  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
+    Understanding Loan Planning Before Borrowing Money
+  </h2>
 
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          A loan calculator is a tool that estimates your monthly payment and total interest for a fixed-rate loan. You enter the loan amount (principal), the annual interest rate, and the term in years. The calculator uses the standard amortisation formula to compute a fixed monthly payment that pays off the loan over the term, with part of each payment going to interest and part to principal. This calculator runs in your browser: no data is sent to a server, so your numbers stay private. It is intended for planning and comparison only; actual loan terms, fees, and conditions are set by lenders. Whether you are considering a mortgage, a car loan, or a personal loan, this tool helps you see roughly what you would pay each month and how much interest you would pay over the life of the loan.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Loans have become an important part of modern financial planning. People borrow money for many different reasons including buying homes, purchasing vehicles, paying educational expenses, managing emergencies, expanding businesses, or handling personal financial needs. While loans can provide financial support during important situations, borrowing without proper planning can sometimes create long term repayment pressure.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">How the Monthly Payment Is Calculated</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          For a fixed-rate loan with monthly payments, the amount you pay each month is constant. The formula used here is the standard present-value annuity formula, often called the PMT formula. It accounts for the principal, the monthly interest rate (annual rate divided by 12), and the number of months. Early in the loan, most of the payment goes toward interest and a smaller part toward principal. Over time, the interest portion decreases and the principal portion increases, until the loan is paid off. When the interest rate is zero, the monthly payment is simply the principal divided by the number of months. This calculator assumes that payments are made every month on time and that the rate does not change; it does not include fees, taxes, or insurance.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    One of the biggest mistakes borrowers make is focusing only on the approved loan amount without understanding the total repayment cost. Interest rates, repayment duration, and monthly instalments can significantly affect overall financial stability. This is why loan calculators have become extremely useful tools for financial planning.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">What the Results Mean</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          The monthly payment is the amount you would pay each month under the assumptions you entered. The total payment is the monthly payment multiplied by the number of months; it is the full amount you would pay back. The total interest is the total payment minus the principal; it is the cost of borrowing. The amortisation table (first 12 months) shows how each payment is split between principal and interest and what the remaining balance is after each payment. This helps you see how much of your early payments go to interest and how the balance decreases over time. Lenders may use slightly different rounding or methods, so your actual statement might differ by a few cents; this tool is for estimation only.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    A Loan Calculator helps users estimate monthly payments, total repayment amount, and interest costs before applying for a loan. Instead of depending entirely on lender discussions, users can compare multiple scenarios independently and understand how different loan structures may affect their budget over time.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Why Use a Loan Calculator</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Before you borrow, it is useful to know how much you will pay each month and how much interest you will pay in total. A small change in the interest rate or term can make a large difference. For example, a longer term lowers the monthly payment but usually increases total interest. A lower rate reduces both the monthly payment and the total interest. By trying different amounts, rates, and terms, you can compare scenarios and see what fits your budget. You can also use the calculator to check rough figures that a lender gives you. Many people use loan calculators for home loans, car loans, personal loans, and education loans. The goal is to be informed, not to get an exact contract; the final terms always come from the lender.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Why Monthly Loan Planning Matters So Much
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Step-by-Step How to Use</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Open the calculator in your browser. Enter the loan amount in dollars (the sum you want to borrow). Enter the annual interest rate as a percentage (for example 6 for 6%). Enter the term in years (for example 15 for a 15-year loan). Click the calculate button. The results will show the estimated monthly payment, total payment, total interest, and a table of the first 12 months. Use the clear button to reset and try different numbers. You can run as many scenarios as you like; nothing is saved or sent to a server. Remember that the result does not include fees, taxes, or insurance, and that your actual loan may have different terms or rounding.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Every loan comes with repayment responsibility. Monthly instalments continue for months or sometimes even years depending on the chosen repayment period. If borrowers select loan amounts or repayment terms without proper planning, monthly expenses may become difficult to manage later.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Limitations of This Calculator</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This tool assumes a fixed interest rate and equal monthly payments. It does not handle variable rates, balloon payments, or interest-only periods. It does not include origination fees, closing costs, or insurance. For mortgages, property taxes and home insurance are often paid separately or through an escrow account; they are not in this calculation. Different countries and lenders use different conventions (for example payment in arrears vs advance, or different day-count methods). The calculator is designed for a simple, standard loan so that you can get a quick estimate. For exact figures, use the lenders calculator or ask for a formal quote. For tax or legal advice, consult a professional.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    A loan calculator helps users estimate affordability before committing to financial obligations. By adjusting loan amount, interest rate, and repayment duration, users can compare different repayment structures and identify options that fit their monthly income more comfortably.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Use Cases</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Home buyers use loan calculators to estimate mortgage payments before house hunting or applying. Car buyers use them to compare financing options and see how term and rate affect the monthly payment. People considering personal loans use them to check affordability. Students and families use them for education loans. Small businesses use them to rough out the cost of a business loan. Anyone who is comparing offers from different lenders can plug in the same principal with different rates and terms to see the difference in monthly payment and total interest. The calculator is a planning tool; it does not approve or offer loans.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Financial planning tools often work best when used together. For example, users analysing salary expenses may also use the <a href="https://convertixy.com/in-hand-salary-calculator" className="text-blue-600 hover:underline font-medium">In Hand Salary Calculator</a> to understand how much monthly income remains available after deductions and taxes.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Privacy and Data</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This loan calculator runs entirely in your browser. The numbers you enter are not sent to any server or stored by us. All calculations are done on your device. You can use it for personal planning without worrying about your loan amount or rate being recorded. No account or login is required. The tool works offline once the page has loaded. If you are on a shared device, clear the fields or close the tab when you are done.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    How Loan Calculators Estimate Monthly Payments
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Conclusion</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-          A loan calculator helps you estimate monthly payments and total interest for a fixed-rate loan. This free tool runs in your browser: enter the loan amount, annual rate, and term, and get the monthly payment, total payment, total interest, and a sample of the first 12 months. Your data is not uploaded. Use it to compare scenarios and to plan before you borrow. For actual terms and conditions, always rely on your lender. This calculator is for planning only and does not replace professional financial or legal advice.
-        </p>
-      </section>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Loan calculators use mathematical formulas to estimate repayment values based on the entered information. Users generally provide three important details including the loan amount, annual interest rate, and repayment duration. Using these inputs, the calculator estimates how much the borrower may need to pay every month throughout the repayment period.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Fixed rate loans usually maintain the same monthly payment amount across the repayment period. However, the balance between principal repayment and interest payment changes gradually over time. In the early months, a larger portion of the payment typically goes toward interest. As the balance decreases, more of the payment starts reducing the principal amount.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Understanding this repayment structure helps borrowers make smarter financial decisions before taking loans from banks or financial institutions.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Why Interest Rates Affect Total Repayment Cost
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Interest rates directly affect how expensive a loan becomes over time. Even a small increase in interest percentage can significantly increase total repayment costs, especially for long term loans such as home financing.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Lower interest rates generally reduce both monthly payments and overall repayment burden. Higher rates increase borrowing costs and may make long term repayment more difficult for some users. This is why borrowers often compare offers from multiple lenders before making final decisions.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    People who regularly compare financial calculations sometimes also use the <a href="https://convertixy.com/percentage-calculator" className="text-blue-600 hover:underline font-medium">Percentage Calculator</a> to better understand interest changes, repayment differences, and budget calculations while planning loans.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Long Term Loans Versus Short Term Loans
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Loan duration plays an important role in determining both monthly instalments and total repayment amount. Longer repayment periods usually reduce monthly payments because the balance gets distributed across more months. However, long durations often increase total interest paid over time.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Shorter loan terms usually result in higher monthly instalments, but they often reduce total interest costs because the loan gets cleared faster. Borrowers should choose repayment durations based on income stability, financial comfort, and long term goals instead of selecting the longest available option automatically.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Comparing multiple repayment structures before borrowing helps users avoid unnecessary financial pressure later.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Different Types of Loans People Commonly Calculate
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Loan calculators are useful for many different borrowing situations. Home buyers use them to estimate mortgage affordability before purchasing property. Car buyers compare monthly instalments while selecting financing options for vehicles. Students and families use calculators to understand educational loan repayments before taking admission related financing.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Personal loan applicants often estimate monthly repayment obligations before applying for emergency funding or debt consolidation. Small business owners also use loan calculators while evaluating equipment financing, expansion funding, or operational borrowing.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Many users planning broader financial growth also combine loan analysis with investment planning tools such as the <a href="https://convertixy.com/sip-calculator" className="text-blue-600 hover:underline font-medium">SIP Calculator</a> to balance borrowing and long term savings goals together.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    How Loan Calculators Improve Financial Decision Making
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Financial decisions become safer when users understand repayment obligations clearly before borrowing. Loan calculators provide quick estimates that help borrowers avoid unrealistic commitments. Instead of guessing affordability, users can see actual estimated instalments instantly.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Comparing different scenarios also helps users negotiate better loan structures. Borrowers may decide to increase down payments, shorten repayment periods, or choose lower loan amounts after reviewing repayment calculations carefully.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Financial awareness reduces the risk of repayment stress and supports more responsible borrowing behaviour over time.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Why Browser Based Financial Tools Feel More Convenient
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Browser based tools provide instant accessibility without requiring installations or account creation. Users can open the calculator directly on desktop or mobile devices and test multiple repayment combinations quickly.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This loan calculator processes values directly inside the browser itself, making the experience lightweight and fast. Users can repeatedly test different amounts, rates, and durations without delays or unnecessary complexity.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Many people also prefer browser based tools because they allow quick planning before approaching lenders or discussing financing with banks and financial advisors.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Privacy Advantages of Local Loan Calculations
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Financial information is personal, and many users prefer not to share salary details, loan amounts, or repayment plans with unknown platforms unnecessarily. Browser based processing helps maintain better privacy while calculating financial estimates.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Since this calculator runs locally inside the browser, entered values remain on the user device during calculations. Users can estimate repayment scenarios privately without needing to upload sensitive financial information externally.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This local processing approach also improves speed because calculations happen instantly without depending on remote servers.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Helpful Financial Habits Before Taking Any Loan
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Borrowers should always review monthly income, emergency savings, ongoing expenses, and future financial goals before taking loans. It is important to avoid selecting loan amounts purely based on maximum eligibility offered by lenders.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Comparing interest rates carefully, understanding repayment schedules, checking hidden charges, and reading lender conditions properly can prevent unexpected financial problems later. Users should also maintain repayment discipline to avoid penalties and credit related issues.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    People handling multiple financial calculations may additionally use the <a href="https://convertixy.com/salary-after-tax-calculator" className="text-blue-600 hover:underline font-medium">Salary After Tax Calculator</a> while planning monthly budgets alongside loan repayments and living expenses.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Final Thoughts on Using a Loan Calculator
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
+    A Loan Calculator is one of the most practical financial planning tools for estimating repayment costs before borrowing money. It helps users understand monthly instalments, total repayment amount, and interest expenses more clearly while comparing different borrowing scenarios.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify mt-4">
+    This browser based calculator keeps the process simple, beginner friendly, and accessible across devices. Users can quickly test loan combinations without creating accounts or sharing personal financial information externally.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify mt-4">
+    Whether you are planning a home loan, vehicle financing, educational borrowing, business funding, or personal financial support, understanding repayment obligations in advance can help create smarter and more confident financial decisions over the long term.
+  </p>
+</section>
     </ToolSection>
   );
 }

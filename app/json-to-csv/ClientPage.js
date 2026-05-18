@@ -146,33 +146,50 @@ export default function JsonToCsvPage() {
   };
 
   return (
-    <ToolSection title="JSON to CSV Converter" subtitle="Convert JSON arrays and objects into clean CSV output that you can copy or download in seconds.">
-      <div className="space-y-5">
+    <ToolSection
+      title="JSON to CSV Converter"
+      subtitle="Convert JSON arrays and objects into clean CSV output that you can copy or download in seconds."
+      plain
+      hideSidebar
+      centerHeader
+      whiteBackground
+    >
+      <div className="mx-auto w-full max-w-5xl space-y-6">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            JSON to CSV Converter Tool
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Convert JSON arrays and objects into spreadsheet-ready CSV output in seconds.
+          </p>
+        </div>
+
         <div className="grid gap-5 lg:grid-cols-2">
           <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">JSON Input</label>
-            <textarea value={jsonInput} onChange={(e) => setJsonInput(e.target.value)} className="min-h-72 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 font-mono text-sm text-gray-900 placeholder-gray-400" />
+            <label className="mb-2 block text-sm font-medium text-slate-700">JSON Input</label>
+            <textarea value={jsonInput} onChange={(e) => setJsonInput(e.target.value)} className="min-h-72 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 font-mono text-sm text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-teal-500" />
           </div>
           <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">CSV Output</label>
-            <textarea value={conversion.output} readOnly className="min-h-72 w-full rounded-2xl border border-gray-300 bg-gray-50 px-4 py-3 font-mono text-sm text-gray-900" />
+            <label className="mb-2 block text-sm font-medium text-slate-700">CSV Output</label>
+            <textarea value={conversion.output} readOnly className="min-h-72 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 font-mono text-sm text-slate-900" />
           </div>
         </div>
-        <div className="flex flex-wrap gap-3">
-          <button onClick={copyOutput} className="rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white">Copy CSV</button>
-          <button onClick={downloadCsv} className="rounded-xl border border-gray-300 px-5 py-3 font-semibold text-gray-700">Download CSV</button>
-          {message ? <p className="self-center text-sm text-green-700">{message}</p> : null}
-          {conversion.error ? <p className="self-center text-sm text-red-600">{conversion.error}</p> : null}
+
+        <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+          <button onClick={copyOutput} className="px-6 py-3 rounded-xl bg-teal-600 text-white font-medium shadow-md hover:bg-teal-700 transition">Copy CSV</button>
+          <button onClick={downloadCsv} className="px-6 py-3 rounded-xl border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 font-medium transition">Download CSV</button>
+          {message ? <p className="self-center text-sm text-emerald-700">{message}</p> : null}
+          {conversion.error ? <p className="self-center text-sm text-rose-600">{conversion.error}</p> : null}
         </div>
-      </div>
-      <div className="mt-8 space-y-8">
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h2 className="text-2xl font-bold text-gray-900">About This Tool</h2>
+
+        <div className="mt-8 space-y-8">
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-2xl font-bold text-slate-900">About This Tool</h2>
           <div className="mt-6 space-y-8">
             {sections.map((section) => (
               <div key={section.heading}>
-                <h3 className="text-xl font-semibold text-gray-900">{section.heading}</h3>
-                <div className="mt-3 space-y-4 text-sm leading-7 text-gray-700 sm:text-base">
+                <h3 className="text-xl font-semibold text-slate-900">{section.heading}</h3>
+                <div className="mt-3 space-y-4 text-sm leading-7 text-slate-700 sm:text-base">
                   {section.paragraphs.map((paragraph, index) => (
                     <p key={`${section.heading}-${index}`} className="text-justify">{paragraph}</p>
                   ))}
@@ -181,17 +198,18 @@ export default function JsonToCsvPage() {
             ))}
           </div>
         </section>
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h2 className="text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-2xl font-bold text-slate-900">Frequently Asked Questions</h2>
           <div className="mt-6 space-y-4">
             {faq.map((item) => (
-              <details key={item.question} className="rounded-xl border border-gray-200 bg-gray-50 px-5 py-4">
-                <summary className="cursor-pointer text-base font-semibold text-gray-900">{item.question}</summary>
-                <p className="mt-3 text-sm leading-7 text-gray-700 sm:text-base">{item.answer}</p>
+              <details key={item.question} className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-4">
+                <summary className="cursor-pointer text-base font-semibold text-slate-900">{item.question}</summary>
+                <p className="mt-3 text-sm leading-7 text-slate-700 sm:text-base">{item.answer}</p>
               </details>
             ))}
           </div>
         </section>
+        </div>
       </div>
     </ToolSection>
   );

@@ -116,8 +116,9 @@ export default function ImagesToPdfPage() {
       title="Free Images to PDF Converter"
       // subtitle="Combine multiple images (JPG, PNG, WebP) into one PDF in your browser. No upload to server private and works on all devices."
       plain
-      plainSidebar
       whiteBackground
+      hideSidebar
+      centerHeader
     >
       <JsonLd
         data={buildToolJsonLd({
@@ -145,9 +146,18 @@ export default function ImagesToPdfPage() {
         </div>
       )}
 
-      <div className="space-y-6">
+      <div className="mx-auto w-full max-w-5xl space-y-6">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            Images to PDF Tool
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Combine multiple images into a single PDF with page order control.
+          </p>
+        </div>
+
         {/* Upload */}
-        <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 sm:p-8 text-center bg-slate-50/50 hover:bg-slate-100/70 hover:border-slate-400 transition-all duration-200">
+        <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 sm:p-8 text-center bg-slate-50/50 hover:bg-slate-100/70 hover:border-slate-400 transition-all duration-200 shadow-sm">
           <p className="text-slate-600 mb-3 text-sm sm:text-base">
             Drag and drop images here or click to choose files
           </p>
@@ -170,7 +180,7 @@ export default function ImagesToPdfPage() {
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap justify-center sm:justify-start">
           <button
             className="px-6 py-3 rounded-xl bg-teal-600 text-white font-medium shadow-md hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
             onClick={handleCreatePdf}
@@ -244,70 +254,218 @@ export default function ImagesToPdfPage() {
       </div>
 
       {/* Info section – 1000+ words, unique, text-justify */}
-      <section className="mt-12 sm:mt-14 p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-100">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
-          About This Images to PDF Tool
-        </h2>
+      <section className="mx-auto mt-12 sm:mt-14 w-full max-w-5xl p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-200">
+  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
+    Convert Multiple Images Into One PDF File Online Without Losing Quality
+  </h2>
 
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          An images-to-PDF converter is a browser-based tool that combines multiple image files into a single PDF document. Instead of sending several separate images by email or upload, you get one file that opens in any PDF reader and keeps the order and quality of your pictures. This tool runs entirely in your browser: your images are never uploaded to a server, so the process is private, fast, and works even on slow or restricted networks after the page has loaded. You can add as many images as you like, change their order, remove any you do not need, and then generate the PDF with one click. Whether you are merging scanned documents, creating a photo album, or turning screenshots into a report, this converter provides a simple and reliable way to create a PDF from images without installing software or creating an account.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Managing multiple image files can become frustrating when you need to send documents, screenshots, notes, certificates, or photographs together in a single organized file. Sharing several images individually often creates confusion, increases upload time, and makes documents look unprofessional. This is why many users prefer converting images into a PDF file before sharing or storing them. A single PDF document is easier to manage, easier to upload, and supported across almost every device and platform.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">What Is an Images-to-PDF Converter?</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          An images-to-PDF converter takes one or more image files (such as JPEG, PNG, or WebP) and assembles them into a single PDF. Each image becomes one page of the PDF, in the order you choose. The result is a standard PDF file that you can open on any device, attach to emails, upload to cloud storage, or print. Unlike a folder of loose images, a PDF is a single document that is easy to share and archive. Many organisations and platforms prefer PDFs for submissions, reports, and records because the format preserves layout and is widely supported. This tool does not edit the images themselves; it only places them into a PDF in sequence. You keep full control over which images are included and in what order.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This free Images to PDF tool allows users to combine multiple JPG, PNG, and WebP images into one PDF directly from the browser. There is no need to install heavy software or create an account. The process is simple, fast, and works smoothly on desktops, tablets, and smartphones. Since the conversion happens locally inside the browser, your images remain private throughout the process.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">How This Tool Works</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          When you select or drag and drop images onto the page, they are added to a list in the order you provide. You can reorder them using the up and down controls so that the first image in the list becomes page 1 of the PDF, the second becomes page 2, and so on. You can also remove any image from the list before generating the file. When you click the create-PDF button, the tool builds the PDF in your browser using standard web APIs: each image is embedded as a page, with the page size matching the image dimensions so that there is no cropping or letterboxing. When the PDF is ready, a download starts automatically and the file is saved to your device. No copy of your images or the PDF is sent to or stored on any server. The whole process happens locally, which ensures privacy and speed.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Why People Convert Images Into PDF Files
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Key Features</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This converter supports common image formats: JPEG, PNG, and WebP. You can add multiple images in one go or in several steps; the list shows a thumbnail and the file name for each image so you can see what will be in the PDF. The order of the list is the order of the pages in the PDF, and you can move images up or down or remove them before creating the file. There is no fixed limit on the number of images, though very large or numerous files may take longer to process depending on your device. The output is a standard PDF that works in any reader. Because the tool runs in the browser, there is no sign-up, no installation, and no upload to a third party. You get a direct download as soon as the PDF is created, and you can repeat the process as many times as you like with different images or a different order.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    PDF files have become one of the most widely accepted document formats on the internet. Schools, offices, government portals, businesses, and online forms often prefer PDF uploads because the formatting remains consistent across all devices. Instead of sending ten separate images one by one, users can combine everything into a single organized PDF document.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Step-by-Step How to Use</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          First, open the tool in a modern browser on your computer, tablet, or phone. Click or tap the upload area and select one or more images, or drag and drop them onto the page. The images appear in a grid with their order number. If the order is wrong, use the up and down arrows next to each image to move it earlier or later in the list. To remove an image, click the remove button on its card. When the list looks correct, click the create-PDF button and wait a few seconds. When processing is finished, the PDF is downloaded automatically to your device. You can open it in any PDF reader to confirm the pages and order. If you want to change something, use clear all, add your images again, adjust the order, and create a new PDF. There is no limit on how many PDFs you create or how many images you combine.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Students often convert handwritten notes, assignments, and screenshots into PDF format before uploading them to educational portals. Businesses use PDF files for invoices, reports, contracts, receipts, and presentations. Freelancers and designers also create PDF portfolios because they look cleaner and easier to share with clients.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Why Convert Images to PDF?</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          A single PDF is easier to share than many image files. Email and messaging apps often limit the number of attachments or their size; one PDF can hold dozens of pages and is simpler for the recipient to open and print. PDFs are also the standard for official documents, forms, and submissions: many schools, employers, and government portals ask for documents in PDF format. Converting images to PDF lets you turn scans, photos, or screenshots into a proper document that looks the same on every device. Archiving is easier too: one file per project or event instead of a folder full of images. Businesses use this for invoices, receipts, and contracts; students use it for notes and assignments; and individuals use it for photo albums, travel logs, or warranty papers. In short, whenever you need to present or preserve a set of images as one document, converting them to PDF is a practical solution.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Before converting images into PDF, many users first optimize image size using{" "}
+    <a
+      href="https://convertixy.com/image-compressor"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      Image Compressor
+    </a>{" "}
+    so the final PDF remains smaller and easier to upload online.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Use Cases</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Students and educators can merge lecture slides, handwritten notes, or screenshots into one PDF for revision or submission. Freelancers and remote workers can combine screenshots, mock-ups, or signed documents into a single deliverable for clients. Small businesses can turn scanned receipts, invoices, and contracts into one PDF for accounting or records. Photographers and event planners can create simple photo albums or proof sheets as a PDF. Job seekers can assemble portfolio pieces or certificates into one document to attach to applications. Anyone who has multiple images that belong together—whether receipts, ID copies, or holiday photos—can use this tool to create a single, shareable PDF without installing software or paying for a subscription. The same tool works for personal, academic, and professional use.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    How This Images to PDF Tool Works
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Privacy and Security</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Many online converters ask you to upload files to their servers. That can be a concern when the images contain personal or confidential information. This tool does not upload your images anywhere. The files you select are read by your browser and kept in memory only for the time you are on the page. The PDF is built locally using JavaScript and standard web APIs, and the result is generated on your device. When the download starts, the file is saved from your browser to your computer or phone. No copy is stored on a remote server or shared with third parties. If you close the tab or clear the page, the image and PDF data are gone. This local-first approach is especially important for sensitive documents such as IDs, medical records, or business papers. You can use the tool on a shared or public computer with less worry about leaving files behind.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This tool combines selected images into a single PDF document directly inside the browser. Once images are uploaded, they are arranged according to the selected order. Each image becomes a separate page inside the final PDF file.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Supported Formats and Quality</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          The tool accepts JPEG, PNG, and WebP images. Each image is embedded in the PDF at its original dimensions, so the quality you get depends on the quality of the source images. High-resolution images produce larger PDFs; smaller or compressed images produce smaller PDFs. There is no automatic compression or resizing; the tool preserves the pixel dimensions of each image. If you need a smaller file size, consider compressing or resizing your images before adding them to the converter. The order of pages in the PDF matches the order of the list on the page, so arrange your images in the right sequence before clicking create. If you have a mix of portrait and landscape images, that is fine: each page will have the size of its image, so the PDF may have varying page dimensions, which is normal and supported by all PDF readers.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Users can rearrange image order before generating the PDF. This is especially useful when creating notes, reports, portfolios, or scanned documents that need proper page sequencing. After the PDF is generated, the file becomes instantly available for download.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Best Practices</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Before creating the PDF, review the list of images and remove any duplicates or mistakes. Use the order controls to put pages in a logical sequence (for example chronological, or by topic). If you are combining scanned documents, ensure the scans are clear and right-side up; the tool does not rotate or edit images. For very large sets of images, consider splitting into multiple PDFs if a single file becomes too big to open or send easily. Naming your images in a clear order (for example 01-intro.png, 02-section1.png) can help you add them in the right sequence. When the PDF is downloaded, open it once to confirm that all pages are present and in the correct order before sharing or submitting. Keeping a copy of the original images is a good idea in case you need to regenerate the PDF with a different order or selection later.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Since the processing happens locally inside the browser, files are not uploaded to external servers. This improves privacy while also reducing waiting time during conversion.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Limitations</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This tool is designed for combining images into a PDF. It does not add text overlays, watermarks, or page numbers; for that you would use a desktop or professional PDF editor. The page size of each PDF page is determined by the image size, so you cannot set a uniform page size for all pages in this tool. Very large images (for example tens of megapixels) or a very high number of images may take longer to process or, on low-memory devices, may cause the browser to slow down. The tool works best in modern browsers that support the APIs used for image and PDF handling. For most users—documents, albums, screenshots, and simple merges—these limitations do not affect the result. For advanced layout or editing, consider a full-featured PDF application in addition to this converter.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Supported Image Formats
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Conclusion</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-          Converting images to PDF is a simple way to combine multiple pictures or documents into one file that is easy to share and archive. This free images-to-PDF tool runs in your browser, supports JPEG, PNG, and WebP, and lets you reorder and remove images before creating the PDF. Your files stay on your device and are never uploaded to a server. Use it for receipts, notes, screenshots, photo albums, or any set of images that you want as a single PDF. Arrange the order, click create, and download your document in seconds.
-        </p>
-      </section>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    The converter supports commonly used image formats including JPG, PNG, and WebP. These formats are widely used across websites, mobile devices, social media platforms, and graphic design workflows.
+  </p>
+
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>
+      JPG images are widely used for photographs and smartphone pictures.
+    </li>
+    <li>
+      PNG images are commonly used for graphics, screenshots, and transparent visuals.
+    </li>
+    <li>
+      WebP images are optimized for modern websites and faster loading speeds.
+    </li>
+  </ul>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Users who work with modern website optimization frequently convert files using{" "}
+    <a
+      href="https://convertixy.com/jpg-to-webp"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      JPG to WebP
+    </a>{" "}
+    before combining images into PDF documents.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Benefits of Creating PDF Files From Images
+  </h3>
+
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>Combines multiple images into one organized file</li>
+    <li>Improves document sharing and uploading</li>
+    <li>Creates professional-looking files</li>
+    <li>Works across almost all operating systems and devices</li>
+    <li>Reduces confusion caused by multiple separate attachments</li>
+    <li>Useful for assignments, reports, invoices, and portfolios</li>
+    <li>Easy to store and archive for future reference</li>
+  </ul>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    These advantages make PDF conversion extremely useful for both personal and professional workflows.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Common Use Cases for Images to PDF Conversion
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Students often use image-to-PDF converters for homework submissions, handwritten notes, scanned assignments, and project reports. Many online learning platforms require PDF uploads because they are easier to review and download.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Office workers and freelancers combine invoices, receipts, agreements, screenshots, and documents into PDF format before sending them to clients or coworkers. Ecommerce sellers sometimes create PDF catalogs from product images for easier sharing with customers.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Families and casual users also create PDF photo collections for travel memories, scanned documents, and digital archives. Instead of managing dozens of separate images, a single PDF keeps everything properly organized.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Tips for Creating Better PDF Files
+  </h3>
+
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>
+      Arrange images in the correct order before conversion
+    </li>
+    <li>
+      Compress large images before generating the PDF
+    </li>
+    <li>
+      Use clear and readable image quality
+    </li>
+    <li>
+      Remove duplicate or unnecessary images
+    </li>
+    <li>
+      Resize oversized images for smaller PDF output
+    </li>
+    <li>
+      Keep document orientation consistent whenever possible
+    </li>
+  </ul>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Users who want smaller PDF files often resize large images first using{" "}
+    <a
+      href="https://convertixy.com/image-resizer"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      Image Resizer
+    </a>{" "}
+    before starting the conversion process.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Browser-Based PDF Conversion Advantages
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Browser-based tools provide several advantages compared to traditional desktop software. Users do not need installation, subscriptions, or technical knowledge to perform basic document conversion tasks. Everything works directly through a web browser.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This Images to PDF converter works on Windows, Linux, macOS, Android, and iPhone devices. Whether you are working from a desktop computer or a mobile phone, the conversion process remains simple and accessible.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Website owners and bloggers also optimize uploaded visuals using{" "}
+    <a
+      href="https://convertixy.com/google-discover-image-optimizer"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      Google Discover Image Optimizer
+    </a>{" "}
+    to improve image visibility and performance across search platforms.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Privacy and Local File Processing
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Privacy is an important concern for many users when uploading documents online. Some conversion platforms store uploaded files temporarily on servers, which may create risks for sensitive or personal documents.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This tool avoids that issue by processing files directly inside the browser. Images remain on your device during the entire conversion session. Since no external server upload is required, the process becomes faster and more secure for personal as well as professional usage.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Difference Between PDF Conversion and Image Merging
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Some users confuse PDF conversion with image merging. When images are converted into PDF, each image usually becomes a separate page inside the final document. Image merging, on the other hand, combines visuals into a single large image.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    PDF conversion is generally better for reports, notes, forms, presentations, and official documentation because it creates a clean multi-page structure that is easier to read and share.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Final Thoughts
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
+    Converting images into PDF files is one of the easiest ways to organize and share multiple visuals professionally. Whether you are a student submitting assignments, a freelancer sending reports, a business owner managing documents, or someone simply organizing personal files, PDF conversion helps simplify digital workflows.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mt-4 text-justify">
+    This free Images to PDF tool provides a fast, private, and user-friendly solution directly inside the browser without requiring software installation or account creation. With support for JPG, PNG, and WebP images, flexible ordering options, local processing, and instant downloads, the tool is suitable for everyday users as well as professionals who need reliable document conversion online.
+  </p>
+</section>
     </ToolSection>
   );
 }

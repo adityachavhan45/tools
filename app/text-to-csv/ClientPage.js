@@ -138,7 +138,8 @@ export default function TextToCsvPage() {
       title="Text to CSV Converter - Free Online Tool"
       subtitle="Convert text to CSV format and decode CSV back to text instantly. Free online CSV converter with custom delimiters, headers, and download options."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd
@@ -156,8 +157,18 @@ export default function TextToCsvPage() {
         ])}
       />
 
+      <div className="max-w-5xl mx-auto mb-8">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm mb-8">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            Text to CSV Converter
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Convert plain text to CSV and decode CSV back to text with custom delimiter support.
+          </p>
+        </div>
+
       {/* Main Tool Section */}
-      <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+      <div className="bg-white border border-gray-200 rounded-2xl shadow-xl p-6 md:p-8 mb-8">
         <div className="space-y-6">
           {/* Status Messages */}
           {message && (
@@ -431,9 +442,10 @@ export default function TextToCsvPage() {
           </div>
         </div>
       </div>
+      </div>
 
       {/* Comprehensive Information Section */}
-      <article className="prose prose-lg max-w-none">
+      <article className="prose prose-lg max-w-5xl mx-auto">
         <section className="bg-white rounded-2xl shadow-md p-6 md:p-10 mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
             Understanding CSV: The Universal Data Exchange Format

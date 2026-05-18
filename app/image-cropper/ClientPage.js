@@ -163,8 +163,9 @@ export default function ImageCropperPage() {
       title="Free Online Image Cropper"
       subtitle="Crop images to any aspect ratio in your browser. Square, 16:9, 4:3, or free no upload to server, works on all devices."
       plain
-      plainSidebar
       whiteBackground
+      hideSidebar
+      centerHeader
     >
       <JsonLd
         data={buildToolJsonLd({
@@ -193,9 +194,18 @@ export default function ImageCropperPage() {
         </div>
       )}
 
-      <div className="space-y-6">
+      <div className="mx-auto w-full max-w-5xl space-y-6">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            Image Cropper Tool
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Crop your images with custom dimensions and fixed aspect ratios in seconds.
+          </p>
+        </div>
+
         {/* Upload */}
-        <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 sm:p-8 text-center bg-slate-50/50 hover:bg-slate-100/70 hover:border-slate-400 transition-all duration-200">
+        <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 sm:p-8 text-center bg-slate-50/50 hover:bg-slate-100/70 hover:border-slate-400 transition-all duration-200 shadow-sm">
           <p className="text-slate-600 mb-3 text-sm sm:text-base">
             Choose an image to crop (JPG, PNG, WebP)
           </p>
@@ -272,7 +282,7 @@ export default function ImageCropperPage() {
         )}
 
         {/* Actions */}
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap justify-center sm:justify-start">
           <button
             onClick={cropImage}
             disabled={!image.trim() || processing}
@@ -311,70 +321,206 @@ export default function ImageCropperPage() {
       </div>
 
       {/* Info section – 1000+ words, unique, text-justify */}
-      <section className="mt-12 sm:mt-14 p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-100">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
-          About This Online Image Cropper
-        </h2>
+      <section className="mx-auto mt-12 sm:mt-14 w-full max-w-5xl p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-200">
+  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
+    Online Image Cropper Tool for Social Media, Websites, and Everyday Editing
+  </h2>
 
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          An online image cropper is a browser-based tool that lets you trim an image to a chosen region or aspect ratio without installing software or sending your files to a server. Cropping is one of the most common edits in photography and design: it improves composition, removes unwanted edges, and adapts a picture to formats required by social networks, websites, or print. This cropper runs entirely in your browser, so your images stay on your device and are never uploaded to any external service. You can crop to a free size or to fixed ratios such as square (1:1), widescreen (16:9), standard (4:3), or photo (3:2), and then download the result with one click. Whether you need a profile picture, a YouTube thumbnail, or a product image for a listing, this tool provides a fast, private, and reliable way to get the exact crop you need.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Images are used everywhere today. From social media posts and website banners to online stores and school projects, visuals play a major role in digital content. But many times an image does not fit properly where you want to use it. Sometimes extra background appears in the photo, the dimensions look incorrect, or the subject is not centered properly. That is where image cropping becomes useful. This free online image cropper helps you quickly trim images directly in your browser without downloading heavy software or creating an account.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">What Is Image Cropping?</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Cropping means selecting a rectangular area within an image and discarding the rest. The result is a new image that contains only the selected region, at the same or a lower resolution depending on the dimensions you choose. Unlike resizing, which scales the whole image, cropping changes the frame: you decide what stays in and what is cut off. That makes it essential for fixing composition after a shot, fitting an image to a specific aspect ratio (for example Instagram’s square or a YouTube thumbnail’s 16:9), or removing distractions from the edges. A good crop can turn an average photo into a stronger one by focusing the viewer’s attention on the subject and removing empty or cluttered areas. In design and marketing, cropping ensures that visuals look consistent across slides, banners, and social posts.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    The tool is designed for people who want a simple and fast way to edit photos for websites, blogs, social media platforms, presentations, ecommerce stores, and personal use. Whether you want to create a profile picture, adjust a thumbnail, remove unwanted edges, or prepare an image for uploading online, this cropper makes the process easy for beginners as well as advanced users.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">How This Cropper Works</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          When you upload an image, the tool loads it in your browser and reads its dimensions. You then choose an aspect ratio from the list or leave it on free for a custom width and height. The crop area is applied from the centre of the image by default, so you get a balanced frame without having to set X and Y manually. You can type the exact width and height in pixels; if an aspect ratio is selected, changing one dimension updates the other to keep the ratio. When you click the crop button, the tool draws the selected region onto a canvas and exports it as a new image file. You can preview the result and download it in one step. All of this happens locally: no data is sent to a server, which keeps your photos private and allows the tool to work even on slow or restricted networks after the page has loaded.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    What Does Image Cropping Actually Mean?
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Key Features</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This image cropper supports common formats such as JPEG, PNG, and WebP. You can set a fixed aspect ratio (1:1 for squares, 16:9 for widescreen, 4:3 and 3:2 for standard and photo layouts) or crop freely by entering any width and height. The crop is always centred on the image, which is ideal for profile pictures, thumbnails, and product shots where the subject is in the middle. Pixel dimensions are shown so you can match platform requirements: for instance, 1080×1080 for Instagram or 1920×1080 for a YouTube thumbnail. Because the tool runs in the browser, there is no sign-up, no installation, and no upload to a third party. You get a direct download link as soon as the crop is done, and you can repeat the process as many times as you like with different settings or images.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Image cropping means cutting away unwanted areas from a photo or graphic so that only the important section remains visible. Instead of editing the entire image, cropping focuses on selecting the exact portion you want to keep. This helps improve composition, remove distractions, and create better framing around the subject.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Step-by-Step How to Use</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          First, open the tool in a modern browser on your computer, tablet, or phone. Click or tap the upload area and select an image from your device, or drag and drop a file onto the page. Once the image is loaded, you will see its preview and the current crop dimensions. Choose an aspect ratio from the dropdown if you want a fixed ratio; otherwise leave it on free. Then adjust the width and height in pixels. The crop is applied from the centre, so you do not need to set position manually. When the numbers look right, click the crop button and wait a moment. When processing is finished, the cropped image appears with a download button. Click it to save the file to your device. You can change the dimensions and crop again, or upload a new image and start over. There is no limit on how many images you crop or how many times you use the tool.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Cropping is one of the most common editing techniques used in photography, blogging, graphic design, and digital marketing. A properly cropped image often looks cleaner, more professional, and visually balanced compared to the original version. Many websites and apps also require fixed image dimensions, which makes cropping necessary before uploading files online.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Why Aspect Ratios Matter</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Different platforms and media expect different aspect ratios. Instagram posts and profile pictures are often square (1:1), while YouTube thumbnails and many desktop wallpapers use 16:9. Television and some presentations use 4:3; many cameras and prints use 3:2. If you upload an image in the wrong ratio, the platform may add letterboxing, crop it automatically, or stretch it, which can look unprofessional. By cropping your image to the correct ratio before uploading, you keep full control over what is visible and avoid unexpected cuts or black bars. This cropper gives you presets for the most common ratios and also a free mode when you need a custom size for a website, a poster, or an ad. Knowing the target ratio in advance saves time and ensures your visuals look consistent everywhere they are used.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Why People Use an Online Image Cropper
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Use Cases</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Social media managers and content creators use croppers to prepare images for Instagram, Facebook, Twitter, and LinkedIn. A single photo can be turned into a square post, a story format, or a cover image by cropping to the right ratio and size. Photographers and designers crop to improve composition, remove unwanted elements, or adapt a shot for print or web. E-commerce sellers crop product photos to a uniform size so listings look neat and load quickly. Educators and students crop screenshots and diagrams to fit slides or reports. Bloggers and marketers crop hero images and thumbnails to improve click-through and readability. Even casual users crop profile pictures, holiday photos, or documents for IDs and forms. Because the tool works in the browser and does not require an account, it is suitable for one-off tasks as well as repeated use. Whatever your goal, cropping before uploading or publishing gives you a cleaner, more professional result.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Most users do not want to install professional editing software just to make small changes to an image. Desktop software can be heavy, confusing, and unnecessary for simple editing tasks. An online image cropper solves this problem by providing a lightweight solution that works directly inside the browser.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Privacy and Security</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Many online tools ask you to upload files to their servers for processing. That can be a concern when the images are personal, confidential, or commercially sensitive. This cropper does not upload your images anywhere. The file you select is read by your browser and kept in memory only for the time you are on the page. The cropping is done locally using the browser’s canvas API, and the result is generated on your device. When you download the cropped image, it is saved from your browser to your computer or phone. No copy is stored on a remote server or shared with third parties. If you close the tab or clear the page, the image data is gone. This local-first approach is especially important for users who handle sensitive visuals or who prefer not to rely on external services for simple edits.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Since this tool works online, you can crop images from almost any device including laptops, desktops, tablets, and smartphones. There is no complicated setup process involved. Simply upload your image, select dimensions, crop the picture, and download the final result within seconds.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Best Practices</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Before cropping, check the recommended dimensions for the platform you are targeting. For example, Instagram recommends 1080×1080 for square posts and 1080×1350 for portraits; YouTube suggests 1280×720 or 1920×1080 for thumbnails. Use at least these sizes so the image stays sharp when displayed. If you crop to a much smaller size, the result may look blurry on large screens. Keep a copy of the original image before cropping, especially if you might need different crops later or want to revert. When you use a fixed aspect ratio, the tool keeps the ratio locked so you only need to change one dimension; the other updates automatically. For profile pictures and logos, a square crop often works best; for banners and videos, 16:9 is standard. If you are unsure, try the free mode first and enter the exact width and height required by your platform or design.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Many website owners also use tools like{" "}
+    <a
+      href="https://convertixy.com/image-compressor"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      Image Compressor
+    </a>{" "}
+    after cropping photos so they can reduce file size and improve website loading speed.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Cropping vs. Resizing</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Cropping and resizing are different operations. Cropping selects a region and removes the rest, so the output image has a new frame and possibly fewer pixels. Resizing scales the entire image up or down without changing what is visible; the aspect ratio can stay the same or be stretched. When you crop, you lose the areas outside the crop box permanently (unless you keep the original). When you resize, you keep the whole scene but may lose sharpness when downscaling or gain blur when upscaling. For social media and web use, cropping is often used to match aspect ratio and focus the frame, while resizing is used to reduce file size or fit maximum dimensions. This tool focuses on cropping; for resizing or compression you can use a dedicated image resizer or compressor. Combining cropping with resizing in your workflow gives you full control over both composition and file size.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Common Situations Where Cropping Is Useful
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Limitations</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This cropper is designed for straightforward rectangular cropping. The crop is always centred; you cannot drag a custom region to one side or corner in this interface. For advanced control such as freeform selection or multiple crops in one go, you might use desktop software or a more advanced web editor. Very large images (for example tens of megapixels) may take a few seconds to process depending on your device. The output format matches the input where possible (e.g. PNG stays PNG, JPEG stays JPEG) for quality and compatibility. The tool works best in modern browsers that support the canvas API; if you use an older browser, you may need to update it. For most users—social media, thumbnails, profile pictures, and simple design tasks—these limitations do not affect the result. For professional retouching or complex layouts, consider a full-featured editor in addition to this utility.
-        </p>
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>Creating Instagram profile pictures and social media posts</li>
+    <li>Adjusting YouTube thumbnails and blog feature images</li>
+    <li>Removing unwanted background objects from photos</li>
+    <li>Preparing ecommerce product images for online stores</li>
+    <li>Making banners and website hero images fit correctly</li>
+    <li>Editing screenshots for presentations and assignments</li>
+    <li>Resizing photos for forms, IDs, and portfolios</li>
+  </ul>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Conclusion</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-          Cropping is a simple but powerful way to improve your images and adapt them to any platform or format. This free online image cropper runs in your browser, supports common aspect ratios and custom sizes, and keeps your files on your device. You can crop to square for Instagram, to 16:9 for YouTube, or to any width and height you need. The process is fast, private, and does not require an account or installation. Use it for social media, presentations, product photos, or personal projects whenever you need a quick, precise crop. Keep the original file, follow platform size guidelines, and you will get professional-looking results every time.
-        </p>
-      </section>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    These are only a few examples. In reality, image cropping is useful for almost every type of digital content creation.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Different Aspect Ratios Explained
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    One important part of cropping is understanding aspect ratios. An aspect ratio defines the relationship between image width and height. Different platforms require different ratios for proper display. If the wrong ratio is used, the image may appear stretched, cut off, or poorly aligned.
+  </p>
+
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>
+      1:1 ratio is commonly used for profile pictures and square social media posts
+    </li>
+    <li>
+      16:9 ratio is widely used for YouTube thumbnails, banners, and videos
+    </li>
+    <li>
+      4:3 ratio works well for presentations and traditional displays
+    </li>
+    <li>
+      3:2 ratio is often used in photography and camera images
+    </li>
+  </ul>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Choosing the correct aspect ratio before uploading an image helps maintain better visual quality and prevents automatic cropping by platforms.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    How This Browser-Based Cropper Works
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This tool performs image cropping directly inside your browser using modern web technologies. Your image is processed locally on your device instead of being uploaded to an external server. This provides better privacy, faster editing, and reduced waiting time.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    After selecting an image, you can enter custom dimensions or choose a fixed aspect ratio. Once cropping is complete, the edited image becomes available for download instantly. Since the process happens locally, your files remain under your control throughout the editing session.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    If you need to optimize image dimensions before cropping, tools like{" "}
+    <a
+      href="https://convertixy.com/image-resizer"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      Image Resizer
+    </a>{" "}
+    can help adjust image resolution more efficiently.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Benefits of Local Image Processing
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Privacy is becoming increasingly important for internet users. Many online editing tools upload images to remote servers where files may temporarily remain stored. This can create concerns for people working with personal photos, business graphics, or confidential documents.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Since this cropper works locally inside the browser, your files are not transferred to third-party servers during the editing process. This makes the tool safer for sensitive images and also improves speed because there is no need to wait for uploads and downloads.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Tips for Better Cropping Results
+  </h3>
+
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>
+      Keep the main subject near the center for balanced composition
+    </li>
+    <li>
+      Avoid cropping too tightly unless necessary
+    </li>
+    <li>
+      Maintain proper aspect ratios for social media platforms
+    </li>
+    <li>
+      Save the original image before editing
+    </li>
+    <li>
+      Use high-resolution images for cleaner final output
+    </li>
+    <li>
+      Remove distracting objects near image edges
+    </li>
+  </ul>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Following these simple practices can make images look more professional and visually appealing after cropping.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Supported Image Formats
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This cropper supports popular image formats such as JPG, PNG, and WebP. These formats are commonly used across websites, social media platforms, and digital applications.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    JPG images are ideal for photographs and social media content. PNG works better for graphics and transparent images. WebP is a modern image format that provides smaller file sizes while maintaining strong visual quality. Many website owners convert images using{" "}
+    <a
+      href="https://convertixy.com/jpg-to-webp"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      JPG to WebP
+    </a>{" "}
+    because it helps improve website speed and performance.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Image Cropping for SEO and Website Performance
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Properly optimized images contribute to better user experience and faster websites. Large and poorly aligned images can negatively affect page loading speed and visual layout. Cropping unnecessary areas reduces image dimensions and helps create cleaner content sections on webpages.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Bloggers and developers often combine cropping with compression and SEO optimization strategies. This creates visually attractive pages without increasing loading time unnecessarily. Search engines generally prefer websites that load quickly and provide a smooth browsing experience for users.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Final Thoughts
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
+    A reliable image cropper is an essential tool for modern digital work. Whether you are creating content for social media, blogs, ecommerce stores, business websites, or personal projects, cropping helps improve composition and fit images perfectly for different platforms. This online image cropper provides a fast, simple, and privacy-focused solution directly inside your browser without requiring complicated software or account creation.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mt-4 text-justify">
+    With support for multiple image formats, custom dimensions, fixed aspect ratios, and local processing, the tool is suitable for beginners as well as professional users. By combining proper cropping with smart optimization techniques, you can create cleaner visuals, faster-loading webpages, and more professional digital content for every platform.
+  </p>
+</section>
     </ToolSection>
   );
 }

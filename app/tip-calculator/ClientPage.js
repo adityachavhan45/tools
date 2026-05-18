@@ -82,7 +82,8 @@ export default function TipCalculatorPage() {
       title="Tip Calculator - Free Gratuity & Bill Split Tool"
       subtitle="Calculate tips and split bills instantly. Perfect for restaurants, deliveries, and service providers with customizable tip percentages."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd

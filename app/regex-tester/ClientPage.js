@@ -102,33 +102,50 @@ export default function RegexTesterPage() {
   }, [flags, pattern, replaceValue, testText]);
 
   return (
-    <ToolSection title="Regex Tester" subtitle="Test patterns, flags, matches, groups, and replacements with instant regex feedback.">
-      <div className="space-y-5">
+    <ToolSection
+      title="Regex Tester"
+      subtitle="Test patterns, flags, matches, groups, and replacements with instant regex feedback."
+      plain
+      hideSidebar
+      centerHeader
+      whiteBackground
+    >
+      <div className="max-w-5xl mx-auto">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm mb-8">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            Regex Tester
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Test regex patterns, flags, matches, groups, and replacements instantly.
+          </p>
+        </div>
+
+      <div className="space-y-5 rounded-2xl border border-gray-200 bg-white p-6 shadow-xl">
         <div>
           <label className="mb-2 block text-sm font-semibold text-gray-700">Regex Pattern</label>
-          <input value={pattern} onChange={(e) => setPattern(e.target.value)} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 font-mono text-gray-900 placeholder-gray-400" placeholder="Regex pattern" />
+          <input value={pattern} onChange={(e) => setPattern(e.target.value)} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 font-mono text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600" placeholder="Regex pattern" />
         </div>
         <div className="flex flex-wrap gap-3">
           {["g", "i", "m"].map((flag) => (
-            <label key={flag} className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700">
-              <input type="checkbox" checked={flags[flag]} onChange={(e) => setFlags((prev) => ({ ...prev, [flag]: e.target.checked }))} />
+            <label key={flag} className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-50">
+              <input className="accent-cyan-700" type="checkbox" checked={flags[flag]} onChange={(e) => setFlags((prev) => ({ ...prev, [flag]: e.target.checked }))} />
               {flag}
             </label>
           ))}
         </div>
         <div>
           <label className="mb-2 block text-sm font-semibold text-gray-700">Test Text</label>
-          <textarea value={testText} onChange={(e) => setTestText(e.target.value)} className="min-h-40 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 font-mono text-sm text-gray-900 placeholder-gray-400" placeholder="Test text" />
+          <textarea value={testText} onChange={(e) => setTestText(e.target.value)} className="min-h-40 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 font-mono text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600" placeholder="Test text" />
         </div>
         <div>
           <label className="mb-2 block text-sm font-semibold text-gray-700">Replacement Value</label>
-          <input value={replaceValue} onChange={(e) => setReplaceValue(e.target.value)} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder-gray-400" placeholder="Replacement value" />
+          <input value={replaceValue} onChange={(e) => setReplaceValue(e.target.value)} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600" placeholder="Replacement value" />
         </div>
 
-        {result.error ? <p className="text-sm text-red-600">{result.error}</p> : null}
+        {result.error ? <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2">{result.error}</p> : null}
 
         <div className="grid gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-2xl border border-cyan-200 bg-cyan-50 p-4">
             <h2 className="text-lg font-semibold text-gray-900">Matches</h2>
             <div className="mt-3 space-y-2 text-sm text-gray-700">
               {result.matches.length ? result.matches.map((match, index) => (
@@ -140,7 +157,7 @@ export default function RegexTesterPage() {
               )) : <p>No matches found.</p>}
             </div>
           </div>
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+          <div className="rounded-2xl border border-cyan-200 bg-cyan-50 p-4">
             <h2 className="text-lg font-semibold text-gray-900">Replace Preview</h2>
             <pre className="mt-3 whitespace-pre-wrap rounded-xl border border-gray-200 bg-white p-3 text-sm text-gray-800">{result.replacement || testText}</pre>
           </div>
@@ -173,6 +190,7 @@ export default function RegexTesterPage() {
             ))}
           </div>
         </section>
+      </div>
       </div>
     </ToolSection>
   );

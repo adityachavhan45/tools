@@ -123,39 +123,61 @@ export default function HraCalculatorPage() {
     <ToolSection
       title="HRA Calculator"
       subtitle="Estimate HRA exemption using salary, rent paid, HRA received, and metro or non-metro city status."
+      plain
+      whiteBackground
+      hideSidebar
+      centerHeader
     >
-      <div className="space-y-5">
-        <div className="grid gap-4 md:grid-cols-2">
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">Annual Basic Salary</label>
-            <input type="number" value={basicSalary} onChange={(e) => setBasicSalary(e.target.value)} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900" placeholder="Annual basic salary" />
+      <div className="space-y-6">
+        <div className="bg-gray-50 rounded-2xl border border-gray-200 p-5 sm:p-6 space-y-5">
+          <h2 className="text-lg font-semibold text-gray-900">Enter your details</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div>
+              <label className="mb-1.5 block text-sm font-medium text-gray-700">Annual Basic Salary</label>
+              <input type="number" value={basicSalary} onChange={(e) => setBasicSalary(e.target.value)} className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-gray-900" placeholder="Annual basic salary" />
+            </div>
+            <div>
+              <label className="mb-1.5 block text-sm font-medium text-gray-700">Annual HRA Received</label>
+              <input type="number" value={hraReceived} onChange={(e) => setHraReceived(e.target.value)} className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-gray-900" placeholder="Annual HRA received" />
+            </div>
+            <div>
+              <label className="mb-1.5 block text-sm font-medium text-gray-700">Annual Rent Paid</label>
+              <input type="number" value={rentPaid} onChange={(e) => setRentPaid(e.target.value)} className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-gray-900" placeholder="Annual rent paid" />
+            </div>
+            <div>
+              <label className="mb-1.5 block text-sm font-medium text-gray-700">City Type</label>
+              <select value={isMetro} onChange={(e) => setIsMetro(e.target.value)} className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-gray-900">
+                <option value="yes">Metro City</option>
+                <option value="no">Non-Metro City</option>
+              </select>
+            </div>
           </div>
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">Annual HRA Received</label>
-            <input type="number" value={hraReceived} onChange={(e) => setHraReceived(e.target.value)} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900" placeholder="Annual HRA received" />
-          </div>
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">Annual Rent Paid</label>
-            <input type="number" value={rentPaid} onChange={(e) => setRentPaid(e.target.value)} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900" placeholder="Annual rent paid" />
-          </div>
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">City Type</label>
-            <select value={isMetro} onChange={(e) => setIsMetro(e.target.value)} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900">
-              <option value="yes">Metro City</option>
-              <option value="no">Non-Metro City</option>
-            </select>
-          </div>
+
+          {validationMessage ? (
+            <div className="px-4 py-3 text-sm rounded-xl border border-red-200 bg-red-50 text-red-700 text-justify">
+              {validationMessage}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-600">
+              This estimate follows a common HRA comparison method and is meant for planning. Exact treatment can vary by salary structure and tax filing details.
+            </p>
+          )}
         </div>
 
-        {validationMessage ? (
-          <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-            {validationMessage}
+        <div className="grid gap-4 md:grid-cols-5">
+          <div className="md:col-span-3 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5">
+            <p className="font-semibold text-blue-900 mb-2">Formula</p>
+            <p className="text-blue-800 text-sm text-justify">
+              Estimated exempt HRA is calculated as the lowest of: HRA received, rent paid minus 10% of basic salary, and 50% (metro) or 40% (non-metro) of basic salary.
+            </p>
           </div>
-        ) : (
-          <p className="text-sm text-gray-600">
-            This estimate follows a common HRA comparison method and is meant for planning. Exact treatment can vary by salary structure and tax filing details.
-          </p>
-        )}
+          <div className="md:col-span-2 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-5">
+            <p className="font-semibold text-amber-900 mb-2">Tip</p>
+            <p className="text-amber-800 text-sm text-justify">
+              Use annual values consistently for salary, HRA, and rent to avoid incorrect estimates.
+            </p>
+          </div>
+        </div>
 
         <div className="grid gap-4 md:grid-cols-4">
           <div className="rounded-2xl border border-gray-200 bg-blue-50 p-5">

@@ -66,7 +66,8 @@ export default function KeywordDensityCheckerPage() {
       title="Free Keyword Density Checker"
       subtitle="Check keyword density in your text. See count, percentage, and SEO guidance no upload, works in your browser."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd
@@ -95,7 +96,16 @@ export default function KeywordDensityCheckerPage() {
         </div>
       )}
 
-      <div className="space-y-6">
+      <div className="mx-auto w-full max-w-5xl space-y-6">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            Keyword Density Checker Tool
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Check keyword frequency, density percentage, and quick SEO guidance instantly.
+          </p>
+        </div>
+
         {/* Text input */}
         <div className="flex flex-col">
           <label className="text-sm font-medium text-slate-700 mb-2">Paste or type your text</label>
@@ -120,7 +130,7 @@ export default function KeywordDensityCheckerPage() {
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap justify-center sm:justify-start">
           <button
             onClick={checkDensity}
             disabled={!text.trim() || !keyword.trim()}
@@ -181,60 +191,183 @@ export default function KeywordDensityCheckerPage() {
       </div>
 
       {/* Info section – 1000+ words, unique, text-justify */}
-      <section className="mt-12 sm:mt-14 p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-100">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
-          About Keyword Density and This Checker
-        </h2>
+     <section className="mx-auto mt-12 sm:mt-14 w-full max-w-5xl p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-200">
+  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
+    Why Keyword Usage Still Matters in SEO Content Writing
+  </h2>
 
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Keyword density is the percentage of times a keyword or phrase appears in a piece of text relative to the total number of words. For example, if a 500-word article contains the phrase digital marketing five times, the density for that phrase is one percent. Writers and SEO practitioners sometimes use this metric to check whether a target keyword is used enough (or too much) in a page or article. This keyword density checker runs in your browser: you paste your text, enter the keyword or phrase you want to analyze, and click to see the word count, occurrence count, density percentage, and a simple status. No data is sent to a server, so your content stays private. The tool supports both single words and multi-word phrases. Whether you are optimizing a blog post, checking an ad, or learning how keyword usage works, this checker gives you a quick snapshot of density so you can balance readability with focus on your target term.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Search engine optimisation has changed significantly over the years, but keywords still remain an important part of content strategy. Search engines now understand topics, user intent, and contextual meaning much better than before, yet they still rely on keywords to identify what a webpage is mainly about. When keywords are used naturally inside content, headings, and descriptions, they help search engines connect pages with relevant user searches.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">What Is Keyword Density?</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Keyword density is usually expressed as a percentage: (number of times the keyword or phrase appears / total word count) × 100. It was more heavily used in earlier SEO when search engines relied more on exact keyword matches. Today, search algorithms use many other signals (intent, context, synonyms, and quality), but density still serves as a simple sanity check. If a key term never appears, the page may not be clearly about that topic; if it appears in almost every sentence, the text can feel stuffed and may be penalised or ignored. Many content guides suggest aiming for a density in the rough range of 1 to 3 percent for a primary keyword, meaning the keyword appears once or a few times per hundred words. This is only a rule of thumb; the right level depends on the length of the text, the topic, and readability.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    The challenge begins when writers either overuse keywords or completely ignore them. Too many repeated keywords can make content feel robotic and unnatural, while too little keyword usage may reduce topic clarity. This is why many writers, bloggers, marketers, and SEO professionals use keyword density checkers to maintain balance while writing content for websites, blogs, landing pages, and online stores.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">How This Tool Works</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          When you paste or type text into the input area and enter a keyword or phrase, the tool counts the total words in the text (by splitting on spaces and ignoring empty segments). It then counts how many times the exact phrase appears in the text, ignoring case. The density is the number of occurrences divided by the total word count, multiplied by 100. The result is shown as a percentage with two decimal places. The tool also assigns a simple status: low (below 1 percent), optimal (1 to 3 percent), or high (above 3 percent), and suggests whether to consider using the keyword more or less. All counting is done in your browser; no text is uploaded. You can run the check as many times as you like with different keywords or different text.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    A Keyword Density Checker helps users understand how frequently a keyword or phrase appears inside content compared to the total number of words. Instead of manually counting repetitions, users can instantly analyse keyword usage and make improvements based on readability and optimisation needs.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Why Density Is Only One Factor</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Search engines do not rank pages solely on keyword density. They look at relevance, user behaviour, links, and many other factors. A page with low density for one phrase might still rank well if it clearly satisfies the users intent and uses related terms. Conversely, a page with very high density might be seen as spammy or low quality. So density is best used as a quick check, not a target to hit at all costs. The main goal is readable, useful content that naturally includes the terms people search for. This checker helps you see where you stand so you can adjust if the number is far outside a reasonable range. It does not replace editing for clarity, structure, or topical depth.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Understanding Keyword Density in Simple Language
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Step-by-Step How to Use</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Open the tool in your browser. Paste or type your text into the first box (for example a blog post, product description, or paragraph). In the second box, enter the keyword or phrase you want to analyze. It can be a single word like shoes or a phrase like running shoes. Click the check density button. The results will show total words, how many times the keyword or phrase appears, the density as a percentage, and a status (low, optimal, or high) with a short suggestion. Use this to decide whether to add or reduce the keyword in your text. To analyze another keyword, change the keyword field and click again. To start over with new text, use the clear button. The tool does not store or send your content anywhere.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Keyword density refers to the percentage of times a specific keyword appears within a piece of content relative to the overall word count. For example, if a keyword appears five times inside a five hundred word article, the keyword density would be around one percent.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Single Words vs Phrases</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This checker supports both single keywords and multi-word phrases. For a single word, it counts how many times that word appears as a whole (case-insensitive). For a phrase, it counts how many times the full phrase appears. So if you enter content marketing, it will count the exact phrase content marketing, not every instance of content or marketing separately. That gives you a more accurate density for the phrase you care about. When you optimise for long-tail or multi-word queries, checking phrase density can be more useful than checking only a single word. You can run the tool multiple times with different phrases on the same text to see how each one scores.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Earlier SEO practices focused heavily on exact keyword repetition. Many websites used to stuff keywords aggressively in hopes of ranking higher on search engines. Over time, search algorithms became more advanced and started prioritising content quality, readability, user satisfaction, and natural language patterns instead of excessive repetition.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Use Cases</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Content writers and bloggers use keyword density checkers to see if a target term is under- or over-used before publishing. SEO specialists use them when auditing or optimising existing pages. Students and educators use them to teach how keyword usage and repetition work in copy. Marketers may check density in ad copy or landing pages. Anyone who wants a quick numeric view of how often a word or phrase appears in a block of text can use this tool. It is not a substitute for a full SEO or content strategy; it is a simple, private way to get a density figure and a basic recommendation so you can make informed edits.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Today, keyword density works more like a guideline instead of a strict ranking formula. Writers use it to ensure content remains focused on the intended topic without sounding spammy or repetitive.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Privacy and Data</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This keyword density checker runs entirely in your browser. The text you paste and the keyword you enter are not sent to any server. All counting and calculation happen on your device. That means you can use it for confidential drafts, client content, or internal documents without worrying about uploads or storage. No account or login is required. The tool works offline once the page has loaded. If you are on a shared computer, clear the fields or close the tab when you are done so that your text is not left on screen.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Why Balanced Keyword Usage Improves Content Quality
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Limitations</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This tool counts exact phrase matches and total words. It does not analyse synonyms, semantic relevance, or where in the text the keyword appears (for example in the title or first paragraph). It does not account for search engine algorithms or competitiveness. The 1–3 percent guideline is a common rule of thumb, not a guarantee of ranking. Very long texts may take a moment to process in the browser; extremely long documents might be better analysed in chunks or with desktop software. For most articles, blog posts, and short to medium content, this checker is sufficient to get a quick density reading and a simple status.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Natural keyword placement helps search engines understand page relevance while keeping content comfortable for readers. When keywords are added thoughtfully inside headings, introductions, paragraphs, and conclusions, the article feels more organised and topic focused.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Conclusion</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-          Keyword density is a simple metric that shows how often a word or phrase appears in your text relative to the total word count. This free checker runs in your browser, supports single words and phrases, and shows you the count, percentage, and a basic status (low, optimal, or high) with a short suggestion. Your content is not uploaded. Use it to quickly see if a target term is under- or over-used and to keep your writing natural and focused. Combine it with good structure and readability for better content and SEO.
-        </p>
-      </section>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Overusing keywords creates poor readability and often makes sentences feel forced. Readers quickly notice unnatural repetition, especially when the same phrase appears repeatedly without meaningful context. Search engines may also treat heavily stuffed content as low quality because it reduces user experience.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Balanced optimisation creates better results in the long term. Many website owners combine keyword analysis with tools like the <a href="https://convertixy.com/seo-audit-checker" className="text-blue-600 hover:underline font-medium">SEO Audit Checker</a> to improve overall content quality, readability, and page optimisation together.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    How This Keyword Density Checker Works
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This tool allows users to paste content directly into the browser and analyse how often a particular keyword or phrase appears. Users can enter single words or complete phrases depending on what they want to track inside the text.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    The tool first calculates the total number of words inside the content. After that, it checks how many times the selected keyword or phrase appears. Using these values, it generates the keyword density percentage automatically. The result gives users a quick understanding of whether the keyword usage feels too low, balanced, or excessively repeated.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Since everything works directly inside the browser, the process remains fast and simple even for beginners who have little technical experience with SEO tools.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Why Keyword Density Alone Is Not Enough for SEO
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Modern search engines analyse much more than simple keyword repetition. Factors such as user intent, content usefulness, page structure, loading speed, mobile friendliness, backlinks, and engagement signals all contribute to search visibility.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    A page with perfect keyword density may still perform poorly if the content lacks depth or fails to answer user questions properly. Similarly, pages with lower keyword density can rank well if they provide detailed, valuable, and relevant information.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This is why writers should focus on creating natural, human friendly content first. Keyword density should only be used as a supporting metric instead of becoming the main goal during writing.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Benefits of Using a Keyword Density Checker
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    One of the biggest benefits of using a keyword density checker is improved content awareness. Writers can quickly identify whether they are overusing certain terms without manually reviewing the entire article line by line.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    The tool also helps maintain better readability. Instead of stuffing the same phrase repeatedly, writers can adjust their wording naturally and introduce related terms where necessary. This creates smoother reading experiences for visitors while still maintaining topic relevance.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    SEO professionals often use density analysis while auditing older articles. Combined with tools like the <a href="https://convertixy.com/meta-tag-generator" className="text-blue-600 hover:underline font-medium">Meta Tag Generator</a>, they can improve content optimisation and metadata consistency across webpages more effectively.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Single Keywords Versus Multi Word Phrases
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Keyword analysis is not limited to single words. Many websites now target long tail phrases because they match search intent more accurately. For example, instead of targeting only “shoes,” websites may focus on phrases such as “best running shoes for beginners” or “lightweight gym shoes for men.”
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Multi word keyword analysis helps writers understand how naturally complete search phrases appear inside the content. Long tail phrases often bring more targeted traffic because they match specific user searches more closely.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Writers handling structured optimisation tasks frequently use supporting utilities like the <a href="https://convertixy.com/keyword-density-checker" className="text-blue-600 hover:underline font-medium">Keyword Density Checker</a> alongside content planning workflows to improve topical relevance naturally.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Common Mistakes Writers Make During SEO Optimisation
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    One of the most common mistakes is forcing keywords into every sentence without considering readability. This usually creates awkward wording that negatively affects user experience. Search engines now recognise unnatural optimisation patterns much more effectively than before.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Another mistake is focusing only on one keyword repeatedly while ignoring related terms and topic depth. High quality content usually contains natural variations, contextual wording, and useful explanations instead of constant repetition.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Some writers also ignore structure completely. Even well optimised keywords cannot compensate for poorly organised paragraphs, weak headings, or thin informational content. Strong SEO content should feel informative, natural, and useful from beginning to end.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Practical Use Cases for Keyword Density Analysis
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Bloggers use keyword density tools before publishing articles to ensure optimisation feels balanced. SEO specialists analyse density while auditing existing pages for performance improvements. Ecommerce businesses review product descriptions to avoid repetitive optimisation patterns.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Students and beginners learning SEO also use density tools to understand how keyword repetition works inside digital content. Marketing agencies frequently analyse client content to maintain consistency across landing pages, blogs, and promotional materials.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Content creators who prepare articles regularly may also use the <a href="https://convertixy.com/word-counter" className="text-blue-600 hover:underline font-medium">Word Counter</a> together with density analysis tools to balance both content length and optimisation quality while writing.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Privacy Advantages of Browser Based SEO Tools
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Many writers work with confidential drafts, unpublished content, business documents, or client material. Uploading such content to unknown platforms may create privacy concerns. Browser based tools solve this problem by processing data locally on the user device itself.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This keyword density checker runs entirely inside the browser, meaning content does not need to be uploaded externally during analysis. Users can review keyword usage privately without worrying about server side storage or unnecessary data exposure.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Local processing also improves speed because results appear instantly without waiting for uploads or remote server responses.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Final Thoughts on Maintaining Natural SEO Content
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
+    Keyword density remains a useful metric for understanding how often important terms appear inside content, but it should always support readability instead of controlling it completely. The best performing content usually feels natural, informative, and genuinely useful for readers.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify mt-4">
+    This Keyword Density Checker provides a simple and efficient way to analyse keyword usage while maintaining better writing balance. Users can quickly review density percentages, identify excessive repetition, and improve optimisation without making content feel artificial.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify mt-4">
+    Whether you are managing blogs, business websites, ecommerce pages, educational content, or SEO campaigns, maintaining balanced keyword usage can help create cleaner and more user friendly content experiences in the long run.
+  </p>
+</section>
     </ToolSection>
   );
 }

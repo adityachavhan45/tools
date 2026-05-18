@@ -136,7 +136,8 @@ ${xmlContent}
       title="Text to XML Converter - Free Online Tool"
       subtitle="Convert plain text to XML format and extract text from XML instantly. Generate well-formed XML with proper escaping and structure."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd

@@ -133,43 +133,43 @@ export default function QrCodePage() {
         }
 
         .btn-primary {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #0e7490 0%, #1d4ed8 100%);
           transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+          box-shadow: 0 8px 20px rgba(14, 116, 144, 0.35);
         }
 
         .btn-secondary {
-          background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+          background: linear-gradient(135deg, #0891b2 0%, #2563eb 100%);
           transition: all 0.3s ease;
         }
 
         .btn-secondary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(240, 147, 251, 0.4);
+          box-shadow: 0 8px 20px rgba(8, 145, 178, 0.35);
         }
 
         .btn-success {
-          background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+          background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
           transition: all 0.3s ease;
         }
 
         .btn-success:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
+          box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35);
         }
 
         .btn-danger {
-          background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+          background: linear-gradient(135deg, #475569 0%, #334155 100%);
           transition: all 0.3s ease;
         }
 
         .btn-danger:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(250, 112, 154, 0.4);
+          box-shadow: 0 8px 20px rgba(51, 65, 85, 0.35);
         }
 
         .animate-fade-in {
@@ -229,21 +229,21 @@ export default function QrCodePage() {
           ])}
         />
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-8 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm mb-10 animate-fade-in">
+            <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
               Professional QR Code Generator
             </h1>
-            <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+            <p className="mt-2 text-center text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
               Create stunning, customizable QR codes in seconds. Perfect for business, marketing, events, and personal use.
             </p>
           </div>
 
           {/* Main Generator Card */}
-          <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 mb-8 card-hover animate-fade-in">
+          <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 md:p-8 mb-8 card-hover animate-fade-in">
             {message && (
-              <div className="mb-6 px-6 py-4 bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl text-gray-800 text-base font-medium shadow-md animate-fade-in text-center">
+              <div className="mb-6 px-6 py-4 bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-200 rounded-xl text-gray-800 text-base font-medium shadow-md animate-fade-in text-center">
                 {message}
               </div>
             )}
@@ -256,7 +256,7 @@ export default function QrCodePage() {
                     📝 Enter Text or URL
                   </label>
                   <textarea
-                    className="w-full p-4 border-2 border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none text-gray-800 placeholder-gray-400 transition-all resize-none"
+                    className="w-full p-4 border-2 border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-cyan-600 focus:border-transparent outline-none text-gray-800 placeholder-gray-400 transition-all resize-none"
                     placeholder="https://example.com or any text"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
@@ -274,7 +274,7 @@ export default function QrCodePage() {
                     max="512"
                     step="32"
                     value={size}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-cyan-700"
                     onChange={(e) => setSize(parseInt(e.target.value, 10))}
                   />
                   <div className="flex justify-between text-xs text-gray-500 mt-1">
@@ -332,7 +332,7 @@ export default function QrCodePage() {
                   <select
                     value={errorLevel}
                     onChange={(e) => setErrorLevel(e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none text-gray-800 cursor-pointer"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-cyan-600 focus:border-transparent outline-none text-gray-800 cursor-pointer"
                   >
                     <option value="L">Low (7% recovery)</option>
                     <option value="M">Medium (15% recovery)</option>
@@ -347,7 +347,7 @@ export default function QrCodePage() {
 
               {/* Right: Preview */}
               <div className="flex flex-col items-center justify-center">
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl shadow-inner border-2 border-gray-200 qr-preview">
+                <div className="bg-gradient-to-br from-slate-50 to-cyan-50 p-8 rounded-2xl shadow-inner border-2 border-cyan-200 qr-preview">
                   <canvas
                     ref={canvasRef}
                     className="bg-white rounded-xl shadow-lg"
@@ -391,146 +391,376 @@ export default function QrCodePage() {
 
             <button
               onClick={copyToClipboard}
-              className="w-full mt-3 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-xl font-semibold shadow-lg transition-all text-sm md:text-base"
+              className="w-full mt-3 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-semibold shadow-lg transition-all text-sm md:text-base"
             >
               📋 Copy to Clipboard
             </button>
           </div>
 
           {/* Comprehensive Information Section */}
-          <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-10 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">
-              Complete Guide to QR Code Generation
-            </h2>
+         <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 md:p-10 animate-fade-in">
+  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">
+    Complete Guide to Creating Professional QR Codes
+  </h2>
 
-            <div className="prose max-w-none">
-              <section className="mb-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">What Are QR Codes and Why Are They Important?</h3>
-                <p className="content-text text-gray-700 mb-4">
-                  QR codes, short for Quick Response codes, represent one of the most revolutionary innovations in data encoding and information sharing technology. Developed in 1994 by Denso Wave, a subsidiary of Toyota, these two-dimensional matrix barcodes were initially designed to track vehicle parts during manufacturing. However, their utility quickly expanded far beyond the automotive industry, transforming how we share and access information in our increasingly digital world. Unlike traditional one-dimensional barcodes that can only store limited numeric data, QR codes can encode vast amounts of information including text, URLs, contact details, payment information, WiFi credentials, location coordinates, and much more.
-                </p>
-                <p className="content-text text-gray-700 mb-4">
-                  The fundamental advantage of QR codes lies in their scanning speed and data capacity. A single QR code can store up to 4,296 alphanumeric characters or 7,089 numeric characters, making them incredibly versatile for various applications. When scanned using a smartphone camera or dedicated QR scanner application, these codes instantly reveal their encoded information without requiring manual data entry. This seamless interaction has made QR codes ubiquitous in modern society, appearing everywhere from product packaging and advertising materials to restaurant menus and payment systems. The COVID-19 pandemic particularly accelerated QR code adoption, as businesses sought contactless solutions for menu viewing, payment processing, and contact tracing.
-                </p>
-                <p className="content-text text-gray-700">
-                  Our comprehensive QR Code Generator tool empowers individuals and businesses to create professional-grade QR codes without requiring technical expertise or expensive software. Whether you a small business owner looking to enhance customer engagement, a teacher sharing educational resources, or an event organizer managing attendee information, this free online generator provides all the functionality you need. The tool operates entirely within your browser, ensuring complete privacy and security since your data never leaves your device. This client-side processing approach means you maintain full control over your information while enjoying instant QR code generation capabilities.
-                </p>
-              </section>
+  <div className="prose max-w-none">
+    <section className="mb-10">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Understanding How QR Codes Work
+      </h3>
 
-              <section className="mb-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Advanced Features and Customization Options</h3>
-                <p className="content-text text-gray-700 mb-4">
-                  Our QR Code Generator distinguishes itself through comprehensive customization features that allow you to create QR codes perfectly aligned with your brand identity and specific requirements. The size adjustment capability ranges from compact 128-pixel codes suitable for small print materials to high-resolution 512-pixel codes ideal for large format printing and billboards. This flexibility ensures your QR codes remain scannable and professional-looking regardless of their application. The color customization feature enables you to match QR codes to your brand colors, creating visually cohesive marketing materials. However, it crucial to maintain sufficient contrast between foreground and background colors to ensure reliable scanning across different devices and lighting conditions.
-                </p>
-                <p className="content-text text-gray-700 mb-4">
-                  The error correction level selection represents another sophisticated feature that significantly impacts QR code reliability. Four standardized error correction levels (L, M, Q, and H) determine how much of the QR code can be damaged or obscured while still remaining scannable. Low error correction (L) recovers up to 7% of data, suitable for pristine environments where damage is unlikely. Medium correction (M) handles up to 15% damage, representing a balanced choice for most applications. Quartile correction (Q) manages 25% damage, recommended for codes that might experience moderate wear or partial obstruction. High correction (H) remarkably recovers up to 30% of damaged data, ideal for outdoor applications, heavily-used materials, or situations where you want to embed logos within the QR code design.
-                </p>
-                <p className="content-text text-gray-700">
-                  The download functionality provides both PNG and SVG format options, catering to different use cases. PNG files offer universal compatibility and are perfect for digital displays, social media posts, and standard printing applications. SVG files provide vector-based scalability, maintaining perfect clarity at any size without quality degradation, making them ideal for professional printing, large-format displays, and situations requiring logo integration. The clipboard copy feature facilitates quick sharing and insertion into design software, streamlining your workflow when creating marketing materials or documentation.
-                </p>
-              </section>
+      <p className="content-text text-gray-700 mb-4">
+        QR codes have become one of the most widely used technologies for quick
+        information sharing. The term QR stands for Quick Response, which
+        perfectly describes their purpose. These square-shaped patterns can
+        instantly store and transfer information when scanned through smartphones
+        or QR scanner applications.
+      </p>
 
-              <section className="mb-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Practical Applications Across Industries</h3>
-                <p className="content-text text-gray-700 mb-4">
-                  Business applications of QR codes have expanded dramatically, revolutionizing customer engagement and operational efficiency. Retail businesses utilize QR codes on product packaging to provide detailed product information, usage instructions, authenticity verification, and promotional content. Restaurant and hospitality industries have embraced digital menus accessible via QR codes, reducing printing costs while enabling instant menu updates and multilingual support. Real estate professionals incorporate QR codes in property listings, allowing potential buyers to instantly access virtual tours, detailed specifications, and contact information. Marketing campaigns leverage QR codes to bridge offline and online experiences, tracking engagement metrics while providing customers with exclusive content, special offers, or app download links.
-                </p>
-                <p className="content-text text-gray-700 mb-4">
-                  Educational institutions have discovered numerous innovative applications for QR codes. Teachers create codes linking to supplementary learning materials, homework assignments, instructional videos, and interactive quizzes. Libraries use QR codes for book cataloging, allowing patrons to quickly access digital resources, reading guides, and availability information. Campus navigation becomes simplified with QR codes providing building directories, maps, and department information. Museums and galleries enhance visitor experiences by placing QR codes near exhibits, offering detailed historical context, artist interviews, and multimedia content that enriches the physical viewing experience.
-                </p>
-                <p className="content-text text-gray-700 mb-4">
-                  The healthcare sector employs QR codes for patient identification, medication tracking, appointment scheduling, and health record access. Pharmaceutical companies include QR codes on medication packaging, enabling patients to verify authenticity, access usage instructions in multiple languages, and report adverse effects. Medical facilities use QR codes for visitor management, contactless check-ins, and wayfinding assistance. Emergency medical information cards featuring QR codes can provide first responders with crucial health information when patients cannot communicate directly.
-                </p>
-                <p className="content-text text-gray-700">
-                  Event management has been transformed by QR code technology. Conference organizers use QR codes for ticketing, attendee registration, session check-ins, and networking facilitation. Virtual and hybrid events integrate QR codes to seamlessly connect physical and digital experiences. Trade show exhibitors employ QR codes for lead capture, product demonstrations, and literature distribution. Wedding planners utilize QR codes for RSVP management, gift registry access, and event schedule sharing, while festival organizers implement QR codes for cashless payment systems and interactive experiences.
-                </p>
-              </section>
+      <p className="content-text text-gray-700 mb-4">
+        Unlike traditional barcodes that only hold limited numerical data, QR
+        codes can store URLs, contact information, WiFi credentials, payment
+        links, text messages, app download links, product information, and much
+        more. This flexibility has made QR codes useful across businesses,
+        education, healthcare, retail, marketing, and event management.
+      </p>
 
-              <section className="mb-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Technical Specifications and Best Practices</h3>
-                <p className="content-text text-gray-700 mb-4">
-                  Understanding QR code technical specifications ensures optimal performance and reliability. QR codes consist of version numbers ranging from 1 to 40, with each version containing a different number of modules (the individual black and white squares that comprise the code). Version 1 contains 21×21 modules, while Version 40 contains 177×177 modules, with each successive version adding four modules per side. Higher versions accommodate more data but require larger physical sizes or higher resolution to maintain scannability. Our generator automatically selects the appropriate version based on your data input, optimizing between size and information capacity.
-                </p>
-                <p className="content-text text-gray-700 mb-4">
-                  The quiet zone, or border area surrounding the QR code, plays a critical role in successful scanning. This white space should measure at least four modules wide on all sides, preventing interference from adjacent graphics or text. Many scanning failures result from insufficient quiet zones or QR codes placed against busy backgrounds. When incorporating QR codes into designs, always ensure adequate surrounding space and avoid placing them on surfaces with complex patterns or gradients that might confuse scanning algorithms.
-                </p>
-                <p className="content-text text-gray-700 mb-4">
-                  Color selection significantly impacts scanning reliability. While black foreground on white background provides optimal contrast and universal compatibility, creative color combinations remain viable with proper contrast ratios. Aim for at least 60% contrast between foreground and background colors. Dark colors work well for foreground elements, while light colors suit backgrounds. Avoid using similar shades or low-contrast combinations like light gray on white or dark blue on black. Test your colored QR codes across multiple scanning devices before finalizing designs, especially for mass production or critical applications.
-                </p>
-                <p className="content-text text-gray-700">
-                  Print quality considerations become paramount for physical QR code applications. Ensure printer resolution meets minimum requirements, typically 300 DPI for standard printing and 600 DPI for professional applications. Test printed QR codes before mass production, checking scannability under various lighting conditions and from different angles. Consider material properties when selecting printing surfaces; glossy materials might cause glare issues, while textured surfaces could interfere with scanning. For outdoor applications, use weather-resistant materials and protective coatings to prevent degradation from environmental exposure.
-                </p>
-              </section>
+      <p className="content-text text-gray-700">
+        Today, almost every smartphone camera supports QR scanning directly,
+        making the technology more accessible than ever before. Businesses and
+        creators can now connect offline and online experiences instantly with a
+        simple scan.
+      </p>
+    </section>
 
-              <section className="mb-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Privacy, Security, and Future Developments</h3>
-                <p className="content-text text-gray-700 mb-4">
-                  Privacy concerns surrounding QR codes have gained attention as their usage proliferates. Our generator addresses these concerns through client-side processing, meaning all QR code generation occurs locally in your browser without transmitting data to external servers. This approach guarantees complete privacy for sensitive information like WiFi passwords, contact details, or confidential URLs. Static QR codes generated through our tool never expire and don require ongoing server connections, eliminating tracking possibilities inherent in dynamic QR code services. Users maintain full control over their data, with no storage, logging, or third-party sharing occurring during the generation process.
-                </p>
-                <p className="content-text text-gray-700 mb-4">
-                  Security best practices recommend implementing several protective measures when deploying QR codes publicly. Verify all generated QR codes before distribution by scanning them yourself to ensure they direct to intended destinations. Consider URL shortening services with analytics for tracking and management capabilities while maintaining transparency about data collection. Educate users about QR code security, encouraging them to preview URLs before visiting websites and avoid scanning codes from untrusted sources. For payment applications, implement additional verification steps beyond QR code scanning to prevent fraud.
-                </p>
-                <p className="content-text text-gray-700">
-                  The future of QR code technology promises exciting developments. Enhanced visual QR codes incorporating brand logos, custom shapes, and artistic elements are becoming increasingly sophisticated while maintaining scannability. Augmented reality integration enables QR codes to trigger immersive experiences combining digital content with physical environments. Blockchain technology integration offers possibilities for verification, authentication, and secure transaction processing through QR interfaces. As smartphone camera technology advances and scanning algorithms improve, we can expect even more reliable recognition of partially damaged or creatively designed QR codes, expanding design possibilities while maintaining functionality.
-                </p>
-              </section>
+    <section className="mb-10">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Why QR Codes Became So Popular
+      </h3>
 
-              <section>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h3>
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Are QR codes generated by this tool truly free?</h4>
-                    <p className="content-text text-gray-700">
-                      Absolutely. This QR Code Generator is completely free with no limitations on usage, hidden fees, or subscription requirements. Generate unlimited QR codes for personal or commercial purposes without any restrictions or watermarks.
-                    </p>
-                  </div>
+      <p className="content-text text-gray-700 mb-4">
+        QR codes gained massive popularity because they remove the need for
+        manual typing. Instead of entering long URLs, passwords, or contact
+        details manually, users can simply scan a code and access the
+        information instantly.
+      </p>
 
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Do static QR codes ever expire?</h4>
-                    <p className="content-text text-gray-700">
-                      No, static QR codes generated through our tool never expire. Once created, they remain functional indefinitely since the data is permanently encoded within the image itself. Unlike dynamic QR codes that redirect through intermediary servers, static codes directly contain all information.
-                    </p>
-                  </div>
+      <p className="content-text text-gray-700 mb-4">
+        During the rise of contactless services, QR codes became even more
+        important. Restaurants adopted digital menus, businesses introduced QR
+        payments, and event organizers used QR-based ticket systems for faster
+        check-ins and better convenience.
+      </p>
 
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Can I use custom colors without affecting functionality?</h4>
-                    <p className="content-text text-gray-700">
-                      Yes, you can customize colors while maintaining functionality, provided you ensure sufficient contrast between foreground and background. Maintain at least 60% contrast ratio for reliable scanning. Test colored QR codes across multiple devices before finalizing your design for production use.
-                    </p>
-                  </div>
+      <p className="content-text text-gray-700">
+        Modern marketing campaigns also use QR codes heavily because they create
+        direct connections between physical products and digital experiences.
+      </p>
+    </section>
 
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Does the generator work offline?</h4>
-                    <p className="content-text text-gray-700">
-                      Once the page loads initially, the generator functions completely offline without requiring internet connectivity. All processing occurs locally in your browser, ensuring privacy and enabling QR code generation even in environments without network access.
-                    </p>
-                  </div>
+    <section className="mb-10">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Key Features That Make QR Codes Useful
+      </h3>
 
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Is my data private and secure?</h4>
-                    <p className="content-text text-gray-700">
-                      Absolutely. All QR code generation happens entirely within your browser through client-side processing. Your input data never gets transmitted to external servers, logged, stored, or shared with third parties, guaranteeing complete privacy and data security.
-                    </p>
-                  </div>
+      <p className="content-text text-gray-700 mb-4">
+        One of the biggest strengths of QR codes is their flexibility. A single
+        code can contain large amounts of information while still remaining easy
+        to scan. Businesses can print them on posters, packaging, business
+        cards, websites, invoices, or even billboards.
+      </p>
 
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">What the difference between error correction levels?</h4>
-                    <p className="content-text text-gray-700">
-                      Error correction levels determine how much damage a QR code can sustain while remaining scannable. Higher levels create more redundant data, allowing the code to function even when portions are obscured or damaged. Choose higher levels for outdoor use, small prints, or when embedding logos within QR codes.
-                    </p>
-                  </div>
+      <p className="content-text text-gray-700 mb-4">
+        Customization options also make QR codes more visually appealing.
+        Modern QR generators allow users to change colors, adjust sizes, and
+        select different output formats while maintaining scannability.
+      </p>
 
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Should I choose PNG or SVG format?</h4>
-                    <p className="content-text text-gray-700">
-                      PNG files work universally for digital displays and standard printing. SVG files provide vector scalability, maintaining perfect clarity at any size without quality loss, making them ideal for professional printing, large-format applications, and design software integration where resizing flexibility is essential.
-                    </p>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </div>
+      <p className="content-text text-gray-700">
+        Designers often combine QR creation with{" "}
+        <a
+          href="https://convertixy.com/color-picker"
+          className="text-blue-600 font-medium hover:underline"
+        >
+          Color Picker
+        </a>{" "}
+        tools to create brand-consistent QR designs for websites and marketing
+        materials.
+      </p>
+    </section>
+
+    <section className="mb-10">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Understanding Error Correction Levels
+      </h3>
+
+      <p className="content-text text-gray-700 mb-4">
+        QR codes include built-in error correction technology, which allows them
+        to remain scannable even when partially damaged or covered. This feature
+        makes QR codes highly reliable for real-world applications.
+      </p>
+
+      <p className="content-text text-gray-700 mb-4">
+        Lower error correction levels generate smaller and simpler codes, while
+        higher levels add more recovery data for improved durability. High error
+        correction is especially useful for outdoor printing, posters, packaging,
+        or situations where the code may experience wear and tear.
+      </p>
+
+      <p className="content-text text-gray-700">
+        Businesses often use stronger error correction levels when embedding
+        logos or design elements inside QR codes.
+      </p>
+    </section>
+
+    <section className="mb-10">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Real-World Business Applications
+      </h3>
+
+      <p className="content-text text-gray-700 mb-4">
+        QR codes are now deeply integrated into modern business operations.
+        Retail stores use them for product information, promotions, and digital
+        payment systems. Restaurants use QR menus to reduce printing costs and
+        simplify menu updates.
+      </p>
+
+      <p className="content-text text-gray-700 mb-4">
+        Marketing agencies use QR codes on advertisements, brochures, banners,
+        and packaging to direct customers toward websites, apps, or promotional
+        campaigns instantly.
+      </p>
+
+      <p className="content-text text-gray-700 mb-4">
+        Event organizers rely on QR-based ticket verification systems for faster
+        check-ins and improved attendee management. Real estate businesses use
+        QR codes to connect property listings with virtual tours and detailed
+        information pages.
+      </p>
+
+      <p className="content-text text-gray-700">
+        Businesses managing online marketing campaigns may also use{" "}
+        <a
+          href="https://convertixy.com/url-encoder"
+          className="text-blue-600 font-medium hover:underline"
+        >
+          URL Encoder
+        </a>{" "}
+        for properly formatted URLs before embedding them into QR codes.
+      </p>
+    </section>
+
+    <section className="mb-10">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Educational and Healthcare Use Cases
+      </h3>
+
+      <p className="content-text text-gray-700 mb-4">
+        Schools and universities use QR codes to distribute assignments,
+        attendance systems, digital learning resources, and campus information.
+        Students can scan codes to access notes, presentations, videos, or
+        online learning platforms instantly.
+      </p>
+
+      <p className="content-text text-gray-700 mb-4">
+        Healthcare institutions use QR technology for patient identification,
+        appointment scheduling, medication tracking, and digital medical record
+        access. This improves efficiency while reducing paperwork and manual
+        processing errors.
+      </p>
+
+      <p className="content-text text-gray-700">
+        Museums and educational exhibitions also use QR codes to provide
+        interactive learning experiences through additional multimedia content.
+      </p>
+    </section>
+
+    <section className="mb-10">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Why Browser-Based QR Generation Is Safer
+      </h3>
+
+      <p className="content-text text-gray-700 mb-4">
+        Privacy is extremely important when generating QR codes that contain
+        sensitive information such as passwords, payment details, or business
+        links. Traditional server-based tools may temporarily upload data to
+        external systems during processing.
+      </p>
+
+      <p className="content-text text-gray-700 mb-4">
+        Browser-based QR generators improve privacy significantly because all
+        processing happens directly inside the browser. Information remains on
+        the local device and does not need to be uploaded externally.
+      </p>
+
+      <p className="content-text text-gray-700">
+        This local-processing approach is especially useful for businesses,
+        professionals, and individuals handling confidential or sensitive data.
+      </p>
+    </section>
+
+    <section className="mb-10">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Best Practices for Better QR Code Design
+      </h3>
+
+      <p className="content-text text-gray-700 mb-4">
+        High contrast is one of the most important factors in QR code design.
+        Dark foreground colors combined with light backgrounds usually produce
+        the best scanning results.
+      </p>
+
+      <p className="content-text text-gray-700 mb-4">
+        Sufficient spacing around the QR code is also critical. This white
+        border area helps scanning devices identify the code properly without
+        interference from surrounding graphics or text.
+      </p>
+
+      <p className="content-text text-gray-700 mb-4">
+        Testing QR codes before printing or publishing is highly recommended.
+        Different smartphones and scanning applications may interpret designs
+        differently depending on color combinations and image quality.
+      </p>
+
+      <p className="content-text text-gray-700">
+        Designers frequently optimize QR graphics using{" "}
+        <a
+          href="https://convertixy.com/image-cropper"
+          className="text-blue-600 font-medium hover:underline"
+        >
+          Image Cropper
+        </a>{" "}
+        before adding them into posters, social media creatives, or website
+        banners.
+      </p>
+    </section>
+
+    <section className="mb-10">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        PNG vs SVG QR Code Downloads
+      </h3>
+
+      <p className="content-text text-gray-700 mb-4">
+        QR generators usually provide PNG and SVG download options. PNG format
+        works well for websites, social media, and standard printing because it
+        is universally supported.
+      </p>
+
+      <p className="content-text text-gray-700 mb-4">
+        SVG format is ideal for professional printing and scalable graphics
+        because it preserves perfect sharpness at any size. This makes SVG
+        especially useful for banners, large posters, and high-resolution
+        branding materials.
+      </p>
+
+      <p className="content-text text-gray-700">
+        Businesses creating professional print campaigns often prefer SVG files
+        because they maintain clarity even when enlarged significantly.
+      </p>
+    </section>
+
+    <section className="mb-10">
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Future of QR Code Technology
+      </h3>
+
+      <p className="content-text text-gray-700 mb-4">
+        QR code technology continues evolving rapidly. Modern systems now combine
+        QR codes with augmented reality experiences, advanced analytics, digital
+        authentication, and contactless payment ecosystems.
+      </p>
+
+      <p className="content-text text-gray-700 mb-4">
+        As smartphone cameras and scanning algorithms become more advanced, QR
+        codes are expected to support even more interactive experiences in
+        education, retail, healthcare, and digital marketing.
+      </p>
+
+      <p className="content-text text-gray-700">
+        Businesses investing in digital transformation increasingly rely on QR
+        technology to create seamless connections between physical and online
+        environments.
+      </p>
+    </section>
+
+    <section>
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        Frequently Asked Questions
+      </h3>
+
+      <div className="space-y-6">
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 mb-2">
+            Are QR codes generated by this tool free?
+          </h4>
+
+          <p className="content-text text-gray-700">
+            Yes. The QR Code Generator is completely free without hidden charges
+            or usage restrictions.
+          </p>
         </div>
+
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 mb-2">
+            Do static QR codes expire?
+          </h4>
+
+          <p className="content-text text-gray-700">
+            No. Static QR codes remain functional permanently because the data is
+            directly encoded inside the image itself.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 mb-2">
+            Is browser-based QR generation secure?
+          </h4>
+
+          <p className="content-text text-gray-700">
+            Yes. Since processing happens locally in the browser, information is
+            not uploaded to external servers.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 mb-2">
+            Which format is better: PNG or SVG?
+          </h4>
+
+          <p className="content-text text-gray-700">
+            PNG works well for websites and social media, while SVG is better
+            for professional printing and scalable designs.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 mb-2">
+            Can custom colors affect QR scanning?
+          </h4>
+
+          <p className="content-text text-gray-700">
+            Yes. Low contrast combinations may reduce scanning reliability.
+            Always maintain strong contrast between foreground and background
+            colors.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 mb-2">
+            Can QR codes store large amounts of data?
+          </h4>
+
+          <p className="content-text text-gray-700">
+            Yes. QR codes can store URLs, text, contact details, WiFi passwords,
+            and many other types of information efficiently.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+          </div>
+        
       </main>
     </>
   );

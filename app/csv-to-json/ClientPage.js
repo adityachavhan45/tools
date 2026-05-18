@@ -90,31 +90,14 @@ export default function CsvToJsonPage() {
     setHasResult(false);
   }
 
-  const sidebar = (
-    <div className="space-y-4 text-sm text-gray-700 text-justify">
-      <div className="p-4 bg-blue-50 rounded-xl border border-blue-200">
-        <p className="font-semibold text-blue-900 mb-2">Format</p>
-        <p className="text-blue-800 text-justify">
-          First row = column headers (keys in JSON). Each following row = one object. Choose the delimiter that matches your CSV (comma, semicolon, tab, etc.).
-        </p>
-      </div>
-      <div className="p-4 bg-amber-50 rounded-xl border border-amber-200">
-        <p className="font-semibold text-amber-900 mb-2">Tip</p>
-        <p className="text-amber-800 text-justify">
-          If a cell contains the delimiter (e.g. a comma), wrap the whole cell in double quotes, e.g. &quot;Smith, John&quot;.
-        </p>
-      </div>
-    </div>
-  );
-
   return (
     <ToolSection
       title="CSV to JSON"
       subtitle="Convert CSV data to JSON online. Paste your CSV, choose the delimiter, and get a JSON array of objects. For APIs, apps, and data workflows. All processing in your browser."
       plain
-      plainSidebar
       whiteBackground
-      sidebar={sidebar}
+      hideSidebar
+      centerHeader
     >
       <JsonLd
         data={buildToolJsonLd({
@@ -191,6 +174,21 @@ export default function CsvToJsonPage() {
           </div>
         </div>
 
+        <div className="grid gap-4 md:grid-cols-5">
+          <div className="md:col-span-3 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5">
+            <p className="font-semibold text-blue-900 mb-2">Format</p>
+            <p className="text-blue-800 text-sm text-justify">
+              First row = column headers (keys in JSON). Each following row = one object. Choose the delimiter that matches your CSV (comma, semicolon, tab, etc.).
+            </p>
+          </div>
+          <div className="md:col-span-2 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-5">
+            <p className="font-semibold text-amber-900 mb-2">Tip</p>
+            <p className="text-amber-800 text-sm text-justify">
+              If a cell contains the delimiter (e.g. a comma), wrap the whole cell in double quotes, e.g. &quot;Smith, John&quot;.
+            </p>
+          </div>
+        </div>
+
         {hasResult && jsonOutput && (
           <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <div className="px-5 py-4 bg-indigo-600 text-white flex flex-wrap items-center justify-between gap-2">
@@ -225,75 +223,302 @@ export default function CsvToJsonPage() {
         </div>
       </div>
 
-      <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm text-justify" aria-labelledby="about-csv-heading">
-        <h2 id="about-csv-heading" className="text-xl font-semibold text-gray-900 mb-4">About the CSV to JSON Converter</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          This free CSV to JSON Converter turns comma-separated (or other delimited) text into a JSON array of objects. You paste your CSV, choose the column separator (comma, semicolon, tab, pipe, or colon), and the tool uses the first row as keys and each following row as one object. The result is valid JSON that you can copy into APIs, configs, or code. Processing runs in your browser; no data is sent to a server. Useful for developers, analysts, and anyone moving data from spreadsheets into structured formats.
-        </p>
+    <section
+  className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm text-justify"
+  aria-labelledby="about-csv-heading"
+>
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">How to use</h3>
-        <ol className="list-decimal list-inside text-gray-700 space-y-2 mb-4">
-          <li>Paste or type your CSV into the input box. The first line must be the header (column names).</li>
-          <li>Select the <strong>delimiter</strong> that matches your data (comma for most CSV, semicolon for some European exports, tab for TSV).</li>
-          <li>Click <strong>Convert to JSON</strong>. The output appears as a formatted JSON array.</li>
-          <li>Use <strong>Copy JSON</strong> to copy the result into your project or editor.</li>
-        </ol>
+  <h2
+    id="about-csv-heading"
+    className="text-2xl font-bold text-gray-900 mb-4"
+  >
+    About the CSV to JSON Converter
+  </h2>
 
-        <h2 id="csv-json-guide" className="text-xl font-semibold text-gray-900 mt-10 mb-4">CSV, JSON, and Data Conversion: A Complete Guide</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          CSV (Comma-Separated Values) and JSON (JavaScript Object Notation) are two of the most common formats for storing and moving data. CSV is flat and table-like: each line is a row, and columns are separated by a character (usually a comma). JSON is hierarchical and key-value based, which fits how many applications and APIs represent data. Converting CSV to JSON is a standard step when you need to feed spreadsheet or export data into web apps, APIs, or databases that expect JSON. This section explains both formats and when and how to use a converter.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    The CSV to JSON Converter helps users transform spreadsheet-style CSV data into
+    structured JSON format instantly. CSV files are widely used for storing rows and
+    columns of information, while JSON is commonly used in APIs, databases, frontend
+    applications, and modern web development.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">What is CSV?</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          CSV is a plain-text format where each line represents a row and columns are separated by a delimiter. The delimiter is often a comma, but semicolons and tabs are common too, especially when the data itself contains commas. The first row is frequently used as a header listing column names. CSV is easy to create in Excel, Google Sheets, or any text editor, and it is widely used for exports, backups, and data exchange. Its simplicity is a strength, but it has no standard way to represent nested or repeated structures, and handling special characters or newlines inside a cell requires conventions like quoting. Most CSV parsers (including this tool) support double-quoted cells so that delimiters and line breaks inside quotes are treated as part of the value.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Developers, analysts, students, business teams, and data engineers frequently convert
+    CSV data into JSON while working with APIs, dashboards, databases, automation systems,
+    and JavaScript applications. Instead of manually rewriting spreadsheet data into JSON
+    objects, this tool automates the conversion process within seconds.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">What is JSON?</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          JSON is a text format for representing data as objects and arrays. An object is a set of key-value pairs enclosed in curly braces; an array is an ordered list of values in square brackets. Values can be strings, numbers, booleans, null, or nested objects and arrays. JSON is the default format for many web APIs and configuration files, and it is natively supported in JavaScript and most programming languages. When you convert CSV to JSON, each CSV row typically becomes one object, with the header row providing the keys. The result is an array of such objects, which is easy to iterate over in code or send in an API request. JSON is more flexible than CSV for nested or repeated data, but for simple tables, a CSV-to-JSON conversion gives you the best of both: easy editing in a spreadsheet and structured consumption in an app.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    The converter supports multiple delimiters such as commas, semicolons, tabs, pipes,
+    and colons, making it useful for different regional and software export formats.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Why convert CSV to JSON?</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Many systems expect JSON: REST APIs often send and receive JSON; document databases like MongoDB store JSON-like documents; and front-end frameworks work with JavaScript objects. If your data starts in a spreadsheet or a CSV export, converting it to JSON is a direct way to make it usable in those contexts. For example, you might have a CSV of products, users, or locations that you want to load into a web app or use as mock data for development. Converting to JSON once (or on demand with a tool like this) avoids manual rewriting and reduces errors. Analysts and developers also use the conversion to move data from reporting tools into dashboards or scripts that consume JSON.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Developers formatting and validating structured output often combine this tool with the{" "}
+    <a
+      href="/json-formatter"
+      className="text-blue-600 underline font-medium"
+    >
+      JSON Formatter
+    </a>{" "}
+    to improve readability and verify generated JSON before using it inside applications.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Delimiters and regional formats</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          CSV is not fully standardised: the delimiter varies by region and software. In North America and many English-speaking countries, the comma is standard. In parts of Europe, the decimal separator is a comma, so CSV files often use a semicolon to separate columns to avoid confusion. Tab-separated values (TSV) use a tab character and are common in data pipelines and some exports. Pipes and colons are used in custom or legacy formats. This converter lets you choose the delimiter so you can correctly parse your file. If the output looks wrong (e.g. everything in one column or keys merged), try another delimiter. The first row should always be the header; if your file has no header, add a dummy first line with column names so the JSON has meaningful keys.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    What CSV Actually Means
+  </h3>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Handling commas and special characters</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          When a cell contains the delimiter (e.g. a comma in a name or address), the cell should be wrapped in double quotes so that the parser treats the whole quoted string as one field. For example, &quot;Smith, John&quot; is one column value. If the cell contains a double quote, it is typically escaped by doubling it: &quot;&quot; becomes one quote in the value. This converter supports quoted fields so that commas and other delimiters inside quotes do not break the column structure. If your CSV was exported from Excel or Google Sheets, cells with commas are usually quoted automatically. If you type or edit CSV by hand, remember to add quotes around any cell that contains the delimiter.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    CSV stands for Comma-Separated Values. It is one of the simplest and most widely used
+    file formats for storing tabular data. Each line usually represents a row, while
+    commas or other delimiters separate individual columns.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">API and integration use</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Web APIs often accept or return JSON. If you have data in CSV (e.g. from a survey, CRM export, or spreadsheet), converting it to JSON lets you POST it to an API, use it in serverless functions, or seed a database. Some APIs allow bulk uploads as a JSON array of objects, which is exactly what this tool produces. Front-end applications can also consume the JSON directly: for example, you might convert a CSV of menu items or events to JSON and load it into a React or Vue app. The converter runs in the browser, so you can paste sensitive or internal data without uploading it to a third-party server, which is useful for enterprise or confidential datasets.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Spreadsheet applications such as Excel and Google Sheets commonly export data into CSV
+    format because it is lightweight, readable, and supported across many systems.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Databases and NoSQL</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Document-oriented databases (e.g. MongoDB, CouchDB) store records as JSON-like documents. Importing CSV data into such a database usually involves a conversion step: CSV to JSON, then insert each object as a document. This tool gives you the JSON array; you can then use a script or an import utility to insert the objects. For relational databases, CSV is often imported directly via LOAD DATA or COPY commands, but if you need to transform or validate data in code first, converting to JSON gives you a structure you can programmatically modify (e.g. rename keys, filter rows, or add computed fields) before writing to any backend.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    However, CSV files are limited because they mainly represent flat table structures.
+    They are not ideal for nested objects or complex application data structures.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Data quality and validation</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          The converter assumes that the first row is the header and that every data row has the same number of columns (or fewer; missing columns become empty strings). If some rows have extra columns, they may be ignored depending on implementation; if some have fewer, the missing keys get empty values. For production use, it is good practice to validate and clean your CSV before conversion: check for encoding (UTF-8 is standard), remove or fix broken rows, and ensure consistent quoting. Very large files (millions of rows) may be slow or run into memory limits in the browser; for bulk processing, consider a server-side or command-line tool. This converter is ideal for small to medium-sized data (up to thousands of rows) and for quick, one-off conversions.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    What JSON Means
+  </h3>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Summary</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          The CSV to JSON Converter turns CSV text into a JSON array of objects using the first row as keys and supporting multiple delimiters and quoted fields. Paste your CSV, select the delimiter, and get valid JSON for use in APIs, apps, or databases. Processing is done in the browser. For best results, use a header row, quote cells that contain the delimiter, and choose the correct delimiter for your file. For very large or complex data, consider dedicated ETL or scripting tools.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    JSON stands for JavaScript Object Notation. It is a structured data format based on
+    key-value pairs and arrays. JSON is commonly used for APIs, configuration files,
+    frontend applications, databases, and cloud-based systems.
+  </p>
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">Disclaimer</h3>
-        <p className="text-gray-700 leading-relaxed">
-          This tool is for general data conversion only. Validate your JSON in your own environment before using it in production. We are not responsible for data loss or misuse. Do not paste highly sensitive data into public or shared devices; processing is local but ensure you trust the environment.
-        </p>
-      </section>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Unlike CSV, JSON can represent nested objects, arrays, booleans, numbers, and more
+    advanced structures. This flexibility makes JSON the preferred data exchange format
+    for modern applications and web services.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Developers working with APIs and backend systems frequently inspect structured
+    responses using the{" "}
+    
+      JSON Validator
+   {" "}
+    to identify syntax issues and ensure valid formatting.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why Convert CSV to JSON
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many business tools and spreadsheets export data as CSV, but modern applications often
+    require JSON for integration. Converting CSV to JSON allows developers and analysts to
+    move spreadsheet data directly into APIs, JavaScript applications, databases, and
+    automation workflows.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    For example, a company may export customer records, product catalogs, employee lists,
+    or analytics reports as CSV files and later convert them into JSON for backend
+    processing or dashboard integration.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Developers handling frontend data structures often combine converted JSON with the{" "}
+    <a
+      href="/text-to-json"
+      className="text-blue-600 underline font-medium"
+    >
+      Text to JSON Converter
+    </a>{" "}
+    while preparing mock data or API-ready objects for development environments.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Delimiters and Regional Formats
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    CSV files are not always separated by commas. Different regions and software systems
+    use different delimiters depending on language and formatting standards.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    In some European countries, semicolons are commonly used because commas may already
+    represent decimal values. Technical exports and database systems sometimes use tabs,
+    pipes, or colons instead of commas.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    This converter allows users to select the correct delimiter so the tool can properly
+    separate columns and generate accurate JSON objects.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    CSV and API Integration
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    APIs frequently accept JSON because it is easy for applications to parse and process.
+    Converting CSV into JSON helps developers quickly upload spreadsheet data into cloud
+    services, databases, dashboards, or backend systems.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Frontend applications built with frameworks like React, Vue, and Angular commonly use
+    JSON objects for rendering dynamic content and managing application state.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Developers testing API payloads and encoded parameters also rely on the{" "}
+    <a
+      href="/url-encoder"
+      className="text-blue-600 underline font-medium"
+    >
+      URL Encoder
+    </a>{" "}
+    while working with query strings and data transmission.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Data Validation and Cleanup
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Proper data formatting is important before converting CSV into JSON. Inconsistent
+    rows, broken quotes, missing columns, or invalid delimiters may generate incorrect
+    output.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    It is recommended to use clean header rows and consistent column structures before
+    conversion. Spreadsheet exports from trusted tools usually work correctly, but manual
+    edits may introduce formatting errors.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Analysts cleaning exported data sometimes compare modified datasets using the{" "}
+    <a
+      href="/text-diff-checker"
+      className="text-blue-600 underline font-medium"
+    >
+      Text Difference Checker
+    </a>{" "}
+    to identify missing rows, formatting changes, or structural differences.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    CSV to JSON in Databases
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many NoSQL databases such as MongoDB store data using JSON-like document structures.
+    Converting CSV exports into JSON allows developers to import spreadsheet data more
+    easily into document databases and cloud systems.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    JSON also simplifies programmatic processing because developers can directly loop
+    through arrays and objects using programming languages like JavaScript, Python, and
+    Node.js.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Backend developers often clean and optimize structured output alongside tools like the{" "}
+    <a
+      href="/html-formatter"
+      className="text-blue-600 underline font-medium"
+    >
+      HTML Formatter
+    </a>{" "}
+    and the{" "}
+    <a
+      href="/regex-tester"
+      className="text-blue-600 underline font-medium"
+    >
+      Regex Tester
+    </a>{" "}
+    while preparing dynamic applications and validation systems.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why Browser-Based Conversion Tools Save Time
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Manual conversion from CSV to JSON becomes difficult when working with large datasets.
+    Online conversion tools simplify the process by automatically generating structured
+    output without requiring scripts or additional software.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Browser-based tools improve accessibility because users can quickly transform data from
+    desktops, laptops, or mobile devices without installation.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Teams sharing structured reports and downloadable data files also organize exported
+    documents using the{" "}
+    <a
+      href="/pdf-merge"
+      className="text-blue-600 underline font-medium"
+    >
+      PDF Merge Tool
+    </a>{" "}
+    before distribution.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Privacy and Local Processing
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Privacy matters while working with exported business data and structured records. This
+    CSV to JSON Converter performs processing directly inside the browser without requiring
+    account creation or unnecessary uploads.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Developers and analysts managing cloud accounts and online systems also improve account
+    protection using the{" "}
+    <a
+      href="/password-generator"
+      className="text-blue-600 underline font-medium"
+    >
+      Password Generator
+    </a>{" "}
+    and verify stronger credentials through the{" "}
+    <a
+      href="/password-strength-checker"
+      className="text-blue-600 underline font-medium"
+    >
+      Password Strength Checker
+    </a>{" "}
+    before storing sensitive data online.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Final Thoughts
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    The CSV to JSON Converter provides a fast and reliable way to transform spreadsheet
+    data into structured JSON format for APIs, applications, databases, and development
+    workflows.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed">
+    Instead of manually rewriting rows into JSON objects, users can instantly convert CSV
+    exports into structured data while improving productivity and reducing formatting
+    errors. Understanding both CSV and JSON formats also helps developers and analysts work
+    more effectively with modern data systems and web technologies.
+  </p>
+
+</section>
     </ToolSection>
   );
 }

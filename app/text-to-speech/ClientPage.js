@@ -133,7 +133,8 @@ export default function TextToSpeechPage() {
       title="Free Text to Speech Converter Online | Convert Text to Voice"
       subtitle="Convert text to speech online with natural voices. Free text-to-speech tool with multiple languages, voice options, and speed control for accessibility and content creation."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd

@@ -125,32 +125,14 @@ Estimated Monthly Clicks: ${clicks.toLocaleString()}
     setHasCalculated(false);
   }
 
-  const sidebar = (
-    <div className="space-y-4 text-sm text-gray-700 text-justify">
-      <div className="p-4 bg-blue-50 rounded-xl border border-blue-200">
-        <p className="font-semibold text-blue-900 mb-2">Where to find these in AdSense</p>
-        <ul className="space-y-1.5 text-blue-800 text-justify">
-          <li><strong>Page RPM:</strong> AdSense → Reports → Page RPM (per page or site).</li>
-          <li><strong>CPC:</strong> Reports → Page-level or site-level cost per click.</li>
-          <li><strong>CTR:</strong> Reports → Click-through rate (%).</li>
-          <li><strong>Traffic:</strong> Use Google Analytics pageviews or AdSense page views.</li>
-        </ul>
-      </div>
-      <div className="p-4 bg-amber-50 rounded-xl border border-amber-200">
-        <p className="font-semibold text-amber-900 mb-2">Tip</p>
-        <p className="text-amber-800 text-justify">Use your last 30-day AdSense and Analytics data for realistic estimates.</p>
-      </div>
-    </div>
-  );
-
   return (
     <ToolSection
       title="AdSense RPM Calculator"
       subtitle="Estimate your Google AdSense revenue using Page RPM, monthly traffic, CPC, and CTR. Free, private, and accurate."
       plain
-      plainSidebar
       whiteBackground
-      sidebar={sidebar}
+      hideSidebar
+      centerHeader
     >
       <div className="space-y-6">
         {message && (
@@ -250,6 +232,24 @@ Estimated Monthly Clicks: ${clicks.toLocaleString()}
           </div>
         </div>
 
+        <div className="grid gap-4 md:grid-cols-5">
+          <div className="md:col-span-3 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5">
+            <p className="font-semibold text-blue-900 mb-2">Where to find these in AdSense</p>
+            <ul className="space-y-1.5 text-blue-800 text-sm text-justify">
+              <li><strong>Page RPM:</strong> AdSense → Reports → Page RPM (per page or site).</li>
+              <li><strong>CPC:</strong> Reports → Page-level or site-level cost per click.</li>
+              <li><strong>CTR:</strong> Reports → Click-through rate (%).</li>
+              <li><strong>Traffic:</strong> Use Google Analytics pageviews or AdSense page views.</li>
+            </ul>
+          </div>
+          <div className="md:col-span-2 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-5">
+            <p className="font-semibold text-amber-900 mb-2">Tip</p>
+            <p className="text-amber-800 text-sm text-justify">
+              Use your last 30-day AdSense and Analytics data for realistic estimates.
+            </p>
+          </div>
+        </div>
+
         {hasCalculated && totalEarnings >= 0 && (
           <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <div className="px-5 py-4 bg-green-600 text-white">
@@ -308,171 +308,272 @@ Estimated Monthly Clicks: ${clicks.toLocaleString()}
         </div>
       </div>
 
-      <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm text-justify" aria-labelledby="about-heading">
-        <h2 id="about-heading" className="text-xl font-semibold text-gray-900 mb-4">About the AdSense RPM Calculator</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          This free AdSense RPM Calculator helps website publishers and bloggers estimate potential Google AdSense
-          revenue using four key metrics: <strong>Page RPM</strong> (revenue per 1,000 pageviews), <strong>monthly
-          traffic</strong> (pageviews), <strong>CPC</strong> (cost per click), and <strong>CTR</strong> (click-through
-          rate). You can find these values in your Google AdSense and Google Analytics reports. The tool combines
-          RPM-based and click-based revenue to give you a single monthly earnings estimate and an effective RPM.
-        </p>
+     <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm text-justify">
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">How to use this tool</h3>
-        <ol className="list-decimal list-inside text-gray-700 space-y-2 mb-4">
-          <li>Open Google AdSense and note your average <strong>Page RPM</strong> (or use a typical value like $1–5 for US traffic).</li>
-          <li>Enter your <strong>monthly pageviews</strong> from Analytics or AdSense.</li>
-          <li>Enter your average <strong>CPC</strong> and <strong>CTR %</strong> from AdSense reports.</li>
-          <li>Click <strong>Calculate earnings</strong> to see estimated monthly revenue, effective RPM, and estimated clicks.</li>
-          <li>Use <strong>Export CSV</strong> or <strong>Copy report</strong> to save results.</li>
-        </ol>
+  <h2 className="text-2xl font-bold text-gray-900 mb-4">
+    About the AdSense RPM Calculator
+  </h2>
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">What affects AdSense RPM?</h3>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          RPM varies by country (e.g. higher in US/UK, lower in India), niche (finance and tech often higher),
-          traffic source (organic search usually performs better than social), ad placement, and content quality.
-          The numbers from this calculator are estimates only; your actual AdSense earnings depend on these and
-          other factors.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Most beginner bloggers start a website with the expectation that higher traffic automatically means higher earnings.
+    After a few months, many of them become confused because even after getting thousands of visitors, their AdSense
+    income still remains low. This usually happens because AdSense revenue depends on much more than pageviews alone.
+    Factors like niche quality, visitor location, content depth, ad engagement, website speed, and search traffic
+    quality all affect overall RPM and estimated earnings.
+  </p>
 
-        <h2 id="niche-rpm-guide" className="text-xl font-semibold text-gray-900 mt-10 mb-4">AdSense RPM by Website Niche: A Complete Guide</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Your website niche is one of the strongest drivers of Google AdSense RPM. Advertisers bid more for audiences
-          that are likely to convert, so topics tied to high-intent searches and valuable products tend to earn more per
-          thousand pageviews. Understanding how different niches perform helps you set realistic expectations in this
-          RPM calculator and plan content or pivot into better-monetizing categories if that fits your goals.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    The AdSense RPM Calculator helps publishers estimate potential monthly earnings using important metrics such as
+    Page RPM, CPC, CTR, and total monthly pageviews. Instead of manually calculating advertising performance, users
+    can instantly understand how different traffic scenarios may impact revenue. This makes the tool useful for
+    bloggers, affiliate marketers, educational websites, SaaS publishers, niche website owners, and content creators
+    trying to grow sustainable advertising income.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">High-RPM Niches: Finance, Insurance, and Legal</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Finance (investing, loans, credit cards, banking, cryptocurrency) consistently ranks among the top AdSense
-          niches. Users searching for financial products often have clear purchase intent, so advertisers pay premium
-          CPMs and CPCs. Insurance and legal services follow a similar pattern: people looking for quotes or legal
-          advice are high-value leads. Expect RPMs in developed markets to sit in the upper range compared to general
-          content. Competition and compliance are steeper—financial content often needs accuracy disclaimers and
-          adherence to local regulations, but the revenue potential justifies the effort for many publishers.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many website owners only focus on publishing more pages without improving content quality. In reality, one
+    high-quality page with strong user engagement can sometimes generate more revenue than dozens of weak pages.
+    Search engines and advertisers both prefer websites that provide clear information, better readability, faster
+    loading speed, and genuine value for visitors.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Technology, Software, and SaaS</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Technology and software niches attract advertisers selling tools, courses, and B2B services. Tutorials,
-          comparisons, and how-to guides around software, hosting, cybersecurity, and productivity tools tend to get
-          strong RPMs because the audience is often decision-makers or professionals. B2B ads typically have higher
-          cost per click than B2C in many categories, which lifts both CPC and RPM. Content that targets commercial
-          keywords (e.g. “best project management software,” “VPN comparison”) usually monetizes better than purely
-          informational posts, though both can work with consistent traffic and good ad placement.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Publishers struggling with low rankings or traffic drops often analyze technical SEO problems using the{" "}
+    <a
+      href="/meta-tag-generator"
+      className="text-blue-600 underline font-medium"
+    >
+      Meta Tag Generator
+    </a>{" "}
+    while improving search appearance and page structure for better organic visibility.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Health, Fitness, and Wellness</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Health and wellness content can achieve solid RPMs, especially when it aligns with commercial or
-          research-heavy queries. Supplements, fitness equipment, medical information, and mental health resources
-          attract advertisers willing to pay for qualified traffic. Google’s policies around health and YMYL (Your Money
-          Your Life) content are strict: claims must be backed by expertise and sources. Sites that meet these
-          standards and focus on clear, helpful content often see stable RPMs. Sub-niches like weight loss, nutrition,
-          and chronic condition management can vary widely; always prioritise accuracy and user safety to keep
-          AdSense compliance and long-term revenue healthy.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Understanding How RPM Actually Works
+  </h3>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Home Improvement, Real Estate, and DIY</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Home improvement, real estate, and do-it-yourself projects attract advertisers in construction, appliances,
-          and property services. Users planning renovations or purchases often spend time on multiple pages and
-          return via search, which supports both RPM and repeat traffic. Seasonal spikes (e.g. spring and summer for
-          outdoor projects) can create RPM swings, so using this calculator with different traffic and RPM assumptions
-          helps you model best- and worst-case months. Localised content (e.g. “best HVAC contractors in [city]”) can
-          attract geo-targeted ads and sometimes higher CPMs in competitive regions.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    RPM stands for Revenue Per Mille, which simply means estimated earnings per 1,000 pageviews. If a website has an
+    RPM of $4 and receives 100,000 monthly pageviews, estimated earnings may reach around $400. However, RPM
+    constantly changes depending on the type of audience visiting the website.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Education, Courses, and Career</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Education and career development niches benefit from advertisers promoting courses, certifications, and
-          job-related services. Content around online learning, exam preparation, and career advancement often has
-          strong intent and longer session duration. RPMs are usually above the content-site average but below
-          finance or insurance. Combining evergreen guides with timely topics (e.g. exam dates, hiring trends) can
-          balance traffic and monetisation. Affiliate links to courses or tools can complement AdSense and improve
-          overall revenue per visitor.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    A finance website targeting users from countries like the United States or the United Kingdom may generate
+    significantly higher RPM than a general entertainment website targeting untargeted global traffic. Advertisers
+    spend more money in industries where visitors are likely to purchase products or services, which increases both
+    CPC and advertising competition.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Travel and Lifestyle</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Travel content can deliver moderate to good RPMs depending on geography and query type. Destination guides,
-          booking comparisons, and travel gear reviews attract travel brands and affiliates. RPMs often improve when
-          traffic comes from high-spend countries (e.g. US, UK, Australia) and when content targets commercial
-          keywords rather than purely inspirational posts. Seasonal and event-driven traffic (holidays, festivals)
-          creates RPM variability, so averaging your AdSense data over several months before plugging numbers into
-          this calculator gives a more realistic baseline.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Another important factor is CTR or Click Through Rate. Even websites with moderate traffic can improve revenue if
+    users actively interact with advertisements. Ad placement, website structure, content readability, and mobile
+    optimization all influence CTR performance.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Entertainment, News, and General Content</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Entertainment and general-interest sites often see lower RPMs than the niches above because advertiser
-          competition and intent are typically lower. That said, volume can compensate: a site with millions of
-          pageviews at a modest RPM can still generate meaningful revenue. News and trending topics can spike RPM
-          during major events when ad demand rises. Optimising ad formats, placement, and user experience helps
-          maximise RPM within the niche. Using this calculator with conservative RPM and traffic figures helps set
-          achievable targets and plan for scale.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why Website Speed Affects AdSense Earnings
+  </h3>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Niche Overlap and Blended RPM</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Many sites cover multiple sub-niches, so your reported Page RPM in AdSense is already a blend of different
-          pages and topics. High-RPM pages (e.g. a few finance or tech articles) can lift the site average, while
-          a lot of low-RPM entertainment or news content can pull it down. When you enter your Page RPM into this
-          calculator, use the value that best represents the traffic you are estimating for—whether that is site-wide
-          average, a specific section, or a single high-performing page. Segmenting by section in AdSense or
-          Analytics can give you more accurate inputs for scenario planning.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Website speed directly affects user retention and advertising visibility. Slow-loading pages increase bounce rate
+    because visitors often leave before content and advertisements fully load. Faster websites usually achieve better
+    engagement, stronger session duration, and improved monetization performance.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Geography and Niche Together</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          RPM is influenced by both niche and audience location. A finance blog with mostly US traffic will usually
-          earn more per thousand views than the same niche with mostly traffic from regions with lower ad spend.
-          When you use this AdSense RPM calculator, your existing RPM (from AdSense reports) already reflects your
-          current mix of niches and geographies. If you are considering expanding into new countries or topics,
-          expect RPM to shift and run the calculator with different RPM and traffic assumptions to see how revenue
-          could change.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many publishers regularly monitor loading performance while optimizing heavy files and improving overall website
+    efficiency for better user experience and ad visibility.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Content Quality and AdSense Policy</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Regardless of niche, AdSense policies require original, valuable content that provides a good user
-          experience. Thin content, copied material, or policy violations can lead to limited ad serving or account
-          issues, which directly affect RPM and long-term earnings. Investing in clear structure, factual accuracy,
-          and helpful depth supports both approval and sustained RPM. Use the numbers from this calculator as
-          planning benchmarks, and keep improving content and UX so your actual AdSense performance can meet or
-          exceed those estimates over time.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Large image files are one of the biggest reasons websites become slow. Compressing heavy images with the{" "}
+    <a
+      href="/image-compressor"
+      className="text-blue-600 underline font-medium"
+    >
+      Image Compressor
+    </a>{" "}
+    helps reduce loading time while maintaining visual quality across desktop and mobile devices.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Choosing and Testing Niches with Your RPM Data</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          If you are building a new site or adding a new content category, use your current AdSense reports to see
-          which pages or sections earn the highest RPM. Compare that to the niche descriptions above to see where you
-          fit. Then plug those RPM numbers into this calculator along with your traffic (current or projected) to
-          estimate monthly revenue. For new niches, start with industry benchmarks: finance and insurance often
-          report $3–15+ RPM in tier-one countries, technology $2–8, health and home $1.5–6, and entertainment or
-          general content $0.50–3. Your real numbers will depend on your content quality, geography, and ad
-          placement. Re-run the calculator every few months as your traffic and RPM change to keep your revenue
-          expectations aligned with reality.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many modern publishers also convert traditional image formats into lightweight WEBP images using the{" "}
+    <a
+      href="/jpg-to-webp"
+      className="text-blue-600 underline font-medium"
+    >
+      JPG to WEBP Converter
+    </a>{" "}
+    because WEBP files generally improve loading speed and reduce bandwidth usage.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Summary: Niche and Your AdSense RPM Calculator Results</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          In short, niche choice has a major impact on how much you earn per thousand pageviews. High-intent
-          verticals like finance, insurance, technology, and health usually support higher RPMs; entertainment and
-          general content tend to be lower but can still work at scale. Your actual Page RPM in AdSense already
-          reflects your mix of content and audience. Use that value in this free AdSense RPM calculator to get
-          realistic monthly earnings estimates, and refer to this niche guide when planning new content or
-          evaluating why your RPM might be higher or lower than others in your space.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    High RPM Niches That Usually Perform Better
+  </h3>
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">Disclaimer</h3>
-        <p className="text-gray-700 leading-relaxed">
-          This tool is for estimation and planning only. Actual AdSense earnings can differ due to seasonality,
-          ad quality, policy compliance, and Google’s algorithms. We are not affiliated with Google. Use your
-          official AdSense data for real earnings and consider diversifying income beyond AdSense.
-        </p>
-      </section>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Some niches naturally generate better advertising revenue because advertisers compete aggressively for user
+    attention. Finance, insurance, software, cybersecurity, online business, and legal industries often achieve high
+    CPC values due to strong purchase intent from users.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Technology and software websites also perform well because companies constantly advertise hosting services, AI
+    tools, VPNs, SaaS platforms, productivity software, and development solutions. Developers working with APIs and
+    code formatting often use utilities like the{" "}
+    <a
+      href="/json-formatter"
+      className="text-blue-600 underline font-medium"
+    >
+      JSON Formatter
+    </a>{" "}
+    while debugging projects or cleaning structured data.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Advanced developers and programmers also validate regular expressions using the{" "}
+    <a
+      href="/regex-tester"
+      className="text-blue-600 underline font-medium"
+    >
+      Regex Tester
+    </a>{" "}
+    before implementing pattern matching in applications, forms, automation systems, or backend logic.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Educational and career-related websites continue to grow because users actively search for interview preparation,
+    certifications, coding tutorials, online learning resources, and job guidance. These users generally spend more
+    time reading content, which increases engagement and ad visibility.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why Organic Traffic Usually Generates Better Revenue
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Organic search traffic often performs better than random untargeted traffic because visitors arrive with specific
+    intent. Users searching for solutions through Google usually spend more time reading detailed content compared to
+    low-quality social traffic.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Publishers improving SEO structure often create optimized metadata using the{" "}
+    <a
+      href="/meta-tag-generator"
+      className="text-blue-600 underline font-medium"
+    >
+      Meta Tag Generator
+    </a>{" "}
+    to generate proper SEO titles and descriptions that improve search engine visibility and click-through rate.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Structured data also helps search engines understand content better. Many website owners create structured schema
+    markup using the{" "}
+    <a
+      href="/schema-markup-generator"
+      className="text-blue-600 underline font-medium"
+    >
+      Schema Markup Generator
+    </a>{" "}
+    to improve rich result eligibility and search appearance.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Search engine crawl optimization is another important factor for indexing performance. Publishers often generate
+    proper crawler instructions using the{" "}
+    <a
+      href="/robots-txt-generator"
+      className="text-blue-600 underline font-medium"
+    >
+      Robots.txt Generator
+    </a>{" "}
+    to improve crawl management and indexing behavior.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Content quality also matters heavily for long-term SEO performance. Writers and publishers frequently analyze
+    keyword balance while maintaining natural readability and avoiding over-optimization problems.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why Content Quality Matters for AdSense Approval
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Google AdSense prefers websites that provide original, helpful, and user-focused content. Thin pages with
+    repetitive wording, copied paragraphs, or low-value information often struggle during the approval process.
+    Websites with useful explanations, better structure, faster loading speed, and strong readability usually create
+    a better impression for both users and advertisers.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many website owners make the mistake of publishing hundreds of pages with nearly identical content structures.
+    Search engines can easily recognize repetitive patterns. Instead of focusing only on quantity, publishers should
+    prioritize depth, uniqueness, practical information, and real usefulness.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Internal linking also improves user experience because visitors can naturally discover related tools and
+    resources. For example, users checking search appearance may preview metadata using the{" "}
+    <a
+      href="/serp-snippet-preview"
+      className="text-blue-600 underline font-medium"
+    >
+      SERP Snippet Preview Tool
+    </a>{" "}
+    before publishing optimized pages.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Technical users and developers sometimes encode URLs properly using the{" "}
+    <a
+      href="/url-encoder"
+      className="text-blue-600 underline font-medium"
+    >
+      URL Encoder
+    </a>{" "}
+    while working with APIs, tracking parameters, redirects, or encoded search queries.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Security-focused users also create stronger passwords using the{" "}
+    <a
+      href="/password-generator"
+      className="text-blue-600 underline font-medium"
+    >
+      Password Generator
+    </a>{" "}
+    and verify password strength through the{" "}
+    <a
+      href="/password-strength-checker"
+      className="text-blue-600 underline font-medium"
+    >
+      Password Strength Checker
+    </a>{" "}
+    before using credentials across websites or applications.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Final Thoughts
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    AdSense revenue depends on multiple factors including RPM, CPC, audience quality, niche selection, website speed,
+    SEO structure, and overall user experience. This calculator helps publishers estimate potential earnings while
+    understanding how different monetization metrics work together.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed">
+    Instead of chasing shortcuts or publishing repetitive pages, website owners should focus on building genuinely
+    useful content, improving technical quality, optimizing page speed, and creating better experiences for real
+    users. Long-term consistency and quality improvements usually perform much better than temporary traffic spikes
+    or mass-generated low-value pages.
+  </p>
+
+</section>
     </ToolSection>
   );
 }

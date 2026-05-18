@@ -81,31 +81,14 @@ export default function CompoundInterestCalculatorPage() {
     setHasResult(false);
   }
 
-  const sidebar = (
-    <div className="space-y-4 text-sm text-gray-700 text-justify">
-      <div className="p-4 bg-blue-50 rounded-xl border border-blue-200">
-        <p className="font-semibold text-blue-900 mb-2">Formula</p>
-        <p className="text-blue-800 text-justify">
-          A = P(1 + r/n)<sup>nt</sup>. P = principal, r = annual rate (decimal), n = compounding frequency per year, t = time in years.
-        </p>
-      </div>
-      <div className="p-4 bg-amber-50 rounded-xl border border-amber-200">
-        <p className="font-semibold text-amber-900 mb-2">Tip</p>
-        <p className="text-amber-800 text-justify">
-          Results are estimates only. Real returns depend on taxes, fees, and inflation. For financial decisions, consult a qualified advisor.
-        </p>
-      </div>
-    </div>
-  );
-
   return (
     <ToolSection
       title="Compound Interest Calculator"
       subtitle="Estimate how your investment grows with compound interest. Enter principal, rate, time, and compounding frequency get final amount and interest earned. For planning only; not financial advice."
       plain
-      plainSidebar
       whiteBackground
-      sidebar={sidebar}
+      hideSidebar
+      centerHeader
     >
       <JsonLd
         data={buildToolJsonLd({
@@ -209,6 +192,21 @@ export default function CompoundInterestCalculatorPage() {
           </div>
         </div>
 
+        <div className="grid gap-4 md:grid-cols-5">
+          <div className="md:col-span-3 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5">
+            <p className="font-semibold text-blue-900 mb-2">Formula</p>
+            <p className="text-blue-800 text-sm text-justify">
+              A = P(1 + r/n)<sup>nt</sup>. P = principal, r = annual rate (decimal), n = compounding frequency per year, t = time in years.
+            </p>
+          </div>
+          <div className="md:col-span-2 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-5">
+            <p className="font-semibold text-amber-900 mb-2">Tip</p>
+            <p className="text-amber-800 text-sm text-justify">
+              Results are estimates only. Real returns depend on taxes, fees, and inflation. For financial decisions, consult a qualified advisor.
+            </p>
+          </div>
+        </div>
+
         {hasResult && (
           <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <div className="px-5 py-4 bg-indigo-600 text-white">
@@ -283,81 +281,306 @@ export default function CompoundInterestCalculatorPage() {
         </div>
       </div>
 
-      <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm text-justify" aria-labelledby="about-compound-heading">
-        <h2 id="about-compound-heading" className="text-xl font-semibold text-gray-900 mb-4">About the Compound Interest Calculator</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          This free Compound Interest Calculator estimates how a lump sum grows when interest is compounded at a fixed rate over time. You enter the principal (starting amount), annual interest rate, number of years, and how often interest is compounded (annually, monthly, daily, etc.). The tool uses the standard formula to compute the final amount and total interest earned. It is for education and planning only; real investments are affected by taxes, fees, inflation, and market risk. Always seek professional advice for important financial decisions.
-        </p>
+     <section
+  className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm text-justify"
+  aria-labelledby="about-compound-heading"
+>
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">How to use</h3>
-        <ol className="list-decimal list-inside text-gray-700 space-y-2 mb-4">
-          <li>Enter the <strong>principal</strong> (amount you invest or deposit) in dollars.</li>
-          <li>Enter the <strong>annual interest rate</strong> as a percentage (e.g. 7 for 7%).</li>
-          <li>Enter the <strong>time</strong> in years.</li>
-          <li>Select <strong>compounding frequency</strong> (e.g. monthly for savings accounts).</li>
-          <li>Click <strong>Calculate</strong> to see the final amount, interest earned, and growth percentage. Use <strong>Copy result</strong> to save the summary.</li>
-        </ol>
+  <h2
+    id="about-compound-heading"
+    className="text-2xl font-bold text-gray-900 mb-4"
+  >
+    About the Compound Interest Calculator
+  </h2>
 
-        <h2 id="compound-guide" className="text-xl font-semibold text-gray-900 mt-10 mb-4">Compound Interest and Savings: A Complete Guide</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Compound interest is interest calculated on both the initial principal and the interest that has already been added in earlier periods. Over time, this leads to exponential growth: your balance grows faster as the base gets larger. Understanding compound interest helps you compare savings accounts, plan for retirement, and see why starting early and staying invested matters. This section explains the idea, the formula, and how to use the calculator sensibly.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    The Compound Interest Calculator helps users estimate how money grows over time when
+    interest is added repeatedly to the original investment. Instead of earning interest
+    only on the starting amount, compound interest allows users to earn additional returns
+    on previously accumulated interest, creating long-term growth.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Simple vs compound interest</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          With simple interest, you earn the same amount each period based only on the original principal. For example, $1,000 at 10% simple interest for 3 years gives $100 per year, so $1,300 total. With compound interest, the first year you earn 10% on $1,000 ($100); the second year you earn 10% on $1,100 ($110); the third year 10% on $1,210 ($121). So you end with $1,331 instead of $1,300. The difference grows as time and rate increase. Most savings accounts, fixed deposits, and many investments use compound interest, which is why the calculator is built around it.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    This calculator is useful for students, investors, professionals, business owners, and
+    anyone planning savings or future financial goals. Whether someone wants to estimate
+    investment growth, retirement savings, fixed deposit returns, or long-term wealth
+    accumulation, compound interest calculations provide a clearer understanding of how
+    money may grow over time.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">The compound interest formula</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          The standard formula is A = P(1 + r/n)^(nt). Here, A is the final amount, P is the principal, r is the annual interest rate as a decimal (e.g. 0.07 for 7%), n is the number of compounding periods per year (e.g. 12 for monthly), and t is the time in years. The term (1 + r/n) is the factor by which your balance grows in one compounding period; raising it to the power nt gives the total growth over all periods. This calculator uses that formula exactly, so the numbers are mathematically correct for the inputs you provide. In practice, banks and products may use slightly different conventions (e.g. day-count methods), but for planning and comparison the standard formula is widely used.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many people underestimate the power of compounding because the growth appears slow
+    during the early years. However, over longer periods, compound growth accelerates
+    significantly because interest continues building on top of earlier gains.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Compounding frequency</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Interest can compound annually (once a year), semi-annually (twice), quarterly (four times), monthly (12 times), or daily (365 times). For the same nominal annual rate, more frequent compounding gives a slightly higher effective return. For example, 6% per year compounded annually gives exactly 6% growth in a year; 6% compounded monthly gives about 6.17% effective annual rate. The calculator shows the effective annual rate so you can compare products that quote different compounding frequencies. In many countries, savings accounts compound monthly or daily; fixed deposits may compound quarterly or at maturity. Choose the frequency that matches the product you have in mind.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Users planning long-term investment goals often compare savings growth alongside the{" "}
+    <a
+      href="/sip-calculator"
+      className="text-blue-600 underline font-medium"
+    >
+      SIP Calculator
+    </a>{" "}
+    to estimate systematic investment returns and recurring monthly contributions.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Why time matters most</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          The power of compound interest shows up over long periods. A small difference in time can mean a large difference in the final amount. For instance, $10,000 at 7% compounded monthly grows to about $20,096 in 10 years, $40,317 in 20 years, and $81,136 in 30 years. Doubling the time more than doubles the result because growth is exponential. That is why financial advisers stress starting early: even with a modest rate, decades of compounding can build significant wealth. Conversely, if you are estimating loan costs, compound interest can make long-term debt expensive, so the same formula helps you understand both saving and borrowing.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    What Compound Interest Actually Means
+  </h3>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Savings and deposits</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Fixed deposits and many savings accounts pay compound interest. You can use this calculator to see how a one-time deposit might grow if you leave it and the rate stays constant. In reality, rates change, and you might add or withdraw money. The tool assumes no further deposits or withdrawals and a fixed rate; it is a simplified projection. For regular contributions (e.g. monthly savings), you would need a future value of annuity formula, which is different. This calculator is best for lump-sum scenarios: an inheritance, a bonus, or a single investment you want to project.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Compound interest means earning interest not only on the original principal amount but
+    also on the interest accumulated during previous periods. This creates exponential
+    growth instead of linear growth.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Investments and returns</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          People sometimes use a compound interest calculator to approximate investment growth. For example, if you assume a 7% average annual return, you can project how a lump sum might grow over 10 or 20 years. Keep in mind that investment returns are not guaranteed; they fluctuate from year to year. The calculator assumes a constant rate, which is not realistic for stocks or equity funds. It is better used for fixed-income products (bonds, deposits) or as a rough &quot;what if&quot; for long-term averages. Never treat the result as a promise of future performance.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    For example, if an investment earns yearly returns, the second year’s interest applies
+    to both the original investment and the interest earned during the first year. Over
+    long periods, this repeated growth can create a substantial difference compared to
+    simple interest calculations.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Inflation and real returns</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          The calculator shows nominal growth: it does not subtract inflation. If your money grows at 6% per year but inflation is 4%, your real (inflation-adjusted) return is roughly 2%. Over long periods, inflation can significantly reduce purchasing power. When planning for goals like retirement, consider real returns or use inflation-adjusted projections elsewhere. This tool is still useful to see how nominal amounts grow; you can then adjust for inflation in your own planning or with an adviser.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Investors comparing percentage-based growth often use the{" "}
+    <a
+      href="/percentage-calculator"
+      className="text-blue-600 underline font-medium"
+    >
+      Percentage Calculator
+    </a>{" "}
+    to better understand profit growth, return rates, and financial changes across
+    different investments.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Taxes and fees</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Interest and investment gains are often taxable. The calculator does not deduct tax, so the result is before-tax growth. In some countries, certain accounts (e.g. retirement or tax-free savings) offer tax advantages that improve effective returns. Fees (management fees, account charges) also reduce what you actually keep. For a true picture, take the calculator&apos;s result and consider taxes and costs separately, or use a tool that allows after-tax projections. For quick comparisons between different rates or terms, the raw numbers are still helpful.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why Time Is the Most Important Factor
+  </h3>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Limitations of the calculator</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          This calculator assumes a single principal, a constant annual rate, and no deposits or withdrawals. It does not model variable rates, regular contributions, or one-off withdrawals. Real-life products may have minimum balances, tiered rates, or promotional rates that change. Use it for understanding compound growth and for rough comparisons, not as the only basis for financial decisions. For retirement, education, or major investments, combine it with professional advice and tools that handle contributions and taxes.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    One of the biggest strengths of compound interest is time. Even moderate interest rates
+    can create large growth when investments remain untouched for many years.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Summary</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          The Compound Interest Calculator estimates the future value of a lump sum using the formula A = P(1 + r/n)^(nt). You input principal, annual rate, time in years, and compounding frequency, and get the final amount, interest earned, growth percentage, and effective annual rate. Use it for education and planning. Results are estimates only; they do not account for inflation, taxes, or fees. For important financial decisions, consult a qualified adviser.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many financial experts encourage early investing because starting sooner allows money
+    to compound for longer durations. Small investments started early often outperform
+    larger investments started much later.
+  </p>
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">Disclaimer</h3>
-        <p className="text-gray-700 leading-relaxed">
-          This tool is for informational and educational purposes only. It does not constitute financial, investment, or tax advice. Results are based on the inputs you provide and assume a fixed rate and no further deposits or withdrawals. Actual returns depend on real-world factors including inflation, taxes, fees, and market conditions. Always consult a qualified financial or tax professional before making significant financial decisions.
-        </p>
-      </section>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Compound growth becomes especially powerful in retirement planning, education savings,
+    emergency funds, and long-term wealth building strategies.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Users calculating age-related financial goals and retirement planning often combine
+    investment projections with the{" "}
+    <a
+      href="/age-calculator"
+      className="text-blue-600 underline font-medium"
+    >
+      Age Calculator
+    </a>{" "}
+    to estimate future timelines more accurately.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Compounding Frequency Explained
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Interest may compound annually, semi-annually, quarterly, monthly, or daily depending
+    on the financial product. More frequent compounding generally produces slightly higher
+    returns because interest gets added more often.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Savings accounts and fixed deposits commonly use monthly or quarterly compounding,
+    while some investment products calculate returns differently depending on market
+    performance and account structure.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Understanding compounding frequency helps users compare different financial products
+    more realistically instead of focusing only on advertised interest rates.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Compound Interest in Real Life
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Compound interest affects many real-world financial products including savings
+    accounts, fixed deposits, retirement funds, mutual funds, bonds, recurring deposits,
+    and long-term investment portfolios.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Banks and financial institutions rely heavily on compounding systems while calculating
+    investment returns and loan interest. Understanding these calculations helps users make
+    smarter financial decisions and avoid unrealistic expectations.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Business owners preparing investment reports or downloadable financial summaries often
+    organize documents using the{" "}
+    <a
+      href="/pdf-merge"
+      className="text-blue-600 underline font-medium"
+    >
+      PDF Merge Tool
+    </a>{" "}
+    before sharing them with clients or teams.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Inflation and Real Purchasing Power
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Compound growth alone does not guarantee higher purchasing power because inflation also
+    affects long-term financial value. If inflation rises faster than investment growth,
+    the actual value of money may increase more slowly than expected.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    This is why many investors look for returns that exceed inflation over long periods.
+    Understanding inflation-adjusted growth helps users create more realistic financial
+    plans instead of focusing only on nominal returns.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Financial planners often estimate budgeting and savings goals using tools like the{" "}
+   
+      EMI Calculator
+    {" "}
+    while comparing investment returns against debt obligations and monthly expenses.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Difference Between Saving and Investing
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Saving generally focuses on protecting money with lower risk, while investing aims to
+    grow money through higher long-term returns. Savings accounts usually provide stable
+    but lower interest rates, whereas investments may generate larger returns with higher
+    market risk.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Compound interest calculators help users compare possible long-term growth scenarios
+    before making financial decisions. However, actual investment performance may vary
+    depending on market conditions, taxes, fees, and economic factors.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Investors tracking yearly return differences and portfolio performance sometimes use
+    the{" "}
+    
+      Profit and Loss Calculator
+   {" "}
+    to estimate gains and percentage changes more clearly.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why Online Financial Calculators Save Time
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Manual compound interest calculations become difficult when users compare multiple
+    rates, durations, and compounding frequencies. Online calculators simplify this
+    process by instantly generating estimates without requiring spreadsheets or complex
+    formulas.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Browser-based tools improve accessibility because users can quickly calculate financial
+    estimates from mobile devices, desktops, or tablets without installing software.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Users organizing investment notes, retirement plans, or downloadable financial
+    resources sometimes generate accessible links through the{" "}
+    <a
+      href="/qr-code"
+      className="text-blue-600 underline font-medium"
+    >
+      QR Code Generator
+    </a>{" "}
+    for easier sharing across devices and presentations.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Limitations of Compound Interest Calculators
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Compound interest calculators provide estimates based on constant rates and fixed
+    assumptions. Real-world investment performance rarely remains perfectly stable over
+    long periods.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Market fluctuations, taxes, management fees, withdrawals, inflation, and economic
+    changes all influence actual returns. Users should treat calculator results as
+    educational estimates instead of guaranteed outcomes.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Important financial decisions should always involve proper research and, when
+    necessary, professional financial guidance.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Privacy and Browser-Based Processing
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Privacy matters while working with financial planning tools. This Compound Interest
+    Calculator performs calculations directly inside the browser without requiring account
+    registration or unnecessary uploads.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Users managing investment platforms and online financial accounts also improve account
+    security using the{" "}
+    <a
+      href="/password-generator"
+      className="text-blue-600 underline font-medium"
+    >
+      Password Generator
+    </a>{" "}
+    and verify stronger credentials using the{" "}
+    <a
+      href="/password-strength-checker"
+      className="text-blue-600 underline font-medium"
+    >
+      Password Strength Checker
+    </a>{" "}
+    before storing sensitive financial information online.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Final Thoughts
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    The Compound Interest Calculator provides a simple way to estimate long-term investment
+    growth using principal amount, interest rate, time duration, and compounding
+    frequency. It helps users better understand how compound growth works across savings,
+    investments, and financial planning scenarios.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed">
+    Understanding compound interest encourages smarter financial habits, long-term
+    thinking, and more realistic planning. Even small investments can grow significantly
+    over time when consistency, patience, and compounding work together.
+  </p>
+
+</section>
     </ToolSection>
   );
 }

@@ -88,8 +88,9 @@ export default function ImageResizerPage() {
       title="Free Online Image Resizer"
       subtitle="Resize images by width and height in your browser. Keep aspect ratio, choose PNG, JPG, or WebP no upload to server, works on all devices."
       plain
-      plainSidebar
       whiteBackground
+      hideSidebar
+      centerHeader
     >
       <JsonLd
         data={buildToolJsonLd({
@@ -118,9 +119,18 @@ export default function ImageResizerPage() {
         </div>
       )}
 
-      <div className="space-y-6">
+      <div className="mx-auto w-full max-w-5xl space-y-6">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            Image Resizer Tool
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Resize images with aspect-ratio control and export in PNG, JPG, or WebP.
+          </p>
+        </div>
+
         {/* Upload */}
-        <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 sm:p-8 text-center bg-slate-50/50 hover:bg-slate-100/70 hover:border-slate-400 transition-all duration-200">
+        <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 sm:p-8 text-center bg-slate-50/50 hover:bg-slate-100/70 hover:border-slate-400 transition-all duration-200 shadow-sm">
           <p className="text-slate-600 mb-3 text-sm sm:text-base">
             Drag and drop an image here or click to choose a file
           </p>
@@ -193,7 +203,7 @@ export default function ImageResizerPage() {
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap justify-center sm:justify-start">
           <button
             className="px-6 py-3 rounded-xl bg-teal-600 text-white font-medium shadow-md hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
             onClick={resize}
@@ -232,70 +242,215 @@ export default function ImageResizerPage() {
       </div>
 
       {/* Info section – 1000+ words, unique, text-justify */}
-      <section className="mt-12 sm:mt-14 p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-100">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
-          About This Online Image Resizer
-        </h2>
+      <section className="mx-auto mt-12 sm:mt-14 w-full max-w-5xl p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-200">
+  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
+    Free Online Image Resizer for Better Website Performance and Social Media Uploads
+  </h2>
 
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          An online image resizer is a browser-based tool that changes the dimensions of an image—making it larger or smaller in width and height—without sending your file to a server. Resizing is one of the most common tasks in digital workflows: you might need to shrink a photo to fit a website, enlarge a thumbnail for print, or match the exact dimensions required by a social network or ad platform. This resizer runs entirely in your browser using the canvas API, so your images stay on your device and are never uploaded to any external service. You can set the output width and height in pixels, lock the aspect ratio to avoid distortion, and choose the output format (PNG, JPG, or WebP) before downloading. Whether you are a designer, a blogger, or someone who occasionally needs to adjust image size, this tool provides a fast, private, and reliable way to get the dimensions you need.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Images are one of the most important parts of modern digital content. Whether you are running a website, creating social media posts, designing presentations, managing an online store, or uploading personal photos, image size always matters. Large images can slow down websites, increase storage usage, and create problems while uploading files to online platforms. An image resizer helps solve these issues by allowing users to adjust image dimensions quickly without needing advanced editing skills.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">What Is Image Resizing?</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Resizing means changing the pixel dimensions of an image. When you reduce the size (for example from 4000×3000 to 800×600), the image contains fewer pixels and usually a smaller file size; when you increase it, the image is stretched to more pixels, which can make it look soft or blocky if the original was small. Unlike cropping, which cuts away part of the image, resizing keeps the whole picture and scales it. That makes it essential for fitting images into layouts, meeting platform size limits, reducing page weight for the web, and preparing files for print or social media. A good resizer preserves sharpness when downscaling by using high-quality smoothing, and lets you choose whether to keep the original aspect ratio or stretch to custom width and height. This tool does all of that in the browser with no installation or account required.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This free online image resizer is designed for people who want a fast and simple way to resize images directly inside their browser. The tool works without heavy software installation, complicated editing panels, or account registration. You simply upload an image, choose the required dimensions, and download the resized version within seconds. Since the processing happens locally in your browser, your files remain private throughout the resizing process.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">How This Resizer Works</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          When you select an image, the tool loads it in memory and reads its natural width and height. You then enter the desired output width and optionally the height. If you enable the keep-aspect-ratio option, changing the width automatically updates the height (or the other way around) so the image is not stretched or squashed. When you click the resize button, the tool draws the image onto a canvas at the new dimensions using high-quality smoothing, then exports the result in your chosen format. You can preview the resized image and download it with one click. All processing happens locally: no data is sent to a server, which keeps your photos private and allows the tool to work even on slow or restricted networks after the page has loaded. The output is limited to a maximum of 8000 pixels on either side to avoid overloading the browser on very large images.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Why Image Size Matters on Modern Websites
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Key Features</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This image resizer supports common formats as input (JPEG, PNG, WebP, and other browser-supported image types) and lets you choose the output format: PNG for graphics or when you need transparency, JPG for photographs with smaller file size, or WebP for a modern format that often offers the best balance of quality and size. You can set width and height in pixels; when aspect ratio is locked, entering one dimension updates the other automatically. High-quality image smoothing is used when downscaling so the result stays sharp. Because the tool runs in the browser, there is no sign-up, no installation, and no upload to a third party. You get a direct download as soon as the resize is done, and you can repeat the process as many times as you like with different dimensions or formats. The interface works on desktop, tablet, and phone so you can resize images wherever you are.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Website speed has become an important ranking and user experience factor. Visitors expect webpages to load quickly on both mobile devices and desktop computers. Large unoptimized images often become one of the biggest reasons behind slow websites. When high-resolution images are uploaded without resizing, browsers need more time and bandwidth to display content properly.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Step-by-Step How to Use</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          First, open the tool in a modern browser on your computer, tablet, or phone. Click or tap the upload area and select an image from your device, or drag and drop a file onto the page. Once the file is selected, enter the width you want in pixels; if you want a specific height as well, enter it in the height field. If you prefer proportional scaling, leave the keep-aspect-ratio option enabled and set only the width or only the height; the other dimension will be calculated automatically. Choose the output format from the dropdown: PNG for lossless quality or transparency, JPG for smaller photo files, or WebP for a good balance. When the settings look right, click the resize button and wait a moment. When processing is finished, the resized image appears with a download button. Click it to save the file to your device. You can change the dimensions or format and resize again, or select a new image and start over. There is no limit on how many images you resize or how many times you use the tool.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Resizing images before uploading them can significantly reduce page weight and improve loading speed. Faster websites generally provide a better browsing experience and lower bounce rates. Bloggers, ecommerce store owners, and developers frequently resize images before publishing content online to maintain better performance.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Why Image Dimensions Matter</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Different platforms and uses expect different image sizes. Social networks often recommend specific dimensions for profile pictures, cover photos, and posts; for example, many suggest 1080 pixels on the longer side for feeds. Websites load faster when images are no larger than the size they are displayed at, so resizing a 4000-pixel-wide photo down to 1200 pixels for a blog hero can significantly improve page speed and SEO. E-commerce sites may require product images within a certain range of dimensions for consistent listing appearance. Email attachments and presentations benefit from smaller images so that files stay under size limits and open quickly. By resizing your images to match the target use, you avoid unnecessary file size, reduce bandwidth and storage, and ensure that visuals look sharp and professional instead of stretched, pixelated, or unnecessarily heavy.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Many website owners also combine resizing with tools like{" "}
+    <a
+      href="https://convertixy.com/image-compressor"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      Image Compressor
+    </a>{" "}
+    to reduce overall file size even further without noticeably affecting image quality.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Resizing vs. Cropping and Compression</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Resizing changes the pixel dimensions of the whole image; cropping selects a region and discards the rest; compression reduces file size by reducing quality or using a more efficient encoding. They are often used together. You might crop to improve composition, then resize to fit a layout, then compress to reduce file size for the web. This tool focuses on resizing. If you need to crop to a specific area or aspect ratio, use a dedicated cropper; if you need to reduce file size without changing dimensions, use a compressor. Understanding the difference helps you choose the right tool for each step of your workflow. For many users, resizing alone is enough when the goal is to meet dimension requirements or reduce resolution for faster loading.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    What Does an Image Resizer Actually Do?
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Common Dimensions and Use Cases</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Social media and marketing often use fixed dimensions. Instagram square posts are typically 1080×1080 pixels; stories and reels use 1080×1920. Facebook cover photos are often 820×312; YouTube thumbnails are usually 1280×720 or 1920×1080. Blog and website heroes might be 1200×630 or 1920×1080 depending on layout. E-commerce product images are often 2000×2000 or similar for zoom and clarity. This resizer does not enforce these values; you enter the width and height you need. Keeping aspect ratio enabled helps when you only know one dimension (for example the width) and want the height to follow automatically. Use a quick web search for the latest platform recommendations if you are targeting a specific network or ad size.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    An image resizer changes the dimensions of an image by adjusting its width and height in pixels. This allows users to make photos smaller or larger depending on where the image will be used. Unlike cropping, resizing keeps the complete image visible while changing its dimensions proportionally or manually.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Privacy and Security</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Many online tools upload your files to their servers for processing. That can be a concern when images are personal or confidential. This resizer does not upload your images anywhere. The file you select is read by your browser and kept in memory only for the time you are on the page. The resize is done locally using the browser canvas API, and the result is generated on your device. When you download the resized image, it is saved from your browser to your computer or phone. No copy is stored on a remote server or shared with third parties. If you close the tab or clear the page, the image data is gone. This local-first approach is especially important for users who handle sensitive visuals or who prefer not to rely on external services for simple edits.
-        </p>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    For example, a smartphone photo may originally have dimensions of 4000×3000 pixels. While this size may be useful for printing, it is unnecessarily large for a blog post or social media upload. Resizing the image to 1200×900 pixels can make the file much easier to upload and display online.
+  </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Best Practices</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          When downscaling, use at least the display size you need; for example, if your blog image is shown at 800 pixels wide, resizing to 800 or 1200 pixels wide is usually enough. Avoid upscaling small images to much larger dimensions, as that tends to make them look soft or blocky. Use JPG for photographs when you want smaller files and do not need transparency; use PNG when you need sharp edges or transparency; use WebP when your target platform supports it and you want a good balance of quality and size. Keep aspect ratio enabled unless you intentionally need to stretch or squash the image for a specific layout. If you need both resizing and smaller file size, resize first then use a compressor. Always preview the result before downloading to confirm dimensions and quality.
-        </p>
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Common Reasons People Resize Images
+  </h3>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Limitations</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This resizer is designed for straightforward dimension changes. Very large source images (for example tens of megapixels) may take a few seconds to process depending on your device; the output is capped at 8000 pixels on each side to keep the browser responsive. The tool does not support batch resizing of multiple images in one go; process one image at a time. Advanced options such as sharpening, watermarking, or custom DPI are not included; for those you would use desktop or professional software. The output format follows your selection (PNG, JPG, or WebP); conversion between formats may change file size and quality. For most users—web, social media, email, and simple design tasks—these limitations do not affect the result. For high-volume or professional workflows, consider a dedicated editor or script in addition to this utility.
-        </p>
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>Reducing website loading time</li>
+    <li>Preparing social media posts and profile pictures</li>
+    <li>Optimizing ecommerce product images</li>
+    <li>Creating thumbnails and banners</li>
+    <li>Adjusting images for presentations and assignments</li>
+    <li>Meeting upload dimension requirements</li>
+    <li>Saving storage space on devices</li>
+    <li>Improving image handling in emails and messaging apps</li>
+  </ul>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Conclusion</h3>
-        <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-          Resizing images is a simple way to match dimensions, reduce file size, and improve performance. This free online image resizer runs in your browser, supports width and height control with optional aspect ratio lock, and lets you choose PNG, JPG, or WebP output. Your files stay on your device and are never uploaded to a server. Use it for websites, social media, email, or any task where you need an image at a specific size. Keep aspect ratio enabled when you want proportional scaling, pick the right format for your use case, and you will get professional results quickly and safely.
-        </p>
-      </section>
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    These use cases show why image resizing has become an essential part of digital content management.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    How This Online Image Resizer Works
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This tool works completely inside your browser using modern web technologies. Once an image is uploaded, the browser reads its dimensions and allows you to set a new width and height according to your needs. You can maintain the original aspect ratio for balanced resizing or manually enter custom dimensions.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Since the resizing process happens locally on your device, your files are not uploaded to external servers. This improves both privacy and speed. After resizing is complete, the new image becomes available instantly for download.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Supported Image Formats
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    The image resizer supports multiple widely used image formats including JPG, PNG, and WebP. These formats are commonly used across websites, social media platforms, blogs, mobile apps, and digital design projects.
+  </p>
+
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>
+      JPG is ideal for photographs and social media images because it provides smaller file sizes.
+    </li>
+    <li>
+      PNG is commonly used for graphics, logos, screenshots, and transparent images.
+    </li>
+    <li>
+      WebP is a modern image format designed for faster websites and better optimization.
+    </li>
+  </ul>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Users who want better website performance often convert files using{" "}
+    <a
+      href="https://convertixy.com/jpg-to-webp"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      JPG to WebP
+    </a>{" "}
+    because WebP images usually provide smaller file sizes while maintaining strong visual quality.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Difference Between Resizing and Cropping
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Many people confuse image resizing with image cropping, but both processes are different. Resizing changes the dimensions of the entire image while keeping all visible content intact. Cropping removes unwanted areas from the image and focuses only on selected sections.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    For example, if you want to remove extra background from a photo, cropping is the correct option. If you only want to reduce dimensions for faster loading, resizing is usually enough. Some users first crop unnecessary areas and then resize the final image for optimization.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    If you need to remove unnecessary image sections before resizing, tools like{" "}
+    <a
+      href="https://convertixy.com/image-cropper"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      Image Cropper
+    </a>{" "}
+    can help improve composition and alignment.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Benefits of Browser-Based Image Resizing
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Browser-based tools are becoming increasingly popular because they are fast, lightweight, and accessible from almost any device. Unlike desktop editing software, online tools do not require installation or advanced technical knowledge.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    This image resizer can be used on Windows, Linux, macOS, Android, and iPhone devices directly through a modern browser. Whether you are working from a desktop computer or a smartphone, the resizing process remains simple and accessible.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Developers and content creators also use{" "}
+    <a
+      href="https://convertixy.com/google-discover-image-optimizer"
+      className="text-blue-600 hover:underline font-medium"
+    >
+      Google Discover Image Optimizer
+    </a>{" "}
+    to prepare images for faster indexing and better visibility across modern search platforms.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Tips for Better Resizing Results
+  </h3>
+
+  <ul className="list-disc pl-5 text-slate-700 text-sm sm:text-base leading-relaxed mb-4 space-y-2">
+    <li>
+      Maintain aspect ratio to avoid stretched images
+    </li>
+    <li>
+      Use high-resolution originals for cleaner resized output
+    </li>
+    <li>
+      Avoid increasing very small images too much
+    </li>
+    <li>
+      Choose WebP format for modern website optimization
+    </li>
+    <li>
+      Resize images according to actual display dimensions
+    </li>
+    <li>
+      Compress resized images for additional optimization
+    </li>
+  </ul>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Following these practices can help maintain visual quality while reducing unnecessary file size and improving overall performance.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Privacy and Local File Processing
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Many users worry about uploading personal or confidential images to third-party servers. This tool solves that concern by processing files directly inside your browser. Your images remain on your device during the entire resizing session.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+    Since there is no server upload involved, the resizing process becomes faster and more private. This approach is especially useful for people handling business graphics, sensitive screenshots, private photographs, or confidential documents.
+  </p>
+
+  <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+    Final Thoughts
+  </h3>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
+    An image resizer is one of the most useful tools for modern digital workflows. Whether you are managing websites, creating social media content, uploading ecommerce products, preparing assignments, or sharing personal images online, resizing helps improve performance, save storage, and maintain better visual presentation.
+  </p>
+
+  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mt-4 text-justify">
+    This free online image resizer provides a fast, simple, and privacy-focused way to resize JPG, PNG, and WebP images directly inside your browser. With support for custom dimensions, aspect ratio control, local processing, and modern image formats, the tool is suitable for beginners as well as professional users who want reliable image optimization without unnecessary complexity.
+  </p>
+</section>
     </ToolSection>
   );
 }

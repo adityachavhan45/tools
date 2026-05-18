@@ -248,7 +248,8 @@ $processor->displayText();
       title="Free Text to PHP Converter Online | Convert Text to PHP Code"
       subtitle="Convert plain text to PHP code and PHP to text instantly. Free online text to PHP converter with array generation, class creation, and download support."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd

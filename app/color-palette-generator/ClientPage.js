@@ -120,31 +120,14 @@ export default function ColorPaletteGeneratorPage() {
     setHasResult(false);
   }
 
-  const sidebar = (
-    <div className="space-y-4 text-sm text-gray-700 text-justify">
-      <div className="p-4 bg-blue-50 rounded-xl border border-blue-200">
-        <p className="font-semibold text-blue-900 mb-2">Palette types</p>
-        <p className="text-blue-800 text-justify">
-          Complementary: opposite on the wheel. Analogous: next to each other. Triadic: evenly spaced. Monochromatic: one hue, different shades. Random: mixed.
-        </p>
-      </div>
-      <div className="p-4 bg-amber-50 rounded-xl border border-amber-200">
-        <p className="font-semibold text-amber-900 mb-2">Tip</p>
-        <p className="text-amber-800 text-justify">
-          Click a color swatch to copy its HEX code. Use &quot;Copy palette&quot; to copy all codes at once.
-        </p>
-      </div>
-    </div>
-  );
-
   return (
     <ToolSection
       title="Color Palette Generator"
       subtitle="Create harmonious color palettes for web design, branding, and UI. Choose palette type and number of colors get HEX and HSL values instantly."
       plain
-      plainSidebar
       whiteBackground
-      sidebar={sidebar}
+      hideSidebar
+      centerHeader
     >
       <JsonLd
         data={buildToolJsonLd({
@@ -220,6 +203,21 @@ export default function ColorPaletteGeneratorPage() {
           </div>
         </div>
 
+        <div className="grid gap-4 md:grid-cols-5">
+          <div className="md:col-span-3 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5">
+            <p className="font-semibold text-blue-900 mb-2">Palette types</p>
+            <p className="text-blue-800 text-sm text-justify">
+              Complementary: opposite on the wheel. Analogous: next to each other. Triadic: evenly spaced. Monochromatic: one hue, different shades. Random: mixed.
+            </p>
+          </div>
+          <div className="md:col-span-2 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-5">
+            <p className="font-semibold text-amber-900 mb-2">Tip</p>
+            <p className="text-amber-800 text-sm text-justify">
+              Click a color swatch to copy its HEX code. Use &quot;Copy palette&quot; to copy all codes at once.
+            </p>
+          </div>
+        </div>
+
         {hasResult && generatedColors.length > 0 && (
           <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <div className="px-5 py-4 bg-indigo-600 text-white">
@@ -264,85 +262,263 @@ export default function ColorPaletteGeneratorPage() {
         </div>
       </div>
 
-      <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm text-justify" aria-labelledby="about-palette-heading">
-        <h2 id="about-palette-heading" className="text-xl font-semibold text-gray-900 mb-4">About the Color Palette Generator</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          This free Color Palette Generator creates harmonious color schemes for design projects. You choose a palette type (complementary, analogous, triadic, monochromatic, or random) and how many colors you need (3–10). The tool generates colors using basic color theory and gives you each color in HEX and HSL so you can use them in CSS, design software, or branding. No account or upload is required; everything runs in your browser.
-        </p>
+      <section
+  className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm text-justify"
+  aria-labelledby="about-palette-heading"
+>
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">How to use</h3>
-        <ol className="list-decimal list-inside text-gray-700 space-y-2 mb-4">
-          <li>Select a <strong>palette type</strong> from the dropdown.</li>
-          <li>Set the <strong>number of colors</strong> (3 to 10).</li>
-          <li>Click <strong>Generate palette</strong> to create a new set of colors.</li>
-          <li>Click a color swatch to copy its HEX code, or use <strong>Copy palette</strong> to copy all codes.</li>
-        </ol>
+  <h2
+    id="about-palette-heading"
+    className="text-2xl font-bold text-gray-900 mb-4"
+  >
+    About the Color Palette Generator
+  </h2>
 
-        <h2 id="palette-guide" className="text-xl font-semibold text-gray-900 mt-10 mb-4">Color Palettes and Design: A Complete Guide</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Color palettes are sets of colors chosen to work together in a design. They affect how a brand, website, or product is perceived. Good palettes are based on color theory: the relationships between hues on the color wheel, and how saturation and lightness create contrast or harmony. This section explains why palettes matter and how to use a palette generator effectively in web design, branding, and UI work.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    The Color Palette Generator helps designers, developers, marketers, content creators,
+    and branding professionals create visually balanced color combinations for websites,
+    applications, logos, presentations, advertisements, and creative projects. Choosing
+    colors manually can be difficult because different shades may clash or create poor
+    readability when combined incorrectly.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Why color palettes matter</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Consistent use of a limited set of colors makes interfaces easier to scan and brands easier to remember. In web design, a palette defines backgrounds, text, links, and accents so the site feels coherent. In branding, colors carry meaning and emotion; the same product in different colors can feel premium, playful, or serious. A palette generator does not replace design judgment, but it speeds up exploration and ensures that the colors you choose have a clear relationship (e.g. complementary or analogous), which reduces the chance of clashing or muddy results.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    This tool simplifies the process by generating harmonious palettes based on color
+    theory concepts such as complementary, analogous, monochromatic, triadic, and random
+    combinations. Instead of experimenting manually with dozens of shades, users can
+    instantly generate visually connected color schemes directly inside the browser.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">The color wheel and harmony types</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          The color wheel arranges hues in a circle. Primary colors (red, yellow, blue) and secondary colors (orange, green, violet) sit at fixed positions. Complementary colors are opposite each other (e.g. red and green); they create strong contrast and are useful for call-to-action buttons or emphasis. Analogous colors sit next to each other (e.g. blue, blue-green, green); they feel smooth and are often used for backgrounds and gradients. Triadic palettes use three hues 120 degrees apart (e.g. red, yellow, blue); they are vibrant but need care so they do not look chaotic. Monochromatic palettes use a single hue with different saturation and lightness; they look clean and are easy to apply. This tool lets you generate all these types so you can compare and pick what fits your project.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Color selection strongly affects how users feel about a brand, website, or interface.
+    A modern technology brand may use blue tones to create trust, while entertainment and
+    gaming platforms often prefer vibrant combinations for energy and excitement.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Complementary palettes</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Complementary colors sit opposite each other on the color wheel. When used together, they create strong contrast and draw attention. In UI design, a complementary accent (e.g. orange on blue) is often used for buttons or links. Overuse can feel harsh, so many designers use one color as the dominant and the other for small accents. The generator produces complementary-based palettes by spreading hues around the wheel from a random base, so you get a set that includes opposing pairs and related shades. Use these when you want clarity and emphasis rather than a soft, blended look.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Designers creating user interfaces and website layouts often combine palette selection
+    with the{" "}
+    
+      Gradient Generator
+    {" "}
+    to create smoother background transitions and visually engaging UI sections.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Analogous palettes</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Analogous colors are next to each other on the wheel (e.g. yellow, yellow-green, green). They usually share a dominant wavelength, so they feel harmonious and easy on the eye. Analogous palettes are common in nature and in designs that aim for a calm or cohesive mood. They work well for backgrounds, hero sections, and illustrations where you want flow rather than sharp contrast. This tool generates analogous palettes by moving in steps around the wheel from a random starting hue, giving you a range of related colors that you can use for gradients or layered elements.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why Color Palettes Matter
+  </h3>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Triadic palettes</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Triadic palettes use three hues 120 degrees apart on the wheel (e.g. red, blue, yellow). They offer balance and variety without the intensity of a strict complementary pair. Triadic schemes are used in branding and marketing when a brand wants to feel dynamic and multi-faceted. The downside is that all three can compete for attention if used in equal amounts; usually one is chosen as primary and the others as secondary or accent. The generator creates triadic-based sets so you get a balanced spread of hues that still relate through the wheel.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Colors influence attention, readability, emotions, and user experience. Good color
+    palettes create consistency across websites, mobile apps, advertisements, dashboards,
+    and digital products. Poor color combinations can reduce readability and make designs
+    appear unprofessional or visually uncomfortable.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Monochromatic palettes</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Monochromatic palettes use a single hue and vary only saturation and lightness. The result is a cohesive look that feels intentional and often minimal. Monochromatic schemes are popular in apps and dashboards where too many hues could distract. They also work well for accessibility when you use light and dark shades for contrast. This generator produces monochromatic palettes by keeping the hue fixed and randomising saturation and lightness within readable ranges, so you get a set of shades and tints that work together without introducing new hues.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Strong color consistency also improves brand recognition. Many famous companies use
+    carefully selected palettes so users immediately associate certain colors with their
+    products and identity.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">HEX and HSL explained</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          HEX codes (e.g. #3B82F6) are the standard way to specify colors in CSS and many design tools. They represent red, green, and blue (RGB) in hexadecimal. HSL (Hue, Saturation, Lightness) is another way to describe color: hue is the angle on the color wheel (0–360), saturation is the intensity (0–100%), and lightness is how light or dark the color is (0–100%). HSL is useful when you want to create variations of a color (e.g. same hue, different lightness). This tool generates colors in HSL for harmony logic and converts them to HEX for easy copy-paste into your projects. Both values are shown so you can use whichever format your software expects.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Designers creating structured web pages frequently preview typography and color
+    combinations together while testing layouts and improving visual consistency before
+    publishing websites publicly.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Web design and UI</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          In web design, a typical palette includes a primary color (brand or main actions), a secondary color (secondary actions or backgrounds), a neutral (text and borders), and sometimes an accent for highlights or errors. Generated palettes can serve as a starting point: pick one or two colors for primary and secondary, use lighter or darker versions for hover states, and keep text and backgrounds in neutrals or very low saturation. Always check contrast (e.g. WCAG) for text and interactive elements so that your palette is both attractive and accessible.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Understanding Different Palette Types
+  </h3>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Branding and marketing</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Brands often lock in one or two signature colors and use a small set of supporting colors. A palette generator can suggest supporting colors that harmonise with a hue you already have: for example, choose an analogous or monochromatic run and pick the shades that match your logo or mood. Cultural and industry norms matter too; finance often uses blues and greens for trust, while entertainment may use bold or playful palettes. Use the generator to explore options quickly, then refine with your audience and message in mind.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Different palette structures create different moods and visual experiences. Each
+    palette type follows specific relationships on the color wheel to maintain harmony and
+    balance.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Limitations and best practices</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Generated palettes are mathematically harmonious but may need tweaking for your context. Screen calibration, lighting, and device differences can change how colors look. Test palettes on real devices and against real content. Also, harmony does not guarantee accessibility; always check contrast ratios for text and important UI. If you need to match an existing brand color, you may need to fix one hue and generate the rest around it; this tool generates fully random bases each time, which is ideal for inspiration and exploration rather than exact brand matching. For strict brand work, use a design tool that allows input of a base color.
-        </p>
+  <h4 className="font-semibold text-gray-900 mt-6 mb-2">
+    Complementary Palettes
+  </h4>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Summary</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          The Color Palette Generator creates harmonious color sets based on complementary, analogous, triadic, monochromatic, or random logic. You choose the type and number of colors, then get a visual palette with HEX and HSL values. Use it for web design, UI, branding, or inspiration. Click a swatch to copy one color or copy the full palette. Combine the tool with contrast checks and real-world testing for best results.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Complementary palettes use colors positioned opposite each other on the color wheel.
+    These combinations create strong contrast and are commonly used for buttons,
+    highlights, call-to-action sections, and marketing banners.
+  </p>
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">Disclaimer</h3>
-        <p className="text-gray-700 leading-relaxed">
-          This tool is for general design and inspiration only. Color appearance depends on screens and settings. We are not responsible for the use of generated colors in branding or design. Verify accessibility and suitability for your project yourself.
-        </p>
-      </section>
+  <h4 className="font-semibold text-gray-900 mt-6 mb-2">
+    Analogous Palettes
+  </h4>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Analogous palettes use nearby colors on the wheel, creating smoother and more natural
+    visual flow. These combinations are often used in backgrounds, hero sections,
+    illustrations, and minimalist layouts.
+  </p>
+
+  <h4 className="font-semibold text-gray-900 mt-6 mb-2">
+    Triadic Palettes
+  </h4>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Triadic palettes use three evenly spaced colors on the wheel. They create vibrant and
+    energetic combinations while maintaining overall balance. These palettes are common in
+    creative branding and entertainment-focused interfaces.
+  </p>
+
+  <h4 className="font-semibold text-gray-900 mt-6 mb-2">
+    Monochromatic Palettes
+  </h4>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Monochromatic palettes use different shades and lightness variations of the same base
+    color. These palettes create clean and professional visual experiences and are
+    commonly used in dashboards, productivity tools, and modern UI systems.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    HEX and HSL Color Formats
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    This tool generates colors using HSL values and converts them into HEX format for
+    easier usage in websites, CSS, design tools, and applications. HEX codes are widely
+    used in frontend development because they are compact and supported by all browsers.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    HSL stands for Hue, Saturation, and Lightness. It helps designers adjust color
+    intensity and brightness more naturally compared to RGB values.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Frontend developers working with styling systems often generate reusable CSS color
+    variables and organize layout styling using the{" "}
+   
+      CSS Minifier
+    {" "}
+    before deploying optimized production code.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Color Psychology in Design
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Different colors influence user emotions differently. Blue often creates trust and
+    professionalism, green is associated with growth and nature, red creates urgency and
+    attention, while black is commonly linked with luxury and elegance.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Businesses frequently choose colors based on brand identity and target audience.
+    Financial services often prefer blue tones, health brands commonly use green, and
+    luxury brands usually rely on dark minimal palettes.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Marketing teams creating promotional assets sometimes optimize images and banners
+    using the{" "}
+    <a
+      href="/image-compressor"
+      className="text-blue-600 underline font-medium"
+    >
+      Image Compressor
+    </a>{" "}
+    before publishing campaigns online and improving loading speed across devices.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Accessibility and Readability
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Attractive colors alone are not enough. Good design also requires readability and
+    accessibility. Text and background combinations should maintain proper contrast so
+    users can comfortably read content across different devices and lighting conditions.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Designers often avoid using extremely bright combinations for long reading sections
+    because excessive contrast may strain the eyes. Balanced neutral tones generally
+    improve readability and user comfort.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    UI developers testing responsive layouts and accessibility improvements frequently
+    review structure and styling behavior before launching interfaces publicly and
+    improving usability across screen sizes.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why Designers Use Online Palette Tools
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Creating palettes manually requires understanding color relationships, balance,
+    saturation, and contrast. Online palette generators simplify this process and allow
+    designers to experiment quickly without advanced design software.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Browser-based tools improve workflow efficiency because users can instantly generate,
+    copy, and reuse palettes across projects without downloading applications.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Designers managing design resources and downloadable branding files also organize
+    project documents more efficiently while sharing creative assets with teams or clients.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Privacy and Browser-Based Processing
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Privacy matters while working with creative projects and branding concepts. This Color
+    Palette Generator works directly inside the browser without requiring account
+    registration or unnecessary uploads.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Creative professionals managing design accounts and cloud resources often improve
+    account protection using the{" "}
+    <a
+      href="/password-generator"
+      className="text-blue-600 underline font-medium"
+    >
+      Password Generator
+    </a>{" "}
+    and verify stronger credentials using the{" "}
+    <a
+      href="/password-strength-checker"
+      className="text-blue-600 underline font-medium"
+    >
+      Password Strength Checker
+    </a>{" "}
+    before storing project files online.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Final Thoughts
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    The Color Palette Generator helps users create visually balanced color combinations
+    for websites, applications, branding, presentations, and creative projects. It
+    simplifies color selection by generating harmonious palettes based on established
+    color theory principles.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed">
+    Instead of manually testing random colors, designers and developers can quickly
+    explore structured combinations, improve consistency, and create more professional
+    visual experiences. Strong color selection improves branding, readability, usability,
+    and overall design quality across digital platforms.
+  </p>
+
+</section>
     </ToolSection>
   );
 }

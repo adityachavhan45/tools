@@ -115,7 +115,8 @@ export default function TextToBinaryPage() {
       title="Text to Binary Converter - Free Online Tool"
       subtitle="Convert text to binary code and decode binary back to text instantly. Free online binary converter supporting multiple formats with real-time conversion."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd
@@ -133,8 +134,18 @@ export default function TextToBinaryPage() {
         ])}
       />
 
+      <div className="max-w-5xl mx-auto mb-8">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm mb-8">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            Text to Binary Converter
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Convert text to binary and decode binary back to text with format options.
+          </p>
+        </div>
+
       {/* Main Tool Section */}
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+      <div className="bg-white border border-gray-200 rounded-2xl shadow-xl p-6 md:p-8 mb-8">
         <div className="space-y-6">
           {/* Status Messages */}
           {message && (
@@ -368,9 +379,10 @@ export default function TextToBinaryPage() {
           </div>
         </div>
       </div>
+      </div>
 
       {/* Comprehensive Information Section */}
-      <article className="prose prose-lg max-w-none">
+      <article className="prose prose-lg max-w-5xl mx-auto">
         <section className="bg-white rounded-2xl shadow-md p-6 md:p-10 mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
             Understanding Binary: The Language of Digital Computing

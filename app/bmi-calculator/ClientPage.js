@@ -83,23 +83,6 @@ export default function BmiCalculatorPage() {
     setHasResult(false);
   }
 
-  const sidebar = (
-    <div className="space-y-4 text-sm text-gray-700 text-justify">
-      <div className="p-4 bg-blue-50 rounded-xl border border-blue-200">
-        <p className="font-semibold text-blue-900 mb-2">Formula</p>
-        <p className="text-blue-800 text-justify">
-          BMI = weight (kg) ÷ height (m)². Metric: use cm and kg. Imperial: use inches and lbs; the tool converts to metric for calculation.
-        </p>
-      </div>
-      <div className="p-4 bg-amber-50 rounded-xl border border-amber-200">
-        <p className="font-semibold text-amber-900 mb-2">Tip</p>
-        <p className="text-amber-800 text-justify">
-          BMI is a screening tool only. It does not replace a doctor&apos;s advice. For a full health assessment, consult a healthcare provider.
-        </p>
-      </div>
-    </div>
-  );
-
   const colorClasses = {
     blue: "bg-blue-50 border-blue-200 text-blue-800",
     green: "bg-green-50 border-green-200 text-green-800",
@@ -112,9 +95,9 @@ export default function BmiCalculatorPage() {
       title="BMI Calculator"
       subtitle="Calculate your Body Mass Index from height and weight. Free tool with metric and imperial units. For general awareness only not a substitute for medical advice."
       plain
-      plainSidebar
       whiteBackground
-      sidebar={sidebar}
+      hideSidebar
+      centerHeader
     >
       <JsonLd
         data={buildToolJsonLd({
@@ -206,6 +189,21 @@ export default function BmiCalculatorPage() {
           </div>
         </div>
 
+        <div className="grid gap-4 md:grid-cols-5">
+          <div className="md:col-span-3 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5">
+            <p className="font-semibold text-blue-900 mb-2">Formula</p>
+            <p className="text-blue-800 text-sm text-justify">
+              BMI = weight (kg) ÷ height (m)². Metric: use cm and kg. Imperial: use inches and lbs; the tool converts to metric for calculation.
+            </p>
+          </div>
+          <div className="md:col-span-2 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-5">
+            <p className="font-semibold text-amber-900 mb-2">Tip</p>
+            <p className="text-amber-800 text-sm text-justify">
+              BMI is a screening tool only. It does not replace a doctor&apos;s advice. For a full health assessment, consult a healthcare provider.
+            </p>
+          </div>
+        </div>
+
         {hasResult && (
           <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <div className="px-5 py-4 bg-indigo-600 text-white">
@@ -245,85 +243,282 @@ export default function BmiCalculatorPage() {
         </div>
       </div>
 
-      <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm text-justify" aria-labelledby="about-bmi-heading">
-        <h2 id="about-bmi-heading" className="text-xl font-semibold text-gray-900 mb-4">About the BMI Calculator</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          This free BMI Calculator computes your Body Mass Index from your height and weight. You can use metric (centimetres and kilograms) or imperial (inches and pounds). The result is grouped into standard categories: underweight, normal weight, overweight, and obese. BMI is a simple screening tool and is not a substitute for medical advice. Use it for general awareness only; for health decisions, always consult a healthcare provider.
-        </p>
+      <section className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm text-justify">
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">How to use</h3>
-        <ol className="list-decimal list-inside text-gray-700 space-y-2 mb-4">
-          <li>Select <strong>Metric</strong> (cm, kg) or <strong>Imperial</strong> (inches, lbs).</li>
-          <li>Enter your height and weight in the fields above.</li>
-          <li>Click <strong>Calculate BMI</strong> to see your BMI value and category.</li>
-          <li>Use <strong>Copy result</strong> to save or share the summary.</li>
-        </ol>
+  <h2
+    id="about-bmi-heading"
+    className="text-2xl font-bold text-gray-900 mb-4"
+  >
+    About the BMI Calculator
+  </h2>
 
-        <h2 id="bmi-guide" className="text-xl font-semibold text-gray-900 mt-10 mb-4">BMI and Health: A Complete Guide</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Body Mass Index (BMI) is a number derived from a person&apos;s weight and height. It is used worldwide as a quick way to classify whether someone is underweight, normal weight, overweight, or obese. BMI does not measure body fat or health directly, but it is widely used in public health, research, and clinical practice as a screening tool. Understanding what BMI means and its limitations helps you use this calculator sensibly and follow up with a doctor when needed.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    The BMI Calculator helps users understand whether their body weight falls within a healthy range based on height
+    and weight measurements. BMI stands for Body Mass Index, which is one of the most commonly used methods for
+    estimating weight categories such as underweight, normal weight, overweight, and obesity.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">What is BMI and how is it calculated?</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          BMI is weight in kilograms divided by the square of height in metres. In formula form: BMI = weight (kg) ÷ height (m)². For example, if you weigh 70 kg and are 1.75 m tall, your BMI is 70 ÷ (1.75 × 1.75) ≈ 22.9. If you use imperial units, the calculator converts inches to metres and pounds to kilograms before applying the same formula. The result is a single number that is then compared to standard ranges to assign a category. These ranges (under 18.5, 18.5–24.9, 25–29.9, and 30 or over) were established by health bodies such as the World Health Organization and are used for adults aged 18 and over. They are not applied to children or adolescents, who need age- and sex-specific charts.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many people use BMI calculators to track fitness goals, monitor weight changes, improve lifestyle habits, or gain
+    general awareness about health conditions linked to body weight. The calculator works using a mathematical formula
+    that compares weight with height to generate a BMI value.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Why BMI is used</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          BMI is used because it is simple to calculate, requires only height and weight, and has been studied in large populations. In groups, higher BMI is associated with higher risk of conditions such as type 2 diabetes, heart disease, and certain cancers. So at a population level, BMI is useful for tracking trends and planning health policies. For individuals, it can be a starting point for a conversation with a doctor about weight and lifestyle. Many employers, insurers, and wellness programmes use BMI as one of several metrics. Schools and sports organisations sometimes use it for screening, though for young people age- and sex-specific standards must be used instead of adult categories.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Although BMI does not directly measure body fat, it is widely used across healthcare, fitness, wellness, and
+    research industries because it provides a simple way to estimate whether body weight may create health risks.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Limitations of BMI</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          BMI has important limitations. It does not distinguish between fat and muscle. A very muscular person may have a high BMI but low body fat and good health. Conversely, someone with a &quot;normal&quot; BMI might have high body fat and poor fitness. BMI also does not account for where fat is stored; abdominal fat is more strongly linked to health risks than fat in other areas. It does not consider age, sex, or ethnicity, although some guidelines suggest different cut-offs for certain ethnic groups. Older adults may have less muscle mass, so the same BMI might mean something different for them. For these reasons, BMI should never be used alone to diagnose obesity or to make treatment decisions. It is a screening tool that can prompt further assessment (e.g. waist circumference, body composition, blood tests) by a healthcare provider.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    What BMI Actually Means
+  </h3>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Underweight (BMI &lt; 18.5)</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          A BMI below 18.5 is classified as underweight. This can be due to low calorie intake, high activity, illness, or genetics. Being underweight may increase the risk of weakened bones, weakened immunity, and fatigue. It is not healthy to aim for an underweight BMI; if your result falls in this range, a doctor or dietitian can help you understand why and whether you need to gain weight safely. Do not use this calculator to encourage or maintain underweight status; that can be harmful.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    BMI or Body Mass Index is calculated by dividing body weight by the square of height. The resulting number helps
+    classify body weight into standard categories used worldwide.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Normal weight (BMI 18.5–24.9)</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          A BMI between 18.5 and 24.9 is generally considered the &quot;normal&quot; or &quot;healthy weight&quot; range for adults. This does not guarantee good health on its own; diet, activity, sleep, and mental health all matter. Many people in this range still benefit from improving diet and exercise. The range is broad, so two people with the same BMI can have different body compositions and health risks. Use this range as a rough guide, not as a target that guarantees wellness.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Healthcare professionals often use BMI as an initial screening method because it provides quick information without
+    requiring advanced equipment or laboratory testing. While BMI alone cannot determine overall health, it helps
+    identify whether additional medical evaluation may be necessary.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Overweight (BMI 25–29.9)</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          A BMI between 25 and 29.9 is classified as overweight. In population studies, this range is associated with a higher risk of conditions like diabetes and heart disease compared with the normal range. For an individual, the meaning depends on body composition, age, and other factors. Some people in this range are fit and healthy; others may benefit from lifestyle changes. A doctor can help you decide whether weight loss or other interventions are appropriate. Do not rely on BMI alone to judge your health; consider how you feel, your activity level, and any symptoms or family history.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    People monitoring long-term fitness progress also calculate age-related health information using the{" "}
+    <a
+      href="/age-calculator"
+      className="text-blue-600 underline font-medium"
+    >
+      Age Calculator
+    </a>{" "}
+    because metabolism, body composition, and calorie needs often change over time.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Obese (BMI ≥ 30)</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          A BMI of 30 or higher is classified as obese. This category is associated with a higher risk of many health conditions, including type 2 diabetes, heart disease, stroke, and some cancers. Obesity is a complex condition influenced by genetics, environment, diet, activity, and other factors. Treatment may include lifestyle changes, counselling, or medical interventions, and should be guided by a healthcare provider. This calculator does not diagnose obesity; it only gives a number and category. A full assessment and plan should come from a doctor or specialist.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why BMI Is Used Worldwide
+  </h3>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Who should not use adult BMI categories?</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Adult BMI categories (under 18.5, 18.5–24.9, etc.) are intended for people aged 18 and over. Children and teenagers should not be classified using these ranges because their healthy weight varies with age and sex. Paediatricians use BMI-for-age percentile charts instead. Pregnant women should not use BMI to assess healthy weight during pregnancy; that is managed by prenatal care. If you are under 18, pregnant, or have a condition that affects weight or body composition, use this tool for general interest only and rely on your doctor for interpretation.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    BMI became popular because it is simple, fast, and easy to calculate. Hospitals, schools, fitness centers,
+    insurance companies, and public health organizations use BMI as a standard screening method to estimate weight
+    categories across large populations.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Metric vs imperial</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          This calculator supports both metric (height in centimetres, weight in kilograms) and imperial (height in inches, weight in pounds) units. The formula is the same; the tool converts imperial values to metric before calculating. Make sure you select the correct unit system and enter numbers in the right units to avoid errors. Double-check that you did not mix units (e.g. height in cm and weight in lbs) as that would give a wrong result.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Since BMI only requires height and weight, it allows quick comparisons without expensive medical tools. Public
+    health organizations use BMI data to study obesity trends, nutritional problems, and lifestyle-related diseases
+    across different countries and age groups.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Using your result</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          After you get your BMI and category, use the information as a starting point, not a final verdict. If you are concerned about your weight or health, book an appointment with a doctor or nurse. They can consider your age, sex, medical history, and other measures (e.g. waist size, blood pressure, blood sugar) and give you personalised advice. Do not start a strict diet or exercise programme based only on BMI; get guidance from a professional. If you are tracking your BMI over time (e.g. during a lifestyle change), remember that small fluctuations are normal and that other outcomes (energy, fitness, lab results) matter too.
-        </p>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many users also track calorie intake, body weight changes, and fitness planning alongside the{" "}
+    <a
+      href="/percentage-calculator"
+      className="text-blue-600 underline font-medium"
+    >
+      Percentage Calculator
+    </a>{" "}
+    while measuring weight-loss progress or calculating improvement percentages during fitness programs.
+  </p>
 
-        <h4 className="font-semibold text-gray-900 mt-6 mb-2">Summary</h4>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          The BMI Calculator gives you a quick way to see where your weight falls relative to standard adult categories. Enter your height and weight in metric or imperial, and get your BMI and category. Use the result for general awareness only. BMI does not replace a medical check-up or professional advice. For a full picture of your health, see a healthcare provider and use BMI as one of many tools.
-        </p>
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Understanding BMI Categories
+  </h3>
 
-        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-2">Disclaimer</h3>
-        <p className="text-gray-700 leading-relaxed">
-          This tool is for general information only. It does not provide medical advice, diagnosis, or treatment. BMI is a screening measure with known limitations. Always consult a qualified healthcare provider for health-related decisions. Do not use this calculator for children, during pregnancy, or as the sole basis for diet or exercise changes.
-        </p>
-      </section>
+  <p className="text-gray-700 leading-relaxed mb-4">
+    BMI values are generally grouped into four major categories: underweight, normal weight, overweight, and obese.
+    These categories help estimate whether body weight may increase health risks over time.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    A lower BMI may sometimes indicate nutritional deficiencies, weakened immunity, or health problems caused by low
+    body weight. On the other hand, higher BMI values are often associated with increased risk of conditions such as
+    diabetes, heart disease, high blood pressure, and joint problems.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    However, BMI should never be treated as a complete diagnosis. Muscle mass, genetics, lifestyle, age, and body
+    composition also influence overall health.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Limitations of BMI
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Although BMI is useful for general screening, it has important limitations. The formula cannot distinguish between
+    muscle and fat. Athletes or highly muscular individuals may have a high BMI despite having low body fat and good
+    physical health.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Similarly, some individuals with normal BMI may still have poor fitness levels or unhealthy body fat distribution.
+    This is why doctors often combine BMI with additional health indicators such as blood pressure, diet quality,
+    physical activity, and medical history.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Users tracking health records and lifestyle reports sometimes organize documents using the{" "}
+    <a
+      href="/pdf-merge"
+      className="text-blue-600 underline font-medium"
+    >
+      PDF Merge Tool
+    </a>{" "}
+    while managing medical or fitness-related reports digitally.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    BMI and Fitness Goals
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many people use BMI calculators while starting fitness journeys, joining gyms, or planning healthier routines.
+    Tracking BMI over time helps users observe weight changes and maintain awareness about progress.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    However, healthy progress should focus on long-term consistency instead of extreme dieting or rapid weight-loss
+    trends. Sustainable improvements in nutrition, exercise, sleep, hydration, and mental wellness are generally more
+    beneficial than temporary short-term changes.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Users planning long-term wellness goals often estimate savings for gym memberships, healthcare expenses, or
+    investments using the{" "}
+    <a
+      href="/sip-calculator"
+      className="text-blue-600 underline font-medium"
+    >
+      SIP Calculator
+    </a>{" "}
+    and the{" "}
+    <a
+      href="/compound-interest-calculator"
+      className="text-blue-600 underline font-medium"
+    >
+      Compound Interest Calculator
+    </a>{" "}
+    while preparing future financial plans.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    BMI in Healthcare and Medicine
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Doctors and healthcare providers frequently use BMI during routine health checkups because body weight strongly
+    influences many medical conditions. Higher BMI values may increase the risk of cardiovascular disease, diabetes,
+    sleep disorders, and mobility issues.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    At the same time, extremely low BMI values may indicate nutritional problems, eating disorders, or underlying
+    health conditions requiring medical attention.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    BMI screening is especially useful during preventive healthcare because early awareness allows individuals to make
+    healthier lifestyle choices before serious health complications develop.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Why Online BMI Calculators Save Time
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Manual BMI calculation requires formula conversion and unit adjustments, especially when users work with both
+    metric and imperial measurements. Online calculators simplify this process by instantly generating accurate BMI
+    values without requiring mathematical calculations.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Browser-based tools improve convenience because users can quickly calculate BMI from any device without
+    downloading software or creating accounts.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Users converting fitness schedules, diet plans, or progress reports into shareable formats also use tools like the{" "}
+    <a
+      href="/images-to-pdf"
+      className="text-blue-600 underline font-medium"
+    >
+      Images to PDF Tool
+    </a>{" "}
+    for easier record management.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Importance of Healthy Lifestyle Beyond BMI
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Good health depends on more than body weight alone. Diet quality, physical activity, hydration, sleep, stress
+    management, and mental wellness all contribute to overall health and quality of life.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Many individuals focus only on appearance-based goals while ignoring long-term health habits. Sustainable
+    improvements generally come from balanced routines rather than extreme restrictions or unrealistic expectations.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Users organizing personal wellness plans, schedules, or health reminders sometimes create accessible sharing links
+    using the{" "}
+    <a
+      href="/qr-code"
+      className="text-blue-600 underline font-medium"
+    >
+      QR Code Generator
+    </a>{" "}
+    for easier access across mobile devices.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Privacy and User Safety
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Privacy matters while using online health-related tools. This BMI Calculator performs calculations directly inside
+    the browser without storing sensitive personal information or requiring account registration.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    Users who maintain personal health accounts or online medical records also improve account safety using the{" "}
+    <a
+      href="/password-generator"
+      className="text-blue-600 underline font-medium"
+    >
+      Password Generator
+    </a>{" "}
+    and verify stronger credentials through the{" "}
+    <a
+      href="/password-strength-checker"
+      className="text-blue-600 underline font-medium"
+    >
+      Password Strength Checker
+    </a>{" "}
+    before storing private information online.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+    Final Thoughts
+  </h3>
+
+  <p className="text-gray-700 leading-relaxed mb-4">
+    The BMI Calculator provides a quick and simple way to estimate whether body weight falls within a healthy range
+    based on height and weight measurements. It is useful for general health awareness, fitness planning, weight
+    monitoring, and wellness tracking.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed">
+    Although BMI has limitations, it remains one of the most widely used screening methods across healthcare and
+    fitness industries. Users should treat BMI as a starting point for understanding health rather than a complete
+    diagnosis, and combine it with healthy lifestyle habits and professional medical guidance whenever necessary.
+  </p>
+
+</section>
     </ToolSection>
   );
 }

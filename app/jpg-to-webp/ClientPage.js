@@ -11,6 +11,7 @@ export default function JpgToWebpPage() {
   const [outputs, setOutputs] = useState([]);
   const [processing, setProcessing] = useState(false);
   const [message, setMessage] = useState("");
+  const safeQuality = Number.isFinite(quality) ? quality : 0.9;
 
   async function convert() {
     if (!files.length) return;
@@ -66,7 +67,8 @@ export default function JpgToWebpPage() {
       title="Free JPG to WebP Converter"
       subtitle="Convert JPG or JPEG images to WebP in your browser. Adjust quality, smaller file size no upload to server, works on all devices."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd
@@ -95,9 +97,18 @@ export default function JpgToWebpPage() {
         </div>
       )}
 
-      <div className="space-y-6">
+      <div className="mx-auto w-full max-w-5xl space-y-6">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            JPG to WebP Converter Tool
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Convert JPG and JPEG images into optimized WebP format in seconds.
+          </p>
+        </div>
+
         {/* Upload */}
-        <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 sm:p-8 text-center bg-slate-50/50 hover:bg-slate-100/70 hover:border-slate-400 transition-all duration-200">
+        <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 sm:p-8 text-center bg-slate-50/50 hover:bg-slate-100/70 hover:border-slate-400 transition-all duration-200 shadow-sm">
           <p className="text-slate-600 mb-3 text-sm sm:text-base">
             Drag and drop JPG images here or click to choose files
           </p>
@@ -118,7 +129,7 @@ export default function JpgToWebpPage() {
         {/* Quality */}
         <div className="flex flex-wrap items-center gap-3 p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
           <label className="text-sm font-medium text-slate-700 min-w-[100px]">
-            Quality: <span className="text-teal-600">{(quality * 100).toFixed(0)}%</span>
+            Quality: <span className="text-teal-600">{(safeQuality * 100).toFixed(0)}%</span>
           </label>
           <input
             className="accent-teal-600 flex-1 min-w-[120px] max-w-[280px] h-2 rounded-full"
@@ -126,14 +137,17 @@ export default function JpgToWebpPage() {
             min="0.3"
             max="1"
             step="0.05"
-            value={quality}
-            onChange={(e) => setQuality(parseFloat(e.target.value))}
+            value={safeQuality}
+            onChange={(e) => {
+              const next = parseFloat(e.target.value);
+              setQuality(Number.isFinite(next) ? next : 0.9);
+            }}
           />
           <span className="text-xs text-slate-500">Higher = better quality, larger file</span>
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap justify-center sm:justify-start">
           <button
             onClick={convert}
             disabled={processing || !files.length}
@@ -180,63 +194,165 @@ export default function JpgToWebpPage() {
       </div>
 
       {/* Info section – 1000+ words, unique, text-justify */}
-      <section className="mt-12 sm:mt-14 p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-100">
+      <section className="mx-auto mt-12 sm:mt-14 w-full max-w-5xl p-5 sm:p-6 md:p-8 bg-white shadow-md rounded-2xl border border-slate-200">
         <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6 border-b border-slate-200 pb-3">
-          About JPG to WebP Conversion
+          Why More Websites Are Moving From JPG to WebP Images
         </h2>
 
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Converting JPG to WebP means turning a JPEG image into the WebP format. WebP is a modern image format developed by Google that typically produces smaller files than JPEG at the same visual quality, or better quality at the same file size. It supports both lossy and lossless compression and can also support transparency, similar to PNG. This converter runs in your browser: you select one or more JPG files, set a quality level, and click convert. The tool draws each image onto a canvas and exports it as WebP. No file is sent to a server, so the process is private and fast. People convert JPG to WebP to reduce file size for websites and apps, to improve page load speed and Core Web Vitals, or because a platform or workflow requires WebP. Whether you are a developer, designer, or content creator, this tool provides a simple way to get WebP images from JPG without installing software.
+          Website speed has become one of the most important parts of creating a better user experience online. Visitors expect pages to open quickly, images to load smoothly, and websites to work properly even on slower mobile networks. Because of this, image optimisation is no longer something only developers care about. Bloggers, online store owners, designers, students, marketers, and content creators are all searching for better image formats that help reduce loading time without making photos look blurry.
         </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">What Is WebP and Why Use It?</h3>
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          WebP was introduced to offer better compression than JPEG and PNG for use on the web. In lossy mode, WebP often achieves 25 to 35 percent smaller file sizes than JPEG at similar visual quality. That means faster-loading web pages, lower bandwidth use, and better performance scores in tools like Google PageSpeed Insights. WebP also supports an alpha channel for transparency, so it can replace PNG in many cases with smaller files. All major modern browsers support WebP, including Chrome, Firefox, Safari, and Edge, as do Android and iOS. Converting existing JPGs to WebP is a common step when optimising a website or preparing assets for an app. The format is widely supported enough that it is a practical default for many web projects today.
+          JPG has been one of the most commonly used image formats for years because it works almost everywhere and keeps image quality decent while reducing file size. However, modern websites now need lighter and more efficient image formats. WebP has become a popular choice because it can often create much smaller image files while still keeping visuals sharp and clean. This is one of the main reasons why so many website owners are converting JPG images into WebP format today.
         </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">How This Converter Works</h3>
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          When you select JPG files, they are added to a list. You can adjust the quality slider from about 30 percent to 100 percent. Higher values keep more detail and produce larger files; lower values reduce file size but may introduce visible compression. When you click convert, each image is loaded into the browser, drawn onto an off-screen canvas at its original dimensions, and then exported using the canvas API as WebP with your chosen quality. The result is a data URL that is shown as a preview and offered as a download. The tool processes one image after another so that multiple files are converted in sequence. All of this happens locally; no copy of your image is sent to a server. The tool works in any modern browser that supports canvas and the WebP export option.
+          This JPG to WebP Converter helps users transform images directly inside the browser without installing heavy software or uploading files to third party servers. The process stays simple, fast, and beginner friendly. Whether you are improving blog performance, preparing product images for an ecommerce website, or trying to improve Core Web Vitals scores, converting images into WebP format can make a noticeable difference.
         </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Quality and File Size</h3>
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+          Understanding the Difference Between JPG and WebP
+        </h3>
+
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          WebP uses lossy compression when you set a quality value below 100 percent. The slider in this tool controls that value. A setting around 85 to 95 percent often gives a good balance: the image looks very close to the original JPG while the file size is usually smaller. Lower settings (for example 50 or 60 percent) produce smaller files but may show more compression artefacts, especially in detailed or sharp areas. There is no single best value; it depends on how much you prioritise file size versus quality. For hero images or important visuals, a higher quality is usually better. For thumbnails or background images, a lower setting may be acceptable. You can convert the same JPG at different quality levels and compare the results to find what works for your use case.
+          JPG images are widely used because they balance image quality and file size reasonably well. Cameras, smartphones, editing tools, and websites commonly use JPG files for photographs and graphics. The problem appears when websites contain many large JPG images. Bigger image sizes can slow down websites, increase mobile data usage, and negatively affect user experience.
         </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">When to Use WebP Instead of JPG</h3>
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Use WebP when you want smaller file sizes for the same visual quality, when you are optimising a website or app for speed, or when your hosting or CDN supports WebP and you want to serve it to supporting browsers. Use JPG when you need maximum compatibility with very old software or devices, or when a system explicitly requires JPEG. Many sites use both: they serve WebP to browsers that support it and fall back to JPG for others. Converting JPG to WebP is useful when you have a library of JPEGs and want to create WebP versions for your site or app without re-exporting from an editor. It is also useful when you receive JPGs from a camera or download and need to supply WebP for a project that requires it.
+          WebP was introduced as a modern image format designed mainly for web performance. In many situations, WebP files become significantly smaller compared to JPG images while keeping similar visual quality. Smaller image sizes help websites load faster, especially on mobile devices. Faster loading can improve visitor retention and may also support better search performance over time.
         </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Step-by-Step How to Use</h3>
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Open the tool in your browser on a computer, tablet, or phone. Click the upload area or the file button and select one or more JPG or JPEG images. The number of selected files is shown. Move the quality slider to your preferred level; 90 percent is a good default. Click the convert to WebP button. The tool will process each image in turn; wait until the conversion is complete. The converted WebP images appear in a grid with a preview, the new file name, and the approximate size change (original JPG size versus converted WebP size). Click the download link under each image to save that WebP file to your device. You can then use the files in your website, app, or design tool. To convert more images, add more files and convert again, or use clear all and start over. There is no fixed limit on how many images you convert; very large or numerous files may take longer depending on your device.
+          Many developers now combine WebP images with performance optimisation strategies such as image compression, lazy loading, caching, and SEO improvements. If you are already improving website speed using tools like the <a href="https://convertixy.com/seo-audit-checker" className="text-blue-600 hover:underline font-medium">SEO Audit Checker</a>, converting heavy JPG images into WebP can further improve loading performance naturally.
         </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Benefits for Websites and Performance</h3>
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+          How This Browser Based Converter Handles Image Conversion
+        </h3>
+
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Smaller images mean faster page loads, which improves user experience and can positively affect search engine rankings. Google and other tools that measure page speed often recommend WebP for images. Converting your JPGs to WebP and serving them to supporting browsers can reduce bandwidth usage and hosting costs, especially on high-traffic sites. Mobile users on slower connections benefit from smaller image downloads. E-commerce sites can keep product images sharp while improving load times. Blogs and portfolios can show more images per page without slowing down the site. Even if you keep JPG as a fallback, having WebP versions gives you a simple way to optimise for visitors whose browsers support the format.
+          One of the biggest advantages of this tool is that everything works directly inside your browser. Users simply upload JPG or JPEG files, choose their preferred quality level, and start the conversion process. The browser processes images locally using canvas technology and generates downloadable WebP files within seconds.
         </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Use Cases</h3>
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          Web developers and designers convert JPG to WebP when building or optimising websites so that image-heavy pages load faster. Content creators and bloggers use it to prepare images for their CMS or static site generator. E-commerce teams use it for product photos and category banners. Social media managers and marketers sometimes convert assets to WebP for landing pages or ad creatives where file size matters. Students and educators can reduce the size of image-heavy documents or presentations. Anyone who has a batch of JPGs and wants WebP versions without opening each file in an editor can use this tool to convert them quickly in the browser. The ability to set quality and to convert multiple files in one go makes it suitable for both one-off and repeated use.
+          Since the conversion happens locally, your images are not stored on external servers during the process. This helps maintain better privacy and also reduces waiting time because files do not need to travel through remote systems before conversion. Many users prefer browser based tools because they feel simpler, faster, and safer for everyday use.
         </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Privacy and Security</h3>
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          This converter runs entirely in your browser. The JPG files you select are read by the browser and kept in memory only for the time you are on the page. The conversion is done locally using the canvas API; no copy of your image is sent to a server or stored by us. When you download a WebP file, it is saved from your browser to your device. If you close the tab or leave the page, the image data is gone. This local-first approach is useful when you are converting sensitive or confidential images and do not want to upload them to an online service. You can use the tool on a shared or public computer with less worry about leaving files behind, as long as you download your results and clear the page when you are done.
+          The tool is designed for both casual and regular usage. Someone converting a few personal images can use it easily, while bloggers or website owners handling multiple graphics can also process several files quickly without needing advanced technical knowledge.
         </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Browser Support and Limitations</h3>
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+          Why Smaller Images Matter More Than Ever
+        </h3>
+
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
-          WebP is supported in all major modern browsers. If your browser can export WebP from the canvas (which this tool uses), the conversion will work. Very old browsers may not support WebP export; in that case you would need to use a newer browser or a different device. This tool converts one or more JPGs to WebP; it does not resize, crop, or add transparency. If your JPG has no transparent areas, the WebP will also have no transparency. The converted file size shown is an estimate based on the data URL length; the actual downloaded file may differ slightly. Very large images (for example tens of megapixels) or many files at once may take longer to process or may slow down the browser on low-memory devices. For typical photos and graphics, the tool works quickly and reliably.
+          Modern internet users rarely wait patiently for slow websites. Even a delay of a few seconds can increase bounce rates. Heavy images are often one of the biggest reasons websites feel slow. Compressing and converting images into efficient formats helps reduce unnecessary page weight.
         </p>
 
-        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">Conclusion</h3>
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Smaller image sizes improve website speed in multiple ways. Pages open faster, users consume less mobile data, and hosting bandwidth usage becomes lower. Faster pages also improve the overall browsing experience for visitors using older devices or slower network connections.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Website optimisation is not only about images though. Many site owners also optimise code, text formatting, and SEO settings together. For example, developers often use tools such as the <a href="https://convertixy.com/html-formatter" className="text-blue-600 hover:underline font-medium">HTML Formatter</a> to clean webpage structure while simultaneously reducing image sizes for better performance.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+          Choosing the Right WebP Quality Settings
+        </h3>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Quality settings play a major role during image conversion. Higher quality settings keep more details inside the image but usually create slightly larger files. Lower quality settings reduce file size further but can sometimes introduce visible compression artefacts.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          For most websites, a quality range between 80 and 95 percent works well. This range generally keeps photos sharp while still reducing file size significantly compared to standard JPG images. Product pages, blog banners, portfolio images, and thumbnails often perform well within this range.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Users should test different settings based on their goals. If maximum image quality is important, a higher setting may work better. If speed and lightweight performance are the priority, slightly lower quality levels can help achieve faster loading times.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+          Situations Where WebP Conversion Becomes Extremely Useful
+        </h3>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Bloggers frequently use WebP images to improve article loading speed and make long content pages feel smoother. Ecommerce websites use WebP to display product galleries without making pages heavy. Portfolio websites benefit because high quality images can still load quickly. Educational websites and online learning platforms also reduce image sizes to improve accessibility for students using slower internet connections.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Developers working on performance optimisation projects often combine WebP conversion with additional image adjustments. For example, users may first resize large photos using the <a href="https://convertixy.com/image-resizer" className="text-blue-600 hover:underline font-medium">Image Resizer</a> before converting them into WebP format for better optimisation results.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Content creators who regularly publish feature images, banners, and thumbnails can save considerable storage space over time by switching from large JPG files to lighter WebP versions. This becomes especially important for websites containing hundreds or thousands of images.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+          Privacy Benefits of Local Image Processing
+        </h3>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Privacy matters to many internet users today. Some online image tools require uploading files to remote servers where users cannot always know how files are stored or managed. Browser based image processing helps reduce those concerns.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Since this converter works locally inside the browser, selected images remain on the user device during the process. After conversion, files can be downloaded directly without depending on external storage systems. This approach feels more comfortable for users handling personal photos, confidential graphics, or business related media.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Local processing also helps reduce unnecessary waiting times because users do not need to upload large files before conversion begins. Everything stays lightweight and efficient.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+          Browser Compatibility and Modern Web Support
+        </h3>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          WebP support has improved significantly over the years. Most modern browsers including Chrome, Edge, Firefox, and Safari now support WebP images properly. Mobile browsers also handle the format efficiently, making it practical for modern web development.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Many content management systems, website builders, and hosting platforms now support WebP images by default. Developers commonly use WebP alongside responsive image strategies to improve loading speed across different devices and screen sizes.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          If users need additional optimisation for already converted files, they can also reduce image size further using tools such as the <a href="https://convertixy.com/image-compressor" className="text-blue-600 hover:underline font-medium">Image Compressor</a> depending on their project requirements.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+          Practical Tips for Better Website Image Optimisation
+        </h3>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Good optimisation is usually achieved through a combination of small improvements rather than relying on only one change. Website owners should avoid uploading unnecessarily large images. Resizing photos before uploading, compressing images carefully, using responsive dimensions, and selecting efficient formats all help improve performance.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          File naming and organisation also matter. Clear file names help maintain better workflow management and may support SEO efforts naturally. Consistent optimisation habits can make websites feel cleaner and more professional over time.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 text-justify">
+          Users should regularly review image quality after conversion to ensure visuals still look attractive across desktop and mobile devices. Performance should improve without damaging user experience.
+        </p>
+
+        <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">
+          Final Thoughts on Using JPG to WebP Conversion
+        </h3>
+
         <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-          Converting JPG to WebP is a simple way to get smaller, web-friendly images without losing much quality. This free converter runs in your browser, accepts one or more JPG or JPEG files, and lets you set the WebP quality with a slider. Your files are not uploaded to any server. Use it when you need WebP for a website, app, or project, or when you want to reduce file size for faster loading. For most images, a quality setting around 85 to 95 percent gives a good balance. Download your WebP files and use them wherever the format is supported. For quick, private, and straightforward JPG to WebP conversion, this tool is a reliable option.
+          Converting JPG images into WebP format has become one of the easiest ways to improve website performance while maintaining strong visual quality. Smaller image sizes can help websites load faster, improve browsing experience, reduce bandwidth usage, and support better overall optimisation practices.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify mt-4">
+          This browser based JPG to WebP Converter keeps the process simple for everyone. Users can upload images, choose quality settings, convert files quickly, and download optimised WebP versions without needing technical expertise. Because the tool works locally inside the browser, it also provides a more private and convenient experience.
+        </p>
+
+        <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify mt-4">
+          Whether you are running a blog, building an ecommerce store, managing a portfolio website, or simply organising personal images, WebP conversion can help create a faster and more efficient digital experience. Using lightweight image formats is no longer only a developer practice. It has now become an important part of building modern, user friendly websites.
         </p>
       </section>
     </ToolSection>

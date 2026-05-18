@@ -115,28 +115,50 @@ export default function GratuityCalculatorPage() {
     <ToolSection
       title="Gratuity Calculator"
       subtitle="Estimate gratuity amount using last drawn salary and completed years of service with a quick in-browser calculator."
+      plain
+      whiteBackground
+      hideSidebar
+      centerHeader
     >
-      <div className="space-y-5">
-        <div className="grid gap-4 md:grid-cols-2">
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">Last Drawn Monthly Salary</label>
-            <input type="number" value={lastDrawnSalary} onChange={(e) => setLastDrawnSalary(e.target.value)} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900" placeholder="Monthly salary" />
+      <div className="space-y-6">
+        <div className="bg-gray-50 rounded-2xl border border-gray-200 p-5 sm:p-6 space-y-5">
+          <h2 className="text-lg font-semibold text-gray-900">Enter your details</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div>
+              <label className="mb-1.5 block text-sm font-medium text-gray-700">Last Drawn Monthly Salary</label>
+              <input type="number" value={lastDrawnSalary} onChange={(e) => setLastDrawnSalary(e.target.value)} className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-gray-900" placeholder="Monthly salary" />
+            </div>
+            <div>
+              <label className="mb-1.5 block text-sm font-medium text-gray-700">Completed Years of Service</label>
+              <input type="number" value={yearsOfService} onChange={(e) => setYearsOfService(e.target.value)} className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-gray-900" placeholder="Years of service" />
+            </div>
           </div>
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-gray-700">Completed Years of Service</label>
-            <input type="number" value={yearsOfService} onChange={(e) => setYearsOfService(e.target.value)} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900" placeholder="Years of service" />
-          </div>
+
+          {validationMessage ? (
+            <div className="px-4 py-3 text-sm rounded-xl border border-red-200 bg-red-50 text-red-700 text-justify">
+              {validationMessage}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-600">
+              This calculator is for estimation. Final gratuity amount can depend on payroll records, policy, and applicable rules.
+            </p>
+          )}
         </div>
 
-        {validationMessage ? (
-          <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-            {validationMessage}
+        <div className="grid gap-4 md:grid-cols-5">
+          <div className="md:col-span-3 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5">
+            <p className="font-semibold text-blue-900 mb-2">Formula</p>
+            <p className="text-blue-800 text-sm text-justify">
+              Estimated Gratuity = (Last Drawn Monthly Salary × 15 × Completed Years of Service) ÷ 26
+            </p>
           </div>
-        ) : (
-          <p className="text-sm text-gray-600">
-            This calculator is for estimation. Final gratuity amount can depend on payroll records, policy, and applicable rules.
-          </p>
-        )}
+          <div className="md:col-span-2 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-5">
+            <p className="font-semibold text-amber-900 mb-2">Tip</p>
+            <p className="text-amber-800 text-sm text-justify">
+              Use accurate salary and completed service years for a better estimate. Final amount should be verified with payroll or HR.
+            </p>
+          </div>
+        </div>
 
         <div className="grid gap-4 md:grid-cols-3">
           <div className="rounded-2xl border border-gray-200 bg-blue-50 p-5">
@@ -172,30 +194,281 @@ export default function GratuityCalculatorPage() {
         </section>
 
         <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm text-justify">
-          <h2 className="text-2xl font-bold text-gray-900">Detailed Guide to Gratuity Calculation</h2>
+
+          <h2 className="text-2xl font-bold text-gray-900">
+            Detailed Guide to Gratuity Calculation
+          </h2>
+
           <div className="mt-4 space-y-4 text-sm leading-7 text-gray-700 sm:text-base">
+
             <p>
-              Gratuity Calculator is useful because gratuity is one of those salary-related topics that many employees hear about but do not always calculate confidently on their own. People usually start thinking about gratuity when they plan a long-term career move, discuss retirement benefits, or prepare to leave a company after years of service. In those moments, a quick and clear estimate is more useful than a complicated manual formula. This page is designed to provide that estimate instantly.
+              The Gratuity Calculator helps employees estimate gratuity benefits based on salary
+              and years of service. Gratuity is one of the most important long-term employment
+              benefits because it rewards employees for continuous service within an organization.
+              Many employees only start thinking seriously about gratuity during career changes,
+              retirement planning, resignations, or financial preparation for the future.
             </p>
+
             <p>
-              The basic idea behind gratuity estimation is simple: the result depends on salary and completed years of service. Even though the formula itself is not very long, many users still prefer a calculator because they want speed, accuracy, and a cleaner presentation. Instead of working it out manually every time, they can enter their values and immediately see an estimated amount. That makes the tool practical for both personal use and basic HR-related review.
+              Even though gratuity formulas are publicly available, many people still prefer using
+              a calculator because manual calculations can feel confusing, especially when salary
+              structures and service durations vary. A calculator simplifies the process and
+              instantly provides an estimated gratuity amount using the entered values.
             </p>
+
             <p>
-              A gratuity page matters because long-term employment benefits are often emotionally and financially important. Someone who has worked for several years may want to understand what kind of gratuity figure could be involved before making a job-switch decision. Another person may simply want to estimate future value as part of broader financial planning. In both situations, a straightforward calculator helps users move from uncertainty to a usable number much faster.
+              Long-term financial planning often involves multiple salary and investment factors.
+              Employees planning future savings and retirement goals frequently compare gratuity
+              estimates alongside the{" "}
+              <a
+                href="/compound-interest-calculator"
+                className="text-blue-600 underline font-medium"
+              >
+                Compound Interest Calculator
+              </a>{" "}
+              to understand how savings and benefits may grow over time.
             </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+              What Gratuity Actually Means
+            </h3>
+
             <p>
-              The best way to use this tool is to enter the correct last drawn salary component and completed years of service. This helps generate a more useful estimate and reduces confusion. One common mistake is using the wrong salary figure or guessing service duration too loosely. Small input mistakes can create a noticeably different gratuity result. A clean calculator reduces manual errors, but the user still benefits from checking records before relying on the number.
+              Gratuity is generally considered a financial benefit paid by an employer to an
+              employee for long-term service. It acts as a reward for loyalty and continued
+              employment within the organization.
             </p>
+
             <p>
-              Another important point is expectation-setting. A gratuity calculator is helpful for planning, but it should not be treated like the final settlement statement from an employer. Official gratuity outcomes can depend on salary structure, employment records, company policy, and applicable legal interpretation. That does not reduce the value of the page. In fact, the main job of the tool is to give users a fast first estimate so they can think more clearly before formal review.
+              In many workplaces, gratuity becomes part of broader retirement and financial
+              planning discussions because employees often depend on accumulated employment
+              benefits while transitioning between jobs or preparing for retirement.
             </p>
+
             <p>
-              This page also has long-term utility because gratuity remains an evergreen employment topic. Users revisit it during promotions, job changes, retirement planning, and financial review. Unlike trend-driven tools that lose value quickly, gratuity calculators solve a stable and repeated need. That makes them strong utility pages for a tools website. They answer a real question with minimal friction and help users get clarity without installing anything or opening a spreadsheet.
+              Since gratuity depends heavily on completed service duration, employees often verify
+              exact work timelines and age-related planning using the{" "}
+              <a
+                href="/age-calculator"
+                className="text-blue-600 underline font-medium"
+              >
+                Age Calculator
+              </a>{" "}
+              while preparing financial estimates and long-term plans.
             </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+              Why Employees Use Gratuity Calculators
+            </h3>
+
             <p>
-              In practical terms, the biggest strength of a gratuity tool is trust through simplicity. The user enters a few details, sees a quick estimate, and understands the result in a more tangible way. That experience matters because compensation planning often feels abstract until a number is made visible. A good calculator page turns that abstract question into something concrete, and that is exactly why a gratuity calculator earns a place among useful long-term finance and salary tools.
+              Most users visit gratuity calculators because they want clarity before making
+              financial or career decisions. Someone considering a job change may want to estimate
+              whether leaving immediately or completing another year of service could affect
+              gratuity value significantly.
             </p>
+
+            <p>
+              Others may simply want to estimate future benefits while planning investments,
+              emergency funds, education expenses, or retirement savings. A quick estimate helps
+              users make more informed decisions instead of relying on assumptions.
+            </p>
+
+            <p>
+              Employees reviewing salary growth and financial planning often calculate monthly
+              obligations alongside the{" "}
+              
+                EMI Calculator
+             {" "}
+              to compare liabilities against expected long-term employment benefits.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+              Importance of Accurate Inputs
+            </h3>
+
+            <p>
+              The quality of the gratuity estimate depends heavily on correct inputs. Entering the
+              wrong salary figure or incorrect service duration may generate inaccurate results.
+              Even small mistakes can noticeably affect final estimates.
+            </p>
+
+            <p>
+              Users should ideally verify official salary records and completed service periods
+              before relying on the estimated amount. Proper records improve reliability and reduce
+              confusion during financial discussions or HR-related planning.
+            </p>
+
+            <p>
+              Employees organizing salary documents and downloadable employment reports often
+              combine records using the{" "}
+              <a
+                href="/pdf-merge"
+                className="text-blue-600 underline font-medium"
+              >
+                PDF Merge Tool
+              </a>{" "}
+              before sharing files digitally.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+              Gratuity and Financial Planning
+            </h3>
+
+            <p>
+              Gratuity often becomes part of broader financial planning because employees may use
+              the money for investments, retirement savings, debt repayment, home expenses, or
+              emergency reserves.
+            </p>
+
+            <p>
+              Long-term employees sometimes underestimate the financial value accumulated through
+              gratuity until they calculate it directly. Seeing a projected amount helps users
+              understand the practical value of continued service and structured employment
+              benefits.
+            </p>
+
+            <p>
+              Investors comparing future savings growth frequently use the{" "}
+              <a
+                href="/sip-calculator"
+                className="text-blue-600 underline font-medium"
+              >
+                SIP Calculator
+              </a>{" "}
+              to estimate recurring investment growth alongside gratuity planning and retirement
+              preparation.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+              Why Gratuity Remains an Evergreen Topic
+            </h3>
+
+            <p>
+              Gratuity remains relevant because employment benefits are a permanent part of career
+              and retirement discussions. Unlike trend-based financial topics, gratuity continues
+              to matter across generations because employees regularly switch jobs, retire, or plan
+              future finances.
+            </p>
+
+            <p>
+              This makes gratuity calculators valuable long-term utility tools for salary planning
+              and employment-related decision-making. Employees revisit these tools repeatedly
+              during promotions, career transitions, salary negotiations, and retirement planning.
+            </p>
+
+            <p>
+              Financial analysts and employees comparing salary increases sometimes calculate
+              percentage growth and compensation changes using the{" "}
+              <a
+                href="/percentage-calculator"
+                className="text-blue-600 underline font-medium"
+              >
+                Percentage Calculator
+              </a>{" "}
+              while evaluating long-term financial improvement.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+              Limitations of Gratuity Estimates
+            </h3>
+
+            <p>
+              A gratuity calculator provides an estimate, not a final settlement statement. Actual
+              gratuity payouts may depend on company policies, employment agreements, salary
+              structure, legal interpretation, and official HR calculations.
+            </p>
+
+            <p>
+              The purpose of the calculator is to provide users with a fast and understandable
+              estimate so they can think more clearly about future financial decisions before
+              formal review.
+            </p>
+
+            <p>
+              Users should always confirm final settlement details with their employer or HR
+              department before making major financial commitments based entirely on estimated
+              results.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+              Why Online Salary Tools Save Time
+            </h3>
+
+            <p>
+              Manual salary-related calculations can become repetitive and confusing, especially
+              when users compare multiple financial scenarios. Online calculators simplify the
+              process by generating quick estimates without requiring spreadsheets or complicated
+              formulas.
+            </p>
+
+            <p>
+              Browser-based financial tools improve convenience because users can instantly access
+              them from mobile devices, desktops, or tablets without installing additional
+              software.
+            </p>
+
+            <p>
+              Employees sharing financial summaries, HR reports, or downloadable salary documents
+              also generate accessible links using the{" "}
+              <a
+                href="/qr-code"
+                className="text-blue-600 underline font-medium"
+              >
+                QR Code Generator
+              </a>{" "}
+              for easier cross-device access and document sharing.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+              Privacy and Browser-Based Processing
+            </h3>
+
+            <p>
+              Privacy matters while working with salary and employment-related information. This
+              Gratuity Calculator performs calculations directly inside the browser without
+              requiring account registration or unnecessary uploads.
+            </p>
+
+            <p>
+              Employees managing online payroll systems and financial accounts also improve account
+              safety using the{" "}
+              <a
+                href="/password-generator"
+                className="text-blue-600 underline font-medium"
+              >
+                Password Generator
+              </a>{" "}
+              and verify stronger credentials through the{" "}
+              <a
+                href="/password-strength-checker"
+                className="text-blue-600 underline font-medium"
+              >
+                Password Strength Checker
+              </a>{" "}
+              before storing sensitive employment information online.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-3">
+              Final Thoughts
+            </h3>
+
+            <p>
+              The Gratuity Calculator provides a simple and reliable way to estimate gratuity based
+              on salary and years of service. It helps employees better understand long-term
+              employment benefits and supports broader financial planning decisions.
+            </p>
+
+            <p>
+              Instead of manually calculating service-based benefits, users can instantly estimate
+              gratuity values while improving clarity around retirement planning, salary review,
+              and future financial preparation. Long-term employment benefits may feel abstract
+              until users see a practical number, and that is exactly where a gratuity calculator
+              becomes genuinely useful.
+            </p>
+
           </div>
+
         </section>
 
         <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">

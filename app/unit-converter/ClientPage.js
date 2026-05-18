@@ -169,7 +169,8 @@ export default function UnitConverterPage() {
       title="Unit Converter - Free Online Measurement Conversion Tool"
       subtitle="Convert units instantly across length, weight, temperature, volume, area, and speed. Accurate metric and imperial conversions for science, engineering, and everyday use."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd
@@ -187,7 +188,7 @@ export default function UnitConverterPage() {
         ])}
       />
 
-      <div className="max-w-6xl mx-auto space-y-8 px-4">
+      <div className="max-w-5xl mx-auto space-y-8 px-4">
         {/* Status Message */}
         {message && (
           <div className="px-5 py-3.5 bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 rounded-xl shadow-sm animate-fadeIn">

@@ -131,7 +131,8 @@ ${yamlContent}
       title="Text to YAML Converter - Free Online Tool"
       subtitle="Convert plain text to YAML format and extract text from YAML instantly. Perfect for DevOps, configuration files, and data serialization."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd

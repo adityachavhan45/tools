@@ -181,7 +181,8 @@ ${htmlContent}
       title="Free Text to HTML Encoder - Convert Text to HTML Online"
       subtitle="Professional online text to HTML encoder and decoder. Convert plain text to HTML code with entity encoding, or decode HTML to text instantly with our free, secure converter tool."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd
@@ -200,11 +201,19 @@ ${htmlContent}
       />
 
       <div className="max-w-5xl mx-auto">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm mb-8">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            Text to HTML Encoder
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Encode text into HTML entities and decode HTML back to plain text instantly.
+          </p>
+        </div>
         {/* Main Converter Card */}
-        <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden mb-8">
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 px-6 py-4">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden mb-8">
+          <div className="bg-gradient-to-r from-cyan-700 to-blue-700 px-6 py-4">
             <h2 className="text-white text-xl font-bold">Text ⇄ HTML Encoder/Decoder</h2>
-            <p className="text-blue-100 text-sm mt-1">Convert between plain text and HTML format instantly</p>
+            <p className="text-cyan-100 text-sm mt-1">Convert between plain text and HTML format instantly</p>
           </div>
 
           <div className="p-6 space-y-6">

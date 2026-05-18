@@ -117,7 +117,8 @@ export default function TimeZoneConverterPage() {
       title="Time Zone Converter - Free World Clock Tool"
       subtitle="Convert time between global time zones instantly. Perfect for international meetings, travel planning, and global coordination."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd

@@ -86,7 +86,8 @@ export default function TextToUrlEncoderPage() {
       title="Text to URL Encoder & Decoder - Free Online Tool"
       subtitle="Encode text to URL format and decode URL strings instantly. Perfect for web development, APIs, and safe data transmission."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd

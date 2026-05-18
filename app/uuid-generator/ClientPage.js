@@ -81,7 +81,7 @@ export default function UuidGeneratorPage() {
         ])}
       />
 
-      <div className="max-w-6xl mx-auto px-4 space-y-8">
+      <div className="max-w-5xl mx-auto px-4 space-y-8">
         {/* Status Message */}
         {message && (
           <div className="px-5 py-3.5 bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 rounded-xl shadow-sm animate-fadeIn">

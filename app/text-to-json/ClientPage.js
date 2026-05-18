@@ -174,7 +174,8 @@ ${jsonContent}
       title="Free Text to JSON Converter Online | Convert Text to JSON Format"
       subtitle="Convert plain text to JSON format and JSON to text instantly. Free online text to JSON converter with formatting, validation, and download support."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd

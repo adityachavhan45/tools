@@ -129,8 +129,21 @@ export default function InHandSalaryCalculatorPage() {
     <ToolSection
       title="In-Hand Salary Calculator"
       subtitle="Estimate your monthly take-home salary after PF, tax, and other deductions with a simple salary breakup view."
+      plain
+      whiteBackground
+      hideSidebar
+      centerHeader
     >
-      <div className="space-y-5">
+      <div className="mx-auto w-full max-w-5xl space-y-5">
+        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-r from-cyan-50 via-white to-blue-50 p-5 sm:p-6 shadow-sm">
+          <h1 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700">
+            In-Hand Salary Calculator Tool
+          </h1>
+          <p className="mt-2 text-center text-sm sm:text-base text-slate-600">
+            Get a quick monthly take-home estimate with PF, tax, and deduction breakup.
+          </p>
+        </div>
+
         <div className="grid gap-4 md:grid-cols-3">
           <div>
             <label className="mb-2 block text-sm font-semibold text-gray-700">Gross Monthly Salary</label>
@@ -188,7 +201,7 @@ export default function InHandSalaryCalculatorPage() {
         </div>
       </div>
 
-      <div className="mt-8 space-y-8">
+      <div className="mx-auto mt-8 w-full max-w-5xl space-y-8">
         <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
           <h2 className="text-2xl font-bold text-gray-900">About This Tool</h2>
           <div className="mt-6 space-y-8">
@@ -205,32 +218,129 @@ export default function InHandSalaryCalculatorPage() {
           </div>
         </section>
 
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm text-justify">
-          <h2 className="text-2xl font-bold text-gray-900">Detailed Guide to In-Hand Salary</h2>
-          <div className="mt-4 space-y-4 text-sm leading-7 text-gray-700 sm:text-base">
-            <p>
-              In-Hand Salary Calculator helps answer one of the most common salary questions: how much money will actually come into my account every month? This question matters because gross salary, CTC, and employer cost figures do not always reflect the amount a person can really spend or save. For most employees, the useful number is the monthly take-home amount after payroll deductions have already been removed. That is why this kind of calculator has such strong practical value.
-            </p>
-            <p>
-              The biggest difference between gross salary and in-hand salary is deductions. A company may quote a monthly or annual salary, but that number can still include items that never arrive as spendable cash. Employee PF, tax, professional tax, and other recurring deductions all reduce the final amount. In some cases, two jobs with similar gross salary can produce noticeably different in-hand income because of differences in the salary breakup. This is why take-home salary is often more useful than headline package numbers.
-            </p>
-            <p>
-              This tool is designed to be easy to use. You enter gross monthly salary, define the basic salary percentage, and then add monthly deductions such as employee PF, tax, professional tax, and any other recurring amount. The calculator then estimates the breakdown and shows the final in-hand salary clearly. That makes it useful for salary comparison, budgeting, payroll understanding, and offer evaluation. Instead of relying on guesswork, users can test numbers and instantly see how deductions change the outcome.
-            </p>
-            <p>
-              A practical reason this page matters is that many professionals receive confusing compensation documents. Sometimes offer letters highlight the package but do not make take-home salary obvious. In those situations, users need a quick calculator that helps them estimate the actual monthly figure they can use for rent, groceries, investments, and daily living. A good in-hand salary page removes that confusion and turns salary breakup into something understandable.
-            </p>
-            <p>
-              Another important use case is salary negotiation. If someone is comparing two roles, one employer may offer a higher gross number but a weaker structure after deductions. Another employer may provide a cleaner salary structure that leaves better monthly take-home income. Looking at in-hand salary helps users compare jobs in a more practical way. This is especially useful for professionals moving cities, planning family budgets, or trying to decide whether an increment is truly meaningful.
-            </p>
-            <p>
-              There are also some common mistakes users should avoid. One is assuming that every company uses the same salary breakup structure. Another is ignoring small recurring deductions, which can add up more than expected over a year. Some people also use guessed tax values that are too low, which creates unrealistically high take-home estimates. The better approach is to use real numbers from a payslip or offer letter whenever possible, then use this tool to compare scenarios calmly.
-            </p>
-            <p>
-              This calculator is meant for estimation, not as a replacement for an official salary slip. Real payroll can include reimbursements, special allowances, benefits, bonuses, and company-specific treatment. Still, a quick in-hand estimate is extremely valuable because it solves the most important first-level question fast. That is why this page works so well as an everyday utility: it gives users a clear answer in seconds and helps them make more confident compensation decisions.
-            </p>
-          </div>
-        </section>
+       <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm text-justify">
+  <h2 className="text-2xl font-bold text-gray-900">
+    Understanding Real Monthly Salary After Deductions
+  </h2>
+
+  <div className="mt-4 space-y-4 text-sm leading-7 text-gray-700 sm:text-base">
+    <p>
+      Salary discussions often focus on big annual package numbers, but most employees care about something much simpler: how much money actually reaches their bank account every month. That real usable amount is known as in-hand salary or take-home salary. It is the amount left after deductions like employee provident fund, taxes, professional tax, insurance, and other payroll-related cuts are removed from the gross salary. Understanding this number properly helps employees make smarter financial decisions and avoid confusion during job changes or salary negotiations.
+    </p>
+
+    <p>
+      Many people become excited after receiving an offer letter because the total package looks attractive at first glance. However, the actual monthly amount available for spending may feel lower than expected once deductions begin. This happens because companies often structure salaries using different components such as allowances, bonuses, retirement contributions, and benefits. Some parts improve the overall package value but do not directly increase monthly spendable income. That is why understanding take-home salary is more practical than focusing only on yearly CTC numbers.
+    </p>
+
+    <p>
+      This calculator is designed to simplify salary understanding for everyday users. Instead of manually calculating deductions using spreadsheets or complicated formulas, users can quickly enter salary details and estimate monthly in-hand income within seconds. This makes the tool useful for freshers, experienced professionals, freelancers comparing offers, and employees planning monthly budgets.
+    </p>
+
+    <p>
+      One of the biggest advantages of calculating in-hand salary properly is financial planning. People often create budgets based on expected income, but incorrect assumptions can lead to overspending or poor savings management. Rent, transportation, investments, EMI payments, groceries, subscriptions, and emergency savings all depend on realistic monthly income. When users know their actual take-home salary, they can plan expenses more responsibly and avoid financial stress later.
+    </p>
+
+    <p>
+      Salary structure also affects long-term savings and tax planning. Two companies may offer similar salary packages, but their payroll structures can create completely different monthly outcomes. One company may include higher allowances and lower deductions, while another may place a larger percentage into retirement-related components. This is why comparing only annual salary figures can sometimes be misleading.
+    </p>
+
+    <p>
+      Professionals switching jobs often use salary calculators before accepting offers. A slightly lower package with better monthly take-home income can sometimes provide more immediate financial comfort than a higher package filled with complex deductions. This becomes especially important for employees relocating to expensive cities where monthly living costs are significantly higher.
+    </p>
+
+    <p>
+      People also use salary estimation tools while preparing for career growth decisions. Before requesting increments or changing companies, employees often want to understand how much salary increase is actually meaningful after deductions. A large-looking increment may create only a small difference in monthly usable income once taxes and payroll cuts are applied. Calculating take-home salary helps users view salary growth more realistically.
+    </p>
+
+    <p>
+      Another common reason users check in-hand salary is tax awareness. Many employees only notice deductions after receiving their first payslip. Understanding how deductions affect monthly income helps users become more financially informed. Instead of being surprised every month, they can understand why specific amounts are being reduced and how payroll systems work.
+    </p>
+
+    <p>
+      Some employees also compare salary structures while planning investments or loans. Banks usually evaluate repayment capacity using monthly in-hand income instead of total package value. Whether someone wants to buy a house, apply for a car loan, or manage monthly SIP investments, understanding real take-home salary becomes extremely important for safe financial planning.
+    </p>
+
+    <p>
+      Users who manage budgets regularly often combine salary estimation with tools like{" "}
+      <a
+        href="https://convertixy.com/loan-calculator"
+        className="text-blue-600 hover:underline font-medium"
+      >
+        Loan Calculator
+      </a>{" "}
+      to estimate monthly repayment affordability before taking financial commitments.
+    </p>
+
+    <p>
+      Fresh graduates entering the workforce sometimes misunderstand the difference between gross salary and monthly credited salary. Since campus placement discussions usually focus on annual packages, many students assume the full amount gets divided equally every month. In reality, deductions and salary structures change the actual credited amount significantly. Tools like this help freshers understand salary structures more clearly before joining companies.
+    </p>
+
+    <p>
+      Another practical use case appears during relocation planning. Employees moving to metropolitan cities often need to calculate whether their salary will comfortably cover higher living costs. Rent, transportation, food, utilities, and personal expenses vary greatly between locations. Knowing the exact monthly take-home amount allows users to decide whether relocation financially makes sense.
+    </p>
+
+    <p>
+      Many professionals also calculate salary after tax to estimate yearly savings potential. Even a moderate difference in deductions can impact annual savings by a noticeable amount. Employees who actively track income and expenses generally make stronger financial decisions compared to people who only focus on headline salary numbers.
+    </p>
+
+    <p>
+      People interested in deeper salary breakdowns sometimes use{" "}
+      <a
+        href="https://convertixy.com/salary-after-tax-calculator"
+        className="text-blue-600 hover:underline font-medium"
+      >
+        Salary After Tax Calculator
+      </a>{" "}
+      to understand how taxation impacts overall monthly income.
+    </p>
+
+    <p>
+      It is also important to understand that payroll structures are not identical across companies. Some organizations provide flexible benefits, while others include fixed salary structures with limited customization. Certain employers may include performance bonuses or variable pay components that are not guaranteed every month. Because of these differences, employees should always review salary structures carefully instead of relying only on package announcements.
+    </p>
+
+    <p>
+      Small recurring deductions are another area people often ignore. Individually, professional tax, PF contributions, insurance cuts, and miscellaneous deductions may seem minor. However, together they can significantly reduce final monthly salary. Over an entire year, these deductions can add up to a surprisingly large amount.
+    </p>
+
+    <p>
+      Budget-conscious users often calculate future savings alongside monthly income. Many combine salary planning with tools such as{" "}
+      <a
+        href="https://convertixy.com/sip-calculator"
+        className="text-blue-600 hover:underline font-medium"
+      >
+        SIP Calculator
+      </a>{" "}
+      to estimate how regular investments may grow over time using monthly surplus income.
+    </p>
+
+    <p>
+      Another mistake people make is depending on rough guesses instead of accurate calculations. Friends, online discussions, and unofficial salary comparisons may provide misleading expectations because deductions vary depending on salary structure, company policies, tax regimes, and payroll systems. Using a calculator provides a more realistic estimate and reduces confusion.
+    </p>
+
+    <p>
+      Professionals working in different industries may also notice differences in salary handling. Some sectors provide higher variable pay, while others offer stronger fixed salary structures. Employees comparing industries should focus not only on annual compensation but also on monthly financial comfort and long-term savings opportunities.
+    </p>
+
+    <p>
+      Users trying to manage yearly tax planning sometimes combine take-home salary analysis with{" "}
+      <a
+        href="https://convertixy.com/hra-calculator"
+        className="text-blue-600 hover:underline font-medium"
+      >
+        HRA Calculator
+      </a>{" "}
+      to better understand housing-related salary components and tax benefits.
+    </p>
+
+    <p>
+      One important thing to remember is that this calculator provides estimation-based results. Actual salary slips may include company-specific benefits, reimbursements, joining bonuses, retention payouts, incentives, or other adjustments. Still, quick salary estimation remains extremely useful because it answers the most important question employees usually have: how much usable money will actually arrive every month?
+    </p>
+
+    <p>
+      Modern salary planning is not only about earning more money. It is also about understanding deductions, managing expenses wisely, building savings habits, and making smarter financial decisions over time. A clear understanding of take-home salary helps users approach compensation discussions with greater confidence and practical awareness.
+    </p>
+  </div>
+</section>
 
         <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
           <h2 className="text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>

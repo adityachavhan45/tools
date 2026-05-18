@@ -254,7 +254,8 @@ if __name__ == "__main__":
       title="Free Text to Python Converter Online | Convert Text to Python Code"
       subtitle="Convert plain text to Python code and Python to text instantly. Free online text to Python converter with function generation, class creation, and download support."
       plain
-      plainSidebar
+      hideSidebar
+      centerHeader
       whiteBackground
     >
       <JsonLd
