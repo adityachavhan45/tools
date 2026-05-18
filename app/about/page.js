@@ -1,19 +1,19 @@
 import { buildMetadata } from "../../lib/seo";
 
 export const metadata = buildMetadata({
-  title: "About Us - Free Online Tools | Convertixy",
+  title: "About Convertixy - Free Online Tools Platform",
   description:
-    "Discover Convertixy's mission to provide fast, secure, and free online tools. Learn about our commitment to privacy, our story, and how we help millions of users worldwide.",
+    "Learn about Convertixy, our mission, privacy-first approach, and how we provide free online tools for PDF, image, text, and conversion tasks.",
   slug: "/about",
   keywords: [
     "about convertixy",
-    "free online tools",
-    "privacy-focused tools",
+    "free online tools platform",
     "pdf tools",
-    "image converter",
+    "image tools",
+    "online converters",
+    "privacy focused tools",
     "web utilities",
-    "our mission",
-    "company values",
+    "convertixy tools",
   ],
 });
 
@@ -22,22 +22,21 @@ export default function AboutPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Welcome to Convertixy
+        <div className="absolute inset-0 bg-black/10"></div>
+
+        <div className="container relative z-10 mx-auto px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-4xl text-center">
+            <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+              About Convertixy
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 leading-relaxed max-w-3xl mx-auto">
-              <span className="font-bold text-white">
-                Your trusted platform for fast, secure, and completely free online
-                tools. No sign-ups, no hidden fees, just simple solutions.
-              </span>
+
+            <p className="mx-auto max-w-3xl text-lg leading-relaxed text-blue-100 md:text-2xl">
+              Convertixy is a free online tools platform designed to help users
+              complete everyday digital tasks quickly and easily.
             </p>
-
-
           </div>
         </div>
+
         <div className="absolute bottom-0 left-0 right-0">
           <svg
             viewBox="0 0 1440 120"
@@ -54,470 +53,275 @@ export default function AboutPage() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12 md:py-16">
-        {/* Our Story */}
-        <section className="max-w-5xl mx-auto mb-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                <svg
-                  className="w-6 h-6 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                Our Story
-              </h2>
-            </div>
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              Convertixy was born from a simple yet powerful idea: everyone
-              deserves access to professional-grade online tools without the
-              hassle of ads, sign-ups, or privacy concerns.
+        {/* About */}
+        <section className="mx-auto mb-16 max-w-5xl">
+          <div className="rounded-2xl bg-white p-8 shadow-lg md:p-12">
+            <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">
+              Who We Are
+            </h2>
+
+            <p className="mb-5 text-lg leading-relaxed text-gray-700">
+              Convertixy was created to make useful online tools accessible to
+              everyone. Many users struggle with websites that are overloaded
+              with distractions, confusing layouts, or unnecessary downloads.
+              Our goal is to provide a cleaner and more user-friendly
+              experience.
             </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              What started as a small project in 2023 has grown into a
-              comprehensive platform serving thousands of users daily across the
-              globe. We noticed that most online tools were either too slow,
-              cluttered with intrusive advertisements, or required unnecessary
-              account creation. We set out to build something different—a
-              platform that puts user experience and privacy first.
+
+            <p className="mb-5 text-lg leading-relaxed text-gray-700">
+              The platform includes tools for PDF processing, image conversion,
+              calculators, text utilities, and many other everyday tasks.
+              Whether you are a student, creator, freelancer, or professional,
+              Convertixy is designed to save time and simplify online work.
+            </p>
+
+            <p className="text-lg leading-relaxed text-gray-700">
+              We continue improving our tools, expanding features, and enhancing
+              performance to create a better experience for users across
+              different devices.
             </p>
           </div>
         </section>
 
         {/* Mission & Vision */}
-        <section className="max-w-5xl mx-auto mb-16">
-          <div className="grid md:grid-cols-2 gap-8">
+        <section className="mx-auto mb-16 max-w-5xl">
+          <div className="grid gap-8 md:grid-cols-2">
             {/* Mission */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-lg p-8">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+            <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 p-8 shadow-lg">
+              <h2 className="mb-4 text-2xl font-bold text-gray-800 md:text-3xl">
                 Our Mission
               </h2>
-              <p className="text-gray-700 leading-relaxed">
-                To provide professional-grade online utilities that anyone can
-                use instantly, without downloading heavy software or creating
-                accounts. We believe technology should simplify life, not add
-                extra steps. That's why most of our operations run directly in
-                your browser, keeping your data private and secure.
+
+              <p className="leading-relaxed text-gray-700">
+                Our mission is to provide reliable and easy-to-use online tools
+                that help users complete digital tasks efficiently. We focus on
+                simplicity, accessibility, and better usability.
               </p>
             </div>
 
             {/* Vision */}
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-lg p-8">
-              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-6">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+            <div className="rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 p-8 shadow-lg">
+              <h2 className="mb-4 text-2xl font-bold text-gray-800 md:text-3xl">
                 Our Vision
               </h2>
-              <p className="text-gray-700 leading-relaxed">
-                We aim to become the world's most trusted platform for online
-                utilities, expanding our toolset with AI-assisted features and
-                innovative solutions. From students to professionals, we're
-                building a reliable digital companion that makes everyday tasks
-                effortless.
+
+              <p className="leading-relaxed text-gray-700">
+                We aim to build a trusted online tools platform that provides
+                practical utilities for everyday needs while maintaining a clean
+                and user-friendly experience.
               </p>
             </div>
           </div>
         </section>
 
-        {/* What We Offer */}
-        <section className="max-w-5xl mx-auto mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        {/* Tools */}
+        <section className="mx-auto mb-16 max-w-5xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
               What We Offer
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              A comprehensive suite of tools designed to make your work faster
-              and more efficient
+
+            <p className="mx-auto max-w-2xl text-lg text-gray-600">
+              Convertixy offers a growing collection of useful online tools for
+              productivity and daily use.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* PDF Tools */}
-            <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-red-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-xl">
+              <h3 className="mb-3 text-xl font-semibold text-gray-800">
                 PDF Tools
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Merge, split, compress, rotate, and convert PDF files instantly
-                with our powerful PDF utilities.
+
+              <p className="text-sm leading-relaxed text-gray-600">
+                Merge, split, compress, rotate, and convert PDF files online.
               </p>
             </div>
 
-            {/* Image Tools */}
-            <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-green-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+            <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-xl">
+              <h3 className="mb-3 text-xl font-semibold text-gray-800">
                 Image Tools
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Compress, resize, crop, and convert images effortlessly in
-                multiple formats with quality preservation.
+
+              <p className="text-sm leading-relaxed text-gray-600">
+                Resize, crop, compress, and convert images into different
+                formats.
               </p>
             </div>
 
-            {/* Text & SEO Tools */}
-            <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Text & SEO Tools
+            <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-xl">
+              <h3 className="mb-3 text-xl font-semibold text-gray-800">
+                Text Utilities
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Word counters, case converters, and SEO utilities for content
-                creators and digital marketers.
+
+              <p className="text-sm leading-relaxed text-gray-600">
+                Access text formatting tools, counters, generators, and SEO
+                utilities.
               </p>
             </div>
 
-            {/* Calculators */}
-            <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-purple-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Calculators & Converters
+            <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-xl">
+              <h3 className="mb-3 text-xl font-semibold text-gray-800">
+                Calculators
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                From BMI and age calculators to temperature and unit converters
-                for everyday use.
+
+              <p className="text-sm leading-relaxed text-gray-600">
+                Use calculators and converters designed for everyday digital
+                tasks.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Core Values */}
-        <section className="max-w-5xl mx-auto mb-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
-              Why Choose Convertixy?
+        {/* Values */}
+        <section className="mx-auto mb-16 max-w-5xl">
+          <div className="rounded-2xl bg-white p-8 shadow-lg md:p-12">
+            <h2 className="mb-8 text-center text-3xl font-bold text-gray-800 md:text-4xl">
+              Why Users Choose Convertixy
             </h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-              In a digital landscape filled with compromises, we stand firm on
-              three core principles that guide everything we do
-            </p>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Simplicity */}
+            <div className="grid gap-8 md:grid-cols-3">
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">
+                <h3 className="mb-3 text-xl font-bold text-gray-800">
                   Simplicity
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Intuitive interfaces that anyone can use, regardless of
-                  technical expertise. No learning curve, just results.
+
+                <p className="leading-relaxed text-gray-600">
+                  Tools are designed with clean layouts and easy navigation for
+                  better usability.
                 </p>
               </div>
 
-              {/* Speed */}
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Speed</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Lightning-fast processing with instant results. No endless
-                  loading screens or waiting time.
-                </p>
-              </div>
-
-              {/* Privacy */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">
-                  Privacy
+                <h3 className="mb-3 text-xl font-bold text-gray-800">
+                  Performance
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Your data stays on your device. No forced sign-ups, no hidden
-                  tracking, complete privacy protection.
+
+                <p className="leading-relaxed text-gray-600">
+                  We continuously improve tool speed and overall platform
+                  performance.
+                </p>
+              </div>
+
+              <div className="text-center">
+                <h3 className="mb-3 text-xl font-bold text-gray-800">
+                  Accessibility
+                </h3>
+
+                <p className="leading-relaxed text-gray-600">
+                  Convertixy is designed to work smoothly across desktop and
+                  mobile devices.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Privacy Commitment */}
-        <section className="max-w-5xl mx-auto mb-16">
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-2xl p-8 md:p-12 text-white">
-            <div className="flex items-start mb-6">
-              <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Our Commitment to Privacy
-                </h2>
-                <p className="text-lg text-blue-100 leading-relaxed mb-4">
-                  <span className="font-bold text-white">
-                    Privacy isn't just a feature at Convertixy it's the foundation
-                    of everything we build. We understand that your files and data
-                    are personal and sensitive.
-                  </span>
-                </p>
-
-                <p className="text-lg text-blue-100 leading-relaxed mb-6">
-                  <span className="font-bold text-white">
-                    For operations like PDF editing, image processing, and file
-                    conversions, most processes run entirely in your browser. This
-                    means your files never leave your computer, ensuring complete
-                    privacy and security. You maintain full control over your data
-                    at all times.
-                  </span>
-                </p>
-
-                <a
-                    href="/privacy"
-                  className="inline-flex items-center px-6 py-3 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-200"
-                >
-                  Read Our Privacy Policy
-                  <svg
-                    className="w-5 h-5 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Statistics */}
-        <section className="max-w-5xl mx-auto mb-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
-              Trusted 
+        {/* Privacy */}
+        <section className="mx-auto mb-16 max-w-5xl">
+          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white shadow-2xl md:p-12">
+            <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+              User Privacy and Trust
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+
+            <p className="mb-5 text-lg leading-relaxed text-blue-100">
+              We understand the importance of user trust and platform
+              reliability. Our focus is on creating tools that are simple,
+              practical, and user-friendly.
+            </p>
+
+            <p className="mb-8 text-lg leading-relaxed text-blue-100">
+              We continue improving our platform experience, adding useful
+              features, and maintaining a clean browsing environment for users.
+            </p>
+
+            <a
+              href="/privacy"
+              className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-semibold text-indigo-600 transition-colors duration-200 hover:bg-blue-50"
+            >
+              Read Privacy Policy
+            </a>
+          </div>
+        </section>
+
+        {/* Stats */}
+        <section className="mx-auto mb-16 max-w-5xl">
+          <div className="rounded-2xl bg-white p-8 shadow-lg md:p-12">
+            <h2 className="mb-8 text-center text-3xl font-bold text-gray-800 md:text-4xl">
+              Platform Highlights
+            </h2>
+
+            <div className="grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
-                  1K+
-                </div>
-                <p className="text-gray-600 font-medium">Monthly Users</p>
-              </div>
-              <div>
-                <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">
+                <div className="mb-2 text-4xl font-bold text-blue-600 md:text-5xl">
                   60+
                 </div>
-                <p className="text-gray-600 font-medium">Free Tools</p>
+
+                <p className="font-medium text-gray-600">Online Tools</p>
               </div>
+
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">
-                  100%
+                <div className="mb-2 text-4xl font-bold text-green-600 md:text-5xl">
+                  Fast
                 </div>
-                <p className="text-gray-600 font-medium">Privacy Focused</p>
+
+                <p className="font-medium text-gray-600">
+                  User Experience
+                </p>
               </div>
+
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-orange-600 mb-2">
+                <div className="mb-2 text-4xl font-bold text-purple-600 md:text-5xl">
+                  Free
+                </div>
+
+                <p className="font-medium text-gray-600">
+                  Access to Tools
+                </p>
+              </div>
+
+              <div>
+                <div className="mb-2 text-4xl font-bold text-orange-600 md:text-5xl">
                   24/7
                 </div>
-                <p className="text-gray-600 font-medium">Available</p>
+
+                <p className="font-medium text-gray-600">
+                  Platform Availability
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Contact CTA */}
-        <section className="max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl shadow-lg p-8 md:p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Get in Touch
+        {/* Contact */}
+        <section className="mx-auto max-w-5xl">
+          <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 p-8 text-center shadow-lg md:p-12">
+            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+              Contact Us
             </h2>
-            <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto leading-relaxed">
-              We love hearing from our users! Whether you have feedback, want to
-              suggest a new tool, or need to report an issue, we're here to
-              listen and help.
+
+            <p className="mx-auto mb-6 max-w-2xl text-lg leading-relaxed text-gray-700">
+              If you have suggestions, feedback, or questions related to
+              Convertixy, feel free to contact us.
             </p>
-            <p className="text-gray-700 mb-8">
-              Your ideas and suggestions help us improve and grow. Reach out to
-              us at:
-            </p>
+
             <a
               href="mailto:support@convertixy.com"
-              className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg"
+              className="inline-flex items-center rounded-lg bg-blue-600 px-8 py-4 font-semibold text-white transition-colors duration-200 hover:bg-blue-700"
             >
-              <svg
-                className="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
               support@convertixy.com
             </a>
           </div>
         </section>
       </div>
 
-      {/* Footer Note */}
-      <section className="bg-gray-50 border-t border-gray-200 py-8">
+      {/* Footer */}
+      <section className="border-t border-gray-200 bg-gray-50 py-8">
         <div className="container mx-auto px-4">
-          <p className="text-center text-gray-600 text-sm max-w-3xl mx-auto">
-            Convertixy is committed to providing free, accessible tools while
-            maintaining the highest standards of privacy and security. We
-            continuously update our platform with new features and improvements
-            based on user feedback.
+          <p className="mx-auto max-w-3xl text-center text-sm text-gray-600">
+            Convertixy continues to improve its platform by adding useful tools,
+            enhancing usability, and maintaining a better browsing experience
+            for users.
           </p>
         </div>
       </section>
