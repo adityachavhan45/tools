@@ -7,7 +7,6 @@ import {
   collection,
   doc,
   getDocs,
-  limit,
   orderBy,
   query,
   serverTimestamp,
@@ -16,6 +15,10 @@ import {
 } from "firebase/firestore";
 import { db } from "@/lib/firebase/firebaseConfig";
 import { uploadImageToCloudinary } from "@/lib/cloudinary/uploadImageClient";
+import {
+  deleteCloudinaryImages,
+  getRemovedCloudinaryPublicIds,
+} from "@/lib/cloudinary/publicId";
 import { BLOG_CATEGORIES } from "@/lib/blog/categories";
 import "react-quill-new/dist/quill.snow.css";
 
@@ -44,6 +47,7 @@ function normalizeSlug(value) {
 export default function EditBlogPage() {
   const router = useRouter();
   const quillRef = useRef(null);
+  const pendingContentImageIdsRef = useRef(new Set());
 
   const [isChecking, setIsChecking] = useState(true);
   const [blogs, setBlogs] = useState([]);
@@ -55,6 +59,7 @@ export default function EditBlogPage() {
   const [metaDescription, setMetaDescription] = useState("");
   const [focusKeyword, setFocusKeyword] = useState("");
   const [featureImage, setFeatureImage] = useState("");
+  const [pendingFeatureImageId, setPendingFeatureImageId] = useState("");
   const [content, setContent] = useState("");
   const [loadingBlogs, setLoadingBlogs] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -143,10 +148,11 @@ export default function EditBlogPage() {
       setMessage("Uploading content image...");
 
       try {
-        const { url } = await uploadImageToCloudinary(file, "convertixy/blog-content");
+        const { url, publicId } = await uploadImageToCloudinary(file, "convertixy/blog-content");
         const quill = quillRef.current?.getEditor();
 
         if (!quill) {
+          if (publicId) await deleteCloudinaryImages([publicId]).catch(() => {});
           return;
         }
 
@@ -155,6 +161,7 @@ export default function EditBlogPage() {
 
         quill.insertEmbed(insertAt, "image", url, "user");
         quill.setSelection(insertAt + 1, 0, "user");
+        if (publicId) pendingContentImageIdsRef.current.add(publicId);
         setMessage("");
       } catch (error) {
         setMessage(error.message || "Content image upload failed.");
@@ -202,7 +209,14 @@ export default function EditBlogPage() {
     "image",
   ];
 
-  const handleBlogChange = (blogId) => {
+  const handleBlogChange = async (blogId) => {
+    const pendingImageIds = [
+      pendingFeatureImageId,
+      ...pendingContentImageIdsRef.current,
+    ].filter(Boolean);
+    await deleteCloudinaryImages(pendingImageIds).catch(() => {});
+    pendingContentImageIdsRef.current.clear();
+
     setSelectedBlogId(blogId);
     const selected = blogs.find((blog) => blog.id === blogId);
 
@@ -214,6 +228,7 @@ export default function EditBlogPage() {
       setMetaDescription(selected.metaDescription);
       setFocusKeyword(selected.focusKeyword);
       setFeatureImage(selected.featureImage);
+      setPendingFeatureImageId("");
       setContent(selected.content);
       setMessage("");
     }
@@ -229,8 +244,14 @@ export default function EditBlogPage() {
     setMessage("Uploading feature image...");
 
     try {
-      const { url } = await uploadImageToCloudinary(file, "convertixy/blog-feature");
+      const { url, publicId } = await uploadImageToCloudinary(file, "convertixy/blog-feature");
+
+      if (pendingFeatureImageId && pendingFeatureImageId !== publicId) {
+        await deleteCloudinaryImages([pendingFeatureImageId]).catch(() => {});
+      }
+
       setFeatureImage(url);
+      setPendingFeatureImageId(publicId || "");
       setMessage("");
     } catch (error) {
       setMessage(error.message || "Feature image upload failed.");
@@ -260,13 +281,19 @@ export default function EditBlogPage() {
 
     try {
       const existingSlugSnap = await getDocs(
-        query(collection(db, "blogs"), where("slug", "==", finalSlug), limit(1))
+        query(collection(db, "blogs"), where("slug", "==", finalSlug))
       );
 
-      if (!existingSlugSnap.empty && existingSlugSnap.docs[0].id !== selectedBlogId) {
+      if (existingSlugSnap.docs.some((blogDoc) => blogDoc.id !== selectedBlogId)) {
         setMessage("Ye slug already use me hai. Dusra slug do.");
         return;
       }
+
+      const previousBlog = blogs.find((blog) => blog.id === selectedBlogId);
+      const nextBlog = {
+        featureImage: featureImage.trim(),
+        content,
+      };
 
       await updateDoc(doc(db, "blogs", selectedBlogId), {
         title: title.trim(),
@@ -278,10 +305,6 @@ export default function EditBlogPage() {
         featureImage: featureImage.trim(),
         content,
         updatedAt: serverTimestamp(),
-      });
-
-      const sitemapResponse = await fetch("/api/sitemap/blogs", {
-        method: "POST",
       });
 
       setBlogs((prevBlogs) =>
@@ -301,17 +324,34 @@ export default function EditBlogPage() {
             : blog
         )
       );
+      setPendingFeatureImageId("");
+      pendingContentImageIdsRef.current.clear();
 
-      setMessage(
-        sitemapResponse.ok
-          ? "Blog update ho gaya."
-          : "Blog update ho gaya, par blogsitemap update nahi hua."
-      );
+      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "";
+      const removedImageIds = previousBlog
+        ? getRemovedCloudinaryPublicIds(previousBlog, nextBlog, cloudName)
+        : [];
+
+      try {
+        await deleteCloudinaryImages(removedImageIds);
+        setMessage("Blog update ho gaya.");
+      } catch {
+        setMessage("Blog update ho gaya, par purani images cleanup nahi hui.");
+      }
     } catch {
       setMessage("Blog update nahi hua. Please try again.");
     } finally {
       setSaving(false);
     }
+  };
+
+  const handleBack = async () => {
+    const pendingImageIds = [
+      pendingFeatureImageId,
+      ...pendingContentImageIdsRef.current,
+    ].filter(Boolean);
+    await deleteCloudinaryImages(pendingImageIds).catch(() => {});
+    router.push("/admin/dashboard");
   };
 
   if (isChecking) {
@@ -490,7 +530,7 @@ export default function EditBlogPage() {
               </button>
               <button
                 type="button"
-                onClick={() => router.push("/admin/dashboard")}
+                onClick={handleBack}
                 className="!bg-gray-200 !text-black !rounded-xl !shadow-none !py-2 !px-4 !text-sm !font-medium"
               >
                 Back to Dashboard

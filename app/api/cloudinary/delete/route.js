@@ -3,6 +3,13 @@ import crypto from "node:crypto";
 
 export const runtime = "nodejs";
 
+const ALLOWED_PUBLIC_ID_PREFIXES = ["convertixy/blog-feature/", "convertixy/blog-content/"];
+const MAX_DELETE_COUNT = 100;
+
+function isAllowedPublicId(publicId) {
+  return ALLOWED_PUBLIC_ID_PREFIXES.some((prefix) => publicId.startsWith(prefix));
+}
+
 export async function POST(request) {
   try {
     const body = await request.json();
@@ -11,6 +18,10 @@ export async function POST(request) {
 
     if (publicIds.length === 0) {
       return NextResponse.json({ deleted: [], skipped: [] });
+    }
+
+    if (publicIds.length > MAX_DELETE_COUNT || publicIds.some((id) => !isAllowedPublicId(id))) {
+      return NextResponse.json({ error: "Invalid Cloudinary image ids." }, { status: 400 });
     }
 
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME;

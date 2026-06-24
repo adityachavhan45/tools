@@ -4,54 +4,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { collection, deleteDoc, doc, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "@/lib/firebase/firebaseConfig";
+import {
+  collectCloudinaryPublicIds,
+  deleteCloudinaryImages,
+} from "@/lib/cloudinary/publicId";
 
 const ADMIN_AUTH_KEY = "admin_logged_in";
-
-function extractCloudinaryPublicId(url, cloudName) {
-  if (!url || !cloudName || !url.includes(`res.cloudinary.com/${cloudName}/`)) {
-    return null;
-  }
-
-  const withoutQuery = url.split("?")[0];
-  const marker = "/image/upload/";
-  const markerIndex = withoutQuery.indexOf(marker);
-
-  if (markerIndex === -1) {
-    return null;
-  }
-
-  let pathAfterUpload = withoutQuery.slice(markerIndex + marker.length);
-  pathAfterUpload = pathAfterUpload.replace(/^.+?\/v\d+\//, "");
-  pathAfterUpload = pathAfterUpload.replace(/^v\d+\//, "");
-
-  const lastDotIndex = pathAfterUpload.lastIndexOf(".");
-  if (lastDotIndex === -1) {
-    return pathAfterUpload;
-  }
-
-  return pathAfterUpload.slice(0, lastDotIndex);
-}
-
-function collectCloudinaryPublicIds(blog, cloudName) {
-  const ids = new Set();
-
-  const featureImageId = extractCloudinaryPublicId(blog.featureImage, cloudName);
-  if (featureImageId) {
-    ids.add(featureImageId);
-  }
-
-  const contentImageMatches =
-    blog.content?.match(/https?:\/\/res\.cloudinary\.com\/[^\s"'<>]+/g) || [];
-
-  for (const imageUrl of contentImageMatches) {
-    const contentImageId = extractCloudinaryPublicId(imageUrl, cloudName);
-    if (contentImageId) {
-      ids.add(contentImageId);
-    }
-  }
-
-  return [...ids];
-}
 
 export default function AdminDashboardPage() {
   const router = useRouter();
@@ -131,30 +89,16 @@ export default function AdminDashboardPage() {
       const blogToDelete = blogs.find((blog) => blog.id === blogId);
       const publicIds = blogToDelete ? collectCloudinaryPublicIds(blogToDelete, cloudName) : [];
 
-      if (publicIds.length > 0) {
-        const cloudinaryResponse = await fetch("/api/cloudinary/delete", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ publicIds }),
-        });
-
-        if (!cloudinaryResponse.ok) {
-          throw new Error("Cloudinary image delete failed.");
-        }
-      }
-
       await deleteDoc(doc(db, "blogs", blogId));
       setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.id !== blogId));
 
-      const sitemapResponse = await fetch("/api/sitemap/blogs", {
-        method: "POST",
-      });
-
-      if (!sitemapResponse.ok) {
-        setBlogError("Blog delete ho gaya, par blogsitemap update nahi hua.");
+      try {
+        await deleteCloudinaryImages(publicIds);
+      } catch {
+        setBlogError("Blog delete ho gaya, par uski images cleanup nahi hui.");
       }
     } catch {
-      setBlogError("Blog ya images delete nahi hue. Please try again.");
+      setBlogError("Blog delete nahi hua. Please try again.");
     } finally {
       setDeletingBlogId("");
     }
@@ -231,7 +175,7 @@ export default function AdminDashboardPage() {
                           <button
                             type="button"
                             onClick={() => handleDeleteBlog(blog.id)}
-                            disabled={deletingBlogId === blog.id}
+                            disabled={Boolean(deletingBlogId)}
                             className="!bg-red-600 !text-white !rounded-lg !shadow-none !py-1.5 !px-3 !text-xs"
                           >
                             {deletingBlogId === blog.id ? "Deleting..." : "Delete"}

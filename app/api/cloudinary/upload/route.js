@@ -3,14 +3,29 @@ import crypto from "node:crypto";
 
 export const runtime = "nodejs";
 
+const ALLOWED_FOLDERS = new Set(["convertixy/blog-feature", "convertixy/blog-content"]);
+const MAX_IMAGE_SIZE_BYTES = 10 * 1024 * 1024;
+
 export async function POST(request) {
   try {
     const formData = await request.formData();
     const file = formData.get("file");
-    const folder = (formData.get("folder") || "convertixy/blogs").toString();
+    const folder = (formData.get("folder") || "").toString();
 
-    if (!file) {
+    if (!(file instanceof Blob) || file.size === 0) {
       return NextResponse.json({ error: "Image file is required." }, { status: 400 });
+    }
+
+    if (!file.type.startsWith("image/")) {
+      return NextResponse.json({ error: "Only image files are allowed." }, { status: 400 });
+    }
+
+    if (file.size > MAX_IMAGE_SIZE_BYTES) {
+      return NextResponse.json({ error: "Image must be 10 MB or smaller." }, { status: 400 });
+    }
+
+    if (!ALLOWED_FOLDERS.has(folder)) {
+      return NextResponse.json({ error: "Invalid image folder." }, { status: 400 });
     }
 
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME;

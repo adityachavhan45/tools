@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { addDoc, collection, getDocs, limit, query, serverTimestamp, where } from "firebase/firestore";
 import { db } from "@/lib/firebase/firebaseConfig";
 import { uploadImageToCloudinary } from "@/lib/cloudinary/uploadImageClient";
+import { deleteCloudinaryImages } from "@/lib/cloudinary/publicId";
 import { BLOG_CATEGORIES } from "@/lib/blog/categories";
 import "react-quill-new/dist/quill.snow.css";
 
@@ -34,6 +35,7 @@ function normalizeSlug(value) {
 export default function AddBlogPage() {
   const router = useRouter();
   const quillRef = useRef(null);
+  const pendingContentImageIdsRef = useRef(new Set());
 
   const [isChecking, setIsChecking] = useState(true);
   const [title, setTitle] = useState("");
@@ -44,6 +46,7 @@ export default function AddBlogPage() {
   const [metaDescription, setMetaDescription] = useState("");
   const [focusKeyword, setFocusKeyword] = useState("");
   const [featureImage, setFeatureImage] = useState("");
+  const [pendingFeatureImageId, setPendingFeatureImageId] = useState("");
   const [content, setContent] = useState("");
   const [saving, setSaving] = useState(false);
   const [uploadingFeatureImage, setUploadingFeatureImage] = useState(false);
@@ -74,10 +77,11 @@ export default function AddBlogPage() {
       setMessage("Uploading content image...");
 
       try {
-        const { url } = await uploadImageToCloudinary(file, "convertixy/blog-content");
+        const { url, publicId } = await uploadImageToCloudinary(file, "convertixy/blog-content");
         const quill = quillRef.current?.getEditor();
 
         if (!quill) {
+          if (publicId) await deleteCloudinaryImages([publicId]).catch(() => {});
           return;
         }
 
@@ -86,6 +90,7 @@ export default function AddBlogPage() {
 
         quill.insertEmbed(insertAt, "image", url, "user");
         quill.setSelection(insertAt + 1, 0, "user");
+        if (publicId) pendingContentImageIdsRef.current.add(publicId);
         setMessage("");
       } catch (error) {
         setMessage(error.message || "Content image upload failed.");
@@ -143,8 +148,14 @@ export default function AddBlogPage() {
     setMessage("Uploading feature image...");
 
     try {
-      const { url } = await uploadImageToCloudinary(file, "convertixy/blog-feature");
+      const { url, publicId } = await uploadImageToCloudinary(file, "convertixy/blog-feature");
+
+      if (pendingFeatureImageId && pendingFeatureImageId !== publicId) {
+        await deleteCloudinaryImages([pendingFeatureImageId]).catch(() => {});
+      }
+
       setFeatureImage(url);
+      setPendingFeatureImageId(publicId || "");
       setMessage("");
     } catch (error) {
       setMessage(error.message || "Feature image upload failed.");
@@ -190,10 +201,6 @@ export default function AddBlogPage() {
         updatedAt: serverTimestamp(),
       });
 
-      const sitemapResponse = await fetch("/api/sitemap/blogs", {
-        method: "POST",
-      });
-
       setTitle("");
       setCategory("");
       setSlug("");
@@ -202,17 +209,24 @@ export default function AddBlogPage() {
       setMetaDescription("");
       setFocusKeyword("");
       setFeatureImage("");
+      setPendingFeatureImageId("");
+      pendingContentImageIdsRef.current.clear();
       setContent("");
-      setMessage(
-        sitemapResponse.ok
-          ? "Blog add ho gaya."
-          : "Blog add ho gaya, par blogsitemap update nahi hua."
-      );
+      setMessage("Blog add ho gaya.");
     } catch {
       setMessage("Blog save nahi hua. Please try again.");
     } finally {
       setSaving(false);
     }
+  };
+
+  const handleBack = async () => {
+    const pendingImageIds = [
+      pendingFeatureImageId,
+      ...pendingContentImageIdsRef.current,
+    ].filter(Boolean);
+    await deleteCloudinaryImages(pendingImageIds).catch(() => {});
+    router.push("/admin/dashboard");
   };
 
   if (isChecking) {
@@ -377,7 +391,7 @@ export default function AddBlogPage() {
             </button>
             <button
               type="button"
-              onClick={() => router.push("/admin/dashboard")}
+              onClick={handleBack}
               className="!bg-gray-200 !text-black !rounded-xl !shadow-none !py-2 !px-4 !text-sm !font-medium"
             >
               Back to Dashboard

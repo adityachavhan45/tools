@@ -81,6 +81,9 @@ export const metadata = buildMetadata({
   ],
 });
 
+// Latest blogs are fetched on the server so crawlers receive them in the initial HTML.
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
@@ -538,4 +541,4 @@ export default function Home() {
 
     </main>
   );
-}                                                            
+}
