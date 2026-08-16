@@ -98,6 +98,9 @@ export default async function BlogDetailPage({ params }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <article className="lg:col-span-8 min-w-0">
             <h1 className="text-3xl font-semibold text-black">{blog.title}</h1>
+            <p className="mt-3 text-sm font-medium text-gray-700">
+              By Convertixy Editorial Team
+            </p>
             <time
               className="block text-sm text-gray-600 mt-2"
               dateTime={blogDateToISOString(blog.createdAt) || undefined}

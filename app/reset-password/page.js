@@ -4,6 +4,7 @@ import ClientPage from "./ClientPage";
 export const metadata = {
   title: "Reset Password",
   description: "Reset your Convertixy account password securely.",
+  robots: { index: false, follow: false },
 };
 
 export default function ResetPasswordPage() {

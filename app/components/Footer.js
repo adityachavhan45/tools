@@ -9,11 +9,11 @@ export default function Footer() {
           <div className="md:col-span-2">
             <h3 className="text-lg sm:text-xl font-bold text-white mb-4">Convertixy</h3>
             <p className="text-sm sm:text-base text-gray-400 mb-4 leading-relaxed">
-              65+ free online tools for PDF manipulation, image processing, text editing, SEO optimization, calculators, and more. All tools work directly in your browser with complete privacy.
+              Online tools for PDF manipulation, image processing, text editing, SEO, calculators, and more. Many tools process data locally; server-dependent features are explained in our Privacy Policy.
             </p>
             <div className="flex flex-wrap gap-4 text-xs sm:text-sm text-gray-500">
-              <span>✓ 100% Free</span>
-              <span>✓ No Registration</span>
+              <span>✓ 60+ Free Tools</span>
+              <span>✓ Optional Accounts</span>
               <span>✓ Privacy First</span>
               <span>✓ Mobile Friendly</span>
             </div>
@@ -55,4 +55,3 @@ export default function Footer() {
     </footer>
   );
 }
-

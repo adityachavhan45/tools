@@ -6,7 +6,7 @@ import GoogleAnalytics from "./components/googleanalyatics";
 import Script from "next/script";
 
 export const metadata = (() => {
-  const { SITE_NAME, SITE_URL, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SUPPORTED_LANGUAGES } = siteConstants();
+  const { SITE_NAME, SITE_URL, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE } = siteConstants();
   return {
     metadataBase: new URL(SITE_URL),
     title: {
@@ -71,17 +71,8 @@ export const metadata = (() => {
     },
     alternates: {
       canonical: "/",
-      languages: SUPPORTED_LANGUAGES.reduce((acc, lang) => {
-        acc[`${lang.code}-${lang.country}`] = SITE_URL;
-        return acc;
-      }, {}),
-    },
-    verification: {
-      google: 'your-google-verification-code',
-      yandex: 'your-yandex-verification-code',
-      yahoo: 'your-yahoo-verification-code',
-      other: {
-        'msvalidate.01': 'your-bing-verification-code',
+      languages: {
+        "en-US": SITE_URL,
       },
     },
     manifest: "/manifest.json",

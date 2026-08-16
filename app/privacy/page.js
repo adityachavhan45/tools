@@ -29,12 +29,13 @@ export default function PrivacyPolicyPage() {
           </h1>
 
           <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-gray-600 sm:text-lg">
-            This Privacy Policy explains how Convertixy may collect, use, and
-            protect information when users access our website and online tools.
+            This Privacy Policy explains what information Convertixy and its
+            service providers process, why it is used, and the choices available
+            to visitors.
           </p>
 
           <p className="mt-3 text-sm text-gray-500">
-            Effective Date: April 24, 2026
+            Effective Date: August 16, 2026
           </p>
         </header>
 
@@ -49,8 +50,10 @@ export default function PrivacyPolicyPage() {
             <p className="leading-relaxed text-gray-700">
               Convertixy provides online tools and utilities for file
               processing, image conversion, text formatting, calculators, and
-              productivity-related tasks. This Privacy Policy explains how
-              information may be handled while using the platform.
+              productivity-related tasks. Some tools work entirely on your
+              device, while features that require an online service send the
+              submitted input to our servers or a service provider so the
+              requested result can be produced.
             </p>
           </section>
 
@@ -62,26 +65,32 @@ export default function PrivacyPolicyPage() {
 
             <div className="space-y-5 text-gray-700">
               <p>
-                Some tools may process files, text, or images directly within
-                the browser depending on the tool functionality and user input.
+                Many PDF, image, text, and calculator tools process the selected
+                input directly in your browser. For those tools, the input is not
+                intentionally uploaded to Convertixy servers.
               </p>
 
               <p>
-                We may also collect limited technical information such as:
+                AI-assisted, account, subscription, contact, and other
+                server-dependent features may transmit the information you
+                submit. Do not submit confidential, regulated, or highly
+                sensitive information unless the tool clearly supports that use.
               </p>
 
+              <p>We and our service providers may process:</p>
+
               <ul className="list-inside list-disc space-y-2">
-                <li>Browser type and device information</li>
-                <li>Pages visited on the website</li>
-                <li>General analytics and usage statistics</li>
-                <li>Approximate location based on IP information</li>
-                <li>Performance and error-related data</li>
+                <li>Browser, device, operating system, and language information</li>
+                <li>IP address, approximate location, pages visited, and referral source</li>
+                <li>Usage, performance, diagnostic, and error information</li>
+                <li>Account details needed for login and subscription access</li>
+                <li>Payment status and transaction references from payment providers</li>
+                <li>Messages, email address, and details provided through support forms</li>
               </ul>
 
               <p>
-                If users contact us directly, we may receive the information
-                provided in the message, including email address and support
-                details.
+                Payment card or banking details are handled by the payment
+                provider and are not intentionally stored by Convertixy.
               </p>
             </div>
           </section>
@@ -94,34 +103,46 @@ export default function PrivacyPolicyPage() {
 
             <div className="space-y-5 text-gray-700">
               <p>
-                Convertixy may use cookies and similar technologies to improve
-                website functionality, analyze traffic, remember preferences,
-                and improve overall user experience.
+                Convertixy uses cookies and similar technologies for essential
+                functionality, account access, analytics, preferences,
+                advertising, fraud prevention, and performance measurement.
               </p>
 
               <p>
-                We may display advertisements through third-party advertising
-                partners such as Google AdSense. Advertising providers may use
-                cookies to display relevant ads and measure advertising
-                performance.
+                Third-party vendors, including Google, use cookies to serve ads
+                based on a visitor&apos;s prior visits to Convertixy or other
+                websites. Google&apos;s use of advertising cookies enables Google
+                and its partners to serve personalized ads based on visits to
+                this site and other sites on the internet.
               </p>
 
               <p>
-                Users can manage or disable cookies through their browser
-                settings if preferred.
+                Third parties may place or read cookies in a visitor&apos;s browser,
+                or use web beacons, IP addresses, and similar identifiers as a
+                result of ad serving and measurement on this website.
               </p>
 
               <p>
-                Learn more about Google advertising policies at{" "}
+                You can opt out of personalized advertising through{" "}
                 <a
-                  href="https://policies.google.com/technologies/ads"
+                  href="https://adssettings.google.com/"
                   target="_blank"
                   rel="nofollow noopener noreferrer"
                   className="font-medium text-emerald-700 transition hover:underline"
                 >
-                  Google Advertising Policies
+                  Google Ads Settings
                 </a>
-                .
+                . You may also review industry opt-out choices at{" "}
+                <a
+                  href="https://www.aboutads.info/choices/"
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  className="font-medium text-emerald-700 transition hover:underline"
+                >
+                  AboutAds
+                </a>
+                . Browser settings can be used to block or delete cookies, but
+                doing so may affect site functionality.
               </p>
             </div>
           </section>
@@ -144,6 +165,10 @@ export default function PrivacyPolicyPage() {
               <li>To respond to user feedback or support requests</li>
 
               <li>To improve security and prevent misuse</li>
+
+              <li>To provide account, subscription, and payment-related access</li>
+
+              <li>To display and measure advertising where permitted</li>
             </ul>
           </section>
 
@@ -158,7 +183,9 @@ export default function PrivacyPolicyPage() {
               user information. However, no internet-based service can guarantee
               complete security. Users should avoid submitting highly sensitive
               personal or confidential information through online tools whenever
-              possible.
+              possible. Information is retained only for as long as reasonably
+              needed for the purpose described, legal obligations, dispute
+              resolution, security, and fraud prevention.
             </p>
           </section>
 
@@ -168,12 +195,30 @@ export default function PrivacyPolicyPage() {
               Third-Party Services
             </h2>
 
-            <p className="leading-relaxed text-gray-700">
-              Convertixy may use third-party services for analytics, hosting,
-              advertising, performance monitoring, and related website
-              functionality. These services may process information according to
-              their own privacy policies and terms.
-            </p>
+            <div className="space-y-4 leading-relaxed text-gray-700">
+              <p>
+                Convertixy uses third-party services for hosting, authentication,
+                databases, analytics, advertising, payments, image delivery,
+                email or support workflows, security, and AI-assisted features.
+                These providers process information under their own terms and
+                privacy policies.
+              </p>
+
+              <p>
+                Google Analytics helps us understand site usage. Google AdSense
+                may serve and measure advertising after approval. Learn how
+                Google uses information from partner sites at{" "}
+                <a
+                  href="https://policies.google.com/technologies/partner-sites"
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  className="font-medium text-rose-700 transition hover:underline"
+                >
+                  How Google uses data when you use partners&apos; sites or apps
+                </a>
+                .
+              </p>
+            </div>
           </section>
 
           {/* User Rights */}
@@ -185,13 +230,15 @@ export default function PrivacyPolicyPage() {
             <ul className="list-inside list-disc space-y-3 text-gray-700">
               <li>Users can disable cookies through browser settings.</li>
 
+              <li>Users can use the advertising opt-out links provided above.</li>
+
               <li>
                 Users may avoid entering personal information into online tools.
               </li>
 
               <li>
-                Users may contact us regarding questions related to privacy or
-                data handling.
+                Subject to applicable law, users may request access, correction,
+                or deletion of personal information associated with them.
               </li>
             </ul>
           </section>
@@ -205,7 +252,9 @@ export default function PrivacyPolicyPage() {
             <p className="leading-relaxed text-gray-700">
               Convertixy is intended for a general audience and is not directed
               specifically toward children under the age of 13. We do not
-              knowingly collect personal information from children.
+              knowingly collect personal information from children. A parent or
+              guardian who believes a child has provided personal information
+              can contact us to request review and deletion.
             </p>
           </section>
 

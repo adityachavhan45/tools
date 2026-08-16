@@ -83,6 +83,38 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Transparency */}
+        <section className="mx-auto mb-16 max-w-5xl">
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="rounded-2xl border border-blue-100 bg-white p-8 shadow-lg">
+              <h2 className="mb-4 text-2xl font-bold text-gray-800 md:text-3xl">
+                How We Review Tools
+              </h2>
+
+              <p className="leading-relaxed text-gray-700">
+                Convertixy tools are maintained by the Convertixy team. We review
+                core workflows, input validation, mobile usability, and output
+                behavior when features are added or updated. Important results
+                should still be independently verified before professional,
+                financial, health, or legal use.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-purple-100 bg-white p-8 shadow-lg">
+              <h2 className="mb-4 text-2xl font-bold text-gray-800 md:text-3xl">
+                How Convertixy Is Supported
+              </h2>
+
+              <p className="leading-relaxed text-gray-700">
+                Most tools are available without payment. Optional premium plans
+                support advanced AI features, hosting, maintenance, and continued
+                development. Advertising may also support free access after the
+                site is approved by an advertising partner.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Mission & Vision */}
         <section className="mx-auto mb-16 max-w-5xl">
           <div className="grid gap-8 md:grid-cols-2">
@@ -306,10 +338,10 @@ export default function AboutPage() {
             </p>
 
             <a
-              href="mailto:support@convertixy.com"
+              href="mailto:contact@convertixy.com"
               className="inline-flex items-center rounded-lg bg-blue-600 px-8 py-4 font-semibold text-white transition-colors duration-200 hover:bg-blue-700"
             >
-              support@convertixy.com
+              contact@convertixy.com
             </a>
           </div>
         </section>

@@ -104,17 +104,17 @@ export default function Home() {
             {
               question: "Are these tools completely free to use?",
               answer:
-                "Yes, all 65+ tools on Convertixy are completely free with no hidden charges. You can use them unlimited times without any payment or subscription requirement.",
+                "Most Convertixy tools are free to use without payment. A small set of advanced AI tools offers optional paid plans, and pricing is shown before purchase.",
             },
             {
               question: "Do I need to install any software to use these tools?",
               answer:
-                "No installation is required. All tools run directly in your web browser using modern technologies. Simply visit the tool page and start using it immediately.",
+                "No installation is required. Convertixy tools run through your web browser; some tools process data on-device, while server-dependent and AI features securely send the submitted input for processing.",
             },
             {
               question: "How secure are my files and data?",
               answer:
-                "Your data is completely secure. All file processing happens locally in your browser. We do not upload, store, or access your files on any server, ensuring 100% privacy and security.",
+                "Many file tools process inputs locally in your browser. Tools that require an online service clearly depend on server-side processing. Avoid submitting highly sensitive information and review our Privacy Policy for details.",
             },
             {
               question: "Can I use these tools on mobile devices?",
@@ -126,7 +126,7 @@ export default function Home() {
             },
             {
               question: "Do I need to create an account or register?",
-              answer: "No registration is required. All tools are accessible immediately without creating an account, providing your email, or going through any signup process.",
+              answer: "Most free tools do not require registration. An account is required only for features such as premium access, subscriptions, and account management.",
             },
             {
               question: "Are there any file size limitations?",
@@ -177,19 +177,19 @@ export default function Home() {
             <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            Free to Use
+            Free Tools Available
           </span>
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-700 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
             <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            No Registration
+            Optional Accounts
           </span>
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-700 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
             <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            Secure & Private
+            Privacy Aware
           </span>
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-700 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
             <svg className="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
@@ -224,12 +224,12 @@ export default function Home() {
             <div className="text-sm text-gray-600 mt-1">Tools Available</div>
           </div>
           <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-            <div className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">100%</div>
-            <div className="text-sm text-gray-600 mt-1">Free Forever</div>
+            <div className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">60+</div>
+            <div className="text-sm text-gray-600 mt-1">Free Tools</div>
           </div>
           <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-            <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">0</div>
-            <div className="text-sm text-gray-600 mt-1">Signup Required</div>
+            <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Optional</div>
+            <div className="text-sm text-gray-600 mt-1">Account Access</div>
           </div>
           <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
             <div className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Fast</div>
@@ -360,25 +360,25 @@ export default function Home() {
             {[
               {
                 title: "No Cost Required",
-                desc: "All tools are available at no charge. There are no subscription fees, hidden costs, or premium tiers to access features.",
+                desc: "Most tools are available at no charge. Advanced AI features may offer clearly priced optional plans.",
                 icon: "💰",
                 gradient: "from-green-400 to-emerald-500"
               },
               {
                 title: "Browser-Based",
-                desc: "Tools operate entirely within your web browser using modern JavaScript technology. No software downloads or installations needed.",
+                desc: "Tools are accessed through your web browser, so no software download or installation is needed.",
                 icon: "🌐",
                 gradient: "from-blue-400 to-cyan-500"
               },
               {
                 title: "Local Processing",
-                desc: "Files are processed on your own device. Data does not get uploaded to external servers, maintaining privacy and security.",
+                desc: "Many file utilities process data on your device. Server-dependent tools are identified in our privacy information.",
                 icon: "🔒",
                 gradient: "from-purple-400 to-pink-500"
               },
               {
                 title: "Instant Access",
-                desc: "Begin using any tool immediately. No account creation, email verification, or personal information required.",
+                desc: "Most free tools work without an account. Accounts are used for premium access and subscription management.",
                 icon: "⚡",
                 gradient: "from-orange-400 to-red-500"
               },
@@ -451,17 +451,17 @@ export default function Home() {
           {[
             {
               q: "Are these tools completely free to use?",
-              a: "Yes, all 65+ tools on Convertixy are completely free with no hidden charges. You can use them unlimited times without any payment or subscription requirement.",
+              a: "Most Convertixy tools are free to use without payment. A small set of advanced AI tools offers optional paid plans, and pricing is shown before purchase.",
               icon: "💰"
             },
             {
               q: "Do I need to install any software to use these tools?",
-              a: "No installation is required. All tools run directly in your web browser using modern technologies. Simply visit the tool page and start using it immediately.",
+              a: "No installation is required. Convertixy tools run through your web browser; some tools process data on-device, while server-dependent and AI features securely send the submitted input for processing.",
               icon: "🌐"
             },
             {
               q: "How secure are my files and data?",
-              a: "Your data is completely secure. All file processing happens locally in your browser. We do not upload, store, or access your files on any server, ensuring 100% privacy and security.",
+              a: "Many file tools process inputs locally in your browser. Tools that require an online service depend on server-side processing. Avoid submitting highly sensitive information and review our Privacy Policy for details.",
               icon: "🔒"
             },
             {
@@ -476,7 +476,7 @@ export default function Home() {
             },
             {
               q: "Do I need to create an account or register?",
-              a: "No registration is required. All tools are accessible immediately without creating an account, providing your email, or going through any signup process.",
+              a: "Most free tools do not require registration. An account is required only for features such as premium access, subscriptions, and account management.",
               icon: "✅"
             },
             {
