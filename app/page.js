@@ -14,7 +14,7 @@ import { sections as toolSections } from "./data/tools";
 export const metadata = buildMetadata({
   title: "Free tools use in daily life | Convertixy",
   description:
-    "Free tools use in daily life 100% free tools for everyone. Fast, secure and mobile-friendly online tools for all your file processing needs.",
+    "Fast, secure and mobile-friendly online tools for PDF, image, text, SEO, calculator, and conversion tasks. Most tools are free to use, with optional premium features on selected pages.",
   slug: "/",
   keywords: [
     "free online tools",
@@ -41,7 +41,6 @@ export const metadata = buildMetadata({
     "online converter",
     "free tools",
     "browser tools",
-    "no registration",
     "secure tools",
     "fast tools",
     "mobile friendly tools",
@@ -134,7 +133,7 @@ export default function Home() {
             },
             {
               question: "Can I use these tools for commercial projects?",
-              answer: "Yes, you can use all tools for both personal and commercial projects without any restrictions or attribution requirements.",
+              answer: "You can use Convertixy tools for personal and professional workflows. Please review your own compliance, client, and content requirements before using outputs in regulated or contractual contexts.",
             },
           ]),
         ]}

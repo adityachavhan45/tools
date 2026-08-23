@@ -38,7 +38,7 @@ function escapeXml(value) {
 function buildBlogSitemapXml(urlEntries) {
   const urlsXml = urlEntries
     .map(
-      (entry) => `  <url>\n    <loc>${escapeXml(entry.loc)}</loc>\n    <lastmod>${entry.lastmod}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>`
+      (entry) => `  <url>\n    <loc>${escapeXml(entry.loc)}</loc>\n    <lastmod>${entry.lastmod}</lastmod>\n  </url>`
     )
     .join("\n");
 

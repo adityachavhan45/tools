@@ -16,10 +16,10 @@ export default function ContactPage() {
         {/* Header */}
         <header className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
-            Let Connect
+            Contact Convertixy
           </h1>
           <p className="mt-3 text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-            Have a question, feedback, or partnership idea? We love to hear from you.
+            Have a question, feedback, reporting issue, or partnership enquiry? Contact the Convertixy team and we will review your message.
           </p>
         </header>
 
@@ -37,13 +37,13 @@ export default function ContactPage() {
 
             <ul className="text-sm text-gray-700 space-y-3">
               <li>⏳ Response time: within 48 hours (business days)</li>
-              <li>
-                To Collaborate or Paid Promotion with Banner Ads, please contact us through
-              </li>
+              <li>Support email: <a href="mailto:contact@convertixy.com" className="font-medium text-indigo-700 hover:underline">contact@convertixy.com</a></li>
+              <li>Managed by: Convertixy editorial and product team</li>
+              <li>Use this page for support, correction requests, privacy questions, and business enquiries.</li>
             </ul>
 
             <div className="mt-6 p-4 bg-indigo-50 rounded-lg text-indigo-700 text-sm">
-               Thanks For Visit us Contact page for any query or support. We are here to help you.
+              We review all support and policy-related messages through this contact channel and reply as quickly as possible.
             </div>
           </aside>
 

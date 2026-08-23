@@ -80,6 +80,12 @@ export default function AboutPage() {
               performance to create a better experience for users across
               different devices.
             </p>
+
+            <p className="mt-5 text-lg leading-relaxed text-gray-700">
+              Convertixy is an independently operated online tools website managed
+              by the Convertixy editorial and product team. Users can contact us
+              directly at <a href="mailto:contact@convertixy.com" className="font-medium text-blue-700 hover:underline">contact@convertixy.com</a> for support, corrections, privacy questions, or business enquiries.
+            </p>
           </div>
         </section>
 
