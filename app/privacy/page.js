@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
             <p className="mt-4 leading-relaxed text-gray-700">
               Convertixy is operated by the Convertixy editorial and product team.
               For privacy questions, policy requests, or data-related enquiries,
-              contact <a href="mailto:contact@convertixy.com" className="font-medium text-indigo-700 hover:underline">contact@convertixy.com</a>.
+              contact <a href="mailto:contact.convertixy@gmail.com" className="font-medium text-indigo-700 hover:underline">contact.convertixy@gmail.com</a>.
             </p>
           </section>
 
@@ -288,10 +288,10 @@ export default function PrivacyPolicyPage() {
               For questions related to this Privacy Policy or website privacy
               practices, please contact us at{" "}
               <a
-                href="mailto:contact@convertixy.com"
+                href="mailto:contact.convertixy@gmail.com"
                 className="font-medium text-indigo-600 transition hover:text-indigo-700 hover:underline"
               >
-                contact@convertixy.com
+                contact.convertixy@gmail.com
               </a>
               .
             </p>

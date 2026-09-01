@@ -37,7 +37,7 @@ export default function ContactPage() {
 
             <ul className="text-sm text-gray-700 space-y-3">
               <li>⏳ Response time: within 48 hours (business days)</li>
-              <li>Support email: <a href="mailto:contact@convertixy.com" className="font-medium text-indigo-700 hover:underline">contact@convertixy.com</a></li>
+              <li>Support email: <a href="mailto:contact.convertixy@gmail.com" className="font-medium text-indigo-700 hover:underline">contact.convertixy@gmail.com</a></li>
               <li>Managed by: Convertixy editorial and product team</li>
               <li>Use this page for support, correction requests, privacy questions, and business enquiries.</li>
             </ul>

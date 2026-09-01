@@ -3,7 +3,11 @@ import crypto from "node:crypto";
 
 export const runtime = "nodejs";
 
-const ALLOWED_PUBLIC_ID_PREFIXES = ["convertixy/blog-feature/", "convertixy/blog-content/"];
+const ALLOWED_PUBLIC_ID_PREFIXES = [
+  "convertixy/blog-feature/",
+  "convertixy/blog-content/",
+  "convertixy/ads/",
+];
 const MAX_DELETE_COUNT = 100;
 
 function isAllowedPublicId(publicId) {

@@ -131,10 +131,10 @@ export default function DisclaimerPage() {
               If you have questions regarding this disclaimer or any part of the
               platform, you can contact us at{" "}
               <a
-                href="mailto:contact@convertixy.com"
+                href="mailto:contact.convertixy@gmail.com"
                 className="font-medium text-indigo-600 transition hover:text-indigo-700 hover:underline"
               >
-                contact@convertixy.com
+                contact.convertixy@gmail.com
               </a>
               .
             </p>

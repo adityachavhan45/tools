@@ -72,7 +72,7 @@ function SearchBox({ onNavigate }) {
   };
 
   return (
-    <div className="relative w-full flex-1 min-w-0 max-w-full md:min-w-[400px]">
+    <div className="relative w-full min-w-0">
       <form
         onSubmit={handleSubmit}
         className="relative flex items-center"
@@ -161,7 +161,7 @@ function SearchBox({ onNavigate }) {
 }
 
 export default function Header() {
-  const premiumToolsLabel = "Premium Tools";
+  const premiumToolsLabel = "Premium ";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
@@ -207,6 +207,16 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
+  useEffect(() => {
+    const desktopMedia = window.matchMedia("(min-width: 1280px)");
+    const closeMobileMenuOnDesktop = (event) => {
+      if (event.matches) setMobileMenuOpen(false);
+    };
+
+    desktopMedia.addEventListener("change", closeMobileMenuOnDesktop);
+    return () => desktopMedia.removeEventListener("change", closeMobileMenuOnDesktop);
+  }, []);
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => {
       const next = !prev;
@@ -235,15 +245,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-gradient-to-b from-gray-900 to-black text-gray-100 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
-        <Link href="/" className="font-bold text-lg sm:text-xl md:text-2xl tracking-tight hover:opacity-90 transition-all duration-200 hover:scale-105">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between gap-3">
+        <Link href="/" className="shrink-0 font-bold text-lg sm:text-xl md:text-2xl tracking-tight hover:opacity-90 transition-all duration-200 hover:scale-105" onClick={handleNavClick}>
           convertixy
         </Link>
-        <nav className="flex items-center gap-4 sm:gap-4 text-sm">
+        <nav className="flex min-w-0 items-center gap-2 text-sm">
           {user ? (
             <Link
               href="/profile"
-              className="lg:hidden flex h-9 w-9 items-center justify-center rounded-full bg-white text-xs font-bold text-gray-900 shadow-md transition hover:bg-gray-100"
+              className="xl:hidden flex h-9 w-9 items-center justify-center rounded-full bg-white text-xs font-bold text-gray-900 shadow-md transition hover:bg-gray-100"
               onClick={handleNavClick}
               aria-label="Go to profile"
             >
@@ -252,7 +262,7 @@ export default function Header() {
           ) : null}
           <button
             type="button"
-            className="lg:hidden ml-1 inline-flex items-center justify-center rounded-lg border border-white/20 p-2 sm:p-2.5 text-gray-100 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+            className="xl:hidden ml-1 inline-flex items-center justify-center rounded-lg border border-white/20 p-2 sm:p-2.5 text-gray-100 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
             aria-label="Toggle navigation"
             aria-expanded={mobileMenuOpen}
             onClick={toggleMobileMenu}
@@ -272,21 +282,32 @@ export default function Header() {
               <line x1="4" y1="18" x2="20" y2="18" />
             </svg>
           </button>
-          <div className="hidden lg:flex items-center gap-3 lg:gap-4 text-sm lg:text-base w-full">
-            <Link href="/" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+          <div className="hidden xl:flex min-w-0 items-center gap-1.5 2xl:gap-2 text-sm 2xl:text-base">
+            <Link href="/" className="px-2 2xl:px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Home
             </Link>
-            <SearchBox onNavigate={handleNavigate} />
+            <div className="w-52 2xl:w-60 shrink-0">
+              <SearchBox onNavigate={handleNavigate} />
+            </div>
             
             {/* navigate */}
-            <Link href="/pro-tool" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+            <Link href="/pro-tool" className="px-2 2xl:px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               <span suppressHydrationWarning>{premiumToolsLabel}</span>
             </Link>
 
-            <Link href="/blog" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+            <Link href="/blog" className="px-2 2xl:px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Blog
             </Link>
-            <Link href="/contact" className="px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+            <Link href="/about" className="px-2 2xl:px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+              About
+            </Link>
+            <Link href="/documentation" className="px-2 2xl:px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+              Documentation
+            </Link>
+            <Link href="/disclaimer" className="px-2 2xl:px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
+              Disclaimer
+            </Link>
+            <Link href="/contact" className="px-2 2xl:px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200 font-medium" onClick={handleNavClick}>
               Contact
             </Link>
             {user ? (
@@ -335,7 +356,7 @@ export default function Header() {
                 ) : null}
               </div>
             ) : (
-              <Link href="/login" className="px-3 py-1.5 rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all duration-200 font-semibold" onClick={handleNavClick}>
+              <Link href="/login" className="shrink-0 px-3 py-1.5 rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all duration-200 font-semibold" onClick={handleNavClick}>
                 Login
               </Link>
             )}
@@ -343,9 +364,9 @@ export default function Header() {
         </nav>
       </div>
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-white/10 bg-black/80 backdrop-blur-sm animate-in slide-in-from-top-2 duration-200">
-          <nav className="px-4 sm:px-6 py-4 space-y-4 text-sm">
-            <div className="rounded-lg border border-white/10 bg-black/40 p-3">
+        <div className="xl:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-black/95 backdrop-blur-sm animate-in slide-in-from-top-2 duration-200">
+          <nav className="px-4 sm:px-6 py-3 space-y-1.5 text-sm">
+            <div className="mb-3 rounded-lg border border-white/10 bg-black/40 p-2.5">
               <SearchBox onNavigate={handleNavigate} />
             </div>
             <Link
@@ -355,13 +376,6 @@ export default function Header() {
             >
               Home
             </Link>
-            <Link
-              href="/blog"
-              className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
-              onClick={handleNavClick}
-            >
-              Blog
-            </Link>
 
             {/* premium tools navigate */}
             <Link
@@ -370,6 +384,34 @@ export default function Header() {
               onClick={handleNavClick}
             >
               <span suppressHydrationWarning>{premiumToolsLabel}</span>
+            </Link>
+            <Link
+              href="/blog"
+              className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
+              onClick={handleNavClick}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/about"
+              className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
+              onClick={handleNavClick}
+            >
+              About
+            </Link>
+            <Link
+              href="/documentation"
+              className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
+              onClick={handleNavClick}
+            >
+              Documentation
+            </Link>
+            <Link
+              href="/disclaimer"
+              className="block rounded-lg px-4 py-2.5 hover:bg-white/10 transition-all duration-200 font-medium"
+              onClick={handleNavClick}
+            >
+              Disclaimer
             </Link>
             <Link
               href="/contact"

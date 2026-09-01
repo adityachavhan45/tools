@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import { siteConstants } from "../lib/seo";
 import GoogleAnalytics from "./components/googleanalyatics";
 import Script from "next/script";
+import AdsSection from "./components/AdsSection";
 
 export const metadata = (() => {
   const { SITE_NAME, SITE_URL, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE } = siteConstants();
@@ -112,7 +113,9 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
 
-        <main>{children}</main>
+        <main data-page-content>{children}</main>
+
+        <AdsSection />
 
         <Footer />
       </body>

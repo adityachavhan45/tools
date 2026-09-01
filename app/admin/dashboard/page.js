@@ -128,6 +128,13 @@ export default function AdminDashboardPage() {
           >
             Subscriptions
           </button>
+          <button
+            type="button"
+            onClick={() => router.push("/admin/ads")}
+            className="!bg-white !text-black !border !border-black !rounded-xl !shadow-none !py-2 !px-4 !text-sm !font-medium"
+          >
+            Ads
+          </button>
         </div>
 
         <div>

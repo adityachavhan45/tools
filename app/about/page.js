@@ -84,7 +84,7 @@ export default function AboutPage() {
             <p className="mt-5 text-lg leading-relaxed text-gray-700">
               Convertixy is an independently operated online tools website managed
               by the Convertixy editorial and product team. Users can contact us
-              directly at <a href="mailto:contact@convertixy.com" className="font-medium text-blue-700 hover:underline">contact@convertixy.com</a> for support, corrections, privacy questions, or business enquiries.
+              directly at <a href="mailto:contact.convertixy@gmail.com" className="font-medium text-blue-700 hover:underline">contact.convertixy@gmail.com</a> for support, corrections, privacy questions, or business enquiries.
             </p>
           </div>
         </section>
@@ -344,10 +344,10 @@ export default function AboutPage() {
             </p>
 
             <a
-              href="mailto:contact@convertixy.com"
+              href="mailto:contact.convertixy@gmail.com"
               className="inline-flex items-center rounded-lg bg-blue-600 px-8 py-4 font-semibold text-white transition-colors duration-200 hover:bg-blue-700"
             >
-              contact@convertixy.com
+              contact.convertixy@gmail.com
             </a>
           </div>
         </section>

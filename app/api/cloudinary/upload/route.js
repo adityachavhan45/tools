@@ -3,7 +3,11 @@ import crypto from "node:crypto";
 
 export const runtime = "nodejs";
 
-const ALLOWED_FOLDERS = new Set(["convertixy/blog-feature", "convertixy/blog-content"]);
+const ALLOWED_FOLDERS = new Set([
+  "convertixy/blog-feature",
+  "convertixy/blog-content",
+  "convertixy/ads",
+]);
 const MAX_IMAGE_SIZE_BYTES = 10 * 1024 * 1024;
 
 export async function POST(request) {

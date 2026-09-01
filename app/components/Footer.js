@@ -4,9 +4,9 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-black text-gray-300 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12">
           {/* Brand Section */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 lg:col-span-2">
             <h3 className="text-lg sm:text-xl font-bold text-white mb-4">Convertixy</h3>
             <p className="text-sm sm:text-base text-gray-400 mb-4 leading-relaxed">
               Online tools for PDF manipulation, image processing, text editing, SEO, calculators, and more. Many tools process data locally; server-dependent features are explained in our Privacy Policy.
@@ -40,6 +40,17 @@ export default function Footer() {
               <li><Link href="/documentation" className="text-gray-400 hover:text-white transition-colors duration-200">Documentation</Link></li>
               <li><Link href="/disclaimer" className="text-gray-400 hover:text-white transition-colors duration-200">Disclaimer</Link></li>
             </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-base sm:text-lg font-semibold text-white mb-4">Contact</h4>
+            <a
+              href="mailto:contact.convertixy@gmail.com"
+              className="text-sm sm:text-base text-gray-400 hover:text-white transition-colors duration-200 break-words"
+            >
+              contact.convertixy@gmail.com
+            </a>
           </div>
         </div>
         

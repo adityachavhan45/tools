@@ -206,10 +206,10 @@ export default function DocumentationPage() {
               If you need assistance, want to report issues, or have questions
               regarding any tool, you can contact our support team at{" "}
               <a
-                href="mailto:contact@convertixy.com"
+                href="mailto:contact.convertixy@gmail.com"
                 className="font-medium text-indigo-600 transition hover:text-indigo-700 hover:underline"
               >
-                contact@convertixy.com
+                contact.convertixy@gmail.com
               </a>
               .
             </p>
