@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { siteConstants } from "../lib/seo";
 import GoogleAnalytics from "./components/googleanalyatics";
-import Script from "next/script";
 import AdsSection from "./components/AdsSection";
 
 export const metadata = (() => {
@@ -95,6 +94,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="ltr">
       <head>
+        <script
+          src="https://quge5.com/88/tag.min.js"
+          data-zone="281745"
+          data-cfasync="false"
+          async
+        />
         <GoogleAnalytics />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
