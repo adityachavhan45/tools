@@ -97,9 +97,9 @@ export default function RootLayout({ children }) {
         <script
           src="https://quge5.com/88/tag.min.js"
           data-zone="281745"
-          data-cfasync="false"
           async
-        />
+          data-cfasync="false"
+        ></script>
         <GoogleAnalytics />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
